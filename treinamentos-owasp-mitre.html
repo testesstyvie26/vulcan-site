@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Treinamentos OWASP e MITRE | Vulcan Defense</title>
+<meta name="description" content="Treinamentos corporativos OWASP Top 10, MITRE ATT&CK e frameworks de seguranca para equipes tecnicas e executivas." />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  .tr-hero{padding:74px 0 24px}
+  .tr-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px}
+  .module-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}
+  .module{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);border-radius:14px;padding:14px}
+  .line-chart{height:260px;border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:14px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(0,0,0,.24));position:relative;overflow:hidden}
+  .line-grid{position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:100% 40px,52px 100%}
+  .line-svg{position:absolute;left:12px;right:12px;bottom:18px;height:130px}
+  .line-svg path{fill:none;stroke:#67e8f9;stroke-width:3;stroke-dasharray:360;stroke-dashoffset:360;animation:draw 2.2s ease forwards}
+  .line-svg path.two{stroke:#3b82f6;animation-delay:.25s}
+  .kpi{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
+  .kpi-item{border:1px solid rgba(255,255,255,.1);border-radius:14px;background:rgba(0,0,0,.24);padding:14px}
+  .kpi-item b{display:block;color:#67e8f9;font-size:26px}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  @media (max-width:980px){.tr-grid{grid-template-columns:1fr}.module-grid,.kpi{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="grid-overlay"></div>
+<header>
+  <div class="container header-wrap">
+    <div class="brand">
+      <div class="logo-box"><img src="assets/logo-vulcan.png" alt="Vulcan Defense" /></div>
+      <div>
+        <h1>VULCAN DEFENSE</h1>
+        <p>Cyber Defense Operations</p>
+      </div>
+    </div>
+    <nav><a href="index.html" class="">Home</a><a href="quem-somos.html" class="">Quem Somos</a><div class="nav-item has-submenu"><a href="servicos.html" class="active">Servicos</a><div class="submenu"><a href="pentest-yellow-team-secops-dast.html" class="">Pentest e SecOps</a><a href="software-vulcan-platform.html" class="">Software Vulcan Platform</a><a href="endpoint-protection-siem.html" class="">Endpoint Protection e SIEM</a><a href="compliance-ia.html" class="">Compliance de IA</a><a href="security-champions.html" class="">Security Champions</a><a href="treinamentos-owasp-mitre.html" class="active">Treinamentos OWASP e MITRE</a></div></div><a href="tecnologias.html" class="">Tecnologias</a><a href="nosso-time.html" class="">Nosso Time</a><a href="politica-privacidade.html" class="">Politica de Privacidade</a><a href="contato.html" class="">Contato</a></nav>
+  </div>
+</header>
+
+<main>
+<section class="tr-hero">
+  <div class="container tr-grid">
+    <div class="glass-box">
+      <div class="section-title-small">Capacitacao</div>
+      <div class="section-title">Treinamentos OWASP Top 10, MITRE e outros orgaos</div>
+      <div class="section-text">Trilhas praticas para equipes tecnicas e liderancas com conteudo aplicado ao contexto real da organizacao.</div>
+
+      <div class="module-grid">
+        <div class="module"><strong>OWASP Top 10</strong><br />Riscos de aplicacao, exploracao, mitigacao e coding seguro.</div>
+        <div class="module"><strong>MITRE ATT&CK</strong><br />Taticas, tecnicas e mapeamento para deteccao e resposta.</div>
+        <div class="module"><strong>NIST CSF / ISO 27001</strong><br />Governanca, controles e maturidade de seguranca.</div>
+        <div class="module"><strong>LGPD e privacidade</strong><br />Boas praticas no uso e protecao de dados.</div>
+      </div>
+
+      <div class="kpi">
+        <div class="kpi-item"><span>Colaboradores treinados</span><b>1.260</b></div>
+        <div class="kpi-item"><span>Turmas concluidas</span><b>48</b></div>
+        <div class="kpi-item"><span>Score medio</span><b>9.1</b></div>
+      </div>
+    </div>
+
+    <div class="glass-box">
+      <div class="section-title-small">Evolucao executiva</div>
+      <div class="line-chart">
+        <div class="line-grid"></div>
+        <div class="line-svg">
+          <svg viewBox="0 0 600 150" preserveAspectRatio="none" width="100%" height="100%">
+            <path d="M0,125 C70,95 120,105 190,78 C260,52 320,78 390,54 C460,30 525,52 600,24"></path>
+            <path class="two" d="M0,132 C80,114 145,120 220,95 C290,72 345,86 430,70 C500,56 550,68 600,58"></path>
+          </svg>
+        </div>
+      </div>
+      <div class="list-stack" style="margin-top:14px;">
+        <div class="stack-item">Workshops executivos com risco, impacto e priorizacao.</div>
+        <div class="stack-item">Labs tecnicos por papel: dev, appsec, SOC, GRC e gestores.</div>
+        <div class="stack-item">Simulacoes com cenarios reais para fixacao do aprendizado.</div>
+      </div>
+      <div class="btn-row" style="margin-top:20px;">
+        <a class="btn btn-primary" href="contato.html">Planejar treinamento</a>
+        <a class="btn btn-secondary" href="servicos.html">Ver portfolio completo</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="container">&copy; 2026 Vulcan Defense. Todos os direitos reservados.</div></footer>
+</body>
+</html>

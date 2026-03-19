@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Security Champions | Vulcan Defense</title>
+<meta name="description" content="Programa Security Champions para formar multiplicadores de seguranca dentro das areas de negocio e tecnologia." />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  .sc-hero{padding:74px 0 24px}
+  .sc-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px}
+  .timeline{display:grid;gap:10px;margin-top:16px}
+  .step{position:relative;padding:14px 14px 14px 46px;border:1px solid rgba(255,255,255,.1);border-radius:14px;background:rgba(255,255,255,.03)}
+  .step::before{content:"";position:absolute;left:16px;top:50%;width:16px;height:16px;border-radius:999px;background:#67e8f9;transform:translateY(-50%);box-shadow:0 0 16px rgba(103,232,249,.65)}
+  .step:not(:last-child)::after{content:"";position:absolute;left:23px;top:100%;height:10px;width:2px;background:linear-gradient(#67e8f9,transparent)}
+  .score-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
+  .score{border:1px solid rgba(255,255,255,.1);border-radius:14px;background:rgba(0,0,0,.24);padding:14px}
+  .score b{display:block;color:#67e8f9;font-size:28px}
+  .radial{min-height:280px;border-radius:18px;border:1px solid rgba(255,255,255,.1);background:radial-gradient(circle at center,rgba(103,232,249,.22),rgba(2,8,23,.92));display:grid;place-items:center;overflow:hidden}
+  .wheel{width:180px;height:180px;border-radius:999px;border:2px solid rgba(103,232,249,.55);position:relative;animation:pulse 2.4s ease-out infinite}
+  .wheel::before,.wheel::after{content:"";position:absolute;border-radius:999px;border:1px solid rgba(103,232,249,.35);inset:-16px}
+  .wheel::after{inset:-32px;opacity:.55}
+  @keyframes pulse{0%{transform:scale(.86);opacity:.9}100%{transform:scale(1.14);opacity:.2}}
+  @media (max-width:980px){.sc-grid{grid-template-columns:1fr}.score-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="grid-overlay"></div>
+<header>
+  <div class="container header-wrap">
+    <div class="brand">
+      <div class="logo-box"><img src="assets/logo-vulcan.png" alt="Vulcan Defense" /></div>
+      <div>
+        <h1>VULCAN DEFENSE</h1>
+        <p>Cyber Defense Operations</p>
+      </div>
+    </div>
+    <nav><a href="index.html" class="">Home</a><a href="quem-somos.html" class="">Quem Somos</a><div class="nav-item has-submenu"><a href="servicos.html" class="active">Servicos</a><div class="submenu"><a href="pentest-yellow-team-secops-dast.html" class="">Pentest e SecOps</a><a href="software-vulcan-platform.html" class="">Software Vulcan Platform</a><a href="endpoint-protection-siem.html" class="">Endpoint Protection e SIEM</a><a href="compliance-ia.html" class="">Compliance de IA</a><a href="security-champions.html" class="active">Security Champions</a><a href="treinamentos-owasp-mitre.html" class="">Treinamentos OWASP e MITRE</a></div></div><a href="tecnologias.html" class="">Tecnologias</a><a href="nosso-time.html" class="">Nosso Time</a><a href="politica-privacidade.html" class="">Politica de Privacidade</a><a href="contato.html" class="">Contato</a></nav>
+  </div>
+</header>
+
+<main>
+<section class="sc-hero">
+  <div class="container sc-grid">
+    <div class="glass-box">
+      <div class="section-title-small">Programa Corporativo</div>
+      <div class="section-title">Security Champions</div>
+      <div class="section-text">Formamos multiplicadores de seguranca em times de desenvolvimento, produto, dados e operacoes para acelerar maturidade e reduzir risco desde a origem.</div>
+
+      <div class="timeline">
+        <div class="step"><strong>Fase 1 - Diagnostico:</strong> mapeamento de times, riscos e nivel atual de maturidade.</div>
+        <div class="step"><strong>Fase 2 - Capacitação:</strong> trilhas praticas por perfil com laboratorios e casos reais.</div>
+        <div class="step"><strong>Fase 3 - Operacao assistida:</strong> rituais de seguranca, suporte tecnico e revisoes continuas.</div>
+        <div class="step"><strong>Fase 4 - Escala:</strong> comunidade interna, indicadores e governanca do programa.</div>
+      </div>
+
+      <div class="score-grid">
+        <div class="score"><span>Times cobertos</span><b>18</b></div>
+        <div class="score"><span>Champions ativos</span><b>74</b></div>
+        <div class="score"><span>Reducao de gaps</span><b>41%</b></div>
+      </div>
+    </div>
+
+    <div class="glass-box radial">
+      <div class="wheel"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container grid grid-2">
+    <div class="glass-box">
+      <div class="section-title-small">Resultados esperados</div>
+      <div class="list-stack">
+        <div class="stack-item">Seguranca incorporada aos ritos de squad (planning, refinement, release).</div>
+        <div class="stack-item">Melhor qualidade de requisitos e historias com criterios de seguranca.</div>
+        <div class="stack-item">Reducao de retrabalho por deteccao precoce de vulnerabilidades.</div>
+        <div class="stack-item">Maior autonomia tecnica dos times com apoio do SOC/AppSec.</div>
+      </div>
+    </div>
+
+    <div class="glass-box">
+      <div class="section-title-small">Governanca do programa</div>
+      <div class="section-text">Definimos escopo, papeis, indicadores e cadencia de acompanhamento para manter o programa sustentavel e conectado aos objetivos do negocio.</div>
+      <div class="chips">
+        <span class="pill">Roadmap 90 dias</span>
+        <span class="pill">KPIs executivos</span>
+        <span class="pill">Comite mensal</span>
+        <span class="pill">Playbook de champions</span>
+      </div>
+      <div class="btn-row" style="margin-top:22px;">
+        <a class="btn btn-primary" href="contato.html">Estruturar programa</a>
+        <a class="btn btn-secondary" href="servicos.html">Voltar para servicos</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="container">&copy; 2026 Vulcan Defense. Todos os direitos reservados.</div></footer>
+</body>
+</html>
