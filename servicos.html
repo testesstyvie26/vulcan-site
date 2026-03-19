@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Serviços | Vulcan Defense</title>
+<meta name="description" content="Serviços da Vulcan Defense" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  .services-hero { padding: 80px 0 24px; }
+  .services-wrap { padding-bottom: 56px; }
+  .services-intro { max-width: 760px; margin-bottom: 28px; }
+  .services-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; }
+  .service-panel {
+    min-height: 296px;
+    padding: 24px;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,.12);
+    background: linear-gradient(180deg, rgba(22,34,74,.92), rgba(16,28,63,.88));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.03);
+  }
+  .service-head {
+    display:flex; align-items:center; justify-content:space-between; margin-bottom: 22px;
+  }
+  .service-icon {
+    width: 52px; height: 52px; border-radius: 18px;
+    border:1px solid rgba(34,211,238,.28);
+    background: rgba(34,211,238,.08);
+    display:flex; align-items:center; justify-content:center;
+    color:#8aefff; font-size: 18px;
+    box-shadow: 0 0 20px rgba(34,211,238,.08);
+  }
+  .service-badge {
+    border-radius:999px; border:1px solid rgba(255,255,255,.12);
+    background: rgba(7,13,34,.58); color: rgba(255,255,255,.58);
+    padding: 6px 14px; font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
+  }
+  .service-panel h3 { font-size: 25px; line-height: 1.15; font-weight: 800; margin-bottom: 14px; }
+  .service-panel p { font-size: 15px; line-height: 1.75; color: rgba(255,255,255,.72); max-width: 260px; }
+  .platform-grid { display:grid; grid-template-columns: 1.15fr .85fr; gap: 24px; margin-top: 34px; }
+  .platform-box, .diff-box {
+    border-radius: 30px; padding: 30px;
+    border: 1px solid rgba(255,255,255,.10);
+    backdrop-filter: blur(10px);
+  }
+  .platform-box {
+    background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.04));
+    border-color: rgba(103,232,249,.12);
+  }
+  .diff-box {
+    background: linear-gradient(135deg, rgba(34,211,238,.10), rgba(0,0,0,.36));
+  }
+  .feature-grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; margin-top: 24px; }
+  .feature-item, .diff-item {
+    border-radius: 18px; border:1px solid rgba(255,255,255,.10);
+    background: rgba(0,0,0,.22); padding: 16px; color: rgba(255,255,255,.82); font-size: 14px;
+  }
+  .diff-list { display:grid; gap: 12px; margin-top: 24px; }
+  @media (max-width: 1100px) {
+    .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .platform-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 680px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .feature-grid { grid-template-columns: 1fr; }
+    .service-panel p { max-width: none; }
+  }
+</style>
+</head>
+<body>
+<div class="grid-overlay"></div>
+<header>
+  <div class="container header-wrap">
+    <div class="brand">
+      <div class="logo-box">V</div>
+      <div>
+        <h1>VULCAN DEFENSE</h1>
+        <p>Cyber Defense Operations</p>
+      </div>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="quem-somos.html">Quem Somos</a>
+      <a href="servicos.html" class="active">Serviços</a>
+      <a href="tecnologias.html">Tecnologias</a>
+      <a href="nosso-time.html">Nosso Time</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="services-hero">
+    <div class="container services-wrap">
+      <div class="services-intro">
+        <div class="section-title-small">Serviços</div>
+        <div class="section-title">Operação contínua com foco em contexto e ação</div>
+        <div class="section-text">
+          A Vulcan Defense integra monitoramento, detecção e resposta em serviços desenhados para ambientes corporativos que exigem resiliência real.
+        </div>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-panel">
+          <div class="service-head">
+            <div class="service-icon">◈</div>
+            <div class="service-badge">NOC</div>
+          </div>
+          <h3>Vulcan Watch</h3>
+          <p>Monitoramento operacional contínuo para ambientes críticos, com foco em disponibilidade, performance e resposta rápida a falhas.</p>
+        </div>
+
+        <div class="service-panel">
+          <div class="service-head">
+            <div class="service-icon">◈</div>
+            <div class="service-badge">SOC</div>
+          </div>
+          <h3>Vulcan Shield</h3>
+          <p>SOC orientado à ação, com correlação de eventos, investigação, priorização e suporte à resposta a incidentes.</p>
+        </div>
+
+        <div class="service-panel">
+          <div class="service-head">
+            <div class="service-icon">◈</div>
+            <div class="service-badge">Exposure</div>
+          </div>
+          <h3>Vulcan Exposure</h3>
+          <p>Gestão de vulnerabilidades, exposição externa e postura de segurança para reduzir riscos antes que virem incidentes.</p>
+        </div>
+
+        <div class="service-panel">
+          <div class="service-head">
+            <div class="service-icon">◈</div>
+            <div class="service-badge">IR</div>
+          </div>
+          <h3>Vulcan Response</h3>
+          <p>Contenção, análise e apoio técnico em incidentes críticos, com visão tática e operacional.</p>
+        </div>
+      </div>
+
+      <div class="platform-grid">
+        <div class="platform-box">
+          <div class="section-title-small">Plataforma</div>
+          <div class="section-title">Vulcan Platform</div>
+          <div class="section-text">
+            Uma base tecnológica moderna para centralizar eventos, telemetria, visibilidade operacional, correlação de segurança, priorização de risco e apoio à resposta em uma experiência unificada.
+          </div>
+          <div class="feature-grid">
+            <div class="feature-item">Multi-tenant</div>
+            <div class="feature-item">Dashboards executivos e técnicos</div>
+            <div class="feature-item">Integrações com ambientes híbridos</div>
+            <div class="feature-item">Camadas próprias de automação e operação</div>
+          </div>
+        </div>
+
+        <div class="diff-box">
+          <div class="section-title-small">Diferencial</div>
+          <div class="section-title" style="font-size:34px;">Alerta sem contexto é ruído</div>
+          <div class="section-text">
+            A Vulcan Defense foi desenhada para reduzir excesso de alertas, elevar prioridade real e encurtar o caminho entre detecção e reação.
+          </div>
+          <div class="diff-list">
+            <div class="diff-item">Correlação com foco operacional</div>
+            <div class="diff-item">Priorização orientada ao risco</div>
+            <div class="diff-item">Integração entre NOC e SOC</div>
+            <div class="diff-item">Resposta coordenada e acionável</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="container">© 2026 Vulcan Defense. Todos os direitos reservados.</div></footer>
+</body>
+</html>

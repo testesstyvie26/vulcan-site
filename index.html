@@ -1,512 +1,129 @@
-export default function VulcanDefenseSite() {
-  const services = [
-    {
-      title: "Vulcan Watch",
-      description:
-        "Monitoramento operacional contínuo para ambientes críticos, com foco em disponibilidade, performance e resposta rápida a falhas.",
-      tag: "NOC",
-    },
-    {
-      title: "Vulcan Shield",
-      description:
-        "SOC orientado à ação, com correlação de eventos, investigação, priorização e suporte à resposta a incidentes.",
-      tag: "SOC",
-    },
-    {
-      title: "Vulcan Exposure",
-      description:
-        "Gestão de vulnerabilidades, exposição externa e postura de segurança para reduzir riscos antes que virem incidentes.",
-      tag: "Exposure",
-    },
-    {
-      title: "Vulcan Response",
-      description:
-        "Contenção, análise e apoio técnico em incidentes críticos, com visão tática e operacional.",
-      tag: "IR",
-    },
-  ];
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Home | Vulcan Defense</title>
+<meta name="description" content="Home da Vulcan Defense" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
 
-  const highlights = [
-    "NOC + SOC em uma operação convergente",
-    "Painéis executivos e técnicos em tempo real",
-    "Arquitetura moderna com alta adaptabilidade",
-    "Monitoramento, contexto e reação prática",
-  ];
-
-  const stats = [
-    { value: "24x7", label: "Monitoramento contínuo" },
-    { value: "360°", label: "Visibilidade operacional" },
-    { value: "MTTR↓", label: "Resposta acelerada" },
-    { value: "Multi", label: "Ambientes híbridos" },
-  ];
-
-  const values = [
-    "Excelência técnica",
-    "Transparência operacional",
-    "Resposta prática",
-    "Evolução contínua",
-    "Proximidade com o cliente",
-    "Inteligência aplicada",
-  ];
-
-  const team = [
-    {
-      title: "Cyber Defense Operations",
-      desc: "Profissionais focados em monitoramento, correlação, resposta e sustentação contínua da operação.",
-    },
-    {
-      title: "Threat & Detection Engineering",
-      desc: "Especialistas em engenharia de detecção, construção de casos de uso, hunting e melhoria contínua.",
-    },
-    {
-      title: "Offensive Security & Validation",
-      desc: "Equipe dedicada a segurança ofensiva, validação de controles, testes e simulações realistas.",
-    },
-  ];
-
-  const cyberServices = [
-    "Segurança Cibernética",
-    "Network Security",
-    "Endpoint Protection",
-    "Vulnerability Management",
-    "Policy Compliance",
-    "Cloud Security",
-    "User Awareness",
-    "Soluções de proteção em geral",
-    "Resposta a incidentes",
-    "Respostas a incidentes",
-    "Engenharia de detecção",
-    "Construção de casos de uso",
-    "Orquestração e automação",
-    "Threat intelligence",
-    "Internal Threat Intelligence",
-    "External Threat Intelligence",
-    "Pesquisa de ameaças",
-    "Threat Hunting",
-    "Antifraude",
-  ];
-
-  const offensiveServices = [
-    "Segurança Ofensiva",
-    "Pentest",
-    "Teste de Phishing",
-    "Emulação de ameaças",
-    "Engenharia Social",
-  ];
-
-  const technologies = [
-    "Network Security",
-    "Cloud Security",
-    "Endpoint Security",
-    "Identity and Access",
-    "Application Security",
-    "Vulnerability Management",
-    "Risk and Compliance Management",
-    "User Awareness",
-    "Security Validation",
-  ];
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-[#020817] via-[#041531] to-black text-white overflow-hidden selection:bg-cyan-300/20 selection:text-cyan-100">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-24 left-[-10%] h-96 w-96 rounded-full bg-cyan-500/10 blur-3xl animate-pulse" />
-        <div className="absolute top-1/3 right-[-8%] h-[28rem] w-[28rem] rounded-full bg-blue-600/10 blur-3xl animate-pulse" />
-        <div className="absolute bottom-0 left-1/3 h-80 w-80 rounded-full bg-sky-400/10 blur-3xl animate-pulse" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.08),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.10),transparent_30%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:42px_42px] opacity-10" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent,rgba(0,0,0,0.45))]" />
-      </div>
-
-      <header className="relative z-10 border-b border-white/10 backdrop-blur-md bg-black/10">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
-          <div className="flex items-center gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-300/30 bg-cyan-300/10 shadow-[0_0_30px_rgba(34,211,238,0.12)]">
-              <span className="text-xl font-black text-cyan-300">V</span>
-            </div>
-            <div>
-              <h1 className="text-2xl font-black tracking-[0.25em] text-cyan-300">VULCAN DEFENSE</h1>
-              <p className="text-xs uppercase tracking-[0.35em] text-white/50">Cyber Defense Operations</p>
-            </div>
+    <div class="grid-overlay"></div>
+    <header>
+      <div class="container header-wrap">
+        <div class="brand">
+          <div class="logo-box">V</div>
+          <div>
+            <h1>VULCAN DEFENSE</h1>
+            <p>Cyber Defense Operations</p>
           </div>
-          <nav className="hidden gap-8 text-sm text-white/70 md:flex">
-            <a href="#about" className="transition hover:text-cyan-300">Quem Somos</a>
-            <a href="#services" className="transition hover:text-cyan-300">Serviços</a>
-            <a href="#technologies" className="transition hover:text-cyan-300">Tecnologias</a>
-            <a href="#team" className="transition hover:text-cyan-300">Nosso Time</a>
-            <a href="#contact" className="transition hover:text-cyan-300">Contato</a>
-          </nav>
         </div>
-      </header>
+        <nav><a href="index.html" class="active">Home</a><a href="quem-somos.html" class="">Quem Somos</a><a href="servicos.html" class="">Serviços</a><a href="tecnologias.html" class="">Tecnologias</a><a href="nosso-time.html" class="">Nosso Time</a><a href="contato.html" class="">Contato</a></nav>
+      </div>
+    </header>
+    
+<main>
 
-      <main className="relative z-10">
-        <section className="mx-auto grid max-w-7xl gap-14 px-6 py-20 lg:grid-cols-2 lg:px-10 lg:py-28">
-          <div className="flex flex-col justify-center">
-            <span className="mb-5 inline-flex w-fit rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-2 text-xs font-medium uppercase tracking-[0.3em] text-cyan-200 shadow-[0_0_25px_rgba(34,211,238,0.08)]">
-              Da visibilidade à reação
-            </span>
-            <h2 className="max-w-3xl text-4xl font-black leading-tight md:text-6xl">
-              Defesa operacional futurista para ambientes que <span className="text-cyan-300">não podem parar</span>.
-            </h2>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
-              A Vulcan Defense conecta NOC, SOC, gestão de exposição e resposta em uma única operação, transformando telemetria, alertas e vulnerabilidades em decisões acionáveis.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <a
-                href="#contact"
-                className="rounded-2xl border border-cyan-300/50 bg-cyan-300/15 px-6 py-3 text-sm font-semibold text-cyan-200 shadow-[0_0_30px_rgba(34,211,238,0.15)] transition hover:scale-[1.02] hover:bg-cyan-300/20"
-              >
-                Solicitar demonstração
-              </a>
-              <a
-                href="#services"
-                className="rounded-2xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white/80 transition hover:scale-[1.02] hover:bg-white/10"
-              >
-                Conhecer serviços
-              </a>
-            </div>
-
-            <div className="mt-12 grid gap-4 sm:grid-cols-2">
-              {highlights.map((item) => (
-                <div
-                  key={item}
-                  className="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-sm text-white/75 backdrop-blur-md"
-                >
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="relative flex items-center justify-center">
-            <div className="absolute inset-0 rounded-[2rem] bg-cyan-400/10 blur-3xl" />
-            <div className="relative w-full max-w-xl rounded-[2rem] border border-cyan-300/20 bg-white/5 p-6 shadow-2xl backdrop-blur-xl">
-              <div className="mb-5 flex items-center justify-between border-b border-white/10 pb-4">
-                <div>
-                  <p className="text-xs uppercase tracking-[0.3em] text-cyan-300">Vulcan Command</p>
-                  <h3 className="mt-2 text-xl font-bold">Centro de defesa operacional</h3>
-                </div>
-                <div className="rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 py-1 text-xs text-cyan-200 shadow-[0_0_18px_rgba(34,211,238,0.10)]">
-                  Online
-                </div>
-              </div>
-
-              <div className="grid gap-4 md:grid-cols-2">
-                <div className="rounded-2xl border border-white/10 bg-black/30 p-4">
-                  <p className="text-sm text-white/50">Eventos analisados</p>
-                  <p className="mt-3 text-3xl font-black text-cyan-300">12.4M</p>
-                  <p className="mt-2 text-xs text-emerald-300">+18.7% eficiência operacional</p>
-                </div>
-                <div className="rounded-2xl border border-white/10 bg-black/30 p-4">
-                  <p className="text-sm text-white/50">Incidentes críticos</p>
-                  <p className="mt-3 text-3xl font-black text-cyan-300">03</p>
-                  <p className="mt-2 text-xs text-white/60">Prioridade máxima em tratamento</p>
-                </div>
-                <div className="rounded-2xl border border-white/10 bg-black/30 p-4 md:col-span-2">
-                  <p className="text-sm text-white/50">Matriz de defesa</p>
-                  <div className="mt-4 h-36 rounded-xl border border-cyan-300/10 bg-gradient-to-r from-cyan-400/10 via-blue-500/10 to-transparent p-4">
-                    <div className="grid h-full grid-cols-4 gap-2">
-                      {[...Array(16)].map((_, i) => (
-                        <div
-                          key={i}
-                          className={`rounded-md ${i % 5 === 0 ? "bg-cyan-300/40" : i % 3 === 0 ? "bg-blue-400/25" : "bg-white/5"}`}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-                {stats.map((stat) => (
-                  <div key={stat.label} className="rounded-xl border border-white/10 bg-black/20 px-3 py-3 text-center">
-                    <div className="text-lg font-black text-cyan-300">{stat.value}</div>
-                    <div className="mt-1 text-[11px] uppercase tracking-[0.18em] text-white/50">{stat.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="about" className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
-          <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
-            <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
-              <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">Quem Somos</p>
-              <h3 className="mt-3 text-3xl font-black md:text-4xl">A Vulcan Defense nasceu para integrar defesa, operação e resposta</h3>
-              <p className="mt-5 text-base leading-8 text-white/70">
-                A Vulcan Defense é uma empresa de cyber security orientada à defesa operacional convergente. Unimos monitoramento, detecção, gestão de exposição, inteligência e resposta para entregar visibilidade real, priorização assertiva e reação prática em ambientes críticos.
-              </p>
-              <p className="mt-5 text-base leading-8 text-white/70">
-                Nossa proposta vai além de ferramentas isoladas. Estruturamos serviços, tecnologia, processos e inteligência para transformar alertas dispersos em uma jornada contínua de proteção, validação e evolução da maturidade de segurança.
-              </p>
-            </div>
-
-            <div className="rounded-[2rem] border border-cyan-300/15 bg-gradient-to-br from-cyan-400/10 to-black/35 p-8 backdrop-blur-xl">
-              <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">Nossos Valores</p>
-              <h3 className="mt-3 text-3xl font-black md:text-4xl">Princípios que sustentam nossa operação</h3>
-              <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                {values.map((value) => (
-                  <div key={value} className="rounded-2xl border border-white/10 bg-black/25 px-4 py-4 text-sm text-white/80">
-                    {value}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="services" className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
-          <div className="mb-10 max-w-3xl">
-            <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">Serviços</p>
-            <h3 className="mt-3 text-3xl font-black md:text-4xl">Operação contínua com foco em contexto e ação</h3>
-            <p className="mt-4 text-white/65">
-              A Vulcan Defense integra monitoramento, detecção e resposta em serviços desenhados para ambientes corporativos que exigem resiliência real.
-            </p>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {services.map((service) => (
-              <div
-                key={service.title}
-                className="group rounded-[1.75rem] border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition hover:-translate-y-1 hover:border-cyan-300/30 hover:bg-white/7 hover:shadow-[0_0_30px_rgba(34,211,238,0.08)]"
-              >
-                <div className="mb-5 flex items-center justify-between">
-                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-300/20 bg-cyan-300/10 text-cyan-300 shadow-[0_0_20px_rgba(34,211,238,0.08)]">
-                    ◈
-                  </div>
-                  <span className="rounded-full border border-white/10 bg-black/25 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-white/55">
-                    {service.tag}
-                  </span>
-                </div>
-                <h4 className="text-xl font-bold group-hover:text-cyan-300">{service.title}</h4>
-                <p className="mt-4 text-sm leading-7 text-white/65">{service.description}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section id="platform" className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
-          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-            <div className="rounded-[2rem] border border-cyan-300/15 bg-white/5 p-8 backdrop-blur-xl">
-              <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">Plataforma</p>
-              <h3 className="mt-3 text-3xl font-black md:text-4xl">Vulcan Platform</h3>
-              <p className="mt-5 max-w-2xl text-base leading-8 text-white/70">
-                Uma base tecnológica moderna para centralizar eventos, telemetria, visibilidade operacional, correlação de segurança, priorização de risco e apoio à resposta em uma experiência unificada.
-              </p>
-              <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                {[
-                  "Multi-tenant",
-                  "Dashboards executivos e técnicos",
-                  "Integrações com ambientes híbridos",
-                  "Camadas próprias de automação e operação",
-                ].map((feature) => (
-                  <div key={feature} className="rounded-2xl border border-white/10 bg-black/25 px-4 py-4 text-sm text-white/80">
-                    {feature}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-cyan-400/10 to-black/40 p-8 backdrop-blur-xl">
-              <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">Diferencial</p>
-              <h3 className="mt-3 text-2xl font-black">Alerta sem contexto é ruído</h3>
-              <p className="mt-5 text-base leading-8 text-white/70">
-                A Vulcan Defense foi desenhada para reduzir excesso de alertas, elevar prioridade real e encurtar o caminho entre detecção e reação.
-              </p>
-              <div className="mt-8 space-y-4">
-                {[
-                  "Correlação com foco operacional",
-                  "Priorização orientada ao risco",
-                  "Integração entre NOC e SOC",
-                  "Resposta coordenada e acionável",
-                ].map((item) => (
-                  <div key={item} className="rounded-2xl border border-cyan-300/15 bg-white/5 px-4 py-4 text-sm text-white/80">
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="team" className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
-          <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
-            <div className="mb-8 max-w-3xl">
-              <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">Nosso Time</p>
-              <h3 className="mt-3 text-3xl font-black md:text-4xl">Especialistas em defesa, detecção e validação</h3>
-              <p className="mt-4 text-white/65">
-                Nosso time é estruturado para cobrir a jornada completa de segurança, da observabilidade à resposta, da inteligência à validação ofensiva.
-              </p>
-            </div>
-
-            <div className="grid gap-6 md:grid-cols-3">
-              {team.map((item) => (
-                <div key={item.title} className="rounded-[1.5rem] border border-white/10 bg-black/25 p-6">
-                  <p className="text-xs uppercase tracking-[0.28em] text-cyan-300">Vulcan Team</p>
-                  <h4 className="mt-3 text-xl font-bold">{item.title}</h4>
-                  <p className="mt-4 text-sm leading-7 text-white/65">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="market" className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
-          <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
-            <div className="mb-8 max-w-3xl">
-              <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">Posicionamento</p>
-              <h3 className="mt-3 text-3xl font-black md:text-4xl">Uma proposta diferente no mercado</h3>
-              <p className="mt-4 text-white/65">
-                A Vulcan Defense se posiciona como uma operação convergente de defesa, conectando disponibilidade, segurança, exposição e resposta em uma mesma jornada.
-              </p>
-            </div>
-
-            <div className="grid gap-5 md:grid-cols-3">
-              <div className="rounded-[1.5rem] border border-white/10 bg-black/25 p-6">
-                <p className="text-xs uppercase tracking-[0.28em] text-white/45">Modelo tradicional</p>
-                <h4 className="mt-3 text-xl font-bold">Monitoramento isolado</h4>
-                <p className="mt-4 text-sm leading-7 text-white/65">
-                  Infraestrutura, segurança e vulnerabilidade operam em silos, gerando excesso de ruído e baixa prioridade real.
-                </p>
-              </div>
-
-              <div className="rounded-[1.5rem] border border-cyan-300/20 bg-cyan-300/10 p-6 shadow-[0_0_35px_rgba(34,211,238,0.08)]">
-                <p className="text-xs uppercase tracking-[0.28em] text-cyan-200">Vulcan Defense</p>
-                <h4 className="mt-3 text-xl font-bold text-cyan-100">Defesa operacional convergente</h4>
-                <p className="mt-4 text-sm leading-7 text-white/75">
-                  Correlação entre NOC, SOC, exposição e resposta para transformar visibilidade em reação com mais contexto e menos fricção.
-                </p>
-              </div>
-
-              <div className="rounded-[1.5rem] border border-white/10 bg-black/25 p-6">
-                <p className="text-xs uppercase tracking-[0.28em] text-white/45">Resultado</p>
-                <h4 className="mt-3 text-xl font-bold">Menos ruído, mais decisão</h4>
-                <p className="mt-4 text-sm leading-7 text-white/65">
-                  A operação ganha clareza executiva, resposta técnica mais rápida e melhor percepção de valor para o cliente final.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="technologies" className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
-          <div className="grid gap-8 lg:grid-cols-3">
-            <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur-xl lg:col-span-2">
-              <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">Serviços</p>
-              <h3 className="mt-3 text-3xl font-black md:text-4xl">Capacidades de defesa e proteção</h3>
-              <div className="mt-8">
-                <p className="text-xs uppercase tracking-[0.28em] text-white/45">Cyber Defense</p>
-                <div className="mt-4 flex flex-wrap gap-3">
-                  {cyberServices.map((item) => (
-                    <span key={item} className="rounded-full border border-white/10 bg-black/25 px-4 py-2 text-sm text-white/75">
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="mt-8">
-                <p className="text-xs uppercase tracking-[0.28em] text-white/45">Segurança Ofensiva</p>
-                <div className="mt-4 flex flex-wrap gap-3">
-                  {offensiveServices.map((item) => (
-                    <span key={item} className="rounded-full border border-cyan-300/15 bg-cyan-300/10 px-4 py-2 text-sm text-cyan-100">
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="rounded-[2rem] border border-cyan-300/15 bg-gradient-to-br from-cyan-400/10 to-black/35 p-8 backdrop-blur-xl">
-              <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">Tecnologias</p>
-              <h3 className="mt-3 text-3xl font-black">Domínios de atuação</h3>
-              <div className="mt-8 space-y-3">
-                {technologies.map((item) => (
-                  <div key={item} className="rounded-2xl border border-white/10 bg-black/25 px-4 py-4 text-sm text-white/80">
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
-          <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
-            <div className="grid gap-8 lg:grid-cols-3">
-              <div>
-                <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">Por que Vulcan</p>
-                <h3 className="mt-3 text-3xl font-black">Defesa operacional convergente</h3>
-              </div>
-              <div className="lg:col-span-2 grid gap-4 md:grid-cols-2">
-                {[
-                  "Unificação de monitoramento, segurança e exposição em uma mesma jornada operacional.",
-                  "Arquitetura visual premium, preparada para demonstração comercial e operação técnica.",
-                  "Serviços gerenciados desenhados para reduzir indisponibilidade e acelerar resposta.",
-                  "Posicionamento moderno para clientes que precisam de segurança com clareza e ação.",
-                ].map((text) => (
-                  <div key={text} className="rounded-2xl border border-white/10 bg-black/25 p-5 text-sm leading-7 text-white/70">
-                    {text}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="contact" className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
-          <div className="rounded-[2rem] border border-cyan-300/20 bg-gradient-to-r from-cyan-400/10 via-blue-500/10 to-black/40 p-8 backdrop-blur-xl md:p-12 shadow-[0_0_50px_rgba(34,211,238,0.08)]">
-            <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-              <div className="max-w-3xl">
-                <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">Contato</p>
-                <h3 className="mt-3 text-3xl font-black md:text-5xl">Pronto para apresentar a Vulcan Defense ao mercado?</h3>
-                <p className="mt-5 text-base leading-8 text-white/70">
-                  Estruture uma demonstração comercial, valide sua proposta de valor e transforme sua operação em uma marca premium de cyber security.
-                </p>
-                <div className="mt-8 flex flex-wrap gap-4">
-                  <a
-                    href="mailto:contato@vulcandefense.com"
-                    className="rounded-2xl border border-cyan-300/40 bg-cyan-300/15 px-6 py-3 text-sm font-semibold text-cyan-200"
-                  >
-                    contato@vulcandefense.com
-                  </a>
-                  <a
-                    href="https://wa.me/5500000000000"
-                    className="rounded-2xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white/80"
-                  >
-                    Falar no WhatsApp
-                  </a>
-                </div>
-              </div>
-
-              <div className="rounded-[1.75rem] border border-white/10 bg-black/25 p-6">
-                <p className="text-xs uppercase tracking-[0.28em] text-cyan-300">Solicitar contato</p>
-                <div className="mt-5 space-y-4">
-                  <input
-                    className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none placeholder:text-white/35"
-                    placeholder="Seu nome"
-                  />
-                  <input
-                    className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none placeholder:text-white/35"
-                    placeholder="Seu e-mail corporativo"
-                  />
-                  <input
-                    className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none placeholder:text-white/35"
-                    placeholder="Empresa"
-                  />
-                  <textarea
-                    className="min-h-[120px] w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none placeholder:text-white/35"
-                    placeholder="Descreva rapidamente sua necessidade"
-                  />
-                  <button className="w-full rounded-2xl border border-cyan-300/40 bg-cyan-300/15 px-6 py-3 text-sm font-semibold text-cyan-200 transition hover:bg-cyan-300/20">
-                    Enviar solicitação
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
+<section class="container hero">
+  <div>
+    <div class="badge">Da visibilidade à reação</div>
+    <h2>Defesa operacional futurista para ambientes que <span>não podem parar</span>.</h2>
+    <p>A Vulcan Defense conecta NOC, SOC, gestão de exposição e resposta em uma única operação, transformando telemetria, alertas e vulnerabilidades em decisões acionáveis.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="contato.html">Solicitar demonstração</a>
+      <a class="btn btn-secondary" href="servicos.html">Conhecer serviços</a>
     </div>
-  );
-}
+  </div>
+  <div class="glass-box command-box">
+    <div class="command-head">
+      <div><div class="small">Vulcan Command</div><h3>Centro de defesa operacional</h3></div>
+      <div class="status-pill">Online</div>
+    </div>
+    <div class="stats-boxes">
+      <div class="dark-card"><div class="label">Eventos analisados</div><div class="big">12.4M</div><div class="sub green">+18.7% eficiência operacional</div></div>
+      <div class="dark-card"><div class="label">Incidentes críticos</div><div class="big">03</div><div class="sub">Prioridade máxima em tratamento</div></div>
+      <div class="dark-card matrix"><div class="label">Matriz de defesa</div>
+        <div class="matrix-grid">
+          <div class="a1"></div><div></div><div class="a2"></div><div></div>
+          <div></div><div class="a1"></div><div></div><div class="a2"></div>
+          <div class="a2"></div><div></div><div class="a1"></div><div></div>
+          <div></div><div class="a2"></div><div></div><div class="a1"></div>
+        </div>
+      </div>
+    </div>
+    <div class="mini-stats">
+      <div class="mini-stat"><div class="v">24x7</div><div class="l">Monitoramento contínuo</div></div>
+      <div class="mini-stat"><div class="v">360°</div><div class="l">Visibilidade operacional</div></div>
+      <div class="mini-stat"><div class="v">MTTR↓</div><div class="l">Resposta acelerada</div></div>
+      <div class="mini-stat"><div class="v">Multi</div><div class="l">Ambientes híbridos</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container grid grid-3">
+    <div class="glass-box">
+      <div class="section-title-small">Posicionamento</div>
+      <div class="section-title">Mais do que alertas</div>
+      <div class="section-text">Entregamos contexto, prioridade e reação para ambientes corporativos que não podem parar.</div>
+    </div>
+    <div class="glass-box">
+      <div class="section-title-small">Arquitetura</div>
+      <div class="section-title">Páginas próprias</div>
+      <div class="section-text">Estrutura multi-page para fortalecer marca, SEO, autoridade e profundidade técnica.</div>
+    </div>
+    <div class="glass-box">
+      <div class="section-title-small">Modelo</div>
+      <div class="section-title">Defesa convergente</div>
+      <div class="section-text">Integração entre monitoramento, detecção, threat intelligence, validação e resposta.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div style="max-width:760px;margin-bottom:28px;">
+      <div class="section-title-small">Serviços</div>
+      <div class="section-title">Frentes principais da Vulcan Defense</div>
+      <div class="section-text">Estrutura pensada para competir com players maduros, mas com linguagem mais objetiva, operação próxima e visão prática.</div>
+    </div>
+    <div class="grid grid-4">
+      <div class="card service-card"><div class="top-row"><div class="icon-badge">◈</div><div class="tag">Core</div></div><h4>Cyber Defense</h4><p>Detecção, resposta, hunting, inteligência, orquestração e gestão de exposição.</p></div>
+      <div class="card service-card"><div class="top-row"><div class="icon-badge">◈</div><div class="tag">Validation</div></div><h4>Segurança Ofensiva</h4><p>Pentest, phishing, emulação de ameaças e engenharia social para validar controles.</p></div>
+      <div class="card service-card"><div class="top-row"><div class="icon-badge">◈</div><div class="tag">Domains</div></div><h4>Tecnologias</h4><p>Network, cloud, endpoint, IAM, AppSec, risk & compliance e security validation.</p></div>
+      <div class="card service-card"><div class="top-row"><div class="icon-badge">◈</div><div class="tag">People</div></div><h4>Nosso Time</h4><p>Especialistas em defesa, detecção, validação, hunting e resposta coordenada.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="contact-wrap">
+      <div class="contact-grid">
+        <div>
+          <div class="section-title-small">Contato</div>
+          <div class="section-title">Pronto para solicitar uma demonstração?</div>
+          <div class="section-text">Conheça a Vulcan Defense e apresente seu cenário para uma abordagem mais moderna de proteção, visibilidade e reação.</div>
+          <div class="btn-row" style="margin-top:28px;">
+            <a class="btn btn-primary" href="mailto:contato@vulcandefense.com">contato@vulcandefense.com</a>
+            <a class="btn btn-secondary" href="https://wa.me/5521966584646?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20uma%20demonstra%C3%A7%C3%A3o%20da%20Vulcan%20Defense." target="_blank">Falar no WhatsApp</a>
+          </div>
+        </div>
+        <div class="form-box">
+          <div class="small">Solicitar contato</div>
+          <input class="field" type="text" placeholder="Seu nome" />
+          <input class="field" type="email" placeholder="Seu e-mail corporativo" />
+          <input class="field" type="text" placeholder="Empresa" />
+          <textarea class="field" placeholder="Descreva rapidamente sua necessidade"></textarea>
+          <button class="submit-btn" type="button">Enviar solicitação</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer><div class="container">© 2026 Vulcan Defense. Todos os direitos reservados.</div></footer>
+</body>
+</html>
