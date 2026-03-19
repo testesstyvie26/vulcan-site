@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Compliance de IA | Vulcan Defense</title>
+<meta name="description" content="Servico de compliance de IA com implementacao de politicas, auditorias de uso e governanca de riscos." />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  .ai-hero{padding:74px 0 24px}
+  .ai-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px}
+  .exec-board{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
+  .exec-card{border:1px solid rgba(255,255,255,.1);border-radius:14px;background:rgba(0,0,0,.26);padding:14px}
+  .exec-card .k{font-size:12px;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:.14em}
+  .exec-card .v{margin-top:8px;font-size:30px;font-weight:900;color:#67e8f9}
+  .risk-chart{height:280px;border-radius:18px;border:1px solid rgba(255,255,255,.1);background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(0,0,0,.26));padding:18px;position:relative;overflow:hidden}
+  .risk-bars{display:grid;gap:10px;margin-top:14px}
+  .risk-row{display:grid;grid-template-columns:170px 1fr 46px;gap:10px;align-items:center;font-size:13px;color:rgba(255,255,255,.8)}
+  .risk-line{height:10px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}
+  .risk-line span{display:block;height:100%;background:linear-gradient(90deg,#22d3ee,#3b82f6);animation:grow 1s ease}
+  .scope-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:16px}
+  .scope-item{border:1px solid rgba(255,255,255,.1);border-radius:16px;background:rgba(255,255,255,.03);padding:14px}
+  .risk-radar{min-height:280px;border-radius:18px;border:1px solid rgba(255,255,255,.1);background:radial-gradient(circle at center,rgba(34,211,238,.22),rgba(2,8,23,.92));display:grid;place-items:center;position:relative;overflow:hidden}
+  .ring{width:170px;height:170px;border-radius:999px;border:2px solid rgba(103,232,249,.52);position:relative;animation:pulse 2.4s ease-out infinite}
+  .ring::before,.ring::after{content:"";position:absolute;inset:-16px;border-radius:999px;border:1px solid rgba(103,232,249,.35)}
+  .ring::after{inset:-32px;opacity:.55}
+  @keyframes grow{from{width:0}}
+  @keyframes pulse{0%{transform:scale(.86);opacity:.9}100%{transform:scale(1.14);opacity:.2}}
+  @media (max-width:980px){.ai-grid{grid-template-columns:1fr}.exec-board{grid-template-columns:1fr}.scope-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="grid-overlay"></div>
+<header>
+  <div class="container header-wrap">
+    <div class="brand">
+      <div class="logo-box"><img src="assets/logo-vulcan.png" alt="Vulcan Defense" /></div>
+      <div>
+        <h1>VULCAN DEFENSE</h1>
+        <p>Cyber Defense Operations</p>
+      </div>
+    </div>
+    <nav><a href="index.html" class="">Home</a><a href="quem-somos.html" class="">Quem Somos</a><div class="nav-item has-submenu"><a href="servicos.html" class="active">Servicos</a><div class="submenu"><a href="pentest-yellow-team-secops-dast.html" class="">Pentest e SecOps</a><a href="software-vulcan-platform.html" class="">Software Vulcan Platform</a><a href="endpoint-protection-siem.html" class="">Endpoint Protection e SIEM</a><a href="compliance-ia.html" class="active">Compliance de IA</a></div></div><a href="tecnologias.html" class="">Tecnologias</a><a href="nosso-time.html" class="">Nosso Time</a><a href="politica-privacidade.html" class="">Politica de Privacidade</a><a href="contato.html" class="">Contato</a></nav>
+  </div>
+</header>
+
+<main>
+<section class="ai-hero">
+  <div class="container">
+    <div style="max-width:920px;margin-bottom:24px;">
+      <div class="section-title-small">Servico Especializado</div>
+      <div class="section-title">Compliance de IA e Governanca de Uso</div>
+      <div class="section-text">Estruturamos politicas, processos de aprovacao e auditorias continuas para uso seguro de IA generativa e modelos preditivos em ambientes corporativos.</div>
+    </div>
+
+    <div class="ai-grid">
+      <div class="glass-box">
+        <div class="section-title-small">Escopos de implementacao</div>
+        <div class="scope-grid">
+          <div class="scope-item"><strong>Politica de uso de IA</strong><br />Diretrizes para uso permitido, proibicoes, classificacao de dados e papeis de aprovacao.</div>
+          <div class="scope-item"><strong>Governanca e ownership</strong><br />Definicao de comite, trilhas de responsabilizacao e criterios para onboarding de ferramentas.</div>
+          <div class="scope-item"><strong>Controles tecnicos</strong><br />DLP, mascaramento de dados, bloqueio de prompts sensiveis e registros de atividade.</div>
+          <div class="scope-item"><strong>Auditoria periodica</strong><br />Revisao de logs, aderencia as politicas, amostragem de prompts e plano de remediacao.</div>
+        </div>
+
+        <div class="exec-board">
+          <div class="exec-card"><div class="k">Aderencia a politica</div><div class="v">93%</div></div>
+          <div class="exec-card"><div class="k">Excecoes abertas</div><div class="v">12</div></div>
+          <div class="exec-card"><div class="k">Tempo medio de ajuste</div><div class="v">9d</div></div>
+        </div>
+      </div>
+
+      <div class="glass-box risk-radar">
+        <div class="ring"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container grid grid-2">
+    <div class="glass-box">
+      <div class="section-title-small">Exemplos de riscos no uso de IA</div>
+      <div class="risk-chart">
+        <div class="section-text" style="margin-top:0;">Mapa executivo de exposicao por categoria.</div>
+        <div class="risk-bars">
+          <div class="risk-row"><span>Vazamento de dados</span><div class="risk-line"><span style="width:88%"></span></div><b>Alto</b></div>
+          <div class="risk-row"><span>Prompt injection</span><div class="risk-line"><span style="width:74%"></span></div><b>Med</b></div>
+          <div class="risk-row"><span>Alucinacao em decisao</span><div class="risk-line"><span style="width:79%"></span></div><b>Med</b></div>
+          <div class="risk-row"><span>Violacao de direitos autorais</span><div class="risk-line"><span style="width:68%"></span></div><b>Med</b></div>
+          <div class="risk-row"><span>Uso indevido de imagem</span><div class="risk-line"><span style="width:72%"></span></div><b>Med</b></div>
+          <div class="risk-row"><span>Shadow AI sem aprovacao</span><div class="risk-line"><span style="width:83%"></span></div><b>Alto</b></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass-box">
+      <div class="section-title-small">Auditoria de uso de IA</div>
+      <div class="list-stack">
+        <div class="stack-item"><strong>Inventario:</strong> mapeamento de ferramentas, plugins e modelos em uso por area.</div>
+        <div class="stack-item"><strong>Coleta de evidencias:</strong> logs, prompts, outputs criticos, trilha de aprovacao e excecoes.</div>
+        <div class="stack-item"><strong>Teste de controles:</strong> tentativa de exfiltracao, bypass de politicas, abuso de permissao e revisao de guardrails.</div>
+        <div class="stack-item"><strong>Relatorio executivo:</strong> matriz risco x impacto, gaps prioritarios e roadmap de 30-60-90 dias.</div>
+      </div>
+      <div class="btn-row" style="margin-top:20px;">
+        <a class="btn btn-primary" href="contato.html">Solicitar avaliacao</a>
+        <a class="btn btn-secondary" href="servicos.html">Voltar para servicos</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="container">&copy; 2026 Vulcan Defense. Todos os direitos reservados.</div></footer>
+</body>
+</html>
