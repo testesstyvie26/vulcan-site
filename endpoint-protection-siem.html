@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Endpoint Protection e SIEM | Vulcan Defense</title>
+<meta name="description" content="Servico de Endpoint Protection integrado com SIEM, analytics e resposta para ambientes corporativos." />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  .ep-hero{padding:74px 0 24px}
+  .ep-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px}
+  .chart{height:240px;border-radius:18px;border:1px solid rgba(255,255,255,.1);background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(0,0,0,.2));padding:16px;position:relative;overflow:hidden}
+  .chart-lines{position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:100% 40px,50px 100%}
+  .curve{position:absolute;left:12px;right:12px;bottom:20px;height:120px;border-left:2px solid transparent;border-bottom:2px solid transparent}
+  .curve svg{width:100%;height:100%}
+  .curve path{fill:none;stroke:#67e8f9;stroke-width:3;stroke-dasharray:360;stroke-dashoffset:360;animation:draw 2.4s ease forwards}
+  .curve path.secondary{stroke:#3b82f6;animation-delay:.35s}
+  .radar{display:grid;place-items:center;min-height:240px;border-radius:18px;border:1px solid rgba(255,255,255,.1);background:radial-gradient(circle,rgba(34,211,238,.22),rgba(2,8,23,.9));position:relative;overflow:hidden}
+  .pulse{width:160px;height:160px;border-radius:999px;border:2px solid rgba(103,232,249,.55);box-shadow:0 0 30px rgba(103,232,249,.3) inset;animation:pulse 2.2s ease-out infinite}
+  .pulse::before,.pulse::after{content:"";position:absolute;inset:-16px;border-radius:999px;border:1px solid rgba(103,232,249,.35)}
+  .pulse::after{inset:-32px;opacity:.6}
+  .siem-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
+  .siem-card{border:1px solid rgba(255,255,255,.1);border-radius:14px;background:rgba(0,0,0,.26);padding:14px}
+  .siem-card b{display:block;color:#67e8f9;font-size:22px}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  @keyframes pulse{0%{transform:scale(.85);opacity:.95}100%{transform:scale(1.15);opacity:.2}}
+  @media (max-width:980px){.ep-grid{grid-template-columns:1fr}.siem-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="grid-overlay"></div>
+<header>
+  <div class="container header-wrap">
+    <div class="brand">
+      <div class="logo-box"><img src="assets/logo-vulcan.png" alt="Vulcan Defense" /></div>
+      <div>
+        <h1>VULCAN DEFENSE</h1>
+        <p>Cyber Defense Operations</p>
+      </div>
+    </div>
+    <nav><a href="index.html" class="">Home</a><a href="quem-somos.html" class="">Quem Somos</a><div class="nav-item has-submenu"><a href="servicos.html" class="active">Servicos</a><div class="submenu"><a href="pentest-yellow-team-secops-dast.html" class="">Pentest e SecOps</a><a href="software-vulcan-platform.html" class="">Software Vulcan Platform</a><a href="endpoint-protection-siem.html" class="active">Endpoint Protection e SIEM</a></div></div><a href="tecnologias.html" class="">Tecnologias</a><a href="nosso-time.html" class="">Nosso Time</a><a href="politica-privacidade.html" class="">Politica de Privacidade</a><a href="contato.html" class="">Contato</a></nav>
+  </div>
+</header>
+
+<main>
+<section class="ep-hero">
+  <div class="container">
+    <div style="max-width:860px;margin-bottom:24px;">
+      <div class="section-title-small">Servico Especializado</div>
+      <div class="section-title">Endpoint Protection com SIEM moderno</div>
+      <div class="section-text">Protecao de endpoint com telemetria avancada e inteligencia no SIEM para detectar comportamento anomalo, conter ameacas e reduzir tempo de resposta.</div>
+    </div>
+
+    <div class="ep-grid">
+      <div class="glass-box">
+        <div class="section-title-small">Exemplo de metricas</div>
+        <div class="chart">
+          <div class="chart-lines"></div>
+          <div class="curve">
+            <svg viewBox="0 0 600 150" preserveAspectRatio="none">
+              <path d="M0,120 C70,40 120,110 190,70 C260,30 320,95 390,55 C460,15 520,80 600,30"></path>
+              <path class="secondary" d="M0,130 C90,90 130,120 210,95 C290,70 330,110 420,85 C500,65 540,95 600,70"></path>
+            </svg>
+          </div>
+        </div>
+        <div class="siem-grid">
+          <div class="siem-card"><span>Incidentes criticos</span><b>03</b></div>
+          <div class="siem-card"><span>Ameacas bloqueadas</span><b>1.248</b></div>
+          <div class="siem-card"><span>Hosts cobertos</span><b>2.940</b></div>
+        </div>
+      </div>
+
+      <div class="glass-box">
+        <div class="section-title-small">Cobertura SIEM</div>
+        <div class="radar"><div class="pulse"></div></div>
+        <div class="list-stack" style="margin-top:16px;">
+          <div class="stack-item">Coleta de eventos de endpoint, identidade e rede</div>
+          <div class="stack-item">Correlacao de IOC, comportamento e risco de negocio</div>
+          <div class="stack-item">Resposta automatizada com isolamento e bloqueio</div>
+          <div class="stack-item">Relatorios executivos e trilha de auditoria</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="container">&copy; 2026 Vulcan Defense. Todos os direitos reservados.</div></footer>
+</body>
+</html>
