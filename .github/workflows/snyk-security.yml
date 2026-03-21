@@ -24,7 +24,7 @@ jobs:
       # SNYK SETUP
       # =========================
       - name: Setup Snyk
-        uses: snyk/actions/setup@v3
+        uses: snyk/actions/setup@0.4.0
 
       - name: Auth Snyk
         run: snyk auth ${{ secrets.SNYK_TOKEN }}
