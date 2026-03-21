@@ -56,13 +56,14 @@ jobs:
       - name: Install OWASP ZAP
         run: |
           docker pull ghcr.io/zaproxy/zaproxy:stable
-
+          
       - name: Run DAST Scan (ZAP)
         run: |
-          docker run -v $(pwd):/zap/wrk/:rw \
-            ghcr.io/zaproxy/zaproxy:stable zap-baseline.py \
-            -t https://vulcandefense.com.br \
-            -r zap-report.html
+          mkdir -p zap && chmod 777 zap
+          docker run --user root -v $(pwd)/zap:/zap/wrk/:rw \
+          ghcr.io/zaproxy/zaproxy:stable zap-baseline.py \
+          -t https://vulcandefense.com.br \
+          -r zap-report.html
 
       # =========================
       # Upload reports
