@@ -70,7 +70,7 @@ jobs:
       # =========================
       - name: Push report to private repo
         run: |
-          git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/testestyvie26/vulcan-security-reports.git
+          git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/testesstyvie26 /vulcan-security-reports.git
           cp zap/zap-report.html vulcan-security-reports/
           cd vulcan-security-reports
           git config user.name "github-actions"
