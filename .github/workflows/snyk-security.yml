@@ -70,12 +70,13 @@ jobs:
       # =========================
       - name: Push report to private repo
         run: |
-          git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/testesstyvie26 /vulcan-security-reports.git
-          cp zap/zap-report.html vulcan-security-reports/
-          cd vulcan-security-reports
+          set -e
+          git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/testesstyvie26/vulcan-security-reports.git repo
+          cp zap/zap-report.html repo/ || echo "No report found"
+          cd repo
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add .
-          git commit -m "Security report $(date)" || true
+          git commit -m "Security report $(date)" || echo "Nothing to commit"
           git push
 
