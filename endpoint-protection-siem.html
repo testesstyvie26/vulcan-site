@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <link rel="icon" href="assets/favicon.ico">
@@ -29,6 +29,12 @@
   @keyframes draw{to{stroke-dashoffset:0}}
   @keyframes pulse{0%{transform:scale(.85);opacity:.95}100%{transform:scale(1.15);opacity:.2}}
   @media (max-width:980px){.ep-grid{grid-template-columns:1fr}.siem-grid{grid-template-columns:1fr}}
+  .ep-consult-wrap{margin-top:48px;padding-top:48px;border-top:1px solid rgba(255,255,255,.08)}
+  .ep-consult-wrap h3{font-size:20px;font-weight:800;margin-bottom:14px;color:#fff}
+  .ep-consult-wrap .glass-box p{font-size:15px;color:rgba(255,255,255,.65);line-height:1.75;margin-bottom:14px}
+  .ep-action-list{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+  .ep-action-list li{font-size:14px;color:rgba(255,255,255,.78);line-height:1.6;padding-left:20px;position:relative}
+  .ep-action-list li::before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:50%;background:#67e8f9;opacity:.85}
 </style>
 </head>
 <body>
@@ -69,8 +75,8 @@
           </div>
         </div>
         <div class="siem-grid">
-          <div class="siem-card"><span>Incidentes criticos</span><b>03</b></div>
-          <div class="siem-card"><span>Ameacas bloqueadas</span><b>1.248</b></div>
+          <div class="siem-card"><span>Incidentes criticos</span><b>100</b></div>
+          <div class="siem-card"><span>Ameacas bloqueadas</span><b>904.248</b></div>
           <div class="siem-card"><span>Hosts cobertos</span><b>2.940</b></div>
         </div>
       </div>
@@ -85,6 +91,35 @@
           <div class="stack-item">Relatorios executivos e trilha de auditoria</div>
         </div>
       </div>
+    </div>
+
+    <div class="ep-consult-wrap">
+      <div class="section-title-small">Além do painel</div>
+      <h2 class="section-title" style="margin-top:12px;">Consultoria e apoio ao plano de ação</h2>
+      <p class="section-text" style="max-width:820px;">Os números e o desenho de cobertura acima são <strong>ilustrativos</strong>. Na prática, integramos <strong>consultoria especializada</strong> com <strong>plano de ação priorizado</strong>, para que investimento em endpoint e SIEM gere resultado mensurável em redução de risco e em prontidão do SOC.</p>
+      <div class="grid grid-2" style="margin-top:28px;gap:24px;">
+        <div class="glass-box">
+          <h3>Consultoria em EDR/XDR e SIEM</h3>
+          <p>Avaliamos maturidade atual, lacunas de telemetria e aderência aos casos de uso que importam para o seu negócio. Apoiamos na definição de arquitetura de coleta, correlação, redução de ruído e handover para o time interno ou terceirizado.</p>
+          <ul class="ep-action-list">
+            <li>Diagnóstico e roadmap alinhado a apetite a risco e orçamento</li>
+            <li>Desenho e afinação de regras, playbooks e integrações (SOAR/API)</li>
+            <li>Oficinas com SOC, TI e negócio para operação sustentável</li>
+            <li>Apoio em prova de conceito, seleção de fornecedor e documentação para auditoria</li>
+          </ul>
+        </div>
+        <div class="glass-box">
+          <h3>Apoio ao plano de ação</h3>
+          <p>Transformamos achados (ferramenta, pentest, auditoria ou incidente) em <strong>lista priorizada</strong>, com donos, prazos e critérios de conclusão — acompanhados em ritos definidos com sua equipe.</p>
+          <ul class="ep-action-list">
+            <li>Priorização por criticidade técnica e impacto ao negócio</li>
+            <li>RACI, dependências entre times e marcos de entrega</li>
+            <li>Indicadores de avanço e reuniões de steering até o encerramento do ciclo</li>
+            <li>Replanejamento após mudança de escopo, incidente relevante ou auditoria</li>
+          </ul>
+        </div>
+      </div>
+      <p class="section-text" style="margin-top:28px;max-width:720px;">Quer combinar operação assistida, consultoria pontual ou programa contínuo? <a href="contato.html" style="color:#7dd3fc;text-decoration:underline;">Fale com a Vulcan Defense</a> e descreva seu ambiente e prazos.</p>
     </div>
   </div>
 </section>
