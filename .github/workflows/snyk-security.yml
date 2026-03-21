@@ -1,0 +1,82 @@
+name: Security Pipeline (Snyk + DAST)
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  schedule:
+    - cron: "0 3 * * *" # roda todo dia 03:00
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      security-events: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # # =========================
+      # # SNYK SETUP
+      # # =========================
+      # - name: Setup Snyk
+      #   uses: snyk/actions/setup@0.4.0
+
+      # - name: Auth Snyk
+      #   run: snyk auth ${{ secrets.SNYK_TOKEN }}
+
+      # # =========================
+      # # SAST (Code)
+      # # =========================
+      # - name: Snyk Code (SAST)
+      #   run: snyk code test --sarif > snyk-code.sarif || true
+
+      # # =========================
+      # # SCA (Dependencies)
+      # # =========================
+      # - name: Snyk Open Source
+      #   run: snyk test --all-projects || true
+
+      # - name: Monitor project
+      #   run: snyk monitor --all-projects || true
+
+      # =========================
+      # IaC
+      # =========================
+      - name: Snyk IaC
+        run: snyk iac test || true
+
+      # =========================
+      # DAST (SITE REAL)
+      # =========================
+      - name: Install OWASP ZAP
+        run: |
+          docker pull ghcr.io/zaproxy/zaproxy:stable
+          
+      - name: Run DAST Scan (ZAP)
+        run: |
+          mkdir -p zap && chmod 777 zap
+          docker run --user root -v $(pwd)/zap:/zap/wrk/:rw \
+          ghcr.io/zaproxy/zaproxy:stable zap-baseline.py \
+          -t https://vulcandefense.com.br \
+          -r zap-report.html || true
+
+      # =========================
+      # Upload reports
+      # =========================
+      - name: Push report to private repo
+        run: |
+          set -e
+          git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/testesstyvie26/vulcan-security-reports.git repo
+          cp zap/zap-report.html repo/ || echo "No report found"
+          cd repo
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "Security report $(date)" || echo "Nothing to commit"
+          git push
+
