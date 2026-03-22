@@ -1,0 +1,7 @@
+{
+  "victimsTotal": 26706,
+  "brCount": 401,
+  "victimsLastUpdateIso": "2026-03-22T17:19:39.636304+00:00",
+  "source": "https://api.ransomware.live/v2 (export manual)",
+  "note": "Valores de referência; edite este JSON para alinhar à API quando os proxies falharem."
+}

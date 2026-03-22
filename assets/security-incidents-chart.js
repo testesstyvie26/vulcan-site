@@ -8,6 +8,8 @@
   const BR = "BR";
   const CACHE_KEY = "vulcan_rl_incident_v1";
   const CACHE_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
+  /** Fallback sem CORS: JSON no mesmo domínio (assets/ransomware-snapshot.json). */
+  const SNAPSHOT_URL = "assets/ransomware-snapshot.json?v=1";
 
   /** Sem fetch direto à API: ela não expõe CORS no navegador (sempre falharia com ruído no console). */
   function buildProxyChain(url) {
@@ -83,6 +85,24 @@
       if (!o || typeof o.total !== "number" || typeof o.brCount !== "number")
         return null;
       return o;
+    } catch {
+      return null;
+    }
+  }
+
+  async function fetchEmbeddedSnapshot() {
+    try {
+      var r = await fetch(SNAPSHOT_URL, { cache: "no-store" });
+      if (!r.ok) return null;
+      var snap = await r.json();
+      if (
+        !snap ||
+        typeof snap.victimsTotal !== "number" ||
+        typeof snap.brCount !== "number"
+      )
+        return null;
+      if (snap.victimsTotal < snap.brCount) return null;
+      return snap;
     } catch {
       return null;
     }
@@ -260,14 +280,38 @@
         return;
       }
 
+      var snap = await fetchEmbeddedSnapshot();
+      if (snap) {
+        var snapIso = snap.victimsLastUpdateIso || "";
+        renderChart(
+          canvas,
+          statusEl,
+          footEl,
+          snap.victimsTotal,
+          snap.brCount,
+          snapIso,
+          "Referência embarcada no site (proxies à API indisponíveis neste ambiente)."
+        );
+        setStatus(
+          statusEl,
+          "Exibindo dados de referência do próprio site. Totais ao vivo: ransomware.live.",
+          false
+        );
+        if (footEl && snap.note) {
+          footEl.textContent =
+            footEl.textContent + " " + snap.note;
+        }
+        return;
+      }
+
       setStatus(
         statusEl,
-        "Não foi possível carregar os dados agora (rede, bloqueio ou limite do proxy). Tente outra rede, desative bloqueadores de conteúdo ou consulte a fonte em ransomware.live.",
+        "Não foi possível carregar os dados agora. Consulte a fonte em ransomware.live.",
         true
       );
       if (footEl) {
         footEl.textContent =
-          "Dica: em alguns ambientes o navegador bloqueia proxies CORS; uma segunda visita pode usar cache local após um carregamento bem-sucedido.";
+          "Sem snapshot local e sem cache do navegador. Verifique se assets/ransomware-snapshot.json existe no deploy.";
       }
     }
   }
