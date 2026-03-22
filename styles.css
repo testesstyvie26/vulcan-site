@@ -353,3 +353,52 @@ a.service-card:hover{transform:translateY(-3px);border-color:rgba(103,232,249,.2
   .ek-val{font-size:30px}
   .donut-wrap{width:120px;height:120px}
 }
+
+/* Panorama: gráfico de vítimas públicas (Ransomware.live) */
+.incident-chart-section .section-intro .section-text a{
+  color:#7dd3fc;
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+.incident-chart-section .section-intro .section-text a:hover{color:#a5f3fc}
+.incident-chart-box{margin-top:8px}
+.incident-chart-status{
+  font-size:14px;
+  color:rgba(255,255,255,.62);
+  min-height:1.4em;
+  margin-bottom:12px;
+}
+.incident-chart-status--error{color:#fca5a5}
+.incident-chart-wrap{
+  position:relative;
+  width:100%;
+  max-width:720px;
+  margin:0 auto;
+  height:min(320px,52vw);
+  min-height:220px;
+}
+.incident-chart-wrap canvas{display:block;width:100%!important;height:100%!important}
+.incident-chart-disclaimer{
+  margin-top:20px;
+  font-size:13px;
+  line-height:1.65;
+  color:rgba(255,255,255,.52);
+  max-width:720px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.incident-chart-foot{
+  margin-top:10px;
+  font-size:12px;
+  color:rgba(103,232,249,.55);
+  font-variant-numeric:tabular-nums;
+}
+.incident-chart-source{
+  margin-top:14px;
+  font-size:12px;
+}
+.incident-chart-source a{
+  color:#7dd3fc;
+  font-weight:600;
+}
+.incident-chart-source a:hover{color:#a5f3fc}
