@@ -122,6 +122,8 @@ nav .has-submenu:focus-within .submenu{display:flex}
   .hero-anim{opacity:1;transform:none}
   .hero-heading-sub::after{transform:scaleX(1)}
   .btn-wa:hover .btn-wa-icon svg{animation:none!important}
+  .btn-compliance{animation:none}
+  .btn-compliance:hover .btn-compliance-icon svg{animation:none!important}
   .consult-card:hover,.audience-card:hover,.step-card:hover,.consult-overview:hover,.compliance-strip:hover,.cta-band:hover{transform:none;box-shadow:none}
   .consult-overview-list a:hover,.pill:hover,.compliance-strip-tags li:hover,.consult-card-link:hover,.consult-card:hover .consult-card-link{transform:none}
 }
@@ -136,6 +138,13 @@ nav .has-submenu:focus-within .submenu{display:flex}
 .btn-wa-icon svg{width:100%;height:100%;display:block;color:#25D366}
 .btn-wa:hover .btn-wa-icon svg{animation:waIconPop .55s cubic-bezier(0.34,1.56,0.64,1)}
 @keyframes waIconPop{0%{transform:scale(1) rotate(0)}35%{transform:scale(1.14) rotate(-10deg)}65%{transform:scale(1.08) rotate(8deg)}100%{transform:scale(1) rotate(0)}}
+.btn-compliance{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1px solid rgba(74,222,128,.4);background:linear-gradient(135deg,rgba(34,197,94,.12),rgba(22,163,74,.08));color:#86efac;box-shadow:0 0 24px rgba(34,197,94,.12);animation:compliancePulse 2.5s ease-in-out infinite}
+.btn-compliance:hover{transform:translateY(-2px);border-color:rgba(74,222,128,.6);background:linear-gradient(135deg,rgba(34,197,94,.2),rgba(22,163,74,.14));box-shadow:0 4px 28px rgba(34,197,94,.25)}
+.btn-compliance-icon{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;flex-shrink:0}
+.btn-compliance-icon svg{width:100%;height:100%;color:currentColor}
+.btn-compliance:hover .btn-compliance-icon svg{animation:complianceCheck .6s cubic-bezier(0.34,1.56,0.64,1)}
+@keyframes compliancePulse{0%,100%{box-shadow:0 0 24px rgba(34,197,94,.12)}50%{box-shadow:0 0 32px rgba(34,197,94,.2)}}
+@keyframes complianceCheck{0%{transform:scale(1)}40%{transform:scale(1.2)}100%{transform:scale(1)}}
 .section{padding:72px 0}
 .grid{display:grid;gap:24px}
 .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
