@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="assets/favicon.ico">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; object-src 'none'; base-uri 'self'; frame-ancestors 'none';">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <title>Checklist de Segurança da Informação | Vulcan Defense</title>
+  <meta name="description" content="Checklist online de conformidade: ISO 27001, LGPD e PCI DSS. Avalie sua aderência, exporte relatório e acompanhe evolução." />
+  <meta name="theme-color" content="#020817" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .cl-page .cl-hero { padding-top: 48px; padding-bottom: 32px; }
+    .cl-breadcrumb { font-size: 11px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.42); margin-bottom: 18px; }
+    .cl-breadcrumb a { color: rgba(255,255,255,.5); }
+    .cl-breadcrumb a:hover { color: #67e8f9; }
+    .cl-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+    .cl-tab { padding: 12px 20px; border-radius: 14px; border: 1px solid rgba(255,255,255,.12); background: rgba(0,0,0,.25); color: rgba(255,255,255,.78); font-size: 14px; font-weight: 700; cursor: pointer; transition: all .2s ease; }
+    .cl-tab:hover { border-color: rgba(103,232,249,.3); color: #a5f3fc; }
+    .cl-tab.active { border-color: rgba(103,232,249,.45); background: rgba(34,211,238,.14); color: #a5f3fc; }
+    .cl-panel { display: none; }
+    .cl-panel.active { display: block; animation: clFadeIn .3s ease; }
+    @keyframes clFadeIn { from { opacity: 0 } to { opacity: 1 } }
+    .cl-table-wrap { overflow-x: auto; border-radius: 20px; border: 1px solid rgba(255,255,255,.1); background: rgba(0,0,0,.22); }
+    .cl-table { width: 100%; border-collapse: collapse; min-width: 520px; }
+    .cl-table th, .cl-table td { padding: 14px 18px; text-align: left; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .cl-table th { background: #1e3a5f; color: #fff; font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: .18em; }
+    .cl-table th:nth-child(3) { text-align: center; min-width: 140px; }
+    .cl-table tr:nth-child(even) { background: rgba(255,255,255,.02); }
+    .cl-table tr:hover { background: rgba(103,232,249,.04); }
+    .cl-table td:nth-child(1) { font-weight: 700; font-size: 13px; width: 100px; }
+    .cl-ref-link { color: rgba(103,232,249,.9); text-decoration: none; border-bottom: 1px dashed rgba(103,232,249,.5); transition: color .2s, border-color .2s; display: inline-flex; align-items: center; gap: 4px; }
+    .cl-ref-link:hover { color: #a5f3fc; border-bottom-color: rgba(165,243,252,.7); }
+    .cl-ref-link::after { content: "↗"; font-size: 10px; opacity: .7; }
+    .cl-table td:nth-child(2) { color: rgba(255,255,255,.88); font-size: 14px; line-height: 1.5; }
+    .cl-table td:nth-child(3) { text-align: center; }
+    .cl-status-group { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
+    .cl-status-btn { padding: 8px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.04); color: rgba(255,255,255,.6); font-size: 12px; font-weight: 700; cursor: pointer; transition: all .2s; }
+    .cl-status-btn:hover { border-color: rgba(103,232,249,.3); color: #a5f3fc; }
+    .cl-status-btn.active-ok { border-color: rgba(74,222,128,.5); background: rgba(34,197,94,.15); color: #86efac; }
+    .cl-status-btn.active-nok { border-color: rgba(248,113,113,.5); background: rgba(239,68,68,.15); color: #fca5a5; }
+    .cl-status-btn.active-na { border-color: rgba(251,191,36,.4); background: rgba(251,191,36,.1); color: #fde047; }
+    .cl-summary-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 28px; }
+    .cl-summary-card { border-radius: 20px; border: 1px solid rgba(103,232,249,.18); background: linear-gradient(135deg, rgba(34,211,238,.08), rgba(0,0,0,.3)); padding: 24px; }
+    .cl-summary-label { font-size: 11px; text-transform: uppercase; letter-spacing: .2em; color: rgba(255,255,255,.5); margin-bottom: 8px; }
+    .cl-summary-val { font-size: 32px; font-weight: 900; color: #67e8f9; line-height: 1. }
+    .cl-summary-val.aderente { color: #86efac; }
+    .cl-summary-val.nao-aderente { color: #fca5a5; }
+    .cl-summary-val.na { color: rgba(255,255,255,.5); font-size: 24px; }
+    .cl-chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 32px; align-items: start; }
+    .cl-chart-card { border-radius: 20px; border: 1px solid rgba(255,255,255,.1); background: rgba(0,0,0,.22); padding: 24px; }
+    .cl-chart-title { font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; color: rgba(103,232,249,.85); margin-bottom: 20px; }
+    .cl-donut-wrap { position: relative; width: 140px; height: 140px; margin: 0 auto 16px; }
+    .cl-donut-svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+    .cl-donut-legend { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; font-size: 12px; color: rgba(255,255,255,.65); }
+    .cl-dl-item { display: flex; align-items: center; gap: 8px; }
+    .cl-dl-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .cl-dl-ok { background: #4ade80; }
+    .cl-dl-nok { background: #f87171; }
+    .cl-dl-na { background: #fbbf24; }
+    .cl-bar-grid { display: grid; gap: 14px; margin-top: 8px; }
+    .cl-bar-row { display: grid; grid-template-columns: 120px 1fr 50px; align-items: center; gap: 14px; font-size: 13px; }
+    .cl-bar-name { color: rgba(255,255,255,.75); }
+    .cl-bar-track { height: 12px; border-radius: 999px; background: rgba(255,255,255,.08); overflow: hidden; border: 1px solid rgba(255,255,255,.06); }
+    .cl-bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, #22d3ee, #3b82f6); transition: width .5s ease; }
+    .cl-bar-val { text-align: right; font-weight: 800; color: #67e8f9; font-variant-numeric: tabular-nums; }
+    .cl-instructions { border-radius: 20px; border: 1px solid rgba(103,232,249,.2); background: rgba(34,211,238,.06); padding: 24px; margin-bottom: 28px; font-size: 14px; line-height: 1.75; color: rgba(255,255,255,.78); }
+    .cl-instructions strong { color: #a5f3fc; }
+    .cl-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 24px; }
+    .cl-btn { padding: 12px 20px; border-radius: 14px; border: 1px solid rgba(103,232,249,.35); background: rgba(34,211,238,.14); color: #a5f3fc; font-size: 14px; font-weight: 700; cursor: pointer; transition: all .2s; }
+    .cl-btn:hover { transform: translateY(-1px); background: rgba(34,211,238,.22); }
+    .cl-btn.secondary { border-color: rgba(255,255,255,.15); background: rgba(255,255,255,.06); color: rgba(255,255,255,.88); }
+    .cl-resumo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
+    .cl-resumo-card { border-radius: 20px; border: 1px solid rgba(255,255,255,.1); background: rgba(0,0,0,.25); padding: 24px; text-align: center; }
+    .cl-resumo-fw { font-size: 11px; text-transform: uppercase; letter-spacing: .2em; color: rgba(255,255,255,.5); margin-bottom: 8px; }
+    .cl-resumo-pct { font-size: 42px; font-weight: 900; color: #67e8f9; line-height: 1; }
+    .cl-resumo-pct.verde { color: #86efac; }
+    .cl-resumo-pct.vermelho { color: #fca5a5; }
+    @media (max-width: 900px) {
+      .cl-chart-row { grid-template-columns: 1fr; }
+      .cl-resumo-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .cl-table th, .cl-table td { padding: 12px 14px; font-size: 13px; }
+      .cl-status-group { flex-direction: column; }
+      .cl-status-btn { width: 100%; }
+    }
+    @media print {
+      header, footer, .cl-tabs, .cl-actions, .cl-instructions { display: none !important; }
+      .cl-panel { display: block !important; }
+      .cl-page { padding-top: 0; }
+      body { background: #fff; color: #000; }
+      .cl-table-wrap { border: 1px solid #ccc; }
+      .cl-table th { background: #333 !important; color: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .cl-summary-val, .cl-resumo-pct { color: #333 !important; }
+      .cl-summary-val.aderente { color: #166534 !important; }
+      .cl-summary-val.nao-aderente { color: #991b1b !important; }
+    }
+  </style>
+</head>
+<body>
+<div class="grid-overlay"></div>
+<header>
+  <div class="container header-wrap">
+    <div class="brand">
+      <div class="logo-box"><img src="assets/logo-vulcan.png" alt="Vulcan Defense" /></div>
+      <div>
+        <h1>VULCAN DEFENSE</h1>
+        <p>Consultoria em cybersecurity</p>
+      </div>
+    </div>
+    <nav><a href="index.html">Home</a><a href="quem-somos.html">Quem Somos</a><a href="relatorio-global.html">Relatório global</a><div class="nav-item has-submenu"><a href="servicos.html">Serviços</a><div class="submenu"><a href="pentest-yellow-team-secops-dast.html">Pentest e SecOps</a><a href="software-vulcan-platform.html">Software Vulcan Platform</a><a href="endpoint-protection-siem.html">Endpoint Protection e SIEM</a><a href="compliance-ia.html">Compliance de IA</a><a href="checklist-seguranca.html">Checklist SI (ISO/LGPD/PCI)</a><a href="security-champions.html">Security Champions</a><a href="treinamentos-owasp-mitre.html">Treinamentos OWASP e MITRE</a><a href="hackathon-defensivo.html">Hackathon defensivo</a><a href="gestao-tms-flsys-leanworks.html">Gestão TMS e obras</a></div></div><a href="tecnologias.html">Escopos de Atuação</a><a href="politica-privacidade.html">Política de Privacidade</a><a href="contato.html">Contato</a></nav>
+  </div>
+</header>
+
+<main class="cl-page">
+  <section class="cl-hero">
+    <div class="container">
+      <nav class="cl-breadcrumb">
+        <a href="index.html">Home</a> / <a href="servicos.html">Serviços</a> / Checklist de Segurança da Informação
+      </nav>
+      <h2 class="section-title">Checklist de Segurança da Informação</h2>
+      <p class="section-text" style="margin-top:12px;max-width:640px;">Avalie sua aderência aos frameworks ISO 27001, LGPD, PCI DSS, SOC 2, DevSecOps, Finanças TI e Governança de IA. Seus dados são salvos localmente no navegador. OK = atendido; Não OK = não atendido; N/A = não aplicável. Aderência ≥ 80% = Aderente.</p>
+
+      <div class="cl-instructions">
+        <strong>Como usar:</strong> Em cada aba, marque OK, Não OK ou N/A para cada item. O percentual é calculado como OK ÷ (OK + Não OK). Itens vazios e N/A são excluídos. Referências: ISO/IEC 27001:2022 Annex A, LGPD (Lei 13.709/2018), PCI DSS v4.0, SOC 2 (AICPA TSC), OWASP DevSecOps Guideline, FinOps/ITFM, Framework AIE (Gov.br), OSIC 15/2024.
+      </div>
+
+      <div class="cl-tabs" role="tablist">
+        <button class="cl-tab active" data-tab="iso" type="button" role="tab">ISO 27001</button>
+        <button class="cl-tab" data-tab="lgpd" type="button" role="tab">LGPD</button>
+        <button class="cl-tab" data-tab="pci" type="button" role="tab">PCI DSS</button>
+        <button class="cl-tab" data-tab="soc2" type="button" role="tab">SOC 2</button>
+        <button class="cl-tab" data-tab="devsecops" type="button" role="tab">DevSecOps</button>
+        <button class="cl-tab" data-tab="fin" type="button" role="tab">Finanças TI</button>
+        <button class="cl-tab" data-tab="govia" type="button" role="tab">Governança de IA</button>
+        <button class="cl-tab" data-tab="resumo" type="button" role="tab">Resumo</button>
+      </div>
+
+      <div id="panel-iso" class="cl-panel active" role="tabpanel">
+        <div class="cl-table-wrap">
+          <table class="cl-table" data-fw="iso">
+            <thead><tr><th>Controle</th><th>Descrição</th><th>Status</th></tr></thead>
+            <tbody id="tbody-iso"></tbody>
+          </table>
+        </div>
+        <div class="cl-summary-box">
+          <div class="cl-summary-card">
+            <div class="cl-summary-label">% OK (excl. N/A)</div>
+            <div class="cl-summary-val" id="pct-iso">—</div>
+          </div>
+          <div class="cl-summary-card">
+            <div class="cl-summary-label">Resultado</div>
+            <div class="cl-summary-val" id="ader-iso">—</div>
+          </div>
+          <div class="cl-chart-row">
+            <div class="cl-chart-card">
+              <div class="cl-chart-title">Distribuição ISO 27001</div>
+              <div class="cl-donut-wrap"><svg class="cl-donut-svg" id="donut-iso" viewBox="0 0 100 100"></svg></div>
+              <div class="cl-donut-legend">
+                <span class="cl-dl-item"><span class="cl-dl-dot cl-dl-ok"></span> OK: <strong id="cnt-iso-ok">0</strong></span>
+                <span class="cl-dl-item"><span class="cl-dl-dot cl-dl-nok"></span> Não OK: <strong id="cnt-iso-nok">0</strong></span>
+                <span class="cl-dl-item"><span class="cl-dl-dot cl-dl-na"></span> N/A: <strong id="cnt-iso-na">0</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="panel-lgpd" class="cl-panel" role="tabpanel">
+        <div class="cl-table-wrap">
+          <table class="cl-table" data-fw="lgpd">
+            <thead><tr><th>Referência</th><th>Requisito</th><th>Status</th></tr></thead>
+            <tbody id="tbody-lgpd"></tbody>
+          </table>
+        </div>
+        <div class="cl-summary-box">
+          <div class="cl-summary-card">
+            <div class="cl-summary-label">% OK (excl. N/A)</div>
+            <div class="cl-summary-val" id="pct-lgpd">—</div>
+          </div>
+          <div class="cl-summary-card">
+            <div class="cl-summary-label">Resultado</div>
+            <div class="cl-summary-val" id="ader-lgpd">—</div>
+          </div>
+          <div class="cl-chart-row">
+            <div class="cl-chart-card">
+              <div class="cl-chart-title">Distribuição LGPD</div>
+              <div class="cl-donut-wrap"><svg class="cl-donut-svg" id="donut-lgpd" viewBox="0 0 100 100"></svg></div>
+              <div class="cl-donut-legend">
+                <span class="cl-dl-item"><span class="cl-dl-dot cl-dl-ok"></span> OK: <strong id="cnt-lgpd-ok">0</strong></span>
+                <span class="cl-dl-item"><span class="cl-dl-dot cl-dl-nok"></span> Não OK: <strong id="cnt-lgpd-nok">0</strong></span>
+                <span class="cl-dl-item"><span class="cl-dl-dot cl-dl-na"></span> N/A: <strong id="cnt-lgpd-na">0</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="panel-pci" class="cl-panel" role="tabpanel">
+        <div class="cl-table-wrap">
+          <table class="cl-table" data-fw="pci">
+            <thead><tr><th>Requisito</th><th>Descrição</th><th>Status</th></thead>
+            <tbody id="tbody-pci"></tbody>
+          </table>
+        </div>
+        <div class="cl-summary-box">
+          <div class="cl-summary-card">
+            <div class="cl-summary-label">% OK (excl. N/A)</div>
+            <div class="cl-summary-val" id="pct-pci">—</div>
+          </div>
+          <div class="cl-summary-card">
+            <div class="cl-summary-label">Resultado</div>
+            <div class="cl-summary-val" id="ader-pci">—</div>
+          </div>
+          <div class="cl-chart-row">
+            <div class="cl-chart-card">
+              <div class="cl-chart-title">Distribuição PCI DSS</div>
+              <div class="cl-donut-wrap"><svg class="cl-donut-svg" id="donut-pci" viewBox="0 0 100 100"></svg></div>
+              <div class="cl-donut-legend">
+                <span class="cl-dl-item"><span class="cl-dl-dot cl-dl-ok"></span> OK: <strong id="cnt-pci-ok">0</strong></span>
+                <span class="cl-dl-item"><span class="cl-dl-dot cl-dl-nok"></span> Não OK: <strong id="cnt-pci-nok">0</strong></span>
+                <span class="cl-dl-item"><span class="cl-dl-dot cl-dl-na"></span> N/A: <strong id="cnt-pci-na">0</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="panel-soc2" class="cl-panel" role="tabpanel">
+        <div class="cl-table-wrap">
+          <table class="cl-table" data-fw="soc2">
+            <thead><tr><th>Critério</th><th>Descrição</th><th>Status</th></thead>
+            <tbody id="tbody-soc2"></tbody>
+          </table>
+        </div>
+        <div class="cl-summary-box">
+          <div class="cl-summary-card">
+            <div class="cl-summary-label">% OK (excl. N/A)</div>
+            <div class="cl-summary-val" id="pct-soc2">—</div>
+          </div>
+          <div class="cl-summary-card">
+            <div class="cl-summary-label">Resultado</div>
+            <div class="cl-summary-val" id="ader-soc2">—</div>
+          </div>
+          <div class="cl-chart-row">
+            <div class="cl-chart-card">
+              <div class="cl-chart-title">Distribuição SOC 2</div>
+              <div class="cl-donut-wrap"><svg class="cl-donut-svg" id="donut-soc2" viewBox="0 0 100 100"></svg></div>
+              <div class="cl-donut-legend">
+                <span class="cl-dl-item"><span class="cl-dl-dot cl-dl-ok"></span> OK: <strong id="cnt-soc2-ok">0</strong></span>
+                <span class="cl-dl-item"><span class="cl-dl-dot cl-dl-nok"></span> Não OK: <strong id="cnt-soc2-nok">0</strong></span>
+                <span class="cl-dl-item"><span class="cl-dl-dot cl-dl-na"></span> N/A: <strong id="cnt-soc2-na">0</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="panel-devsecops" class="cl-panel" role="tabpanel">
+        <div class="cl-table-wrap">
+          <table class="cl-table" data-fw="devsecops">
+            <thead><tr><th>Prática</th><th>Descrição</th><th>Status</th></thead>
+            <tbody id="tbody-devsecops"></tbody>
+          </table>
+        </div>
+        <div class="cl-summary-box">
+          <div class="cl-summary-card">
+            <div class="cl-summary-label">% OK (excl. N/A)</div>
+            <div class="cl-summary-val" id="pct-devsecops">—</div>
+          </div>
+          <div class="cl-summary-card">
+            <div class="cl-summary-label">Resultado</div>
+            <div class="cl-summary-val" id="ader-devsecops">—</div>
+          </div>
+          <div class="cl-chart-row">
+            <div class="cl-chart-card">
+              <div class="cl-chart-title">Distribuição DevSecOps</div>
+              <div class="cl-donut-wrap"><svg class="cl-donut-svg" id="donut-devsecops" viewBox="0 0 100 100"></svg></div>
+              <div class="cl-donut-legend">
+                <span class="cl-dl-item"><span class="cl-dl-dot cl-dl-ok"></span> OK: <strong id="cnt-devsecops-ok">0</strong></span>
+                <span class="cl-dl-item"><span class="cl-dl-dot cl-dl-nok"></span> Não OK: <strong id="cnt-devsecops-nok">0</strong></span>
+                <span class="cl-dl-item"><span class="cl-dl-dot cl-dl-na"></span> N/A: <strong id="cnt-devsecops-na">0</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="panel-fin" class="cl-panel" role="tabpanel">
+        <div class="cl-table-wrap">
+          <table class="cl-table" data-fw="fin">
+            <thead><tr><th>Prática</th><th>Descrição</th><th>Status</th></thead>
+            <tbody id="tbody-fin"></tbody>
+          </table>
+        </div>
+        <div class="cl-summary-box">
+          <div class="cl-summary-card">
+            <div class="cl-summary-label">% OK (excl. N/A)</div>
+            <div class="cl-summary-val" id="pct-fin">—</div>
+          </div>
+          <div class="cl-summary-card">
+            <div class="cl-summary-label">Resultado</div>
+            <div class="cl-summary-val" id="ader-fin">—</div>
+          </div>
+          <div class="cl-chart-row">
+            <div class="cl-chart-card">
+              <div class="cl-chart-title">Distribuição Finanças TI</div>
+              <div class="cl-donut-wrap"><svg class="cl-donut-svg" id="donut-fin" viewBox="0 0 100 100"></svg></div>
+              <div class="cl-donut-legend">
+                <span class="cl-dl-item"><span class="cl-dl-dot cl-dl-ok"></span> OK: <strong id="cnt-fin-ok">0</strong></span>
+                <span class="cl-dl-item"><span class="cl-dl-dot cl-dl-nok"></span> Não OK: <strong id="cnt-fin-nok">0</strong></span>
+                <span class="cl-dl-item"><span class="cl-dl-dot cl-dl-na"></span> N/A: <strong id="cnt-fin-na">0</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="panel-govia" class="cl-panel" role="tabpanel">
+        <div class="cl-table-wrap">
+          <table class="cl-table" data-fw="govia">
+            <thead><tr><th>Requisito</th><th>Descrição</th><th>Status</th></thead>
+            <tbody id="tbody-govia"></tbody>
+          </table>
+        </div>
+        <div class="cl-summary-box">
+          <div class="cl-summary-card">
+            <div class="cl-summary-label">% OK (excl. N/A)</div>
+            <div class="cl-summary-val" id="pct-govia">—</div>
+          </div>
+          <div class="cl-summary-card">
+            <div class="cl-summary-label">Resultado</div>
+            <div class="cl-summary-val" id="ader-govia">—</div>
+          </div>
+          <div class="cl-chart-row">
+            <div class="cl-chart-card">
+              <div class="cl-chart-title">Distribuição Governança de IA</div>
+              <div class="cl-donut-wrap"><svg class="cl-donut-svg" id="donut-govia" viewBox="0 0 100 100"></svg></div>
+              <div class="cl-donut-legend">
+                <span class="cl-dl-item"><span class="cl-dl-dot cl-dl-ok"></span> OK: <strong id="cnt-govia-ok">0</strong></span>
+                <span class="cl-dl-item"><span class="cl-dl-dot cl-dl-nok"></span> Não OK: <strong id="cnt-govia-nok">0</strong></span>
+                <span class="cl-dl-item"><span class="cl-dl-dot cl-dl-na"></span> N/A: <strong id="cnt-govia-na">0</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="panel-resumo" class="cl-panel" role="tabpanel">
+        <div class="cl-resumo-grid">
+          <div class="cl-resumo-card">
+            <div class="cl-resumo-fw">ISO 27001</div>
+            <div class="cl-resumo-pct" id="resumo-iso">—</div>
+            <div class="cl-summary-label" style="margin-top:8px;" id="resumo-iso-label">—</div>
+          </div>
+          <div class="cl-resumo-card">
+            <div class="cl-resumo-fw">LGPD</div>
+            <div class="cl-resumo-pct" id="resumo-lgpd">—</div>
+            <div class="cl-summary-label" style="margin-top:8px;" id="resumo-lgpd-label">—</div>
+          </div>
+          <div class="cl-resumo-card">
+            <div class="cl-resumo-fw">PCI DSS</div>
+            <div class="cl-resumo-pct" id="resumo-pci">—</div>
+            <div class="cl-summary-label" style="margin-top:8px;" id="resumo-pci-label">—</div>
+          </div>
+          <div class="cl-resumo-card">
+            <div class="cl-resumo-fw">SOC 2</div>
+            <div class="cl-resumo-pct" id="resumo-soc2">—</div>
+            <div class="cl-summary-label" style="margin-top:8px;" id="resumo-soc2-label">—</div>
+          </div>
+          <div class="cl-resumo-card">
+            <div class="cl-resumo-fw">DevSecOps</div>
+            <div class="cl-resumo-pct" id="resumo-devsecops">—</div>
+            <div class="cl-summary-label" style="margin-top:8px;" id="resumo-devsecops-label">—</div>
+          </div>
+          <div class="cl-resumo-card">
+            <div class="cl-resumo-fw">Finanças TI</div>
+            <div class="cl-resumo-pct" id="resumo-fin">—</div>
+            <div class="cl-summary-label" style="margin-top:8px;" id="resumo-fin-label">—</div>
+          </div>
+          <div class="cl-resumo-card">
+            <div class="cl-resumo-fw">Governança de IA</div>
+            <div class="cl-resumo-pct" id="resumo-govia">—</div>
+            <div class="cl-summary-label" style="margin-top:8px;" id="resumo-govia-label">—</div>
+          </div>
+        </div>
+        <div class="cl-chart-card" style="margin-top:28px;">
+          <div class="cl-chart-title">Aderência por Framework</div>
+          <div class="cl-bar-grid" id="bar-resumo"></div>
+        </div>
+      </div>
+
+      <div class="cl-actions">
+        <button class="cl-btn" type="button" id="btn-save">Salvar no navegador</button>
+        <button class="cl-btn secondary" type="button" id="btn-clear">Limpar todos os dados</button>
+        <button class="cl-btn" type="button" id="btn-pdf">Imprimir</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="container">© 2026 Vulcan Defense. Todos os direitos reservados.</div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js" defer></script>
+<script>
+(function () {
+  const THRESHOLD = 0.80;
+
+  const ISO_CONTROLS = [
+    ["A.5.1", "Políticas para segurança da informação"],
+    ["A.5.2", "Funções e responsabilidades de segurança da informação"],
+    ["A.5.7", "Inteligência de ameaças"],
+    ["A.5.9", "Inventário de informação e outros ativos associados"],
+    ["A.5.10", "Uso de criptografia"],
+    ["A.5.12", "Classificação da informação"],
+    ["A.5.14", "Transferência de informação"],
+    ["A.5.23", "Segurança da informação para uso de serviços de nuvem"],
+    ["A.5.24", "Uso de tecnologia de processamento da informação"],
+    ["A.5.25", "Regras de ordenação de informações"],
+    ["A.5.26", "Respostas a incidentes de segurança da informação"],
+    ["A.5.29", "Segurança da informação durante desligamento"],
+    ["A.5.30", "Preparação ICT para continuidade de negócios"],
+    ["A.5.31", "Conformidade legal, estatutária e contratual"],
+    ["A.5.37", "Procedimentos operacionais documentados"],
+    ["A.6.1", "Triagem de colaboradores e terceiros"],
+    ["A.6.2", "Termos e condições de emprego"],
+    ["A.6.3", "Conscientização, educação e treinamento em SI"],
+    ["A.6.6", "Processo disciplinar por não conformidade"],
+    ["A.7.1", "Controles de perímetro físico"],
+    ["A.7.2", "Controles de entrada física"],
+    ["A.7.4", "Monitoramento de segurança física"],
+    ["A.7.7", "Descarte ou reutilização segura de equipamentos"],
+    ["A.8.1", "Controles de inventário de usuários"],
+    ["A.8.2", "Privilégios de acesso de usuário"],
+    ["A.8.3", "Responsabilização de informação"],
+    ["A.8.5", "Autenticação segura"],
+    ["A.8.8", "Gestão de vulnerabilidades técnicas"],
+    ["A.8.9", "Gestão de configuração"],
+    ["A.8.10", "Exclusão de informação"],
+    ["A.8.11", "Mascaramento de dados"],
+    ["A.8.12", "Prevenção de vazamento de informações"],
+    ["A.8.16", "Registro de atividades (logging)"],
+    ["A.8.17", "Relógios sincronizados em sistemas"],
+    ["A.8.23", "Filtragem web"],
+    ["A.8.24", "Uso de criptografia"],
+    ["A.8.28", "Desenvolvimento seguro (secure coding)"]
+  ];
+
+  const LGPD_ITEMS = [
+    ["Art. 6º I", "Finalidade: tratamento para propósitos legítimos e informados ao titular"],
+    ["Art. 6º II", "Adequação: compatibilidade entre tratamento e finalidades informadas"],
+    ["Art. 6º III", "Necessidade: limitação ao mínimo necessário de dados"],
+    ["Art. 6º IV", "Livre acesso: consulta facilitada e gratuita aos dados"],
+    ["Art. 6º V", "Qualidade dos dados: exatidão, clareza e atualização"],
+    ["Art. 6º VI", "Transparência: informações claras sobre o tratamento"],
+    ["Art. 6º VII", "Segurança: medidas técnicas e administrativas contra acessos não autorizados"],
+    ["Art. 6º VIII", "Prevenção: evitar danos do tratamento indevido"],
+    ["Art. 6º IX", "Não discriminação"],
+    ["Art. 6º X", "Responsabilização e prestação de contas"],
+    ["Base legal", "Documentação de base legal para cada tratamento"],
+    ["Consentimento", "Mecanismos de consentimento quando aplicável"],
+    ["Registro", "Registros de atividades de processamento (Art. 37)"],
+    ["DPO", "Designação de encarregado (DPO) quando obrigatório"],
+    ["Titulares", "Resposta a solicitações de titulares em até 15 dias"],
+    ["Breach", "Notificação à ANPD em caso de incidente (prazo legal)"]
+  ];
+
+  const PCI_ITEMS = [
+    ["Req. 1", "Instalar e manter controles de segurança de rede (firewalls)"],
+    ["Req. 1", "Revisar configurações de firewall ao menos a cada 6 meses"],
+    ["Req. 2", "Aplicar configurações seguras (evitar padrões de fornecedor)"],
+    ["Req. 2", "Implementar senhas fortes e hardening de sistemas"],
+    ["Req. 3", "Proteger dados de conta armazenados (criptografia/mascaramento)"],
+    ["Req. 3", "Limitar armazenamento ao estritamente necessário"],
+    ["Req. 4", "Criptografar dados de titulares em trânsito em redes abertas"],
+    ["Req. 5", "Proteger contra malware (antimalware atualizado)"],
+    ["Req. 6", "Desenvolver e manter sistemas e aplicações seguros"],
+    ["Req. 6", "Aplicar patches de segurança em sistemas e aplicações"],
+    ["Req. 7", "Restringir acesso a dados por necessidade de conhecimento"],
+    ["Req. 8", "Identificar e autenticar usuários com IDs únicos"],
+    ["Req. 8", "Autenticação multifator para acesso a sistemas"],
+    ["Req. 9", "Restringir acesso físico a dados de titulares"],
+    ["Req. 10", "Registrar e monitorar acesso a rede e dados"],
+    ["Req. 11", "Testar regularmente sistemas e processos de segurança"],
+    ["Req. 12", "Manter política de segurança da informação documentada"],
+    ["Req. 12", "Treinamento de segurança para toda a equipe"]
+  ];
+
+  const SOC2_ITEMS = [
+    ["CC1", "Ambiente de controle: governança, responsabilidades e cultura de segurança"],
+    ["CC2", "Comunicação e informação: políticas e procedimentos documentados e divulgados"],
+    ["CC3", "Avaliação de riscos: processo periódico de identificação e análise de riscos"],
+    ["CC4", "Monitoramento: atividades de supervisão e avaliação contínua de controles"],
+    ["CC5", "Atividades de controle: implementação de controles para mitigar riscos"],
+    ["CC6.1", "Controle lógico: gestão de identidade e acesso (IAM, MFA)"],
+    ["CC6.2", "Controle físico: proteção e restrição de acesso a instalações e ativos"],
+    ["CC7.1", "Operações: detecção e resposta a incidentes de segurança"],
+    ["CC7.2", "Operações: proteção contra malware e vulnerabilidades"],
+    ["CC7.3", "Operações: backup e recuperação de dados"],
+    ["CC8.1", "Gestão de mudanças: processo formal de aprovação e implementação"],
+    ["CC8.2", "Gestão de mudanças: avaliação de impacto e teste antes de produção"],
+    ["CC9.1", "Mitigação de risco: gestão de vulnerabilidades e patching"],
+    ["CC9.2", "Mitigação de risco: gestão de fornecedores e terceiros críticos"]
+  ];
+
+  const DEVSECOPS_ITEMS = [
+    ["SAST", "Análise estática de código (SAST) integrada ao pipeline de CI"],
+    ["DAST", "Testes dinâmicos de segurança (DAST/IAST) em etapas de build ou staging"],
+    ["SCA", "Scan de dependências (SCA) para vulnerabilidades em bibliotecas"],
+    ["Secrets", "Gestão de segredos fora do código (vault, variáveis de ambiente seguras)"],
+    ["IaC", "Revisão de segurança em Infrastructure as Code (Terraform, CloudFormation)"],
+    ["Container", "Scan de imagens de container por vulnerabilidades"],
+    ["Code Review", "Revisão de código com critérios de segurança documentados"],
+    ["Threat Model", "Modelagem de ameaças em funcionalidades críticas"],
+    ["OWASP", "Conhecimento de OWASP Top 10 e ASVS pelo time de desenvolvimento"],
+    ["SBOM", "Geração de Software Bill of Materials (SBOM) para aplicações"],
+    ["Pipeline", "Gate de segurança no pipeline (bloqueio em falha crítica)"],
+    ["Remediation", "Processo de correção e reteste de vulnerabilidades identificadas"]
+  ];
+
+  const FIN_ITEMS = [
+    ["Orçamento", "Planejamento anual de orçamento de TI alinhado a metas de negócio"],
+    ["TCO", "Análise de custo total de propriedade (TCO) em decisões de aquisição"],
+    ["Chargeback", "Modelo de repasse ou alocação de custos de TI (chargeback/showback)"],
+    ["Contratos", "Gestão centralizada de contratos e datas de renovação"],
+    ["Licenças", "Inventário e controle de licenças de software"],
+    ["FinOps", "Monitoramento e otimização de custos em cloud (tags, alertas, right-sizing)"],
+    ["Ativos", "Ciclo de vida de ativos (aquisição, depreciação, descarte)"],
+    ["ROI", "Avaliação de retorno e priorização de investimentos em TI"],
+    ["Governança", "Fluxo de aprovação e controle de gastos de TI"],
+    ["Provisão", "Reserva para contingências e projetos emergenciais"],
+    ["Fornecedores", "Processo de qualificação e acompanhamento de fornecedores"],
+    ["Visibilidade", "Relatórios de custos para tomada de decisão e auditoria"]
+  ];
+
+  const GOVIA_ITEMS = [
+    ["Política de uso", "Política de uso de IA documentada: diretrizes, proibições e critérios de aprovação"],
+    ["Comitê/Governança", "Comitê ou estrutura de governança de IA com responsáveis definidos"],
+    ["Inventário", "Inventário de sistemas de IA com classificação por nível de risco (alto, médio, baixo)"],
+    ["Equidade", "Avaliação de viés e equidade em dados de treinamento e decisões"],
+    ["Transparência", "Explicabilidade e documentação de decisões dos sistemas de IA"],
+    ["Supervisão humana", "Supervisão humana efetiva em sistemas de alto impacto"],
+    ["Privacidade", "Proteção de dados pessoais em conformidade com LGPD em todo ciclo de IA"],
+    ["Segurança", "Desenvolvimento com princípio da não maleficência e mitigação de riscos"],
+    ["Shadow AI", "Controles para identificação e aprovação de uso de IA não autorizada (shadow AI)"],
+    ["Auditoria", "Auditoria periódica de aderência e amostragem de uso"],
+    ["Registro de atividades", "Logs e registro de prompts e interações para rastreabilidade"],
+    ["Tratamento de incidentes", "Processo de resposta a incidentes relacionados a IA"]
+  ];
+
+  const STORAGE_KEY = "vulcan_checklist_si";
+  const DATA = { iso: ISO_CONTROLS, lgpd: LGPD_ITEMS, pci: PCI_ITEMS, soc2: SOC2_ITEMS, devsecops: DEVSECOPS_ITEMS, fin: FIN_ITEMS, govia: GOVIA_ITEMS };
+
+  const REF_LINKS = {
+    iso: "https://www.iso.org/standard/27001",
+    lgpd: "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm",
+    pci: "https://www.pcisecuritystandards.org/",
+    soc2: "https://www.aicpa.org/soc2",
+    devsecops: "https://owasp.org/www-project-devsecops-guideline/",
+    fin: "https://www.finops.org/framework/",
+    govia: "https://www.gov.br/governodigital/pt-br/infraestrutura-nacional-de-dados/inteligencia-artificial-1/publicacoes/framework-para-a-autoavaliacao-de-impacto-etico-em-inteligencia-artificial-no-setor-publico-federal"
+  };
+
+  let state = { iso: {}, lgpd: {}, pci: {}, soc2: {}, devsecops: {}, fin: {}, govia: {} };
+
+  function loadState() {
+    try {
+      const s = localStorage.getItem(STORAGE_KEY);
+      if (s) {
+        const parsed = JSON.parse(s);
+        state = { iso: parsed.iso || {}, lgpd: parsed.lgpd || {}, pci: parsed.pci || {}, soc2: parsed.soc2 || {}, devsecops: parsed.devsecops || {}, fin: parsed.fin || {}, govia: parsed.govia || {} };
+      }
+    } catch (_) {}
+  }
+
+  function saveState() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch (_) {}
+  }
+
+  function renderTable(fw, tbodyId) {
+    const items = DATA[fw];
+    const tbody = document.getElementById(tbodyId);
+    const refUrl = REF_LINKS[fw] || "#";
+    tbody.innerHTML = "";
+    items.forEach(([ref, desc], i) => {
+      const key = String(i);
+      const val = (state[fw] && state[fw][key]) || "";
+      const tr = document.createElement("tr");
+      const refHtml = `<a href="${refUrl}" target="_blank" rel="noopener noreferrer" class="cl-ref-link" title="${desc.replace(/"/g, "&quot;")}">${ref}</a>`;
+      tr.innerHTML = `
+        <td>${refHtml}</td>
+        <td>${desc}</td>
+        <td>
+          <div class="cl-status-group">
+            <button type="button" class="cl-status-btn ${val === "OK" ? "active-ok" : ""}" data-status="OK">OK</button>
+            <button type="button" class="cl-status-btn ${val === "Não OK" ? "active-nok" : ""}" data-status="Não OK">Não OK</button>
+            <button type="button" class="cl-status-btn ${val === "N/A" ? "active-na" : ""}" data-status="N/A">N/A</button>
+          </div>
+        </td>
+      `;
+      tr.querySelectorAll(".cl-status-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const st = btn.dataset.status;
+          state[fw] = state[fw] || {};
+          state[fw][key] = state[fw][key] === st ? "" : st;
+          saveState();
+          renderTable(fw, tbodyId);
+          updateSummary(fw);
+          updateDonut(fw);
+          updateResumo();
+        });
+      });
+      tbody.appendChild(tr);
+    });
+  }
+
+  function calcPct(fw) {
+    const items = DATA[fw];
+    let ok = 0, nok = 0;
+    for (let i = 0; i < items.length; i++) {
+      const v = (state[fw] && state[fw][String(i)]) || "";
+      if (v === "OK") ok++;
+      else if (v === "Não OK") nok++;
+    }
+    const total = ok + nok;
+    if (total === 0) return null;
+    return ok / total;
+  }
+
+  function calcCounts(fw) {
+    const items = DATA[fw];
+    let ok = 0, nok = 0, na = 0;
+    for (let i = 0; i < items.length; i++) {
+      const v = (state[fw] && state[fw][String(i)]) || "";
+      if (v === "OK") ok++;
+      else if (v === "Não OK") nok++;
+      else if (v === "N/A") na++;
+    }
+    return { ok, nok, na };
+  }
+
+  function updateSummary(fw) {
+    const pct = calcPct(fw);
+    const elPct = document.getElementById("pct-" + fw);
+    const elAder = document.getElementById("ader-" + fw);
+    if (pct === null) {
+      elPct.textContent = "N/A";
+      elPct.className = "cl-summary-val na";
+      elAder.textContent = "N/A";
+      elAder.className = "cl-summary-val na";
+    } else {
+      elPct.textContent = (pct * 100).toFixed(0) + "%";
+      elPct.className = "cl-summary-val";
+      const aderente = pct >= THRESHOLD;
+      elAder.textContent = aderente ? "Aderente" : "Não aderente";
+      elAder.className = "cl-summary-val " + (aderente ? "aderente" : "nao-aderente");
+    }
+  }
+
+  function drawDonut(svgId, ok, nok, na) {
+    const total = ok + nok + na;
+    const svg = document.getElementById(svgId);
+    if (!svg) return;
+    svg.innerHTML = "";
+    const cx = 50, cy = 50, r = 42;
+    const circumference = 2 * Math.PI * r;
+    if (total === 0) {
+      const circle = document.createElement("circle");
+      circle.setAttribute("cx", cx);
+      circle.setAttribute("cy", cy);
+      circle.setAttribute("r", r);
+      circle.setAttribute("fill", "none");
+      circle.setAttribute("stroke", "rgba(255,255,255,.12)");
+      circle.setAttribute("stroke-width", "12");
+      svg.appendChild(circle);
+      return;
+    }
+    let offset = 0;
+    const colors = ["#4ade80", "#f87171", "#fbbf24"];
+    [ok, nok, na].forEach((n, i) => {
+      if (n === 0) return;
+      const pct = n / total;
+      const dash = (pct * circumference) + " " + circumference;
+      const circle = document.createElement("circle");
+      circle.setAttribute("cx", cx);
+      circle.setAttribute("cy", cy);
+      circle.setAttribute("r", r);
+      circle.setAttribute("fill", "none");
+      circle.setAttribute("stroke", colors[i]);
+      circle.setAttribute("stroke-width", "12");
+      circle.setAttribute("stroke-dasharray", dash);
+      circle.setAttribute("stroke-dashoffset", -offset);
+      svg.appendChild(circle);
+      offset += pct * circumference;
+    });
+  }
+
+  function updateDonut(fw) {
+    const c = calcCounts(fw);
+    document.getElementById("cnt-" + fw + "-ok").textContent = c.ok;
+    document.getElementById("cnt-" + fw + "-nok").textContent = c.nok;
+    document.getElementById("cnt-" + fw + "-na").textContent = c.na;
+    drawDonut("donut-" + fw, c.ok, c.nok, c.na);
+  }
+
+  function updateResumo() {
+    const fws = ["iso", "lgpd", "pci", "soc2", "devsecops", "fin", "govia"];
+    const names = { iso: "ISO 27001", lgpd: "LGPD", pci: "PCI DSS", soc2: "SOC 2", devsecops: "DevSecOps", fin: "Finanças TI", govia: "Governança IA" };
+    fws.forEach(fw => {
+      const pct = calcPct(fw);
+      const el = document.getElementById("resumo-" + fw);
+      const elLabel = document.getElementById("resumo-" + fw + "-label");
+      if (pct === null) {
+        el.textContent = "N/A";
+        el.className = "cl-resumo-pct";
+        elLabel.textContent = "—";
+      } else {
+        el.textContent = (pct * 100).toFixed(0) + "%";
+        el.className = "cl-resumo-pct " + (pct >= THRESHOLD ? "verde" : "vermelho");
+        elLabel.textContent = pct >= THRESHOLD ? "Aderente" : "Não aderente";
+      }
+    });
+    const bar = document.getElementById("bar-resumo");
+    bar.innerHTML = "";
+    fws.forEach(fw => {
+      const pct = calcPct(fw);
+      const v = pct === null ? 0 : pct;
+      const row = document.createElement("div");
+      row.className = "cl-bar-row";
+      row.innerHTML = `
+        <span class="cl-bar-name">${names[fw]}</span>
+        <div class="cl-bar-track"><div class="cl-bar-fill" style="width:${v * 100}%"></div></div>
+        <span class="cl-bar-val">${pct === null ? "N/A" : (v * 100).toFixed(0) + "%"}</span>
+      `;
+      bar.appendChild(row);
+    });
+  }
+
+  function initTabs() {
+    document.querySelectorAll(".cl-tab").forEach(tab => {
+      tab.addEventListener("click", () => {
+        document.querySelectorAll(".cl-tab").forEach(t => t.classList.remove("active"));
+        document.querySelectorAll(".cl-panel").forEach(p => p.classList.remove("active"));
+        tab.classList.add("active");
+        const id = tab.dataset.tab;
+        document.getElementById("panel-" + id).classList.add("active");
+      });
+    });
+  }
+
+  function init() {
+    loadState();
+    renderTable("iso", "tbody-iso");
+    renderTable("lgpd", "tbody-lgpd");
+    renderTable("pci", "tbody-pci");
+    renderTable("soc2", "tbody-soc2");
+    renderTable("devsecops", "tbody-devsecops");
+    renderTable("fin", "tbody-fin");
+    renderTable("govia", "tbody-govia");
+    ["iso", "lgpd", "pci", "soc2", "devsecops", "fin", "govia"].forEach(fw => {
+      updateSummary(fw);
+      updateDonut(fw);
+    });
+    updateResumo();
+    initTabs();
+  }
+
+  document.getElementById("btn-save").addEventListener("click", () => {
+    saveState();
+    alert("Dados salvos no navegador.");
+  });
+
+  document.getElementById("btn-clear").addEventListener("click", () => {
+    if (confirm("Limpar todos os dados? Esta ação não pode ser desfeita.")) {
+      state = { iso: {}, lgpd: {}, pci: {}, soc2: {}, devsecops: {}, fin: {}, govia: {} };
+      saveState();
+      init();
+    }
+  });
+
+  document.getElementById("btn-pdf").addEventListener("click", () => {
+    generatePdf();
+  });
+
+  function buildReportContent() {
+    const fws = ["iso", "lgpd", "pci", "soc2", "devsecops", "fin", "govia"];
+    const names = { iso: "ISO 27001", lgpd: "LGPD", pci: "PCI DSS", soc2: "SOC 2", devsecops: "DevSecOps", fin: "Finanças TI", govia: "Governança IA" };
+    const headers = {
+      iso: ["Controle", "Descrição", "Status"],
+      lgpd: ["Referência", "Requisito", "Status"],
+      pci: ["Requisito", "Descrição", "Status"],
+      soc2: ["Critério", "Descrição", "Status"],
+      devsecops: ["Prática", "Descrição", "Status"],
+      fin: ["Prática", "Descrição", "Status"],
+      govia: ["Requisito", "Descrição", "Status"]
+    };
+    const pctStr = (pct) => pct === null ? "N/A" : (pct * 100).toFixed(0) + "%";
+    const resultStr = (pct) => {
+      if (pct === null) return "N/A";
+      return pct >= THRESHOLD ? "Aderente" : "Não aderente";
+    };
+
+    const date = new Date().toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" });
+    const pctIso = calcPct("iso");
+    const pctLgpd = calcPct("lgpd");
+    const pctPci = calcPct("pci");
+    const pctSoc2 = calcPct("soc2");
+    const pctDevsecops = calcPct("devsecops");
+    const pctFin = calcPct("fin");
+    const pctGovia = calcPct("govia");
+    const pctAll = [pctIso, pctLgpd, pctPci, pctSoc2, pctDevsecops, pctFin, pctGovia];
+    const totalOk = pctAll.filter(p => p !== null).length;
+    const aderentes = pctAll.filter(p => p !== null && p >= THRESHOLD).length;
+
+    const css = `
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      .pdf-report { font-family: Arial, Helvetica, sans-serif; color: #1a1a1a; font-size: 13px; line-height: 1.5; padding: 0 20px 32px; width: 100%; max-width: 800px; background: #fff; }
+      .report-cover { text-align: center; padding: 36px 0 40px; border-bottom: 2px solid #1e3a5f; margin-bottom: 28px; page-break-inside: avoid; break-inside: avoid; }
+      .report-cover h1 { font-size: 22px; font-weight: 900; color: #0f172a; margin-bottom: 10px; }
+      .report-cover .sub { font-size: 13px; color: #475569; margin-bottom: 16px; }
+      .report-date { font-size: 11px; color: #64748b; }
+      .exec-summary { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 20px 24px; margin-bottom: 24px; page-break-inside: avoid; break-inside: avoid; }
+      .exec-summary h2 { font-size: 11px; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: .12em; margin-bottom: 12px; }
+      .exec-summary p { color: #334155; font-size: 13px; line-height: 1.65; }
+      .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; margin-bottom: 32px; page-break-inside: avoid; break-inside: avoid; }
+      .summary-card { border: 1px solid #e2e8f0; border-radius: 10px; padding: 18px; text-align: center; page-break-inside: avoid; break-inside: avoid; }
+      .summary-card h3 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: #64748b; margin-bottom: 8px; }
+      .summary-card .pct { font-size: 28px; font-weight: 900; color: #0f172a; }
+      .summary-card .pct.ok { color: #166534; }
+      .summary-card .pct.nok { color: #991b1b; }
+      .summary-card .result { font-size: 11px; font-weight: 700; margin-top: 6px; }
+      .summary-card .result.aderente { color: #166534; }
+      .summary-card .result.nao { color: #991b1b; }
+      .section { margin-bottom: 28px; page-break-inside: avoid; break-inside: avoid; }
+      .section h2 { font-size: 14px; font-weight: 800; color: #1e3a5f; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid #cbd5e1; page-break-after: avoid; }
+      .report-table { width: 100%; border-collapse: collapse; font-size: 11px; page-break-inside: auto; }
+      .report-table tr { page-break-inside: avoid; break-inside: avoid; }
+      .report-table th, .report-table td { padding: 8px 12px; text-align: left; border: 1px solid #e2e8f0; }
+      .report-table th { background: #1e3a5f; color: #fff; font-weight: 700; font-size: 9px; text-transform: uppercase; letter-spacing: .1em; }
+      .report-table td:nth-child(1) { font-weight: 600; color: #334155; width: 100px; }
+      .report-table td:nth-child(3) { text-align: center; font-weight: 700; }
+      .report-table .st-ok { color: #166534; }
+      .report-table .st-nok { color: #991b1b; }
+      .report-table .st-na { color: #92400e; }
+      .footer-report { margin-top: 32px; padding-top: 16px; border-top: 1px solid #e2e8f0; font-size: 10px; color: #64748b; text-align: center; page-break-inside: avoid; break-inside: avoid; }
+    `;
+
+    let html = `<div class="pdf-report"><style>${css}</style>
+    <div class="report-cover">
+      <h1>Relatório Executivo</h1>
+      <p class="sub">Checklist de Segurança da Informação</p>
+      <p class="report-date">${date}</p>
+    </div>
+    <div class="exec-summary">
+      <h2>Sumário Executivo</h2>
+      <p>Este relatório consolida a avaliação de aderência aos frameworks <strong>ISO 27001</strong> (Annex A), <strong>LGPD</strong> (Lei 13.709/2018), <strong>PCI DSS</strong> v4.0, <strong>SOC 2</strong> (Trust Service Criteria), práticas <strong>DevSecOps</strong>, <strong>Finanças TI</strong> (FinOps/ITFM) e <strong>Governança de IA</strong> (Framework AIE, OSIC). O percentual de conformidade é calculado como itens OK dividido por (OK + Não OK), excluindo itens não aplicáveis. Aderência ≥ 80% é considerada <strong>Aderente</strong>. ${totalOk === 0 ? "Nenhum framework foi avaliado ainda." : `${aderentes} de ${totalOk} frameworks avaliados apresentam aderência.`}</p>
+    </div>
+    <div class="summary-grid">
+      <div class="summary-card">
+        <h3>ISO 27001</h3>
+        <div class="pct ${pctIso !== null && pctIso >= THRESHOLD ? "ok" : pctIso !== null ? "nok" : ""}">${pctStr(pctIso)}</div>
+        <div class="result ${pctIso !== null && pctIso >= THRESHOLD ? "aderente" : pctIso !== null ? "nao" : ""}">${resultStr(pctIso)}</div>
+      </div>
+      <div class="summary-card">
+        <h3>LGPD</h3>
+        <div class="pct ${pctLgpd !== null && pctLgpd >= THRESHOLD ? "ok" : pctLgpd !== null ? "nok" : ""}">${pctStr(pctLgpd)}</div>
+        <div class="result ${pctLgpd !== null && pctLgpd >= THRESHOLD ? "aderente" : pctLgpd !== null ? "nao" : ""}">${resultStr(pctLgpd)}</div>
+      </div>
+      <div class="summary-card">
+        <h3>PCI DSS</h3>
+        <div class="pct ${pctPci !== null && pctPci >= THRESHOLD ? "ok" : pctPci !== null ? "nok" : ""}">${pctStr(pctPci)}</div>
+        <div class="result ${pctPci !== null && pctPci >= THRESHOLD ? "aderente" : pctPci !== null ? "nao" : ""}">${resultStr(pctPci)}</div>
+      </div>
+      <div class="summary-card">
+        <h3>SOC 2</h3>
+        <div class="pct ${pctSoc2 !== null && pctSoc2 >= THRESHOLD ? "ok" : pctSoc2 !== null ? "nok" : ""}">${pctStr(pctSoc2)}</div>
+        <div class="result ${pctSoc2 !== null && pctSoc2 >= THRESHOLD ? "aderente" : pctSoc2 !== null ? "nao" : ""}">${resultStr(pctSoc2)}</div>
+      </div>
+      <div class="summary-card">
+        <h3>DevSecOps</h3>
+        <div class="pct ${pctDevsecops !== null && pctDevsecops >= THRESHOLD ? "ok" : pctDevsecops !== null ? "nok" : ""}">${pctStr(pctDevsecops)}</div>
+        <div class="result ${pctDevsecops !== null && pctDevsecops >= THRESHOLD ? "aderente" : pctDevsecops !== null ? "nao" : ""}">${resultStr(pctDevsecops)}</div>
+      </div>
+      <div class="summary-card">
+        <h3>Finanças TI</h3>
+        <div class="pct ${pctFin !== null && pctFin >= THRESHOLD ? "ok" : pctFin !== null ? "nok" : ""}">${pctStr(pctFin)}</div>
+        <div class="result ${pctFin !== null && pctFin >= THRESHOLD ? "aderente" : pctFin !== null ? "nao" : ""}">${resultStr(pctFin)}</div>
+      </div>
+      <div class="summary-card">
+        <h3>Governança IA</h3>
+        <div class="pct ${pctGovia !== null && pctGovia >= THRESHOLD ? "ok" : pctGovia !== null ? "nok" : ""}">${pctStr(pctGovia)}</div>
+        <div class="result ${pctGovia !== null && pctGovia >= THRESHOLD ? "aderente" : pctGovia !== null ? "nao" : ""}">${resultStr(pctGovia)}</div>
+      </div>
+    </div>`;
+
+    fws.forEach(fw => {
+      const items = DATA[fw];
+      html += `<div class="section"><h2>${names[fw]}</h2><table class="report-table"><thead><tr>`;
+      headers[fw].forEach(h => { html += `<th>${h}</th>`; });
+      html += `</tr></thead><tbody>`;
+      items.forEach(([ref, desc], i) => {
+        const val = (state[fw] && state[fw][String(i)]) || "";
+        const stClass = val === "OK" ? "st-ok" : val === "Não OK" ? "st-nok" : val === "N/A" ? "st-na" : "";
+        html += `<tr><td>${ref}</td><td>${desc}</td><td class="${stClass}">${val || "—"}</td></tr>`;
+      });
+      html += `</tbody></table></div>`;
+    });
+
+    html += `<div class="footer-report">Vulcan Defense · Checklist de Segurança da Informação · ${date} · ISO/IEC 27001:2022, LGPD, PCI DSS v4.0, SOC 2 (AICPA), OWASP DevSecOps, FinOps/ITFM, Governança IA (Framework AIE)</div></div>`;
+    return html;
+  }
+
+  function generatePdf() {
+    const btn = document.getElementById("btn-pdf");
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = "Gerando PDF…";
+
+    const content = buildReportContent();
+    const wrap = document.createElement("div");
+    wrap.style.cssText = "position:fixed;top:0;left:0;margin:0;padding:0;width:210mm;max-width:100%;background:#fff;z-index:99999;overflow:visible;";
+    wrap.innerHTML = content;
+
+    document.body.appendChild(wrap);
+    const el = wrap.querySelector(".pdf-report");
+
+    const filename = "relatorio-checklist-si-" + new Date().toISOString().slice(0, 10) + ".pdf";
+
+    if (typeof html2pdf !== "undefined") {
+      html2pdf().set({
+        margin: [12, 12, 12, 12],
+        filename: filename,
+        image: { type: "jpeg", quality: 0.96 },
+        html2canvas: { scale: 2, useCORS: true, scrollX: 0, scrollY: 0 },
+        jsPDF: { unit: "mm", format: "a4", orientation: "portrait", compress: true },
+        pagebreak: { mode: "css", avoid: ["tr", ".section", ".summary-card", ".exec-summary", ".report-cover", ".footer-report"] }
+      }).from(el).save().then(() => {
+        if (wrap.parentNode) document.body.removeChild(wrap);
+        btn.disabled = false;
+        btn.textContent = originalText;
+      }).catch(() => {
+        if (wrap.parentNode) document.body.removeChild(wrap);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        openPrintReport();
+      });
+    } else {
+      if (wrap.parentNode) document.body.removeChild(wrap);
+      btn.disabled = false;
+      btn.textContent = originalText;
+      openPrintReport();
+    }
+  }
+
+  function openPrintReport() {
+    const html = "<!DOCTYPE html><html lang=\"pt-BR\"><head><meta charset=\"UTF-8\"><title>Relatório - Checklist SI</title><style>body{font-family:Arial,sans-serif;padding:24px;max-width:800px;margin:0 auto;color:#1a1a1a;}</style></head><body>" + buildReportContent().replace(/class="pdf-report"/, "class=\"\"") + "</body></html>";
+    const w = window.open("", "_blank", "noopener,noreferrer");
+    w.document.write(html);
+    w.document.close();
+    w.focus();
+    w.onload = () => setTimeout(() => w.print(), 300);
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>
