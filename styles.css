@@ -402,3 +402,82 @@ a.service-card:hover{transform:translateY(-3px);border-color:rgba(103,232,249,.2
   font-weight:600;
 }
 .incident-chart-source a:hover{color:#a5f3fc}
+
+/* Gráfico ransomware — tema alerta (vermelho + animação “terminal”) */
+.incident-chart-heading--threat{
+  color:#fecaca;
+  text-shadow:0 0 28px rgba(239,68,68,.5),0 0 2px rgba(0,0,0,.9);
+  animation:incidentTitleGlitch 4.2s ease-in-out infinite;
+}
+@keyframes incidentTitleGlitch{
+  0%,88%,100%{opacity:1;filter:none}
+  90%{opacity:.88;transform:translateX(1px)}
+  92%{opacity:1;transform:translateX(-1px)}
+  94%{opacity:.92}
+}
+.incident-chart-box--hack{
+  border-color:rgba(239,68,68,.35);
+  background:linear-gradient(165deg,rgba(60,10,10,.45),rgba(0,0,0,.35));
+  box-shadow:0 0 0 1px rgba(239,68,68,.12),inset 0 0 50px rgba(80,0,0,.18);
+}
+.incident-chart-box--hack .incident-chart-foot{color:rgba(252,165,165,.65)}
+.incident-chart-box--hack .incident-chart-source a{color:#fca5a5}
+.incident-chart-box--hack .incident-chart-source a:hover{color:#fecaca}
+.incident-chart-wrap--hack{
+  border-radius:16px;
+  border:1px solid rgba(239,68,68,.4);
+  background:rgba(20,0,0,.35);
+  box-shadow:
+    0 0 24px rgba(239,68,68,.2),
+    inset 0 0 36px rgba(70,0,0,.25);
+  animation:incidentHackPulse 2.6s ease-in-out infinite;
+  overflow:hidden;
+  isolation:isolate;
+}
+.incident-chart-wrap--hack canvas{
+  position:relative;
+  z-index:1;
+}
+.incident-chart-wrap--hack::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:15px;
+  background:repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0,0,0,.22) 3px,
+    rgba(0,0,0,.22) 6px
+  );
+  pointer-events:none;
+  opacity:.38;
+  z-index:2;
+}
+.incident-chart-wrap--hack::after{
+  content:"";
+  position:absolute;
+  top:-30%;
+  left:0;
+  right:0;
+  height:28%;
+  background:linear-gradient(180deg,transparent,rgba(239,68,68,.14),transparent);
+  animation:incidentHackSweep 2.9s ease-in-out infinite;
+  pointer-events:none;
+  z-index:3;
+}
+@keyframes incidentHackPulse{
+  0%,100%{box-shadow:0 0 20px rgba(239,68,68,.18),inset 0 0 28px rgba(50,0,0,.2)}
+  50%{box-shadow:0 0 36px rgba(239,68,68,.38),inset 0 0 22px rgba(90,0,0,.28)}
+}
+@keyframes incidentHackSweep{
+  0%{top:-30%;opacity:0}
+  15%{opacity:.9}
+  85%{opacity:.85}
+  100%{top:100%;opacity:0}
+}
+@media (prefers-reduced-motion:reduce){
+  .incident-chart-heading--threat{animation:none}
+  .incident-chart-wrap--hack{animation:none}
+  .incident-chart-wrap--hack::after{animation:none}
+}

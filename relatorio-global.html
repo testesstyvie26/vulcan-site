@@ -4,13 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="assets/favicon.ico">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; connect-src 'self' https://api.ransomware.live https://cdn.jsdelivr.net https://api.allorigins.win https://corsproxy.io https://api.codetabs.com https://cors.eu.org; object-src 'none'; base-uri 'self'; frame-ancestors 'none';">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https: blob:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; connect-src 'self' https://api.ransomware.live https://cdn.jsdelivr.net https://api.allorigins.win https://corsproxy.io https://api.codetabs.com https://cors.eu.org; worker-src 'self' blob:; frame-src 'self' https://app.powerbi.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none';">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
   <title>Relatório global — vítimas públicas e investimento em SI | Vulcan Defense</title>
-  <meta name="description" content="Panorama global: ransomware (Ransomware.live), investimento em SI (Gartner, Brasscom) e custos de incidentes e mau planejamento em TI (IBM)." />
+  <meta name="description" content="Panorama global: ransomware, incidentes de privacidade (ANPD, DPO), outros tipos de SI, investimento (Gartner, Brasscom) e custos (IBM)." />
   <meta name="theme-color" content="#020817" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/relatorio-print.css?v=4" media="print" />
   <style>
     .visal-page .visal-hero { padding-top: 48px; padding-bottom: 8px; }
     .visal-breadcrumb {
@@ -132,6 +133,280 @@
     @media (max-width: 900px) {
       .visal-loss-grid { grid-template-columns: 1fr; }
     }
+
+    .visal-other-section { padding-top: 48px; }
+    .visal-other-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 8px;
+    }
+    .visal-other-card {
+      padding: 22px 20px;
+      border-color: rgba(103, 232, 249, 0.16);
+      background: rgba(0, 0, 0, 0.18);
+    }
+    .visal-other-card h3 {
+      font-size: 15px;
+      font-weight: 800;
+      color: #a5f3fc;
+      margin: 0 0 10px;
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+    }
+    .visal-other-card p {
+      font-size: 13px;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.62);
+      margin: 0;
+    }
+    .visal-other-lead strong { color: rgba(255, 255, 255, 0.9); }
+    .visal-other-disclaimer { margin-top: 22px; }
+    .visal-other-depth {
+      margin-top: 28px;
+      padding: 26px 24px;
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+    .visal-other-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    .visal-other-depth .visal-spending-h3 { margin-top: 0; }
+    .visal-weight-intro,
+    .visal-sector-intro {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.62);
+      margin: 0 0 16px;
+    }
+    .visal-weight-list,
+    .visal-sector-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .visal-weight-list li {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 12px;
+      align-items: baseline;
+      font-size: 13px;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.68);
+    }
+    .visal-w-pct {
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      color: #67e8f9;
+      font-size: 13px;
+    }
+    .visal-sector-list li {
+      position: relative;
+      padding-left: 14px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.68);
+    }
+    .visal-sector-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(103, 232, 249, 0.65);
+    }
+    .visal-other-inline-note { margin-top: 16px; margin-bottom: 0; }
+
+    .visal-incident-summary-block {
+      margin-bottom: 28px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .visal-incident-summary-block .visal-spending-h3 { margin-top: 0; }
+    .visal-incident-summary-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+      margin: 8px auto 0;
+      height: 260px;
+    }
+    .visal-incident-summary-wrap canvas {
+      display: block;
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    .visal-privacy-section { padding-top: 48px; }
+    .visal-privacy-split {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 28px;
+      margin-top: 8px;
+      align-items: start;
+    }
+    .visal-privacy-panel {
+      border-color: rgba(167, 139, 250, 0.24);
+      background: linear-gradient(165deg, rgba(30, 22, 55, 0.4), rgba(0, 0, 0, 0.28));
+      padding: 24px 22px;
+    }
+    .visal-privacy-panel h3 {
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(196, 181, 253, 0.92);
+      margin: 0 0 12px;
+    }
+    .visal-privacy-panel p {
+      font-size: 14px;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.66);
+      margin: 0 0 14px;
+    }
+    .visal-privacy-panel p:last-child { margin-bottom: 0; }
+    .visal-pbi-embed-wrap {
+      position: relative;
+      width: 100%;
+      margin-top: 12px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(167, 139, 250, 0.28);
+      background: rgba(0, 0, 0, 0.35);
+      min-height: min(72vh, 640px);
+      aspect-ratio: 16 / 10;
+    }
+    .visal-pbi-embed-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .visal-cis-charts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-top: 28px;
+      align-items: start;
+    }
+    .visal-cis-charts-grid.visal-cis-charts-grid--single {
+      grid-template-columns: 1fr;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .visal-cis-chart-box {
+      border-color: rgba(167, 139, 250, 0.2);
+      background: rgba(0, 0, 0, 0.2);
+      padding: 20px 18px 16px;
+    }
+    .visal-cis-chart-box h3 {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(196, 181, 253, 0.88);
+      margin: 0 0 10px;
+    }
+    .visal-cis-chart-inner {
+      position: relative;
+      height: 240px;
+    }
+    .visal-cis-chart-inner canvas {
+      display: block;
+      width: 100% !important;
+      height: 100% !important;
+    }
+    .visal-privacy-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 4px;
+    }
+    .visal-privacy-links a {
+      font-size: 13px;
+      font-weight: 600;
+      color: #c4b5fd;
+    }
+    .visal-privacy-links a:hover { color: #ddd6fe; }
+    .visal-dpo-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .visal-dpo-list li {
+      position: relative;
+      padding-left: 16px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.68);
+    }
+    .visal-dpo-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.5em;
+      width: 6px;
+      height: 6px;
+      border-radius: 2px;
+      background: rgba(167, 139, 250, 0.85);
+    }
+    .visal-pdf-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .visal-pdf-bar .visal-pdf-hint {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.45);
+      margin: 0;
+      max-width: 420px;
+      line-height: 1.45;
+    }
+    /* Só na tela: no PDF esses blocos devem aparecer (não use display:none sem @media screen) */
+    @media screen {
+      .print-doc-header,
+      .print-doc-footer,
+      .print-only {
+        display: none !important;
+      }
+      .print-chart-snapshot-wrap {
+        display: none !important;
+      }
+    }
+    /* Garantias de impressão (alguns navegadores ignoram folha só media=print) */
+    @media print {
+      .print-doc-header,
+      .print-doc-footer,
+      .print-only {
+        display: block !important;
+        visibility: visible !important;
+      }
+      #relatorio-pdf-export {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        color: #0f172a !important;
+        background: #ffffff !important;
+      }
+    }
+    @media (max-width: 900px) {
+      .visal-other-grid { grid-template-columns: 1fr; }
+      .visal-other-split { grid-template-columns: 1fr; }
+      .visal-privacy-split { grid-template-columns: 1fr; }
+      .visal-cis-charts-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -150,29 +425,205 @@
     </div>
   </header>
 
-<main class="visal-page">
+<main class="visal-page" id="relatorio-pdf-export">
+
+  <div class="print-doc-header" aria-hidden="true">
+    <div class="print-doc-kicker">Vulcan Defense · Consultoria em cybersecurity</div>
+    <div class="print-doc-title">Relatório executivo — panorama de incidentes e investimento em SI</div>
+    <div class="print-doc-date" id="print-date-stamp"></div>
+    <p class="print-doc-note">Síntese para leitura executiva. Indicadores e gráficos refletem fontes públicas citadas no corpo; confirme totais nas referências oficiais antes de decisões críticas.</p>
+  </div>
 
   <section class="section incident-chart-section visal-hero" id="panorama-incidentes" aria-labelledby="incident-chart-heading">
     <div class="container">
-      <div class="visal-breadcrumb">
-        <a href="index.html">Vulcan Defense</a>
-        <span class="visal-bc-sep">/</span>
-        <span>Relatório global</span>
+      <div class="visal-pdf-bar">
+        <div class="visal-breadcrumb" style="margin-bottom:0;">
+          <a href="index.html">Vulcan Defense</a>
+          <span class="visal-bc-sep">/</span>
+          <span>Relatório global</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;">
+          <p class="visal-pdf-hint pdf-export-skip">Aguarda o carregamento dos gráficos (dados da API e snapshot CIS), depois abre a impressão — escolha <strong>Salvar como PDF</strong>.</p>
+          <button type="button" class="btn btn-secondary pdf-export-skip" id="relatorio-pdf-btn">Salvar como PDF</button>
+        </div>
       </div>
       <div class="section-intro">
         <div class="section-title-small">Panorama público</div>
-        <h1 class="section-title" id="incident-chart-heading">Organizações com vítimas de ransomware divulgadas</h1>
-        <p class="section-text">Comparação entre o <strong>Brasil</strong> e os <strong>demais países</strong> na mesma base global atualizada continuamente. Os números refletem registros públicos na API <a href="https://www.ransomware.live/" target="_blank" rel="noopener noreferrer">Ransomware.live</a> — cada visita à página busca os totais mais recentes.</p>
+        <h1 class="section-title incident-chart-heading--threat" id="incident-chart-heading">Organizações com vítimas de ransomware divulgadas (Brasil)</h1>
+        <p class="section-text">Organizações listadas com país <strong>Brasil</strong> na base global do <a href="https://www.ransomware.live/" target="_blank" rel="noopener noreferrer">Ransomware.live</a>, mês a mês nos últimos 6 meses. A cada visita à página, os dados são atualizados via API (agrupados por data de divulgação).</p>
       </div>
-      <div class="glass-box incident-chart-box">
+      <div class="glass-box incident-chart-box incident-chart-box--hack">
         <p id="incident-chart-status" class="incident-chart-status" role="status"></p>
-        <div class="incident-chart-wrap">
-          <canvas id="incident-chart-canvas" width="400" height="280" aria-label="Gráfico de barras: Brasil e demais países na base global"></canvas>
+        <div class="incident-chart-wrap incident-chart-wrap--hack">
+          <canvas id="incident-chart-canvas" width="400" height="280" aria-label="Gráfico de barras: organizações com vítimas de ransomware no Brasil, últimos 6 meses (base Ransomware.live)"></canvas>
         </div>
-        <p class="incident-chart-disclaimer">Métrica: <strong>organizações</strong> listadas como vítimas de ransomware com país identificado; não representa todos os incidentes de segurança da informação nem casos não divulgados.</p>
+        <div class="print-only chart-print-source" aria-hidden="true">
+          <p class="chart-print-source-title">Fontes do gráfico (dados públicos)</p>
+          <p class="chart-print-source-links"><a href="https://www.ransomware.live/">https://www.ransomware.live/</a> · <a href="https://www.ransomware.live/apidocs">API / documentação</a></p>
+        </div>
+        <p class="incident-chart-disclaimer">Métrica: <strong>organizações</strong> listadas como vítimas de ransomware com país Brasil; não representa todos os incidentes de segurança da informação nem casos não divulgados.</p>
         <p id="incident-chart-foot" class="incident-chart-foot"></p>
         <p class="incident-chart-source"><a href="https://www.ransomware.live/apidocs" target="_blank" rel="noopener noreferrer">Fonte e API — Ransomware.live</a></p>
       </div>
+    </div>
+  </section>
+
+  <section class="section section-muted visal-other-section" id="outros-incidentes" aria-labelledby="other-incidents-heading">
+    <div class="container">
+      <div class="section-intro">
+        <div class="section-title-small">Além do ransomware</div>
+        <h2 class="section-title" id="other-incidents-heading">Outros tipos de incidentes de segurança da informação</h2>
+        <p class="section-text visal-other-lead">Programas de SI precisam cobrir <strong>vários vetores</strong>: o que aparece na mídia nem sempre é criptografia de arquivos — muitos prejuízos vêm de credenciais, engenharia social, erros humanos e falhas de configuração. Relatórios agregados (por exemplo, o <strong>DBIR da Verizon</strong>) classificam incidentes em padrões como intrusão, engenharia social, erros e ataques a aplicações web — com pesos diferentes por setor e ano.</p>
+      </div>
+      <div class="visal-other-grid">
+        <article class="glass-box visal-other-card">
+          <h3>Engenharia social e phishing</h3>
+          <p>Obtenção de senhas ou tokens por e-mail, SMS, voz ou sites falsos; inclui <strong>BEC</strong> (comprometimento de e-mail corporativo) e engenharia visando acesso a sistemas.</p>
+        </article>
+        <article class="glass-box visal-other-card">
+          <h3>Vazamento e exfiltração de dados</h3>
+          <p>Exposição acidental ou acesso não autorizado a dados pessoais ou corporativos — por falha de aplicação, backup, cópia indevida ou insider.</p>
+        </article>
+        <article class="glass-box visal-other-card">
+          <h3>Abuso de credenciais</h3>
+          <p>Uso de contas roubadas ou reutilizadas (<em>credential stuffing</em>), MFA fraco, sessões sequestradas ou privilégios excessivos explorados após login legítimo.</p>
+        </article>
+        <article class="glass-box visal-other-card">
+          <h3>Exploração de vulnerabilidades</h3>
+          <p>Ataques que exploram <strong>CVEs</strong>, falhas em dependências, APIs expostas ou integrações desatualizadas — antes ou depois de patch disponível.</p>
+        </article>
+        <article class="glass-box visal-other-card">
+          <h3>Negação de serviço (DDoS)</h3>
+          <p>Saturação de rede, DNS ou aplicações para indisponibilizar serviços; impacto direto em receita, SLA e reputação, mesmo sem roubo de dados.</p>
+        </article>
+        <article class="glass-box visal-other-card">
+          <h3>Erros e má configuração</h3>
+          <p>Buckets ou repositórios públicos por engano, permissões excessivas, mudanças mal aplicadas e <strong>misconfiguration</strong> em cloud — hoje entre as causas mais frequentes em relatórios globais.</p>
+        </article>
+      </div>
+
+      <div class="glass-box visal-other-depth">
+        <div class="visal-incident-summary-block">
+          <h3 class="visal-spending-h3" id="incident-summary-heading">Gráfico — resumo dos incidentes (vetores iniciais)</h3>
+          <p class="visal-weight-intro">Visualização dos percentuais aproximados do <strong>DBIR 2024</strong> (mesmos números da lista detalhada abaixo). A fatia <strong>Demais vetores iniciais</strong> completa o círculo para 100% a partir dos três valores públicos — serve apenas para leitura visual; na metodologia do relatório as categorias <strong>não são necessariamente exclusivas</strong>.</p>
+          <div class="visal-incident-summary-wrap">
+            <canvas id="incident-summary-chart-canvas" width="400" height="260" aria-labelledby="incident-summary-heading"></canvas>
+          </div>
+          <div class="print-only chart-print-source" aria-hidden="true">
+            <p class="chart-print-source-title">Fonte do gráfico (metodologia DBIR)</p>
+            <p class="chart-print-source-links"><a href="https://www.verizon.com/business/resources/reports/dbir/">https://www.verizon.com/business/resources/reports/dbir/</a></p>
+          </div>
+        </div>
+        <div class="visal-other-split">
+          <div>
+            <h3 class="visal-spending-h3">Peso relativo — vetores iniciais (DBIR)</h3>
+            <p class="visal-weight-intro">No <strong>DBIR 2024</strong> (amostra global de casos analisados pela Verizon), os <strong>vetores de entrada</strong> mais citados incluem uso ou roubo de credenciais e phishing; a exploração de vulnerabilidades cresceu fortemente em relação ao ciclo anterior. Percentuais abaixo são <strong>ordens de grandeza públicas</strong> para priorização — não substituem o relatório completo.</p>
+            <ul class="visal-weight-list" aria-label="Peso aproximado por vetor">
+              <li><span class="visal-w-pct">~38%</span> <span>Uso ou roubo de credenciais como caminho inicial</span></li>
+              <li><span class="visal-w-pct">~15%</span> <span>Phishing (mensagens ou páginas enganosas)</span></li>
+              <li><span class="visal-w-pct">~4%</span> <span>Exploração de vulnerabilidade conhecida (com alta variação entre anos)</span></li>
+            </ul>
+            <p class="incident-chart-disclaimer visal-other-inline-note">A amostra total da edição citada inclui dezenas de milhares de <strong>incidentes</strong>, com subconjunto confirmado como <strong>vazamentos</strong> — proporções mudam por região e setor.</p>
+          </div>
+          <div>
+            <h3 class="visal-spending-h3">Setores mais presentes na amostra</h3>
+            <p class="visal-sector-intro">O DBIR segmenta casos por <strong>indústria (NAICS)</strong>. Entre os setores com maior volume de casos analisados na edição referida figuram, entre outros:</p>
+            <ul class="visal-sector-list">
+              <li>Finanças e seguros</li>
+              <li>Saúde</li>
+              <li>Varejo</li>
+              <li>Serviços de hospedagem e alimentação</li>
+              <li>Educação</li>
+              <li>Administração pública</li>
+              <li>Manufatura</li>
+              <li>Tecnologia da informação e serviços profissionais</li>
+            </ul>
+            <p class="incident-chart-disclaimer visal-other-inline-note">A <strong>ordem de impacto</strong> entre setores muda conforme o recorte (incidente vs. vazamento confirmado) e o ano; use o relatório para comparar seu segmento.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="incident-chart-disclaimer visal-other-disclaimer">Esta visão é <strong>taxonômica</strong> (para priorização e governança), não contagem ao vivo por tipo. Um mesmo evento pode ser classificado em mais de uma categoria conforme a metodologia do relatório.</p>
+      <p class="incident-chart-source"><a href="https://www.verizon.com/business/resources/reports/dbir/" target="_blank" rel="noopener noreferrer">Verizon — DBIR (Data Breach Investigations Report)</a> · <a href="https://www.enisa.europa.eu/topics/csirt-cert-services/community-work/incident-classification-taxonomy" target="_blank" rel="noopener noreferrer">ENISA — taxonomia de incidentes</a></p>
+    </div>
+  </section>
+
+  <section class="section section-muted visal-privacy-section" id="privacidade-dpo" aria-labelledby="privacy-dpo-heading">
+    <div class="container">
+      <div class="section-intro">
+        <div class="section-title-small">LGPD e transparência</div>
+        <h2 class="section-title" id="privacy-dpo-heading">Incidentes de privacidade e o papel do DPO</h2>
+        <p class="section-text">Na LGPD, incidentes de segurança que possam acarretar <strong>risco ou dano relevante</strong> a titulares podem exigir <strong>comunicação à ANPD</strong> e outras medidas (art. 48 e normas complementares). O <strong>DPO</strong> costuma ser o elo entre <strong>privacidade, jurídico e resposta a incidentes</strong> — sem substituir o encarregado legal da segurança da informação, mas articulando evidências e prazos.</p>
+      </div>
+      <div class="glass-box visal-privacy-panel" style="margin-bottom: 28px;">
+        <h3>Painel ANPD — incidentes comunicados (Power BI)</h3>
+        <p>Visualização <strong>oficial e interativa</strong> da ANPD, com os mesmos recortes do site (UF, setor, segmento, tipo de incidente, tipo de comunicação). Os gráficos e totais abaixo são os do <strong>Microsoft Power BI</strong> — fonte primária dos dados.</p>
+        <div class="visal-pbi-embed-wrap">
+          <iframe
+            id="cis-pbi-iframe"
+            title="ANPD — incidentes comunicados no ano corrente (Power BI)"
+            src="https://app.powerbi.com/view?r=eyJrIjoiMzkyMGE0ZGMtYmYwNC00MThjLTkxMWMtZTI2NDI4MWI2YThiIiwidCI6IjVhYmEwNGExLWY4NjMtNGI1Ni04MTdkLTQ0MjkxYzkwZDFiOCJ9"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
+        </div>
+        <div class="print-only print-pbi-box" aria-hidden="true">
+          <strong>Painel ANPD (Power BI)</strong><br />
+          O painel interativo não pode ser reproduzido no PDF. Link oficial:
+          <a href="https://app.powerbi.com/view?r=eyJrIjoiMzkyMGE0ZGMtYmYwNC00MThjLTkxMWMtZTI2NDI4MWI2YThiIiwidCI6IjVhYmEwNGExLWY4NjMtNGI1Ni04MTdkLTQ0MjkxYzkwZDFiOCJ9">app.powerbi.com — incidentes comunicados (ano corrente)</a>
+        </div>
+        <p class="incident-chart-disclaimer" style="margin-top: 16px; margin-bottom: 0;">Se o painel não carregar, verifique bloqueio de <em>iframes</em> ou extensões; abra o <a href="https://app.powerbi.com/view?r=eyJrIjoiMzkyMGE0ZGMtYmYwNC00MThjLTkxMWMtZTI2NDI4MWI2YThiIiwidCI6IjVhYmEwNGExLWY4NjMtNGI1Ni04MTdkLTQ0MjkxYzkwZDFiOCJ9" target="_blank" rel="noopener noreferrer">mesmo relatório em nova aba</a>.</p>
+      </div>
+
+      <div id="cis-privacy-charts-wrap" class="glass-box visal-privacy-panel" hidden>
+        <h3>Resumo local (Chart.js)</h3>
+        <p class="visal-weight-intro" style="margin-bottom: 16px;">Espelho opcional dos <strong>mesmos cortes</strong> do painel embutido: edite <code style="font-size:12px;color:rgba(196,181,253,.95)">assets/cis-anpd-snapshot.json</code> com os totais que você copiar do Power BI (tipo de comunicação e setor público/privado). Enquanto o arquivo estiver vazio ou zerado, este bloco permanece oculto.</p>
+        <div class="visal-cis-charts-grid">
+          <div id="cis-chart-tipo-col" class="glass-box visal-cis-chart-box">
+            <h3 id="cis-tipo-heading">Por tipo de comunicação</h3>
+            <div class="visal-cis-chart-inner">
+              <canvas id="cis-chart-tipo-canvas" width="400" height="240" aria-labelledby="cis-tipo-heading"></canvas>
+            </div>
+          </div>
+          <div id="cis-chart-setor-col" class="glass-box visal-cis-chart-box">
+            <h3 id="cis-setor-heading">Por setor (agente)</h3>
+            <div class="visal-cis-chart-inner">
+              <canvas id="cis-chart-setor-canvas" width="400" height="240" aria-labelledby="cis-setor-heading"></canvas>
+            </div>
+          </div>
+        </div>
+        <div id="cis-chart-print-links" class="print-only chart-print-source" aria-hidden="true">
+          <p class="chart-print-source-title">Fontes dos gráficos locais e painel oficial ANPD</p>
+          <p class="chart-print-source-links"><a href="https://www.gov.br/anpd/pt-br/canais_atendimento/agente-de-tratamento/comunicado-de-incidente-de-seguranca-cis">ANPD — CIS</a> · <a href="https://app.powerbi.com/view?r=eyJrIjoiODUxYzY4NGUtMWUwNy00MGE1LWExMjUtYmY3ZWRkMmExMWQzIiwidCI6IjVhYmEwNGExLWY4NjMtNGI1Ni04MTdkLTQ0MjkxYzkwZDFiOCJ9">Power BI consolidado</a></p>
+        </div>
+      </div>
+
+      <div class="visal-privacy-split">
+        <div class="glass-box visal-privacy-panel">
+          <h3>Links e outros painéis ANPD</h3>
+          <p>Página temática, notícia sobre os painéis e relatórios consolidados (incluindo séries históricas e processos de apuração).</p>
+          <div class="visal-privacy-links">
+            <a href="https://www.gov.br/anpd/pt-br/canais_atendimento/agente-de-tratamento/comunicado-de-incidente-de-seguranca-cis" target="_blank" rel="noopener noreferrer">ANPD — Comunicação de incidente de segurança (CIS)</a>
+            <a href="https://www.gov.br/anpd/pt-br/assuntos/noticias/anpd-divulga-dados-agregados-sobre-comunicacoes-de-incidentes-de-seguranca-e-reformula-pagina-web" target="_blank" rel="noopener noreferrer">ANPD — notícia sobre painéis e dados agregados</a>
+            <a href="https://app.powerbi.com/view?r=eyJrIjoiODUxYzY4NGUtMWUwNy00MGE1LWExMjUtYmY3ZWRkMmExMWQzIiwidCI6IjVhYmEwNGExLWY4NjMtNGI1Ni04MTdkLTQ0MjkxYzkwZDFiOCJ9" target="_blank" rel="noopener noreferrer">Painel Power BI — incidentes comunicados (consolidado 2021–ano atual)</a>
+            <a href="https://app.powerbi.com/view?r=eyJrIjoiNTQ2ZTZkYzgtNTdhMi00NjQ5LWExMGItNGRlMzM0ZjY0YTY2IiwidCI6IjVhYmEwNGExLWY4NjMtNGI1Ni04MTdkLTQ0MjkxYzkwZDFiOCJ9" target="_blank" rel="noopener noreferrer">Painel Power BI — processos de apuração de incidentes (consolidado)</a>
+          </div>
+        </div>
+        <div class="glass-box visal-privacy-panel">
+          <h3>Onde o DPO entra no ciclo</h3>
+          <p>Em organizações que possuem <strong>Encarregado de Dados (DPO)</strong>, ele tipicamente apoia:</p>
+          <ul class="visal-dpo-list">
+            <li><strong>Avaliação</strong> de necessidade de comunicação à ANPD e de notificação a titulares, em conjunto com jurídico e SI.</li>
+            <li><strong>Registro e narrativa</strong> do incidente com base em evidências (logs, cronologia, escopo de dados afetados).</li>
+            <li><strong>Interface</strong> com áreas de negócio para medidas de contenção e mitigação de risco ao titular.</li>
+            <li><strong>Consistência</strong> com políticas de privacidade, retenção e contratos (incluindo encadeamento com fornecedores).</li>
+            <li><strong>Documentação</strong> para eventual fiscalização ou auditoria — sempre alinhada ao fato real do caso.</li>
+          </ul>
+          <p class="incident-chart-disclaimer visal-other-inline-note">O DPO <strong>não decide sozinho</strong> sobre aspectos puramente técnicos ou jurídicos complexos: atua em <strong>governança e conformidade</strong>, com o time de SI e assessoria legal.</p>
+        </div>
+      </div>
+      <p class="incident-chart-disclaimer" style="margin-top:22px;">Referência internacional: na União Europeia, autoridades de proteção de dados e o <strong>EDPB</strong> consolidam estatísticas e orientações sobre notificações e multas sob o GDPR — úteis para multinacionais que harmonizam programa global.</p>
+      <p class="incident-chart-source"><a href="https://www.edpb.europa.eu/our-work-tools/our-documents/annual-report/edpb-annual-report-2024_en" target="_blank" rel="noopener noreferrer">EDPB — relatório anual (referência UE)</a></p>
     </div>
   </section>
 
@@ -190,6 +641,10 @@
             <p class="visal-spending-lead">Gasto de <strong>usuários finais</strong> em segurança da informação: cerca de <strong>US$ 213 bilhões</strong> em 2025 (cerca de +10% vs. 2024, na mesma metodologia).</p>
             <div class="visal-spending-chart-wrap">
               <canvas id="spending-chart-canvas" width="320" height="260" aria-label="Gráfico: participação de software, serviços e rede no gasto global em SI (US$ bi)"></canvas>
+            </div>
+            <div class="print-only chart-print-source" aria-hidden="true">
+              <p class="chart-print-source-title">Fonte do gráfico (Gartner)</p>
+              <p class="chart-print-source-links"><a href="https://www.gartner.com/en/newsroom/press-releases/2025-07-29-gartner-forecasts-worldwide-end-user-spending-on-information-security-to-total-213-billion-us-dollars-in-2025">Comunicado Gartner — previsão de gasto em SI (2025)</a></p>
             </div>
             <p class="incident-chart-source"><a href="https://www.gartner.com/en/newsroom/press-releases/2025-07-29-gartner-forecasts-worldwide-end-user-spending-on-information-security-to-total-213-billion-us-dollars-in-2025" target="_blank" rel="noopener noreferrer">Gartner — comunicado à imprensa (jul. 2025)</a></p>
           </div>
@@ -251,11 +706,16 @@
     </div>
   </section>
 
+  <div class="print-doc-footer" aria-hidden="true">© 2026 Vulcan Defense. Todos os direitos reservados.</div>
+
 </main>
 
 <footer><div class="container">© 2026 Vulcan Defense. Todos os direitos reservados.</div></footer>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" crossorigin="anonymous"></script>
-  <script src="assets/security-incidents-chart.js?v=3" defer></script>
+  <script src="assets/security-incidents-chart.js?v=5" defer></script>
   <script src="assets/security-spending-chart.js" defer></script>
+  <script src="assets/incident-summary-chart.js" defer></script>
+  <script src="assets/cis-privacy-charts.js?v=2" defer></script>
+  <script src="assets/relatorio-pdf-export.js?v=7" defer></script>
 </body>
 </html>

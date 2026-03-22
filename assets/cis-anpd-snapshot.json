@@ -1,0 +1,7 @@
+{
+  "panelEmbedUrl": "https://app.powerbi.com/view?r=eyJrIjoiMzkyMGE0ZGMtYmYwNC00MThjLTkxMWMtZTI2NDI4MWI2YThiIiwidCI6IjVhYmEwNGExLWY4NjMtNGI1Ni04MTdkLTQ0MjkxYzkwZDFiOCJ9",
+  "panelTitle": "ANPD — Incidentes comunicados (ano corrente)",
+  "nota": "Copie os totais exibidos no painel Power BI embutido na página (mesmos filtros) e atualize os arrays abaixo. Deixe vazio ou zere para ocultar os gráficos locais.",
+  "tipoComunicacao": [],
+  "setor": []
+}

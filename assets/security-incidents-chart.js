@@ -1,62 +1,96 @@
 /**
  * Gráfico com dados públicos Ransomware.live (organizações/vítimas divulgadas).
+ * Exibe os últimos 6 meses, mês a mês, para o Brasil. Data agrupada por "discovered".
  * CORS: a API costuma não liberar origem no navegador — tentamos vários proxies públicos
  * e, se tudo falhar, usamos o último resultado salvo em localStorage (cache).
  */
 (function () {
   const API = "https://api.ransomware.live/v2";
   const BR = "BR";
-  const CACHE_KEY = "vulcan_rl_incident_v1";
+  const CACHE_KEY = "vulcan_rl_incident_v2";
   const CACHE_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
-  /** Fallback sem CORS: JSON no mesmo domínio (assets/ransomware-snapshot.json). */
-  const SNAPSHOT_URL = "assets/ransomware-snapshot.json?v=1";
+  const SNAPSHOT_URL = "assets/ransomware-snapshot.json?v=2";
 
-  /** Sem fetch direto à API: ela não expõe CORS no navegador (sempre falharia com ruído no console). */
+  const MONTH_NAMES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
+
+  function last6MonthKeys() {
+    var keys = [];
+    var d = new Date();
+    for (var i = 5; i >= 0; i--) {
+      var m = new Date(d.getFullYear(), d.getMonth() - i, 1);
+      var y = m.getFullYear();
+      var mo = m.getMonth();
+      keys.push(y + "-" + String(mo + 1).padStart(2, "0"));
+    }
+    return keys;
+  }
+
+  function monthKeyToLabel(key) {
+    var parts = key.split("-");
+    var y = parseInt(parts[0], 10);
+    var m = parseInt(parts[1], 10) - 1;
+    return MONTH_NAMES[m] + "/" + String(y).slice(-2);
+  }
+
+  function groupBrListByMonth(brList) {
+    var keys = last6MonthKeys();
+    var byMonth = {};
+    for (var k = 0; k < keys.length; k++) byMonth[keys[k]] = 0;
+
+    if (!Array.isArray(brList)) return { labels: keys.map(monthKeyToLabel), data: keys.map(function (k) { return byMonth[k]; }) };
+
+    for (var i = 0; i < brList.length; i++) {
+      var v = brList[i];
+      var raw = (v && (v.discovered || v.published || v.post_date)) || "";
+      if (!raw) continue;
+      var parsed = new Date(raw.replace(" ", "T"));
+      if (isNaN(parsed.getTime())) continue;
+      var y = parsed.getFullYear();
+      var mo = parsed.getMonth() + 1;
+      var key = y + "-" + String(mo).padStart(2, "0");
+      if (byMonth.hasOwnProperty(key)) byMonth[key]++;
+    }
+
+    return {
+      labels: keys.map(monthKeyToLabel),
+      data: keys.map(function (k) { return byMonth[k]; }),
+    };
+  }
+
+  function buildMonthlyFromSnapshot(snap) {
+    var keys = last6MonthKeys();
+    var labels = keys.map(monthKeyToLabel);
+    var data = keys.map(function (k) {
+      return (snap.brMonthly && typeof snap.brMonthly[k] === "number") ? snap.brMonthly[k] : 0;
+    });
+    return { labels: labels, data: data };
+  }
+
+  /** Sem fetch direto à API: ela não expõe CORS no navegador. */
   function buildProxyChain(url) {
     return [
-      {
-        name: "allorigins-raw",
-        u: "https://api.allorigins.win/raw?url=" + encodeURIComponent(url),
-      },
-      {
-        name: "allorigins-get",
-        u: "https://api.allorigins.win/get?url=" + encodeURIComponent(url),
-        parseGet: true,
-      },
-      {
-        name: "corsproxy",
-        u: "https://corsproxy.io/?" + encodeURIComponent(url),
-      },
-      {
-        name: "codetabs",
-        u: "https://api.codetabs.com/v1/proxy?quest=" + encodeURIComponent(url),
-      },
-      {
-        name: "cors-eu",
-        u: "https://cors.eu.org/?" + encodeURIComponent(url),
-      },
+      { name: "allorigins-raw", u: "https://api.allorigins.win/raw?url=" + encodeURIComponent(url) },
+      { name: "allorigins-get", u: "https://api.allorigins.win/get?url=" + encodeURIComponent(url), parseGet: true },
+      { name: "corsproxy", u: "https://corsproxy.io/?" + encodeURIComponent(url) },
+      { name: "codetabs", u: "https://api.codetabs.com/v1/proxy?quest=" + encodeURIComponent(url) },
+      { name: "cors-eu", u: "https://cors.eu.org/?" + encodeURIComponent(url) },
     ];
   }
 
   function withTimeout(ms) {
-    const c = new AbortController();
-    const id = setTimeout(function () {
-      c.abort();
-    }, ms);
+    var c = new AbortController();
+    var id = setTimeout(function () { c.abort(); }, ms);
     return { signal: c.signal, done: function () { clearTimeout(id); } };
   }
 
   async function fetchJsonUrl(url, timeoutMs) {
-    const chain = buildProxyChain(url);
-    let lastErr;
+    var chain = buildProxyChain(url);
+    var lastErr;
     for (var i = 0; i < chain.length; i++) {
       var item = chain[i];
       var t = withTimeout(timeoutMs);
       try {
-        var r = await fetch(item.u, {
-          cache: "no-store",
-          signal: t.signal,
-        });
+        var r = await fetch(item.u, { cache: "no-store", signal: t.signal });
         t.done();
         if (!r.ok) throw new Error(item.name + " http " + r.status);
         var text;
@@ -68,9 +102,7 @@
         }
         return JSON.parse(text);
       } catch (e) {
-        try {
-          t.done();
-        } catch (_) {}
+        try { t.done(); } catch (_) {}
         lastErr = e;
       }
     }
@@ -82,12 +114,9 @@
       var raw = localStorage.getItem(CACHE_KEY);
       if (!raw) return null;
       var o = JSON.parse(raw);
-      if (!o || typeof o.total !== "number" || typeof o.brCount !== "number")
-        return null;
+      if (!o || !Array.isArray(o.labels) || !Array.isArray(o.data)) return null;
       return o;
-    } catch {
-      return null;
-    }
+    } catch { return null; }
   }
 
   async function fetchEmbeddedSnapshot() {
@@ -95,30 +124,19 @@
       var r = await fetch(SNAPSHOT_URL, { cache: "no-store" });
       if (!r.ok) return null;
       var snap = await r.json();
-      if (
-        !snap ||
-        typeof snap.victimsTotal !== "number" ||
-        typeof snap.brCount !== "number"
-      )
-        return null;
-      if (snap.victimsTotal < snap.brCount) return null;
-      return snap;
-    } catch {
-      return null;
-    }
+      if (!snap || !snap.brMonthly) return null;
+      return buildMonthlyFromSnapshot(snap);
+    } catch { return null; }
   }
 
-  function writeCache(total, brCount, updatedIso) {
+  function writeCache(monthly, updatedIso) {
     try {
-      localStorage.setItem(
-        CACHE_KEY,
-        JSON.stringify({
-          total: total,
-          brCount: brCount,
-          updatedIso: updatedIso,
-          savedAt: Date.now(),
-        })
-      );
+      localStorage.setItem(CACHE_KEY, JSON.stringify({
+        labels: monthly.labels,
+        data: monthly.data,
+        updatedIso: updatedIso,
+        savedAt: Date.now(),
+      }));
     } catch (_) {}
   }
 
@@ -126,13 +144,8 @@
     if (!iso) return "";
     try {
       var d = new Date(iso);
-      return d.toLocaleString("pt-BR", {
-        dateStyle: "short",
-        timeStyle: "short",
-      });
-    } catch {
-      return iso;
-    }
+      return d.toLocaleString("pt-BR", { dateStyle: "short", timeStyle: "short" });
+    } catch { return iso; }
   }
 
   function setStatus(el, text, isError) {
@@ -141,8 +154,7 @@
     el.classList.toggle("incident-chart-status--error", !!isError);
   }
 
-  function renderChart(canvas, statusEl, footEl, total, brCount, updatedIso, cacheNote) {
-    var rest = Math.max(0, total - brCount);
+  function renderChart(canvas, statusEl, footEl, monthly, updatedIso, cacheNote) {
     if (footEl) {
       var base = "Base atualizada em " + fmtDate(updatedIso) + " (fonte: Ransomware.live).";
       if (cacheNote) base += " " + cacheNote;
@@ -151,31 +163,29 @@
     setStatus(statusEl, "", false);
 
     var ctx = canvas.getContext("2d");
-    var cyan = "rgba(103, 232, 249, 0.85)";
-    var blue = "rgba(59, 130, 246, 0.75)";
+    var redA = "rgba(248, 113, 113, 0.92)";
+    var redB = "rgba(185, 28, 28, 0.88)";
 
-    if (window.__incidentChart) {
-      window.__incidentChart.destroy();
-    }
+    if (window.__incidentChart) window.__incidentChart.destroy();
+
+    var colors = monthly.labels.map(function (_, i) { return i % 2 === 0 ? redA : redB; });
+    var borders = monthly.labels.map(function (_, i) {
+      return i % 2 === 0 ? "rgba(254, 202, 202, 0.95)" : "rgba(252, 165, 165, 0.9)";
+    });
 
     window.__incidentChart = new Chart(ctx, {
       type: "bar",
       data: {
-        labels: [
-          "Brasil (organizações na base)",
-          "Demais países (mesma base global)",
-        ],
-        datasets: [
-          {
-            label: "Organizações listadas",
-            data: [brCount, rest],
-            backgroundColor: [cyan, blue],
-            borderColor: ["rgba(103, 232, 249, 1)", "rgba(59, 130, 246, 1)"],
-            borderWidth: 1,
-            borderRadius: 8,
-            maxBarThickness: 72,
-          },
-        ],
+        labels: monthly.labels,
+        datasets: [{
+          label: "Organizações (Brasil)",
+          data: monthly.data,
+          backgroundColor: colors,
+          borderColor: borders,
+          borderWidth: 1,
+          borderRadius: 8,
+          maxBarThickness: 72,
+        }],
       },
       options: {
         responsive: true,
@@ -186,34 +196,31 @@
             callbacks: {
               label: function (ctx) {
                 var n = ctx.raw;
-                return (
-                  n.toLocaleString("pt-BR") +
-                  " organizações (vítimas de ransomware divulgadas)"
-                );
+                return n.toLocaleString("pt-BR") + " organizações (vítimas divulgadas no mês)";
               },
             },
           },
         },
         scales: {
           x: {
-            grid: { color: "rgba(255,255,255,.06)" },
-            ticks: {
-              color: "rgba(255,255,255,.65)",
-              maxRotation: 0,
-              font: { size: 12 },
-            },
+            grid: { color: "rgba(248, 113, 113, 0.12)" },
+            ticks: { color: "rgba(254, 202, 202, 0.78)", maxRotation: 45, font: { size: 11 } },
           },
           y: {
             beginAtZero: true,
-            grid: { color: "rgba(255,255,255,.08)" },
-            ticks: {
-              color: "rgba(255,255,255,.5)",
-              font: { size: 11 },
-            },
+            grid: { color: "rgba(248, 113, 113, 0.1)" },
+            ticks: { color: "rgba(254, 215, 215, 0.55)", font: { size: 11 } },
           },
         },
       },
     });
+  }
+
+  function signalIncidentChartReady() {
+    try {
+      window.__vulcanIncidentChartReady = true;
+      document.dispatchEvent(new CustomEvent("vulcan:incident-chart-ready", { bubbles: true }));
+    } catch (_) {}
   }
 
   async function load() {
@@ -234,85 +241,47 @@
       var info = await fetchJsonUrl(infoUrl, 35000);
       var brList = await fetchJsonUrl(brUrl, 120000);
 
-      var total =
-        info &&
-        info.Victims &&
-        typeof info.Victims.Numbers === "number"
-          ? info.Victims.Numbers
-          : null;
-      var brCount = Array.isArray(brList) ? brList.length : 0;
+      var total = info && info.Victims && typeof info.Victims.Numbers === "number" ? info.Victims.Numbers : null;
+      var monthly = groupBrListByMonth(brList);
+      var sum = monthly.data.reduce(function (a, b) { return a + b; }, 0);
 
-      if (total === null || total < brCount) {
-        throw new Error("dados inválidos");
-      }
+      if (total !== null && total < sum) throw new Error("dados inválidos");
 
-      var updated =
-        (info.Victims && info.Victims["Last Update json"]) || "";
-
-      writeCache(total, brCount, updated);
-
-      renderChart(canvas, statusEl, footEl, total, brCount, updated, "");
+      var updated = (info.Victims && info.Victims["Last Update json"]) || "";
+      writeCache(monthly, updated);
+      renderChart(canvas, statusEl, footEl, monthly, updated, "");
     } catch (e) {
-      if (typeof console !== "undefined" && console.debug) {
-        console.debug("[incident-chart] API indisponível", e);
-      }
+      if (typeof console !== "undefined" && console.debug) console.debug("[incident-chart] API indisponível", e);
+
       var cached = readCache();
-      if (
-        cached &&
-        Date.now() - (cached.savedAt || 0) < CACHE_MAX_AGE_MS &&
-        cached.total >= cached.brCount
-      ) {
+      if (cached && Date.now() - (cached.savedAt || 0) < CACHE_MAX_AGE_MS) {
         var iso = cached.updatedIso || new Date(cached.savedAt).toISOString();
-        renderChart(
-          canvas,
-          statusEl,
-          footEl,
-          cached.total,
-          cached.brCount,
-          iso,
-          "Exibindo último dado salvo no navegador (API momentaneamente inacessível)."
-        );
-        setStatus(
-          statusEl,
-          "Modo cache: dados de uma visita anterior — atualize a página depois ou abra ransomware.live.",
-          false
-        );
+        renderChart(canvas, statusEl, footEl, { labels: cached.labels, data: cached.data }, iso,
+          "Exibindo último dado salvo no navegador (API momentaneamente inacessível).");
+        setStatus(statusEl, "Modo cache: dados de uma visita anterior — atualize a página depois ou abra ransomware.live.", false);
         return;
       }
 
-      var snap = await fetchEmbeddedSnapshot();
-      if (snap) {
-        var snapIso = snap.victimsLastUpdateIso || "";
-        renderChart(
-          canvas,
-          statusEl,
-          footEl,
-          snap.victimsTotal,
-          snap.brCount,
-          snapIso,
-          "Referência embarcada no site (proxies à API indisponíveis neste ambiente)."
-        );
-        setStatus(
-          statusEl,
-          "Exibindo dados de referência do próprio site. Totais ao vivo: ransomware.live.",
-          false
-        );
-        if (footEl && snap.note) {
-          footEl.textContent =
-            footEl.textContent + " " + snap.note;
-        }
+      var snapMonthly = await fetchEmbeddedSnapshot();
+      if (snapMonthly && snapMonthly.labels && snapMonthly.data) {
+        var snapIso = "";
+        try {
+          var snapRaw = await fetch(SNAPSHOT_URL, { cache: "no-store" });
+          if (snapRaw.ok) {
+            var snap = await snapRaw.json();
+            snapIso = snap.victimsLastUpdateIso || "";
+          }
+        } catch (_) {}
+        renderChart(canvas, statusEl, footEl, snapMonthly, snapIso,
+          "Referência embarcada no site (proxies à API indisponíveis neste ambiente).");
+        setStatus(statusEl, "Exibindo dados de referência do próprio site. Totais ao vivo: ransomware.live.", false);
         return;
       }
 
-      setStatus(
-        statusEl,
-        "Não foi possível carregar os dados agora. Consulte a fonte em ransomware.live.",
-        true
-      );
-      if (footEl) {
-        footEl.textContent =
-          "Sem snapshot local e sem cache do navegador. Verifique se assets/ransomware-snapshot.json existe no deploy.";
-      }
+      setStatus(statusEl, "Não foi possível carregar os dados agora. Consulte a fonte em ransomware.live.", true);
+      if (footEl) footEl.textContent = "Sem snapshot local e sem cache do navegador. Verifique se assets/ransomware-snapshot.json existe no deploy.";
+    } finally {
+      signalIncidentChartReady();
     }
   }
 

@@ -1,0 +1,512 @@
+/**
+ * Relatório global — impressão / PDF com aparência executiva.
+ */
+@page {
+  size: A4;
+  margin: 14mm 13mm 16mm;
+}
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  html {
+    background: #fff !important;
+    font-size: 10pt;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  body {
+    background: #fff !important;
+    color: #1e293b !important;
+    font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif !important;
+    overflow: visible !important;
+    overflow-x: visible !important;
+    height: auto !important;
+    min-height: 0 !important;
+    line-height: 1.45 !important;
+  }
+
+  body::before,
+  body::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+
+  .grid-overlay,
+  header,
+  footer {
+    display: none !important;
+  }
+
+  .pdf-export-skip {
+    display: none !important;
+  }
+
+  /* Faixa de capa — nível executivo */
+  .print-doc-header {
+    display: block !important;
+    margin: 0 0 20px 0 !important;
+    padding: 18px 20px 16px !important;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 55%, #1e40af 100%) !important;
+    border-radius: 4px !important;
+    border-left: 5px solid #38bdf8 !important;
+    break-after: avoid;
+    page-break-after: avoid;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12) !important;
+  }
+
+  .print-doc-kicker {
+    display: block !important;
+    font-size: 7.5pt !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.2em !important;
+    text-transform: uppercase !important;
+    color: rgba(255, 255, 255, 0.72) !important;
+    margin: 0 0 10px !important;
+  }
+
+  .print-doc-title {
+    font-size: 16pt !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.02em !important;
+    line-height: 1.2 !important;
+    color: #ffffff !important;
+    margin: 0 0 10px !important;
+    font-family: Georgia, "Times New Roman", Times, serif !important;
+  }
+
+  .print-doc-date {
+    font-size: 9pt !important;
+    color: #bae6fd !important;
+    font-weight: 600 !important;
+    margin: 0 !important;
+  }
+
+  .print-doc-note {
+    font-size: 7.5pt !important;
+    color: rgba(255, 255, 255, 0.78) !important;
+    margin: 12px 0 0 !important;
+    line-height: 1.45 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+    padding-top: 10px !important;
+  }
+
+  #relatorio-pdf-export {
+    display: block !important;
+    position: relative !important;
+    z-index: 1 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    background: #fff !important;
+  }
+
+  #relatorio-pdf-export * {
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  /* Barra de tela (breadcrumb + botão): oculta no PDF para foco no conteúdo */
+  #relatorio-pdf-export .visal-pdf-bar {
+    display: none !important;
+  }
+
+  #relatorio-pdf-export .visal-pbi-embed-wrap {
+    position: relative !important;
+    min-height: 0 !important;
+    height: auto !important;
+    aspect-ratio: auto !important;
+    max-height: none !important;
+    padding: 0 !important;
+    margin: 0 0 8px 0 !important;
+    border: none !important;
+    background: transparent !important;
+  }
+
+  #relatorio-pdf-export .visal-pbi-embed-wrap iframe {
+    display: none !important;
+  }
+
+  #relatorio-pdf-export .section,
+  #relatorio-pdf-export .section.section-muted {
+    background: #fff !important;
+    padding: 14px 0 18px !important;
+    overflow: visible !important;
+    border-top: 1px solid #e2e8f0 !important;
+    margin-top: 6px !important;
+  }
+
+  #relatorio-pdf-export > .section:first-of-type {
+    border-top: none !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  #relatorio-pdf-export > .section {
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+
+  #relatorio-pdf-export .container {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    overflow: visible !important;
+  }
+
+  #relatorio-pdf-export .glass-box,
+  #relatorio-pdf-export .visal-other-depth,
+  #relatorio-pdf-export .visal-spending-box,
+  #relatorio-pdf-export .visal-privacy-panel:not(.visal-cis-chart-box),
+  #relatorio-pdf-export .incident-chart-box,
+  #relatorio-pdf-export .visal-incident-summary-block {
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+    overflow: visible !important;
+  }
+
+  #relatorio-pdf-export .visal-other-card,
+  #relatorio-pdf-export .visal-loss-card,
+  #relatorio-pdf-export .visal-cis-chart-box,
+  #relatorio-pdf-export .print-pbi-box,
+  #relatorio-pdf-export .cta-band {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Cartões — borda lateral corporativa */
+  #relatorio-pdf-export .glass-box,
+  #relatorio-pdf-export .card,
+  #relatorio-pdf-export .visal-other-card,
+  #relatorio-pdf-export .visal-loss-card,
+  #relatorio-pdf-export .visal-privacy-panel,
+  #relatorio-pdf-export .visal-cis-chart-box,
+  #relatorio-pdf-export .visal-other-depth,
+  #relatorio-pdf-export .visal-spending-br,
+  #relatorio-pdf-export .visal-spending-box {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-left: 4px solid #1e40af !important;
+    border-radius: 2px !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+    padding: 14px 16px !important;
+  }
+
+  #relatorio-pdf-export .visal-loss-card {
+    border-left-color: #c2410c !important;
+  }
+
+  #relatorio-pdf-export .visal-privacy-panel {
+    border-left-color: #5b21b6 !important;
+  }
+
+  #relatorio-pdf-export .visal-other-card {
+    border-left-color: #0d9488 !important;
+  }
+
+  #relatorio-pdf-export .section-title-small {
+    display: inline-block !important;
+    color: #1e40af !important;
+    font-size: 7.5pt !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.22em !important;
+    text-transform: uppercase !important;
+    margin-bottom: 6px !important;
+    padding: 4px 0 !important;
+    border-bottom: 2px solid #bfdbfe !important;
+  }
+
+  #relatorio-pdf-export .section-title,
+  #relatorio-pdf-export h1.section-title,
+  #relatorio-pdf-export h2.section-title {
+    color: #0f172a !important;
+    -webkit-text-fill-color: #0f172a !important;
+    font-size: 15pt !important;
+    font-family: Georgia, "Times New Roman", Times, serif !important;
+    font-weight: 700 !important;
+    margin-top: 4px !important;
+    margin-bottom: 8px !important;
+    line-height: 1.2 !important;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  #relatorio-pdf-export .section-intro {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 10px !important;
+  }
+
+  #relatorio-pdf-export .section-text,
+  #relatorio-pdf-export p {
+    color: #334155 !important;
+    font-size: 9.5pt !important;
+    line-height: 1.48 !important;
+  }
+
+  #relatorio-pdf-export li {
+    color: #334155 !important;
+    font-size: 9.5pt !important;
+    line-height: 1.4 !important;
+    margin-bottom: 4px !important;
+  }
+
+  #relatorio-pdf-export a {
+    color: #1d4ed8 !important;
+    text-decoration: none !important;
+    border-bottom: 1px solid #93c5fd !important;
+  }
+
+  #relatorio-pdf-export .incident-chart-box--hack {
+    background: #fffafb !important;
+    border-color: #fecdd3 !important;
+    border-left-color: #be123c !important;
+  }
+
+  #relatorio-pdf-export .incident-chart-heading--threat {
+    color: #881337 !important;
+  }
+
+  #relatorio-pdf-export .incident-chart-wrap--hack::before,
+  #relatorio-pdf-export .incident-chart-wrap--hack::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  #relatorio-pdf-export .incident-chart-wrap {
+    margin: 10px 0 !important;
+    padding: 10px !important;
+    background: #fafafa !important;
+    border: 1px solid #e5e5e5 !important;
+    border-radius: 2px !important;
+  }
+
+  #relatorio-pdf-export .incident-chart-wrap,
+  #relatorio-pdf-export .visal-incident-summary-wrap,
+  #relatorio-pdf-export .visal-spending-chart-wrap {
+    break-inside: auto;
+    page-break-inside: auto;
+    max-width: 100% !important;
+  }
+
+  #relatorio-pdf-export .visal-cis-chart-inner {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    max-height: 200px;
+  }
+
+  /* Canvas original oculto quando há snapshot PNG (classe aplicada pelo JS na impressão) */
+  #relatorio-pdf-export canvas.vulcan-print-hidden {
+    display: none !important;
+  }
+
+  #relatorio-pdf-export canvas:not(.vulcan-print-hidden) {
+    max-width: 100% !important;
+    max-height: 260px !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
+  /* Imagem raster do gráfico — fiel à tela */
+  .print-chart-snapshot-wrap {
+    display: block !important;
+    margin: 8px auto 14px !important;
+    padding: 14px 16px !important;
+    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 55%) !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 4px !important;
+    text-align: center !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .print-chart-snapshot-img {
+    max-width: 100% !important;
+    width: auto !important;
+    height: auto !important;
+    max-height: 280px !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+  }
+
+  /* Links explícitos por gráfico (só impressão) */
+  .chart-print-source {
+    display: block !important;
+    margin: 6px 0 10px !important;
+    padding: 8px 12px !important;
+    background: #f1f5f9 !important;
+    border: 1px solid #e2e8f0 !important;
+    border-left: 4px solid #2563eb !important;
+    border-radius: 2px !important;
+    break-inside: avoid !important;
+  }
+
+  .chart-print-source-title {
+    font-size: 7pt !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.12em !important;
+    color: #64748b !important;
+    margin: 0 0 5px !important;
+  }
+
+  .chart-print-source-links {
+    font-size: 8pt !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+    word-break: break-word !important;
+  }
+
+  .chart-print-source-links a {
+    color: #1d4ed8 !important;
+    border-bottom: none !important;
+    text-decoration: underline !important;
+  }
+
+  #relatorio-pdf-export .incident-chart-disclaimer,
+  #relatorio-pdf-export .incident-chart-foot,
+  #relatorio-pdf-export .visal-other-disclaimer {
+    font-size: 7.5pt !important;
+    color: #64748b !important;
+    font-style: italic !important;
+    line-height: 1.4 !important;
+    margin-top: 8px !important;
+  }
+
+  #relatorio-pdf-export .incident-chart-source,
+  #relatorio-pdf-export .incident-chart-source a {
+    font-size: 7.5pt !important;
+    color: #64748b !important;
+    border-bottom: none !important;
+  }
+
+  #relatorio-pdf-export .visal-spending-h3,
+  #relatorio-pdf-export .visal-privacy-panel h3 {
+    font-size: 8pt !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase !important;
+    color: #475569 !important;
+    margin: 0 0 8px !important;
+  }
+
+  #relatorio-pdf-export .visal-w-pct {
+    color: #0369a1 !important;
+    font-weight: 800 !important;
+    font-variant-numeric: tabular-nums !important;
+  }
+
+  #relatorio-pdf-export .visal-loss-kpi,
+  #relatorio-pdf-export .visal-kpi-big {
+    color: #9a3412 !important;
+    font-weight: 800 !important;
+    font-variant-numeric: tabular-nums !important;
+    font-size: 16pt !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  #relatorio-pdf-export .visal-loss-card-tag {
+    font-size: 7pt !important;
+    letter-spacing: 0.14em !important;
+    color: #9a3412 !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .print-pbi-box {
+    font-size: 8.5pt;
+    line-height: 1.45;
+    color: #1e3a5f;
+    padding: 10px 12px;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-left: 4px solid #2563eb;
+    border-radius: 2px;
+    margin: 6px 0 0;
+  }
+
+  .print-pbi-box strong {
+    color: #1e3a8a;
+  }
+
+  #relatorio-pdf-export .cta-band {
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    border-left: 4px solid #0369a1 !important;
+    padding: 16px 18px !important;
+  }
+
+  #relatorio-pdf-export .cta-band h2 {
+    color: #0f172a !important;
+    font-size: 12pt !important;
+    font-family: Georgia, "Times New Roman", Times, serif !important;
+  }
+
+  #relatorio-pdf-export .btn {
+    border: 1px solid #cbd5e1 !important;
+    background: #fff !important;
+    color: #0f172a !important;
+    border-radius: 2px !important;
+  }
+
+  #relatorio-pdf-export code {
+    background: #f1f5f9 !important;
+    color: #5b21b6 !important;
+    border: 1px solid #e2e8f0 !important;
+    font-size: 7.5pt !important;
+    font-family: Consolas, "Courier New", monospace !important;
+  }
+
+  #relatorio-pdf-export .visal-other-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+  }
+
+  #relatorio-pdf-export .visal-other-split,
+  #relatorio-pdf-export .visal-spending-split,
+  #relatorio-pdf-export .visal-privacy-split {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  #relatorio-pdf-export .visal-loss-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  #relatorio-pdf-export .visal-cis-charts-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .print-doc-footer {
+    display: block !important;
+    margin-top: 24px;
+    padding: 12px 0 0;
+    border-top: 2px solid #0f172a;
+    font-size: 7.5pt;
+    color: #64748b;
+    text-align: center;
+    letter-spacing: 0.04em;
+    break-inside: avoid;
+  }
+}
