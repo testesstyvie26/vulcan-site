@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="assets/favicon.ico">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; object-src 'none'; base-uri 'self'; frame-ancestors 'none';">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://formspree.io; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; object-src 'none'; base-uri 'self'; frame-ancestors 'none';">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
   <title>Checklist de Segurança da Informação | Vulcan Defense</title>
@@ -87,7 +87,25 @@
       .cl-status-group { flex-direction: column; }
       .cl-status-btn { width: 100%; }
     }
+    .cl-gate { position: fixed; inset: 0; z-index: 9999; background: linear-gradient(180deg, #020817 0%, #0f172a 100%); display: flex; align-items: center; justify-content: center; padding: 24px; }
+    .cl-gate.hidden { display: none !important; }
+    .cl-gate-box { max-width: 420px; width: 100%; border-radius: 24px; border: 1px solid rgba(103,232,249,.25); background: rgba(0,0,0,.5); padding: 36px; }
+    .cl-gate-title { font-size: 18px; font-weight: 800; color: #a5f3fc; margin-bottom: 8px; }
+    .cl-gate-desc { font-size: 14px; color: rgba(255,255,255,.7); line-height: 1.55; margin-bottom: 24px; }
+    .cl-gate-input { width: 100%; padding: 14px 18px; border-radius: 12px; border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.05); color: #fff; font-size: 15px; margin-bottom: 16px; box-sizing: border-box; }
+    .cl-gate-input::placeholder { color: rgba(255,255,255,.4); }
+    .cl-gate-input:focus { outline: none; border-color: rgba(103,232,249,.5); }
+    .cl-gate-error { font-size: 13px; color: #fca5a5; margin-bottom: 12px; display: none; }
+    .cl-gate-error.visible { display: block; }
+    .cl-gate-btns { display: flex; flex-direction: column; gap: 12px; }
+    .cl-gate-btn { padding: 14px 24px; border-radius: 12px; font-size: 15px; font-weight: 700; cursor: pointer; transition: all .2s; border: 1px solid; text-align: center; text-decoration: none; display: inline-block; }
+    .cl-gate-btn-primary { background: rgba(34,211,238,.2); border-color: rgba(103,232,249,.4); color: #a5f3fc; }
+    .cl-gate-btn-primary:hover:not(:disabled) { background: rgba(34,211,238,.3); }
+    .cl-gate-btn-primary:disabled { opacity: .6; cursor: not-allowed; }
+    .cl-gate-btn-secondary { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.15); color: rgba(255,255,255,.9); }
+    .cl-gate-btn-secondary:hover { background: rgba(255,255,255,.1); }
     @media print {
+      .cl-gate { display: none !important; }
       header, footer, .cl-tabs, .cl-actions, .cl-instructions { display: none !important; }
       .cl-panel { display: block !important; }
       .cl-page { padding-top: 0; }
@@ -101,6 +119,19 @@
   </style>
 </head>
 <body>
+<div id="cl-gate" class="cl-gate">
+  <div class="cl-gate-box">
+    <h2 class="cl-gate-title">Cadastro para acesso</h2>
+    <p class="cl-gate-desc">Informe seu e-mail para se cadastrar. O e-mail será encaminhado para registro e o acesso será liberado em seguida.</p>
+    <form id="cl-gate-form" autocomplete="on">
+      <input type="email" id="cl-gate-email" class="cl-gate-input" placeholder="seu@email.com" required autocomplete="email" />
+      <div id="cl-gate-error" class="cl-gate-error" role="alert"></div>
+      <div class="cl-gate-btns">
+        <button type="submit" class="cl-gate-btn cl-gate-btn-primary" id="cl-gate-submit">Cadastrar e acessar</button>
+      </div>
+    </form>
+  </div>
+</div>
 <div class="grid-overlay"></div>
 <header>
   <div class="container header-wrap">
@@ -405,6 +436,96 @@
 <footer><div class="container">© 2026 Vulcan Defense. Todos os direitos reservados.</div></footer>
 
 <script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js" defer></script>
+<!-- Formspree: crie formulário em formspree.io com testesstyvie26@gmail.com e substitua FORMSPREE_ID pelo ID do seu formulário -->
+<script>
+(function () {
+  const CHECKLIST_ACCESS_KEY = "vulcan_checklist_access";
+  const REGISTRO_EMAIL = "testesstyvie26@gmail.com";
+  const FORMSPREE_ID = "xbdzvgok";
+
+  function checkAccess() {
+    try {
+      const stored = sessionStorage.getItem(CHECKLIST_ACCESS_KEY);
+      if (stored) {
+        const data = JSON.parse(stored);
+        if (data && data.email && typeof data.email === "string") return data.email;
+      }
+    } catch (_) {}
+    return null;
+  }
+
+  function grantAccess(email) {
+    try {
+      sessionStorage.setItem(CHECKLIST_ACCESS_KEY, JSON.stringify({ email: email.toLowerCase().trim() }));
+    } catch (_) {}
+  }
+
+  function liberarAcesso(gate, email) {
+    grantAccess(email);
+    gate.classList.add("hidden");
+    if (typeof window.initChecklist === "function") window.initChecklist();
+  }
+
+  async function enviarEmailBackground(email) {
+    try {
+      const res = await fetch("https://formspree.io/f/" + FORMSPREE_ID, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          email: email,
+          _subject: "Cadastro checklist Vulcan Defense",
+          _replyto: email,
+        }),
+      });
+      return res.ok;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  function initGate() {
+    const gate = document.getElementById("cl-gate");
+    const form = document.getElementById("cl-gate-form");
+    const emailInput = document.getElementById("cl-gate-email");
+    const errorEl = document.getElementById("cl-gate-error");
+    const submitBtn = document.getElementById("cl-gate-submit");
+
+    const approved = checkAccess();
+    if (approved) {
+      gate.classList.add("hidden");
+      return true;
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = (emailInput.value || "").trim();
+      if (!email) {
+        errorEl.textContent = "Informe seu e-mail.";
+        errorEl.classList.add("visible");
+        return;
+      }
+
+      submitBtn.disabled = true;
+      errorEl.classList.remove("visible");
+      errorEl.textContent = "";
+
+      liberarAcesso(gate, email);
+
+      enviarEmailBackground(email);
+
+      submitBtn.disabled = false;
+    });
+
+    return false;
+  }
+
+  if (!initGate()) {
+    window.initChecklist = function () {
+      init();
+    };
+  }
+})();
+</script>
 <script>
 (function () {
   const THRESHOLD = 0.80;
@@ -966,7 +1087,12 @@
     w.onload = () => setTimeout(() => w.print(), 300);
   }
 
-  init();
+  const gateEl = document.getElementById("cl-gate");
+  if (gateEl && gateEl.classList.contains("hidden")) {
+    init();
+  } else {
+    window.initChecklist = init;
+  }
 })();
 </script>
 </body>
