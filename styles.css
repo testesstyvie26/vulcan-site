@@ -306,6 +306,17 @@ a.service-card:hover{transform:translateY(-3px);border-color:rgba(103,232,249,.2
 .consult-footnote{margin-top:32px;font-size:14px;color:rgba(255,255,255,.5);line-height:1.7;max-width:720px}
 .consult-footnote a{color:#7dd3fc;text-decoration:underline}
 .audience-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:8px}
+.audience-pme-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:28px;align-items:stretch}
+.audience-pme-row .audience-card{display:flex;flex-direction:column;min-height:100%}
+.audience-pme-callout{animation:audiencePmeGlow 7s ease-in-out infinite}
+@keyframes audiencePmeGlow{
+  0%,100%{box-shadow:0 8px 28px rgba(0,0,0,.2);border-color:rgba(255,255,255,.1)}
+  50%{box-shadow:0 12px 36px rgba(0,0,0,.26),0 0 32px rgba(34,211,238,.1);border-color:rgba(103,232,249,.26)}
+}
+@media (prefers-reduced-motion:reduce){
+  .audience-pme-callout{animation:none}
+}
+.audience-pme-row + .audience-grid{margin-top:22px}
 .audience-card{transition:transform .28s cubic-bezier(0.22,1,0.36,1),box-shadow .28s ease,border-color .28s ease}
 .audience-card:hover{transform:translateY(-4px);border-color:rgba(103,232,249,.28);box-shadow:0 14px 44px rgba(0,0,0,.28),0 0 0 1px rgba(103,232,249,.08)}
 .audience-card h3{font-size:19px;font-weight:800;margin-bottom:12px}
@@ -328,7 +339,7 @@ a.service-card:hover{transform:translateY(-3px);border-color:rgba(103,232,249,.2
   .compliance-graph-layout{grid-template-columns:1fr;justify-items:stretch}
   .compliance-ring-block{justify-self:center;text-align:center}
   .compliance-check-panel{max-width:100%}
-  .consult-grid,.audience-grid,.compliance-strip{grid-template-columns:1fr}
+  .consult-grid,.audience-grid,.audience-pme-row,.compliance-strip{grid-template-columns:1fr}
   .compliance-strip-tags{justify-content:flex-start}
 }
 @media (max-width:640px){
