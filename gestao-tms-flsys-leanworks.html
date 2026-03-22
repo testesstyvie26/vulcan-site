@@ -50,6 +50,81 @@
     .tms-note a { color: #7dd3fc; }
     .tms-hero .btn-row { margin-top: 24px; flex-wrap: wrap; }
     .tms-download-hint { font-size: 12px; color: rgba(255, 255, 255, 0.45); margin-top: 10px; }
+    /* Botão download — pulso + reflexo */
+    .btn-tms-download {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      border-color: rgba(103, 232, 249, 0.42);
+      color: #e0f2fe;
+      animation: tmsDownloadGlow 2.6s ease-in-out infinite;
+    }
+    .btn-tms-download::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(105deg, transparent 32%, rgba(255, 255, 255, 0.22) 50%, transparent 68%);
+      transform: translateX(-120%);
+      animation: tmsDownloadShine 3.2s ease-in-out infinite;
+      z-index: 0;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+    .btn-tms-download__label {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-tms-download__ico {
+      display: inline-flex;
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      animation: tmsDownloadIcon 2s ease-in-out infinite;
+    }
+    .btn-tms-download__ico svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      color: #67e8f9;
+      filter: drop-shadow(0 0 6px rgba(103, 232, 249, 0.5));
+    }
+    .btn-tms-download:hover {
+      transform: translateY(-2px);
+      border-color: rgba(103, 232, 249, 0.65);
+      box-shadow: 0 8px 32px rgba(34, 211, 238, 0.22);
+      animation: none;
+    }
+    .btn-tms-download:hover .btn-tms-download__ico { animation: tmsDownloadIconHover 0.65s ease; }
+    @keyframes tmsDownloadGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(103, 232, 249, 0), 0 4px 20px rgba(0, 0, 0, 0.2); }
+      50% { box-shadow: 0 0 24px 2px rgba(34, 211, 238, 0.25), 0 4px 24px rgba(34, 211, 238, 0.12); }
+    }
+    @keyframes tmsDownloadShine {
+      0%, 35% { transform: translateX(-120%); opacity: 0; }
+      45% { opacity: 1; }
+      55%, 100% { transform: translateX(120%); opacity: 0; }
+    }
+    @keyframes tmsDownloadIcon {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(3px); }
+    }
+    @keyframes tmsDownloadIconHover {
+      0% { transform: translateY(0) scale(1); }
+      40% { transform: translateY(4px) scale(1.08); }
+      100% { transform: translateY(0) scale(1); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .btn-tms-download,
+      .btn-tms-download::after,
+      .btn-tms-download__ico {
+        animation: none !important;
+      }
+      .btn-tms-download:hover .btn-tms-download__ico { animation: none !important; }
+    }
   </style>
 </head>
 <body>
@@ -76,7 +151,14 @@
         O <strong>FLSys LeanWorks</strong> organiza o <strong>gerenciamento de obras em tempo real</strong>, a <strong>carteira de clientes</strong>, a <strong>programação de atividades</strong> e o apoio à <strong>auditoria</strong>, substituindo planilhas e papel por fluxos digitais — com foco em produtividade, rastreabilidade e custo operacional controlado.         Os módulos de <strong>almoxarifado</strong>, <strong>administrativo</strong> e <strong>contratos</strong> sustentam a <strong>gestão de facilities</strong> e recursos físicos vinculados à operação.
       </p>
       <div class="btn-row">
-        <a class="btn btn-secondary" href="assets/Apresentacao-FLSys-LeanWorks.pdf" download="Apresentacao_FLSys-LeanWorks.pdf">Download da apresentação</a>
+        <a class="btn btn-secondary btn-tms-download" href="assets/Apresentacao-FLSys-LeanWorks.pdf" download="Apresentacao_FLSys-LeanWorks.pdf">
+          <span class="btn-tms-download__label">
+            <span class="btn-tms-download__ico" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </span>
+            Download da apresentação
+          </span>
+        </a>
         <a class="btn btn-primary" href="contato.html">Falar com a Vulcan Defense</a>
       </div>
       <p class="tms-download-hint">PDF: <span lang="en">Apresentação FLSys-LeanWorks</span> — material comercial de referência.</p>
