@@ -497,3 +497,15 @@ a.service-card:hover{transform:translateY(-3px);border-color:rgba(103,232,249,.2
   .incident-chart-wrap--hack{animation:none}
   .incident-chart-wrap--hack::after{animation:none}
 }
+.cookie-banner{
+  position:fixed;bottom:0;left:0;right:0;z-index:100;
+  padding:20px 24px;background:linear-gradient(180deg,rgba(4,21,49,.98),rgba(2,8,27,.99));
+  border-top:1px solid rgba(103,232,249,.25);box-shadow:0 -8px 32px rgba(0,0,0,.4);
+  backdrop-filter:blur(12px);animation:cookieSlideUp .4s ease-out
+}
+.cookie-banner-inner{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px}
+.cookie-banner-text{font-size:14px;line-height:1.6;color:rgba(255,255,255,.85);margin:0;flex:1;min-width:240px}
+.cookie-banner-text a{color:#67e8f9;text-decoration:underline;text-underline-offset:2px}
+.cookie-banner-text a:hover{color:#a5f3fc}
+.cookie-banner-actions{flex-shrink:0}
+@keyframes cookieSlideUp{from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}
