@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="assets/favicon.ico">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://formspree.io; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none';">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <title>Portfólio de Serviços | Vulcan Defense</title>
+  <meta name="description" content="Portfólio completo de serviços de consultoria em segurança da informação da Vulcan Defense." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" />
+  <style>
+    .port-hero { padding: 48px 0 24px; }
+    .port-cover { text-align: center; padding: 32px 24px; margin-bottom: 28px; }
+    .port-cover h1 { font-size: 36px; font-weight: 900; color: #67e8f9; letter-spacing: -.02em; }
+    .port-cover .sub { font-size: 16px; color: rgba(255,255,255,.7); margin-top: 8px; }
+    .port-cover .date { font-size: 12px; color: rgba(255,255,255,.45); margin-top: 6px; }
+    .port-menu-bar {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 16px 24px;
+      padding: 20px 24px; margin: 0 auto 32px; max-width: 900px;
+      border-radius: 20px; border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(135deg, rgba(4,21,49,.9), rgba(2,8,27,.95));
+      box-shadow: 0 8px 32px rgba(0,0,0,.3);
+    }
+    .port-menu-label { font-size: 12px; text-transform: uppercase; letter-spacing: .15em; color: rgba(255,255,255,.5); }
+    .port-sla-switch { display: flex; gap: 8px; flex-wrap: wrap; }
+    .port-sla-switch button {
+      padding: 12px 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,.2);
+      background: rgba(0,0,0,.3); color: rgba(255,255,255,.8); font-size: 14px; font-weight: 700;
+      cursor: pointer; transition: .2s; display: flex; flex-direction: column; align-items: center; gap: 2px;
+    }
+    .port-sla-switch button:hover { border-color: rgba(103,232,249,.5); color: #67e8f9; }
+    .port-sla-switch button.active { border-color: rgba(103,232,249,.6); background: rgba(34,211,238,.18); color: #67e8f9; box-shadow: 0 0 20px rgba(34,211,238,.15); }
+    .port-sla-switch .sla-time { font-size: 10px; opacity: .9; font-weight: 600; letter-spacing: .05em; }
+    .port-sla-divider { width: 1px; height: 32px; background: rgba(255,255,255,.15); }
+    .port-suporte-24 {
+      display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px;
+      border-radius: 12px; border: 1px solid rgba(34,197,94,.4); background: rgba(34,197,94,.12);
+      font-size: 12px; font-weight: 700; color: #4ade80; letter-spacing: .06em;
+      animation: portSuportePulse 2.2s ease-in-out infinite;
+    }
+    .port-suporte-24::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #4ade80; animation: portSuporteDot 1.5s ease-in-out infinite; }
+    @keyframes portSuportePulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(74,222,128,.2); } 50% { box-shadow: 0 0 16px 2px rgba(74,222,128,.25); } }
+    @keyframes portSuporteDot { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+    @media (prefers-reduced-motion: reduce) {
+      .port-suporte-24, .port-suporte-24::before { animation: none; }
+      .port-section { opacity: 1; transform: none; transition: none; }
+      .port-card:hover { transform: none; }
+    }
+    .port-nav-cats {
+      display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 28px; padding: 0 16px;
+    }
+    .port-nav-cats a {
+      padding: 10px 18px; border-radius: 999px; border: 1px solid rgba(255,255,255,.15);
+      background: rgba(0,0,0,.2); font-size: 13px; font-weight: 600; color: rgba(255,255,255,.8);
+      text-decoration: none; transition: .2s;
+    }
+    .port-nav-cats a:hover { border-color: rgba(103,232,249,.4); color: #67e8f9; }
+    .port-section {
+      margin-bottom: 48px; scroll-margin-top: 100px;
+      padding: 28px 0; position: relative;
+      border-left: 3px solid transparent; padding-left: 20px; margin-left: 0;
+      transition: border-color .4s ease, opacity .5s ease, transform .5s ease;
+      opacity: 0; transform: translateY(24px);
+    }
+    .port-section.port-seen { opacity: 1; transform: translateY(0); }
+    .port-section::before {
+      content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+      background: linear-gradient(180deg, rgba(103,232,249,.5), rgba(103,232,249,.15), transparent);
+      border-radius: 0 3px 3px 0; opacity: 0; transition: opacity .3s ease;
+    }
+    .port-section:hover::before,
+    .port-section.port-seen::before { opacity: 1; }
+    .port-section + .port-section {
+      padding-top: 40px;
+      border-top: 1px solid rgba(103,232,249,.12);
+      margin-top: 0;
+      position: relative;
+    }
+    .port-section + .port-section::after {
+      content: ""; position: absolute; left: 50%; top: -1px; transform: translateX(-50%);
+      width: 60px; height: 2px; background: linear-gradient(90deg, transparent, rgba(103,232,249,.5), transparent);
+      border-radius: 2px;
+    }
+    .port-section h2 { font-size: 20px; font-weight: 800; color: #67e8f9; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid rgba(103,232,249,.25); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .port-section .tag { font-size: 10px; text-transform: uppercase; letter-spacing: .2em; color: rgba(255,255,255,.5); margin-bottom: 6px; }
+    .port-section p { font-size: 14px; line-height: 1.65; color: rgba(255,255,255,.78); margin-bottom: 12px; overflow-wrap: break-word; word-wrap: break-word; }
+    .port-section ul { margin: 10px 0; padding-left: 1.3em; color: rgba(255,255,255,.72); line-height: 1.7; font-size: 14px; overflow-wrap: break-word; }
+    .port-card {
+      border: 1px solid rgba(255,255,255,.1); border-radius: 16px;
+      background: linear-gradient(180deg, rgba(22,34,74,.4), rgba(16,28,63,.5));
+      padding: 22px; margin-bottom: 16px;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .port-card:hover {
+      border-color: rgba(103,232,249,.35);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,.25), 0 0 20px rgba(103,232,249,.08);
+    }
+    .port-card h3 { font-size: 17px; font-weight: 800; margin-bottom: 8px; color: #fff; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .port-card .card-cta { padding: 8px 16px; font-size: 12px; border-radius: 10px; border: 1px solid rgba(103,232,249,.5); background: rgba(34,211,238,.1); color: #67e8f9; font-weight: 700; text-decoration: none; transition: .2s; }
+    .port-card .card-cta:hover { background: rgba(34,211,238,.2); }
+    .port-card p { margin: 0 0 16px; font-size: 13px; }
+    .port-pacotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
+    .port-pacote {
+      border: 1px solid rgba(103,232,249,.18); border-radius: 12px;
+      background: rgba(0,0,0,.25); padding: 16px; font-size: 13px;
+      display: flex; flex-direction: column; gap: 8px; transition: .2s;
+    }
+    .port-pacote:hover { border-color: rgba(103,232,249,.35); }
+    .port-pacote strong { font-size: 10px; text-transform: uppercase; letter-spacing: .12em; color: rgba(103,232,249,.95); }
+    .port-pacote .valor { font-weight: 800; color: #fff; font-size: 16px; overflow-wrap: break-word; }
+    .port-pacote .obs { font-size: 11px; color: rgba(255,255,255,.5); }
+    @media (max-width: 768px) { .port-pacotes { grid-template-columns: 1fr; } .port-menu-bar { flex-direction: column; } }
+    @media (max-width: 640px) { .port-pacotes { grid-template-columns: 1fr; } }
+    .port-btn-wrap { text-align: center; padding: 32px 0; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .port-btn-wrap .btn { padding: 16px 32px; font-size: 15px; }
+    body.pdf-export .port-menu-bar,
+    body.pdf-export .port-nav-cats,
+    body.pdf-export .port-btn-wrap,
+    body.pdf-export .card-cta { display: none !important; }
+    body.pdf-export #portfolio-content {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #fff !important;
+      padding: 32px 36px 40px; border-radius: 0; color: #1e293b;
+      position: relative; z-index: 10;
+      min-height: 100px;
+    }
+    body.pdf-export { background: #fff !important; }
+    body.pdf-export .port-cover {
+      padding: 0 0 28px; margin-bottom: 28px; text-align: left;
+      border-bottom: 3px solid #0e7490;
+    }
+    body.pdf-export .port-cover h1 {
+      font-size: 28px; font-weight: 800; letter-spacing: -.02em; color: #0c4a6e;
+      margin: 0; line-height: 1.2;
+    }
+    body.pdf-export .port-cover .sub {
+      font-size: 14px; color: #64748b; margin-top: 8px; font-weight: 500;
+    }
+    body.pdf-export .port-cover .date {
+      font-size: 11px; color: #94a3b8; margin-top: 6px; letter-spacing: .03em;
+    }
+    body.pdf-export .port-section { margin-bottom: 28px; opacity: 1 !important; transform: none !important; }
+    body.pdf-export .port-section .tag {
+      font-size: 9px; letter-spacing: .25em; color: #0e7490; font-weight: 700;
+      margin-bottom: 6px; text-transform: uppercase;
+    }
+    body.pdf-export .port-section h2 {
+      font-size: 16px; font-weight: 700; color: #0c4a6e; margin-bottom: 12px;
+      padding-bottom: 8px; border-bottom: 1px solid #e2e8f0;
+    }
+    body.pdf-export .port-section p, body.pdf-export .port-section ul {
+      font-size: 13px; line-height: 1.6; color: #475569;
+    }
+    body.pdf-export .port-card {
+      background: #fff; border: 1px solid #e2e8f0; border-radius: 12px;
+      padding: 20px 24px; margin-bottom: 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.04);
+    }
+    body.pdf-export .port-card h3 {
+      font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 10px;
+    }
+    body.pdf-export .port-card p { font-size: 12px; color: #64748b; }
+    body.pdf-export .port-pacotes { gap: 14px; margin-top: 14px; }
+    body.pdf-export .port-pacote {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border: 1px solid #e2e8f0; padding: 14px 18px; border-radius: 10px;
+    }
+    body.pdf-export .port-pacote strong {
+      font-size: 9px; letter-spacing: .15em; color: #0e7490; font-weight: 700;
+    }
+    body.pdf-export .port-pacote .valor {
+      font-size: 15px; font-weight: 800; color: #0c4a6e;
+    }
+    body.pdf-export .port-pacote .obs { font-size: 10px; color: #94a3b8; }
+    body.pdf-export .port-cover:last-of-type {
+      border-bottom: none; padding-top: 24px; margin-top: 16px;
+      border-top: 1px solid #e2e8f0;
+    }
+    body.pdf-export .port-cover:last-of-type .sub { font-size: 12px; color: #64748b; }
+    @media print {
+      .port-sla-switch, .port-menu-bar, .port-nav-cats, .port-suporte-24, .port-btn-wrap, header, footer, .grid-overlay, nav, .card-cta { display: none !important; }
+      body { background: #fff !important; color: #1e293b; font-family: 'Inter', -apple-system, sans-serif; }
+      #portfolio-content, main { background: #fff !important; }
+      .port-hero { padding: 0 !important; }
+      .container { max-width: none !important; padding: 0 24px !important; }
+      .port-cover { page-break-after: avoid; page-break-inside: avoid; padding: 0 0 20px !important; margin-bottom: 20px !important; text-align: left !important; border-bottom: 3px solid #0e7490 !important; }
+      .port-cover h1 { color: #0c4a6e !important; font-size: 24px !important; font-weight: 800 !important; margin: 0 !important; }
+      .port-cover .sub { color: #64748b !important; font-size: 12px !important; }
+      .port-cover .date { color: #94a3b8 !important; font-size: 10px !important; }
+      .port-section { margin-bottom: 20px !important; page-break-inside: auto; }
+      .port-section .tag { color: #0e7490 !important; font-weight: 700 !important; page-break-after: avoid; }
+      .port-section h2 { color: #0c4a6e !important; border-color: #e2e8f0 !important; border-bottom-width: 1px !important; font-size: 14px !important; page-break-after: avoid; page-break-inside: avoid; }
+      .port-section > p { color: #475569 !important; font-size: 11px !important; line-height: 1.5 !important; page-break-inside: avoid; margin-bottom: 10px !important; }
+      .port-section > ul { color: #475569 !important; font-size: 11px !important; page-break-inside: avoid; margin-bottom: 12px !important; }
+      .port-section > ul li { page-break-inside: avoid; }
+      .port-card { border-color: #e2e8f0 !important; background: #fff !important; page-break-inside: avoid; break-inside: avoid; box-shadow: 0 1px 2px rgba(0,0,0,.04) !important; padding: 14px 18px !important; margin-bottom: 12px !important; }
+      .port-card h3 { color: #0f172a !important; page-break-after: avoid; font-size: 13px !important; margin-bottom: 6px !important; }
+      .port-card > p { color: #64748b !important; font-size: 11px !important; page-break-inside: avoid; margin-bottom: 10px !important; }
+      .port-pacotes { page-break-inside: avoid; break-inside: avoid; page-break-before: avoid; margin-top: 10px !important; gap: 10px !important; }
+      .port-pacote { border-color: #e2e8f0 !important; background: #f8fafc !important; overflow-wrap: break-word; page-break-inside: avoid; padding: 10px 14px !important; font-size: 11px !important; }
+      .port-pacote strong { color: #0e7490 !important; font-size: 9px !important; }
+      .port-pacote .valor { color: #0c4a6e !important; font-weight: 800 !important; font-size: 13px !important; }
+      .port-pacote .obs { color: #94a3b8 !important; font-size: 9px !important; }
+      .port-cover:last-of-type { page-break-before: avoid; border-top: 1px solid #e2e8f0 !important; padding-top: 16px !important; }
+      @page { margin: 16mm; size: A4; }
+    }
+  </style>
+</head>
+<body>
+<div class="grid-overlay"></div>
+<header>
+  <div class="container header-wrap">
+    <div class="brand">
+      <div class="logo-box"><img src="assets/logo-vulcan.png" alt="Vulcan Defense" /></div>
+      <div>
+        <h1>VULCAN DEFENSE</h1>
+        <p>Cyber Defense Operations</p>
+      </div>
+    </div>
+    <nav><a href="index.html">Home</a><a href="servicos.html">Serviços</a><a href="contato.html">Contato</a></nav>
+  </div>
+</header>
+
+<main>
+<section class="port-hero">
+  <div class="container" id="portfolio-content">
+    <div class="port-cover">
+      <h1>Contratação de Pacotes de Serviços</h1>
+      <p class="sub">Vulcan Defense — Consultoria em Segurança da Informação</p>
+      <p class="date">Documento gerado em março de 2026 · Valores indicativos em BRL</p>
+    </div>
+
+    <div class="port-menu-bar">
+      <div>
+        <div class="port-menu-label">Escolha o pacote</div>
+        <div class="port-sla-switch">
+          <button type="button" data-sla="48h" class="active" aria-pressed="true">Essentials <span class="sla-time">SLA 48h</span></button>
+          <button type="button" data-sla="6h" aria-pressed="false">Professional <span class="sla-time">SLA 6h</span></button>
+          <button type="button" data-sla="1h" aria-pressed="false">Enterprise <span class="sla-time">SLA 1h</span></button>
+        </div>
+      </div>
+      <div class="port-sla-divider" aria-hidden="true"></div>
+      <div class="port-suporte-24">Suporte 24/7 para todos os pacotes</div>
+    </div>
+
+    <nav class="port-nav-cats" aria-label="Navegação por categoria">
+      <a href="#operacao">Operação</a>
+      <a href="#defesa">Defesa</a>
+      <a href="#pentest">Pentest</a>
+      <a href="#monitoramento">Monitoramento</a>
+      <a href="#plataforma">Plataforma</a>
+      <a href="#conformidade">Conformidade</a>
+      <a href="#capacitacao">Capacitação</a>
+    </nav>
+
+    <div class="port-section" id="operacao">
+      <div class="tag">Operação & Plataforma</div>
+      <h2>Serviços operacionais</h2>
+      <div class="port-card">
+        <h3>Vulcan Watch (NOC) <a class="card-cta" href="contato.html?servico=watch">Solicitar proposta</a></h3>
+        <p>Monitoramento operacional contínuo para ambientes críticos, com foco em disponibilidade, performance e resposta rápida a falhas.</p>
+        <div class="port-pacotes">
+          <div class="port-pacote"><strong>25 a 50 ativos</strong><span class="valor">R$ 8.000 – R$ 18.000/mês</span><span class="obs">Monitoramento básico</span></div>
+          <div class="port-pacote"><strong>100 a 500 ativos</strong><span class="valor">R$ 22.000 – R$ 55.000/mês</span><span class="obs">Cobertura ampliada</span></div>
+          <div class="port-pacote"><strong>1000+ ativos</strong><span class="valor">R$ 75.000 – R$ 150.000/mês</span><span class="obs">Escala enterprise</span></div>
+        </div>
+      </div>
+      <div class="port-card">
+        <h3>Vulcan Shield (SOC) <a class="card-cta" href="contato.html?servico=shield">Solicitar proposta</a></h3>
+        <p>SOC orientado à ação, com correlação de eventos, investigação, priorização e suporte à resposta a incidentes.</p>
+        <div class="port-pacotes">
+          <div class="port-pacote"><strong>25 a 50 ativos</strong><span class="valor">R$ 12.000 – R$ 28.000/mês</span><span class="obs">SOC essencial</span></div>
+          <div class="port-pacote"><strong>100 a 500 ativos</strong><span class="valor">R$ 35.000 – R$ 85.000/mês</span><span class="obs">SOC completo</span></div>
+          <div class="port-pacote"><strong>1000+ ativos</strong><span class="valor">R$ 120.000 – R$ 250.000/mês</span><span class="obs">SOC dedicado</span></div>
+        </div>
+      </div>
+      <div class="port-card">
+        <h3>Vulcan Exposure <a class="card-cta" href="contato.html?servico=exposure">Solicitar proposta</a></h3>
+        <p>Gestão de vulnerabilidades, exposição externa e postura de segurança para reduzir riscos antes que virem incidentes.</p>
+        <div class="port-pacotes">
+          <div class="port-pacote"><strong>25 a 50 ativos</strong><span class="valor">R$ 6.000 – R$ 15.000/mês</span><span class="obs">VM básico</span></div>
+          <div class="port-pacote"><strong>100 a 500 ativos</strong><span class="valor">R$ 18.000 – R$ 45.000/mês</span><span class="obs">VM + posture</span></div>
+          <div class="port-pacote"><strong>1000+ ativos</strong><span class="valor">R$ 55.000 – R$ 120.000/mês</span><span class="obs">Gestão enterprise</span></div>
+        </div>
+      </div>
+      <div class="port-card">
+        <h3>Vulcan Response (IR) <a class="card-cta" href="contato.html?servico=response">Solicitar proposta</a></h3>
+        <p>Contenção, análise e apoio técnico em incidentes críticos, com visão tática e operacional.</p>
+        <div class="port-pacotes">
+          <div class="port-pacote"><strong>25 a 50 ativos</strong><span class="valor">R$ 5.000 – R$ 12.000</span><span class="obs">Retainer ou incidente</span></div>
+          <div class="port-pacote"><strong>100 a 500 ativos</strong><span class="valor">R$ 15.000 – R$ 40.000</span><span class="obs">Por evento ou retainer</span></div>
+          <div class="port-pacote"><strong>1000+ ativos</strong><span class="valor">R$ 50.000 – R$ 120.000</span><span class="obs">Resposta dedicada</span></div>
+        </div>
+      </div>
+      <div class="port-card">
+        <h3>Vulcan Platform <a class="card-cta" href="contato.html?servico=platform">Solicitar proposta</a></h3>
+        <p>Plataforma para centralizar eventos, telemetria, visibilidade operacional, correlação de segurança, priorização de risco e apoio à resposta. Multi-tenant, dashboards executivos e técnicos, integrações com ambientes híbridos.</p>
+        <div class="port-pacotes">
+          <div class="port-pacote"><strong>25 a 50 ativos</strong><span class="valor">R$ 10.000 – R$ 22.000/mês</span><span class="obs">Licenciamento + suporte</span></div>
+          <div class="port-pacote"><strong>100 a 500 ativos</strong><span class="valor">R$ 30.000 – R$ 70.000/mês</span><span class="obs">Escala médio porte</span></div>
+          <div class="port-pacote"><strong>1000+ ativos</strong><span class="valor">R$ 90.000 – R$ 200.000/mês</span><span class="obs">Deploy enterprise</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="port-section" id="defesa">
+      <div class="tag">Defesa & operação</div>
+      <h2>Cyber Defense e SOC <a class="card-cta" href="contato.html?servico=cyber-defense">Solicitar proposta</a></h2>
+      <p>Desenho e evolução de capacidades de detecção, resposta, threat intelligence e gestão de exposição. Engenharia de detecção, threat hunting, threat intelligence, orquestração e automação.</p>
+      <ul>
+        <li>Arquitetura de detecção e resposta (MDR/SIEM/SOAR)</li>
+        <li>Playbooks, priorização e métricas para gestão</li>
+        <li>Apoio a comitês e reporting executivo</li>
+        <li>Gestão contínua de vulnerabilidades</li>
+        <li>Monitoramento 24×7, inteligência de ameaças</li>
+        <li>Resposta a incidentes e análise de conformidade</li>
+      </ul>
+      <div class="port-pacotes">
+        <div class="port-pacote"><strong>25 a 50 ativos</strong><span class="valor">R$ 25.000 – R$ 55.000</span><span class="obs">Consultoria projeto</span></div>
+        <div class="port-pacote"><strong>100 a 500 ativos</strong><span class="valor">R$ 65.000 – R$ 150.000</span><span class="obs">Desenho + implementação</span></div>
+        <div class="port-pacote"><strong>1000+ ativos</strong><span class="valor">R$ 180.000 – R$ 400.000</span><span class="obs">Programa completo</span></div>
+      </div>
+    </div>
+
+    <div class="port-section" id="pentest">
+      <div class="tag">Validação ofensiva</div>
+      <h2>Pentest, Yellow Team e SecOps <a class="card-cta" href="pentest-yellow-team-secops-dast.html">Ver pacotes</a></h2>
+      <p>Testes ofensivos e exercícios para validar controles na prática. Pentest em aplicações, infraestrutura e cloud; Yellow Team para afinação de detecção; SecOps em pipeline (SAST, dependency checks, secret scanning); DAST para web apps e APIs.</p>
+      <ul>
+        <li>Pentest em aplicações, rede e cloud</li>
+        <li>Phishing, engenharia social e emulação</li>
+        <li>Integração com pipeline de correção e retestes</li>
+      </ul>
+      <div class="port-pacotes">
+        <div class="port-pacote"><strong>1 a 10 endpoints/escopo</strong><span class="valor">R$ 18.000 – R$ 45.000</span><span class="obs">Pentest aplicação/rede</span></div>
+        <div class="port-pacote"><strong>10 a 20 endpoints/escopo</strong><span class="valor">R$ 55.000 – R$ 120.000</span><span class="obs">Escopo ampliado + retestes</span></div>
+        <div class="port-pacote"><strong>100+ endpoints/escopo</strong><span class="valor">R$ 140.000 – R$ 350.000</span><span class="obs">Programa contínuo</span></div>
+      </div>
+    </div>
+
+    <div class="port-section" id="monitoramento">
+      <div class="tag">Monitoramento</div>
+      <h2>Endpoint Protection e SIEM <a class="card-cta" href="contato.html?servico=endpoint-siem">Solicitar proposta</a></h2>
+      <p>Consultoria para seleção, implantação e afinação de EDR/XDR e SIEM. Coleta de eventos de endpoint, identidade e rede; correlação de IOC e comportamento; resposta automatizada; relatórios executivos.</p>
+      <ul>
+        <li>Requisitos de telemetria e casos de uso</li>
+        <li>Regras, correlação e redução de ruído</li>
+        <li>Integração com SOC interno ou terceirizado</li>
+      </ul>
+      <div class="port-pacotes">
+        <div class="port-pacote"><strong>25 a 50 ativos</strong><span class="valor">R$ 15.000 – R$ 35.000</span><span class="obs">Consultoria + POC</span></div>
+        <div class="port-pacote"><strong>100 a 500 ativos</strong><span class="valor">R$ 45.000 – R$ 95.000</span><span class="obs">Implementação completa</span></div>
+        <div class="port-pacote"><strong>1000+ ativos</strong><span class="valor">R$ 120.000 – R$ 280.000</span><span class="obs">Arquitetura enterprise</span></div>
+      </div>
+    </div>
+
+    <div class="port-section" id="plataforma">
+      <div class="tag">Plataforma</div>
+      <h2>Software Vulcan Platform <a class="card-cta" href="contato.html?servico=platform">Solicitar proposta</a></h2>
+      <p>Plataforma para consolidar telemetria, eventos de segurança e ação coordenada em um único cockpit para NOC, SOC e gestores. Ingestão multi-fonte, correlação por risco, automação com playbooks. Vulcan Agent: FIM, coleta de logs, detecção de malware, SCA, inventário, resposta ativa, containers, cloud (AWS/Azure/GCP).</p>
+      <ul>
+        <li>Planejamento de rollout e papéis</li>
+        <li>Integração com fontes e ferramentas existentes</li>
+        <li>Treinamento e handover para o time cliente</li>
+      </ul>
+      <div class="port-pacotes">
+        <div class="port-pacote"><strong>25 a 50 ativos</strong><span class="valor">R$ 12.000 – R$ 28.000</span><span class="obs">Setup + treinamento</span></div>
+        <div class="port-pacote"><strong>100 a 500 ativos</strong><span class="valor">R$ 38.000 – R$ 85.000</span><span class="obs">Rollout + integrações</span></div>
+        <div class="port-pacote"><strong>1000+ ativos</strong><span class="valor">R$ 100.000 – R$ 220.000</span><span class="obs">Projeto enterprise</span></div>
+      </div>
+    </div>
+
+    <div class="port-section" id="conformidade">
+      <div class="tag">Governança & IA</div>
+      <h2>Compliance de IA e modelos <a class="card-cta" href="contato.html?servico=compliance-ia">Solicitar proposta</a></h2>
+      <p>Políticas, processos de aprovação e auditorias para uso seguro de IA generativa e modelos preditivos. Política de uso, governança e ownership, controles técnicos, auditoria periódica.</p>
+      <ul>
+        <li>Inventário e classificação de casos de uso</li>
+        <li>Controles, documentação e trilhas de auditoria</li>
+        <li>Interface com DPO e áreas jurídicas</li>
+      </ul>
+      <div class="port-pacotes">
+        <div class="port-pacote"><strong>25 a 50 ativos</strong><span class="valor">R$ 20.000 – R$ 48.000</span><span class="obs">Política + governança</span></div>
+        <div class="port-pacote"><strong>100 a 500 ativos</strong><span class="valor">R$ 55.000 – R$ 130.000</span><span class="obs">Implementação completa</span></div>
+        <div class="port-pacote"><strong>1000+ ativos</strong><span class="valor">R$ 160.000 – R$ 350.000</span><span class="obs">Programa multi-área</span></div>
+      </div>
+    </div>
+
+    <div class="port-section">
+      <div class="tag">Conformidade</div>
+      <h2>Checklist SI (ISO/LGPD/PCI)</h2>
+      <p>Checklist online de conformidade para avaliar aderência aos frameworks ISO 27001, LGPD, PCI DSS, SOC 2, DevSecOps. Auto avaliação com exportação de relatório.</p>
+      <div class="port-pacotes">
+        <div class="port-pacote"><strong>25 a 50 ativos</strong><span class="valor">Sem custo</span><span class="obs">Auto avaliação online</span></div>
+        <div class="port-pacote"><strong>100 a 500 ativos</strong><span class="valor">R$ 8.000 – R$ 22.000</span><span class="obs">Workshop + acompanhamento</span></div>
+        <div class="port-pacote"><strong>1000+ ativos</strong><span class="valor">R$ 25.000 – R$ 65.000</span><span class="obs">Assessoria dedicada</span></div>
+      </div>
+    </div>
+
+    <div class="port-section">
+      <div class="tag">Pessoas & cultura</div>
+      <h2>Security Champions</h2>
+      <p>Programa para formar multiplicadores de segurança em times de desenvolvimento, produto, dados e operações. Diagnóstico, capacitação, operação assistida e escala.</p>
+      <ul>
+        <li>Desenho do programa e perfil de champions</li>
+        <li>Conteúdo, rituais e canais de engajamento</li>
+        <li>Indicadores para patrocinadores executivos</li>
+      </ul>
+      <div class="port-pacotes">
+        <div class="port-pacote"><strong>25 a 50 ativos</strong><span class="valor">R$ 22.000 – R$ 52.000</span><span class="obs">Fase 1-2 (até 20 champions)</span></div>
+        <div class="port-pacote"><strong>100 a 500 ativos</strong><span class="valor">R$ 65.000 – R$ 150.000</span><span class="obs">Programa 6-12 meses</span></div>
+        <div class="port-pacote"><strong>1000+ ativos</strong><span class="valor">R$ 180.000 – R$ 400.000</span><span class="obs">Escala global</span></div>
+      </div>
+    </div>
+
+    <div class="port-section" id="capacitacao">
+      <div class="tag">Capacitação</div>
+      <h2>Treinamentos OWASP e MITRE</h2>
+      <p>Trilhas práticas para desenvolvedores, arquitetos e analistas. OWASP Top 10, MITRE ATT&amp;CK, NIST CSF, ISO 27001, LGPD.</p>
+      <ul>
+        <li>OWASP (ASVS, Top 10, SAMM)</li>
+        <li>MITRE ATT&amp;CK e detecção</li>
+        <li>Exercícios práticos alinhados ao stack</li>
+      </ul>
+      <div class="port-pacotes">
+        <div class="port-pacote"><strong>25 a 50 ativos</strong><span class="valor">R$ 5.000 – R$ 14.000</span><span class="obs">Turma até 15 pessoas</span></div>
+        <div class="port-pacote"><strong>100 a 500 ativos</strong><span class="valor">R$ 18.000 – R$ 45.000</span><span class="obs">Múltiplas turmas/modulos</span></div>
+        <div class="port-pacote"><strong>1000+ ativos</strong><span class="valor">R$ 55.000 – R$ 130.000</span><span class="obs">Programa corporativo</span></div>
+      </div>
+    </div>
+
+    <div class="port-section">
+      <div class="tag">Imersão</div>
+      <h2>Hackathon defensivo</h2>
+      <p>Curso intensivo com foco em defesa: cenários de SOC, detecção, contenção e trabalho em equipe. Laboratórios guiados, desafios multiestágio, certificado e comunidade de alumni.</p>
+      <div class="port-pacotes">
+        <div class="port-pacote"><strong>25 a 50 ativos</strong><span class="valor">R$ 8.000 – R$ 18.000</span><span class="obs">Turma fechada (até 12)</span></div>
+        <div class="port-pacote"><strong>100 a 500 ativos</strong><span class="valor">R$ 25.000 – R$ 55.000</span><span class="obs">Múltiplas turmas</span></div>
+        <div class="port-pacote"><strong>1000+ ativos</strong><span class="valor">R$ 70.000 – R$ 160.000</span><span class="obs">Evento corporativo</span></div>
+      </div>
+    </div>
+
+    <div class="port-section">
+      <div class="tag">Cobertura técnica</div>
+      <h2>Domínios e tecnologias</h2>
+      <p>Consultoria em rede, cloud, endpoint, IAM, AppSec, risco e validação. Network Security, Cloud Security, Endpoint Security, Identity and Access, Application Security, Vulnerability Management.</p>
+      <ul>
+        <li>Escopo por domínio (AWS, Azure, GCP, on-prem)</li>
+        <li>Revisões, hardening e arquitetura segura</li>
+        <li>Apoio a terceiros e fornecedores críticos</li>
+      </ul>
+      <div class="port-pacotes">
+        <div class="port-pacote"><strong>25 a 50 ativos</strong><span class="valor">R$ 12.000 – R$ 30.000</span><span class="obs">Consultoria pontual</span></div>
+        <div class="port-pacote"><strong>100 a 500 ativos</strong><span class="valor">R$ 35.000 – R$ 90.000</span><span class="obs">Escopo multi-domínio</span></div>
+        <div class="port-pacote"><strong>1000+ ativos</strong><span class="valor">R$ 100.000 – R$ 250.000</span><span class="obs">Retainer ou projeto</span></div>
+      </div>
+    </div>
+
+    <div class="port-section">
+      <div class="tag">Outros</div>
+      <h2>Gestão TMS e obras (FLSys LeanWorks)</h2>
+      <p>Sistema de gestão para obras, TMS e facilities: obras em tempo real, programação, financeiro integrado, almoxarifado, relatórios e auditoria.</p>
+      <div class="port-pacotes">
+        <div class="port-pacote"><strong>25 a 50 usuários</strong><span class="valor">R$ 6.000 – R$ 18.000/mês</span><span class="obs">Implementação básica</span></div>
+        <div class="port-pacote"><strong>100 a 500 usuários</strong><span class="valor">R$ 22.000 – R$ 55.000/mês</span><span class="obs">Múltiplas obras</span></div>
+        <div class="port-pacote"><strong>1000+ usuários</strong><span class="valor">R$ 65.000 – R$ 140.000/mês</span><span class="obs">Portfólio enterprise</span></div>
+      </div>
+    </div>
+
+    <div class="port-cover" style="border-bottom:none;padding-top:32px;">
+      <p class="sub">contato@vulcandefense.com.br | vulcandefense.com.br</p>
+    </div>
+  </div>
+
+  <div class="container port-btn-wrap">
+    <button type="button" class="btn btn-primary" id="btn-pdf">Baixar PDF</button>
+  </div>
+</section>
+</main>
+
+<footer><div class="container">&copy; 2026 Vulcan Defense. Todos os direitos reservados.</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  var btn = document.getElementById("btn-pdf");
+  if (btn) {
+    btn.addEventListener("click", function(){
+      if (typeof html2pdf === "undefined") {
+        window.print();
+        return;
+      }
+      var el = document.getElementById("portfolio-content");
+      var overlay = document.querySelector(".grid-overlay");
+      if (overlay) overlay.style.visibility = "hidden";
+      document.body.classList.add("pdf-export");
+      btn.disabled = true;
+      btn.textContent = "Gerando PDF...";
+      el.scrollIntoView({ behavior: "instant", block: "start" });
+      var opt = {
+        margin: 8,
+        filename: "Vulcan-Defense-Portfolio-Servicos.pdf",
+        image: { type: "jpeg", quality: 0.92 },
+        html2canvas: { scale: 1, useCORS: true, letterRendering: true, backgroundColor: "#ffffff" },
+        jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }
+      };
+      setTimeout(function() {
+        html2pdf().set(opt).from(el).save()
+          .then(function() {
+            document.body.classList.remove("pdf-export");
+            btn.disabled = false;
+            btn.textContent = "Baixar PDF";
+            if (overlay) overlay.style.visibility = "";
+          })
+          .catch(function() {
+            document.body.classList.remove("pdf-export");
+            btn.disabled = false;
+            btn.textContent = "Baixar PDF";
+            if (overlay) overlay.style.visibility = "";
+            window.print();
+          });
+      }, 400);
+    });
+  }
+
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    var sections = document.querySelectorAll(".port-section");
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add("port-seen"); }
+      });
+    }, { threshold: 0.08, rootMargin: "0px 0px -40px 0px" });
+    sections.forEach(function(s) { io.observe(s); });
+  } else {
+    document.querySelectorAll(".port-section").forEach(function(s) { s.classList.add("port-seen"); });
+  }
+
+  var slaBtns = document.querySelectorAll(".port-sla-switch button");
+  var valorEls = document.querySelectorAll(".port-pacote .valor");
+  var mult = { "48h": 1, "6h": 1.25, "1h": 1.6 };
+  var baseValores = [];
+
+  function fmt(n) {
+    n = Math.round(n);
+    if (n >= 1000) return "R$ " + Math.floor(n/1000) + "." + String(n % 1000).padStart(3,"0");
+    return "R$ " + n;
+  }
+  function parseVal(t) {
+    var m = t.match(/R\$\s*([\d.]+)\s*[–-]\s*R\$\s*([\d.]+)(\/mês)?/);
+    if (m) return { lo: parseFloat(m[1].replace(/\./g,"")), hi: parseFloat(m[2].replace(/\./g,"")), sufix: m[3] || "" };
+    var s = t.match(/R\$\s*([\d.]+)(\/mês)?/);
+    if (s) return { lo: parseFloat(s[1].replace(/\./g,"")), hi: null, sufix: s[2] || "" };
+    return null;
+  }
+  valorEls.forEach(function(el) {
+    var txt = el.textContent;
+    if (txt.indexOf("Sem custo") >= 0) baseValores.push({ fixed: txt }); else baseValores.push(parseVal(txt) || { fixed: txt });
+  });
+  function applySla(sla) {
+    var k = mult[sla];
+    valorEls.forEach(function(el, i) {
+      var b = baseValores[i];
+      if (b.fixed) { el.textContent = b.fixed; return; }
+      if (b.hi !== null) el.textContent = fmt(b.lo * k) + " – " + fmt(b.hi * k) + (b.sufix || "");
+      else el.textContent = fmt(b.lo * k) + (b.sufix || "");
+    });
+    slaBtns.forEach(function(b) { b.classList.toggle("active", b.getAttribute("data-sla") === sla); b.setAttribute("aria-pressed", b.getAttribute("data-sla") === sla); });
+  }
+
+  slaBtns.forEach(function(b) {
+    b.addEventListener("click", function() { applySla(b.getAttribute("data-sla")); });
+  });
+  applySla("48h");
+});
+</script>
+</body>
+</html>
