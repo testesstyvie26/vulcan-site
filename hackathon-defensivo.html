@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <link rel="icon" href="assets/favicon.ico">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; object-src 'none'; base-uri 'self'; frame-ancestors 'none';">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://formspree.io; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; object-src 'none'; base-uri 'self'; frame-ancestors 'none';">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
   <meta charset="UTF-8" />
@@ -139,7 +139,9 @@
         <div class="hk-form-card">
           <h2>Inscrição — Hackathon defensivo</h2>
           <p class="hk-form-hint">Campos obrigatórios para análise de perfil e encaixe na turma.</p>
-          <form action="mailto:contato@vulcandefense.com.br?subject=Inscri%C3%A7%C3%A3o%20Hackathon%20Defensivo" method="get">
+          <form action="https://formspree.io/f/mwvrddla" method="POST">
+            <input type="hidden" name="_subject" value="Inscrição Hackathon Defensivo" />
+            <input type="hidden" name="_next" value="https://vulcandefense.com.br/hackathon-defensivo.html?enviado=1" />
             <label class="visually-hidden" for="hk-nome">Nome completo</label>
             <input class="hk-field" id="hk-nome" name="nome" type="text" placeholder="Nome completo" required autocomplete="name" />
             <label class="visually-hidden" for="hk-email">E-mail corporativo</label>
@@ -170,5 +172,8 @@
 </main>
 
 <footer><div class="container">&copy; 2026 Vulcan Defense. Todos os direitos reservados.</div></footer>
+<script>
+(function(){ var p=new URLSearchParams(location.search); if(p.get("enviado")==="1"){ history.replaceState({},"",location.pathname); var c=document.querySelector(".hk-form-card"); if(c){ var m=document.createElement("p"); m.className="form-msg success"; m.textContent="Inscrição enviada. Retornaremos em breve."; m.style.marginTop="14px"; c.insertBefore(m,c.firstChild.nextSibling); } } })();
+</script>
 </body>
 </html>
