@@ -672,11 +672,66 @@
       <div class="section-intro">
         <div class="section-title-small">LGPD e transparência</div>
         <h2 class="section-title" id="privacy-dpo-heading">Incidentes de privacidade e o papel do DPO</h2>
-        <p class="section-text">Na LGPD, incidentes de segurança que possam acarretar <strong>risco ou dano relevante</strong> a titulares podem exigir <strong>comunicação à ANPD</strong> e outras medidas (art. 48 e normas complementares). O <strong>DPO</strong> costuma ser o elo entre <strong>privacidade, jurídico e resposta a incidentes</strong> — sem substituir o encarregado legal da segurança da informação, mas articulando evidências e prazos.</p>
+        <p class="section-text">Na LGPD, incidentes confirmados que envolvam dados pessoais e possam acarretar <strong>risco ou dano relevante</strong> devem ser avaliados para <strong>comunicação à ANPD e aos titulares</strong>. A obrigação é do controlador; o <strong>DPO/Encarregado</strong> atua como canal e articula privacidade, jurídico, segurança, evidências e prazos.</p>
       </div>
+
+      <div class="anpd-command-grid" aria-label="Resumo regulatório DPO e ANPD">
+        <div class="anpd-deadlines glass-box">
+          <div class="anpd-panel-label">Resumo regulatório · Resolução CD/ANPD nº 15/2024</div>
+          <div class="anpd-kpi-grid">
+            <article>
+              <span class="anpd-kpi-value">3</span>
+              <strong>dias úteis</strong>
+              <p>Prazo para o controlador comunicar à ANPD e aos titulares, quando aplicável.</p>
+            </article>
+            <article>
+              <span class="anpd-kpi-value">20</span>
+              <strong>dias úteis</strong>
+              <p>Prazo para complementar, de forma fundamentada, uma comunicação preliminar.</p>
+            </article>
+            <article>
+              <span class="anpd-kpi-value">5</span>
+              <strong>anos</strong>
+              <p>Período mínimo de manutenção do registro de incidentes com dados pessoais.</p>
+            </article>
+          </div>
+          <p class="anpd-reg-note">Prazos sujeitos a legislação específica e à avaliação do caso. A comunicação incompleta pode ser enviada em etapas, com justificativa.</p>
+        </div>
+
+        <aside class="anpd-dpo-card glass-box">
+          <div class="anpd-panel-label">DPO Vulcan Defense</div>
+          <h3>Canal de privacidade e dados</h3>
+          <p>Recebe solicitações dos titulares, presta esclarecimentos e apoia a governança e a resposta a incidentes.</p>
+          <a class="anpd-dpo-email" href="mailto:dpo@vulcandefense.com.br">dpo@vulcandefense.com.br</a>
+          <div class="anpd-role-note"><strong>Responsabilidade:</strong> a decisão e a obrigação de comunicar permanecem com o controlador.</div>
+        </aside>
+      </div>
+
+      <div class="anpd-decision glass-box">
+        <div class="anpd-decision-title">
+          <div><span>Critérios cumulativos</span><h3>Quando avaliar a comunicação</h3></div>
+          <a href="https://www.gov.br/anpd/pt-br/canais_atendimento/agente-de-tratamento/comunicado-de-incidente-de-seguranca-cis" target="_blank" rel="noopener noreferrer">Orientação oficial ANPD ↗</a>
+        </div>
+        <div class="anpd-decision-flow">
+          <div><span>01</span><strong>Ocorrência confirmada</strong><small>Evento adverso efetivamente identificado</small></div>
+          <i aria-hidden="true">+</i>
+          <div><span>02</span><strong>Dados pessoais</strong><small>Informações submetidas à LGPD envolvidas</small></div>
+          <i aria-hidden="true">+</i>
+          <div><span>03</span><strong>Risco ou dano relevante</strong><small>Impacto potencial aos direitos dos titulares</small></div>
+          <i aria-hidden="true">=</i>
+          <div class="is-result"><span>Ação</span><strong>Comunicar e mitigar</strong><small>ANPD, titulares e medidas de resposta</small></div>
+        </div>
+      </div>
+
       <div class="glass-box visal-privacy-panel" style="margin-bottom: 28px;">
-        <h3>Painel ANPD — incidentes comunicados (Power BI)</h3>
-        <p>Visualização <strong>oficial e interativa</strong> da ANPD, com os mesmos recortes do site (UF, setor, segmento, tipo de incidente, tipo de comunicação). Os gráficos e totais abaixo são os do <strong>Microsoft Power BI</strong> — fonte primária dos dados.</p>
+        <div class="anpd-panel-heading">
+          <div><span class="anpd-live-dot"></span><h3>Painel ANPD — incidentes comunicados</h3></div>
+          <a href="https://app.powerbi.com/view?r=eyJrIjoiMzkyMGE0ZGMtYmYwNC00MThjLTkxMWMtZTI2NDI4MWI2YThiIiwidCI6IjVhYmEwNGExLWY4NjMtNGI1Ni04MTdkLTQ0MjkxYzkwZDFiOCJ9" target="_blank" rel="noopener noreferrer">Abrir painel oficial ↗</a>
+        </div>
+        <p>Visualização <strong>oficial e interativa</strong> da ANPD. Use os filtros do painel para consultar dados por Unidade Federativa, setor, segmento de atividade, tipo de incidente e tipo de comunicação.</p>
+        <div class="anpd-data-tags" aria-label="Recortes disponíveis no painel">
+          <span>UF da ocorrência</span><span>Setor público ou privado</span><span>Segmento</span><span>Tipo de incidente</span><span>Comunicação preliminar, complementar ou completa</span>
+        </div>
         <div class="visal-pbi-embed-wrap">
           <iframe
             id="cis-pbi-iframe"
