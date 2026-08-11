@@ -682,6 +682,7 @@ nav .submenu a:hover,nav .submenu a.active{background:rgba(246,200,95,.09);color
 .submit-btn:disabled{opacity:.55;cursor:not-allowed}
 .form-note,.form-note a{color:#82919b}
 footer{padding:44px 0;color:#7f8c95;border-top:1px solid var(--line)}
+.site-linkedin{display:inline-flex;align-items:center;gap:6px;margin-left:16px;padding-left:16px;border-left:1px solid var(--line);color:var(--brand-strong);font-weight:750;text-decoration:none;transition:color .2s ease,opacity .2s ease}.site-linkedin:hover{color:#fff}.site-linkedin::after{content:"↗";font-size:11px}@media(max-width:560px){.site-linkedin{display:flex;width:max-content;margin:12px auto 0;padding:0;border-left:0}}
 .cookie-banner{padding:16px 24px;background:rgba(8,17,25,.98);border-color:var(--line-strong)}
 
 @media (max-width:1120px){

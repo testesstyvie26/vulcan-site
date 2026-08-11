@@ -101,4 +101,16 @@
     }, { rootMargin: "0px 0px -8%", threshold: 0.04 });
     sections.forEach(function (section) { sectionObserver.observe(section); });
   }
+
+  var footerContainer = document.querySelector("footer .container");
+  if (footerContainer && !footerContainer.querySelector(".site-linkedin")) {
+    var linkedin = document.createElement("a");
+    linkedin.className = "site-linkedin";
+    linkedin.href = "https://www.linkedin.com/company/112516097/admin/dashboard/";
+    linkedin.target = "_blank";
+    linkedin.rel = "noopener noreferrer";
+    linkedin.setAttribute("aria-label", "LinkedIn da Vulcan Defense");
+    linkedin.textContent = "LinkedIn";
+    footerContainer.appendChild(linkedin);
+  }
 })();
