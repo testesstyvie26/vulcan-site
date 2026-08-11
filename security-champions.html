@@ -1,107 +1,142 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <link rel="icon" href="assets/favicon.ico">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://formspree.io; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; object-src 'none'; base-uri 'self'; frame-ancestors 'none';">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Security Champions | Vulcan Defense</title>
-<meta name="description" content="Programa Security Champions para formar multiplicadores de segurança nas áreas de negócio e tecnologia." />
-<link rel="stylesheet" href="styles.css" />
-<style>
-  .sc-hero{padding:74px 0 24px}
-  .sc-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px}
-  .timeline{display:grid;gap:10px;margin-top:16px}
-  .step{position:relative;padding:14px 14px 14px 46px;border:1px solid rgba(255,255,255,.1);border-radius:14px;background:rgba(255,255,255,.03)}
-  .step::before{content:"";position:absolute;left:16px;top:50%;width:16px;height:16px;border-radius:999px;background:#67e8f9;transform:translateY(-50%);box-shadow:0 0 16px rgba(103,232,249,.65)}
-  .step:not(:last-child)::after{content:"";position:absolute;left:23px;top:100%;height:10px;width:2px;background:linear-gradient(#67e8f9,transparent)}
-  .score-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
-  .score{border:1px solid rgba(255,255,255,.1);border-radius:14px;background:rgba(0,0,0,.24);padding:14px}
-  .score b{display:block;color:#67e8f9;font-size:28px}
-  .radial{min-height:280px;border-radius:18px;border:1px solid rgba(255,255,255,.1);background:radial-gradient(circle at center,rgba(103,232,249,.22),rgba(2,8,23,.92));display:grid;place-items:center;overflow:hidden}
-  .wheel{width:180px;height:180px;border-radius:999px;border:2px solid rgba(103,232,249,.55);position:relative;animation:pulse 2.4s ease-out infinite}
-  .wheel::before,.wheel::after{content:"";position:absolute;border-radius:999px;border:1px solid rgba(103,232,249,.35);inset:-16px}
-  .wheel::after{inset:-32px;opacity:.55}
-  @keyframes pulse{0%{transform:scale(.86);opacity:.9}100%{transform:scale(1.14);opacity:.2}}
-  @media (max-width:980px){.sc-grid{grid-template-columns:1fr}.score-grid{grid-template-columns:1fr}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="assets/favicon.ico" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://formspree.io; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; object-src 'none'; base-uri 'self'; frame-ancestors 'none';" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+  <meta name="theme-color" content="#071018" />
+  <title>Programa Security Champions | Vulcan Defense</title>
+  <meta name="description" content="Estruture um programa Security Champions completo: diagnóstico, seleção, trilhas práticas, rituais, métricas, reconhecimento e governança." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/security-champions.css" />
+  <script src="site.js" defer></script>
+  <script src="assets/security-champions.js" defer></script>
 </head>
-<body>
-<div class="grid-overlay"></div>
-<header>
-  <div class="container header-wrap">
-    <div class="brand">
-      <div class="logo-box"><img src="assets/logo-vulcan.png" alt="Vulcan Defense" /></div>
-      <div>
-        <h1>VULCAN DEFENSE</h1>
-        <p>Cyber Defense Operations</p>
-      </div>
+<body class="sc-page">
+  <div class="grid-overlay"></div>
+  <header>
+    <div class="container header-wrap">
+      <div class="brand"><div class="logo-box"><img src="assets/logo-vulcan.png" alt="Vulcan Defense" /></div><div><h1>VULCAN DEFENSE</h1><p>Cyber Defense Operations</p></div></div>
+      <nav>
+        <a href="index.html">Home</a><a href="quem-somos.html">Quem Somos</a><a href="relatorio-global.html">Relatório global</a>
+        <div class="nav-item has-submenu"><a href="servicos.html">Serviços</a><div class="submenu"><a href="pentest-yellow-team-secops-dast.html">Pentest e SecOps</a><a href="software-vulcan-platform.html">Software Vulcan Platform</a><a href="endpoint-protection-siem.html">Endpoint Protection e SIEM</a><a href="compliance-ia.html">Compliance de IA</a><a href="checklist-seguranca.html">Checklist SI (ISO/LGPD/PCI)</a><a href="security-champions.html" class="active">Security Champions</a><a href="treinamentos-owasp-mitre.html">Treinamentos OWASP e MITRE</a><a href="hackathon-defensivo.html">Hackathon defensivo</a><a href="gestao-tms-flsys-leanworks.html">Gestão TMS e obras</a></div></div>
+        <a href="tecnologias.html">Escopos de Atuação</a><a href="politica-privacidade.html">Política de Privacidade</a><a href="contato.html">Contato</a>
+      </nav>
     </div>
-   <nav><a href="index.html" class="active">Home</a><a href="quem-somos.html" class="">Quem Somos</a><a href="relatorio-global.html" class="">Relatório global</a><div class="nav-item has-submenu"><a href="servicos.html" class="">Serviços</a><div class="submenu"><a href="pentest-yellow-team-secops-dast.html" class="">Pentest e SecOps</a><a href="software-vulcan-platform.html" class="">Software Vulcan Platform</a><a href="endpoint-protection-siem.html" class="">Endpoint Protection e SIEM</a><a href="compliance-ia.html" class="">Compliance de IA</a><a href="checklist-seguranca.html" class="">Checklist SI (ISO/LGPD/PCI)</a><a href="security-champions.html" class="">Security Champions</a><a href="treinamentos-owasp-mitre.html" class="">Treinamentos OWASP e MITRE</a><a href="hackathon-defensivo.html" class="">Hackathon defensivo</a><a href="gestao-tms-flsys-leanworks.html" class="">Gestão TMS e obras</a></div></div><a href="tecnologias.html" class="">Escopos de Atuação</a><a href="politica-privacidade.html" class="">Política de Privacidade</a><a href="contato.html" class="">Contato</a></nav>
+  </header>
+
+  <main>
+    <section class="sc-hero">
+      <div class="container sc-hero-grid">
+        <div>
+          <div class="sc-eyebrow">Programa corporativo de segurança</div>
+          <h1 class="sc-title">Security <span>Champions</span></h1>
+          <p class="sc-lead">Forme uma rede de multiplicadores capaz de levar contexto de segurança para as decisões de produto, engenharia, dados e operações — com tempo protegido, trilhas práticas e apoio contínuo.</p>
+          <div class="sc-actions"><a class="btn btn-primary" href="contato.html">Desenhar meu programa</a><a class="btn btn-secondary" href="#roadmap">Explorar a jornada</a></div>
+          <div class="sc-proof" aria-label="Pilares do programa"><span>Segurança próxima dos times</span><span>Aprendizado aplicado</span><span>Governança sustentável</span></div>
+        </div>
+
+        <div class="sc-cockpit" aria-label="Explorador de perfis do programa">
+          <div class="sc-cockpit-head"><div class="sc-cockpit-title">Champion role explorer</div><div class="sc-status">Comunidade ativa</div></div>
+          <div class="sc-profile-tabs" aria-label="Selecionar perfil"><button class="sc-profile is-active" type="button" data-sc-profile="dev" aria-pressed="true">Engenharia</button><button class="sc-profile" type="button" data-sc-profile="product" aria-pressed="false">Produto</button><button class="sc-profile" type="button" data-sc-profile="data" aria-pressed="false">Dados</button><button class="sc-profile" type="button" data-sc-profile="ops" aria-pressed="false">Operações</button></div>
+          <div class="sc-mission"><span class="sc-mission-tag">Missão do perfil</span><h3 data-sc-mission-title>Levar segurança para decisões técnicas</h3><p data-sc-mission-text>Apoia o squad com modelagem de ameaças, padrões seguros, triagem inicial e critérios de segurança no ciclo de desenvolvimento.</p></div>
+          <div class="sc-profile-meta"><div class="sc-meta"><span>Dedicação</span><strong data-sc-time>2–4 h/mês</strong></div><div class="sc-meta"><span>Cadência</span><strong data-sc-cadence>Quinzenal</strong></div><div class="sc-meta"><span>Trilha</span><strong data-sc-track>AppSec + Threat Modeling</strong></div></div>
+          <div class="sc-cockpit-footer"><span>O papel complementa — não substitui — AppSec, GRC ou SOC.</span><strong>Apoio especializado</strong></div>
+        </div>
       </div>
-    </header>
-    
+    </section>
 
-<main>
-<section class="sc-hero">
-  <div class="container sc-grid">
-    <div class="glass-box">
-      <div class="section-title-small">Programa Corporativo</div>
-      <div class="section-title">Security Champions</div>
-      <div class="section-text">Formamos multiplicadores de segurança em times de desenvolvimento, produto, dados e operações para acelerar maturidade e reduzir risco desde a origem.</div>
-
-      <div class="timeline">
-        <div class="step"><strong>Fase 1 — Diagnóstico:</strong> mapeamento de times, riscos e nível atual de maturidade.</div>
-        <div class="step"><strong>Fase 2 — Capacitação:</strong> trilhas práticas por perfil com laboratórios e casos reais.</div>
-        <div class="step"><strong>Fase 3 — Operação assistida:</strong> rituais de segurança, suporte técnico e revisões contínuas.</div>
-        <div class="step"><strong>Fase 4 — Escala:</strong> comunidade interna, indicadores e governança do programa.</div>
+    <section class="sc-section sc-section-muted">
+      <div class="container">
+        <div class="sc-section-copy"><div class="section-title-small">Por que estruturar</div><h2 class="sc-section-title">Segurança deixa de ser uma fila externa e entra no fluxo de trabalho</h2><p class="sc-section-text">O programa cria uma ponte prática entre especialistas e times de entrega, mantendo responsabilidade clara e acelerando decisões seguras na origem.</p></div>
+        <div class="sc-outcome-grid" style="margin-top:38px;">
+          <article class="sc-outcome"><span class="sc-outcome-index">01</span><h3>Decisões antecipadas</h3><p>Requisitos, arquitetura e ameaças são discutidos antes que se tornem retrabalho ou bloqueio de release.</p></article>
+          <article class="sc-outcome"><span class="sc-outcome-index">02</span><h3>Mais autonomia</h3><p>Os times resolvem dúvidas recorrentes com padrões, checklists e apoio de alguém próximo do contexto.</p></article>
+          <article class="sc-outcome"><span class="sc-outcome-index">03</span><h3>Escala com qualidade</h3><p>Especialistas concentram energia nos riscos complexos enquanto a comunidade amplia a cobertura.</p></article>
+          <article class="sc-outcome"><span class="sc-outcome-index">04</span><h3>Cultura mensurável</h3><p>Participação, cobertura, aprendizagem e melhorias técnicas entram em um ciclo visível de evolução.</p></article>
+        </div>
       </div>
+    </section>
 
-      <div class="score-grid">
-        <div class="score"><span>Times cobertos</span><b>100</b></div>
-        <div class="score"><span>Champions ativos</span><b>10000+</b></div>
-        <div class="score"><span>Redução de gaps</span><b>99%</b></div>
+    <section class="sc-section" id="roadmap">
+      <div class="container">
+        <div class="sc-section-head"><div class="sc-section-copy"><div class="section-title-small">Roadmap de implantação</div><h2 class="sc-section-title">Da intenção ao programa operacional</h2><p class="sc-section-text">Explore um roteiro de referência para os primeiros 90 dias e a fase de escala. O desenho final é ajustado à maturidade, aos riscos e à capacidade dos times.</p></div><p class="sc-note">Roadmap de referência. Prazos e entregáveis variam conforme número de times, tecnologia e governança existente.</p></div>
+        <div class="sc-roadmap">
+          <div class="sc-stage-nav" role="tablist" aria-label="Fases do programa">
+            <button class="sc-stage-button is-active" type="button" data-sc-stage="diagnose" aria-selected="true"><span>Diagnosticar</span><small>Dias 1–20</small></button><button class="sc-stage-button" type="button" data-sc-stage="launch" aria-selected="false"><span>Lançar</span><small>Dias 21–45</small></button><button class="sc-stage-button" type="button" data-sc-stage="operate" aria-selected="false"><span>Operar</span><small>Dias 46–90</small></button><button class="sc-stage-button" type="button" data-sc-stage="scale" aria-selected="false"><span>Escalar</span><small>Após 90 dias</small></button>
+          </div>
+          <div>
+            <article class="sc-stage-panel is-active" data-sc-stage-panel="diagnose"><span class="sc-stage-label">Fase 01 · Diagnóstico</span><h3>Entender contexto, riscos e capacidade</h3><p>Mapeamos áreas, produtos, tecnologias, ritos e pontos de dor para definir onde o programa pode gerar valor primeiro.</p><div class="sc-deliverables"><div class="sc-deliverable"><strong>Mapa de públicos</strong><span>Times, líderes, especialistas e patrocinadores.</span></div><div class="sc-deliverable"><strong>Baseline de maturidade</strong><span>Práticas existentes, gaps e prioridades.</span></div><div class="sc-deliverable"><strong>Critérios de seleção</strong><span>Perfil, disponibilidade e influência positiva.</span></div><div class="sc-deliverable"><strong>Charter do programa</strong><span>Objetivos, escopo, papéis e limites.</span></div></div></article>
+            <article class="sc-stage-panel" data-sc-stage-panel="launch"><span class="sc-stage-label">Fase 02 · Lançamento</span><h3>Selecionar, preparar e criar identidade</h3><p>Conduzimos onboarding, alinhamento com gestores e uma primeira trilha prática conectada aos riscos prioritários.</p><div class="sc-deliverables"><div class="sc-deliverable"><strong>Onboarding dos Champions</strong><span>Missão, expectativas, apoio e canais.</span></div><div class="sc-deliverable"><strong>Trilha inicial</strong><span>Conteúdo por perfil com laboratório aplicado.</span></div><div class="sc-deliverable"><strong>Kit operacional</strong><span>Playbook, checklists, templates e contatos.</span></div><div class="sc-deliverable"><strong>Plano de comunicação</strong><span>Marca, mensagem e patrocínio visível.</span></div></div></article>
+            <article class="sc-stage-panel" data-sc-stage-panel="operate"><span class="sc-stage-label">Fase 03 · Operação assistida</span><h3>Transformar aprendizado em hábito</h3><p>Os Champions aplicam práticas nos ritos reais, com office hours, desafios, acompanhamento e feedback frequente.</p><div class="sc-deliverables"><div class="sc-deliverable"><strong>Office hours</strong><span>Apoio aberto para dúvidas e casos reais.</span></div><div class="sc-deliverable"><strong>Missões mensais</strong><span>Atividades pequenas com impacto observável.</span></div><div class="sc-deliverable"><strong>Comunidade de prática</strong><span>Troca de exemplos, padrões e aprendizados.</span></div><div class="sc-deliverable"><strong>Dashboard inicial</strong><span>Cobertura, adesão, ações e feedback.</span></div></div></article>
+            <article class="sc-stage-panel" data-sc-stage-panel="scale"><span class="sc-stage-label">Fase 04 · Escala sustentável</span><h3>Expandir sem perder contexto e qualidade</h3><p>Revisamos o modelo, formamos novos facilitadores e conectamos o programa à governança e às prioridades anuais.</p><div class="sc-deliverables"><div class="sc-deliverable"><strong>Modelo de níveis</strong><span>Fundamentos, praticante e liderança técnica.</span></div><div class="sc-deliverable"><strong>Train the trainer</strong><span>Champions experientes apoiam novas turmas.</span></div><div class="sc-deliverable"><strong>Reconhecimento</strong><span>Contribuições visíveis e valorizadas.</span></div><div class="sc-deliverable"><strong>Revisão trimestral</strong><span>Métricas, prioridades e backlog do programa.</span></div></div></article>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="glass-box radial">
-      <div class="wheel"></div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container grid grid-2">
-    <div class="glass-box">
-      <div class="section-title-small">Resultados esperados</div>
-      <div class="list-stack">
-        <div class="stack-item">Segurança incorporada aos ritos de squad (planning, refinement, release).</div>
-        <div class="stack-item">Melhor qualidade de requisitos e histórias com critérios de segurança.</div>
-        <div class="stack-item">Redução de retrabalho por detecção precoce de vulnerabilidades.</div>
-        <div class="stack-item">Maior autonomia técnica dos times com apoio do SOC/AppSec.</div>
+    <section class="sc-section sc-section-muted">
+      <div class="container">
+        <div class="sc-section-copy"><div class="section-title-small">Papéis e responsabilidades</div><h2 class="sc-section-title">Uma rede com responsabilidades explícitas</h2><p class="sc-section-text">O Champion atua como multiplicador e facilitador. A responsabilidade por risco, decisões formais e controles especializados continua com as funções adequadas.</p></div>
+        <div class="sc-role-grid" style="margin-top:38px;">
+          <article class="sc-role"><span class="sc-role-tag">Patrocínio</span><h3>Sponsor executivo</h3><p>Protege o espaço do programa e conecta a iniciativa a objetivos do negócio.</p><ul><li>Remove bloqueios organizacionais</li><li>Reforça tempo protegido</li><li>Acompanha resultados e evolução</li></ul></article>
+          <article class="sc-role"><span class="sc-role-tag">Orquestração</span><h3>Program Owner</h3><p>Coordena roadmap, conteúdo, comunidade, indicadores e comunicação.</p><ul><li>Mantém backlog e cadência</li><li>Conecta especialistas</li><li>Consolida feedback e métricas</li></ul></article>
+          <article class="sc-role"><span class="sc-role-tag">Multiplicação</span><h3>Security Champion</h3><p>Aplica práticas no contexto do time e aproxima dúvidas dos especialistas.</p><ul><li>Participa das trilhas e ritos</li><li>Facilita decisões seguras</li><li>Compartilha aprendizados e gaps</li></ul></article>
+          <article class="sc-role"><span class="sc-role-tag">Especialidade</span><h3>AppSec, GRC e SOC</h3><p>Oferecem padrões, suporte e decisão especializada para temas complexos.</p><ul><li>Mentoria e office hours</li><li>Conteúdo e padrões técnicos</li><li>Escalonamento e governança</li></ul></article>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="glass-box">
-      <div class="section-title-small">Governança do programa</div>
-      <div class="section-text">Definimos escopo, papéis, indicadores e cadência de acompanhamento para manter o programa sustentável e conectado aos objetivos do negócio.</div>
-      <div class="chips">
-        <span class="pill">Roadmap 90 dias</span>
-        <span class="pill">KPIs executivos</span>
-        <span class="pill">Comitê mensal</span>
-        <span class="pill">Playbook de champions</span>
+    <section class="sc-section">
+      <div class="container">
+        <div class="sc-section-copy"><div class="section-title-small">Academia prática</div><h2 class="sc-section-title">Trilhas que refletem o trabalho real</h2><p class="sc-section-text">Filtre por perfil. Cada trilha combina conteúdo curto, laboratório, missão aplicada e material de referência reutilizável.</p></div>
+        <div class="sc-filter-bar" aria-label="Filtrar trilhas"><button class="sc-filter is-active" type="button" data-sc-filter="all" aria-pressed="true">Todas</button><button class="sc-filter" type="button" data-sc-filter="dev" aria-pressed="false">Engenharia</button><button class="sc-filter" type="button" data-sc-filter="product" aria-pressed="false">Produto</button><button class="sc-filter" type="button" data-sc-filter="data" aria-pressed="false">Dados</button><button class="sc-filter" type="button" data-sc-filter="ops" aria-pressed="false">Operações</button></div>
+        <div class="sc-track-grid">
+          <article class="sc-track" data-sc-category="dev product"><span class="sc-track-level">Fundamentos</span><h3>Threat Modeling essencial</h3><p>Identifique ativos, ameaças, superfícies e decisões de mitigação antes da implementação.</p><div class="sc-track-meta"><span>Workshop</span><span>Laboratório</span><span>Template</span></div></article>
+          <article class="sc-track" data-sc-category="dev"><span class="sc-track-level">Engenharia</span><h3>Desenvolvimento seguro</h3><p>Práticas de autenticação, autorização, validação, segredos, dependências e revisão segura.</p><div class="sc-track-meta"><span>Hands-on</span><span>Code review</span><span>Checklist</span></div></article>
+          <article class="sc-track" data-sc-category="product"><span class="sc-track-level">Produto</span><h3>Requisitos e risco</h3><p>Transforme risco e abuso em critérios claros para discovery, histórias e decisões de prioridade.</p><div class="sc-track-meta"><span>Casos</span><span>Canvas</span><span>Missão</span></div></article>
+          <article class="sc-track" data-sc-category="data product"><span class="sc-track-level">Dados</span><h3>Proteção e privacidade</h3><p>Classificação, minimização, acesso, retenção e uso seguro de dados ao longo do ciclo.</p><div class="sc-track-meta"><span>Mapa de dados</span><span>Exercício</span><span>Guia</span></div></article>
+          <article class="sc-track" data-sc-category="ops dev"><span class="sc-track-level">Operações</span><h3>Cloud e containers</h3><p>Configuração segura, identidade, observabilidade e resposta em ambientes modernos.</p><div class="sc-track-meta"><span>Lab cloud</span><span>Hardening</span><span>Runbook</span></div></article>
+          <article class="sc-track" data-sc-category="ops product data dev"><span class="sc-track-level">Todos os perfis</span><h3>Resposta a incidentes</h3><p>Reconheça sinais, preserve evidência, acione os canais corretos e participe de tabletop.</p><div class="sc-track-meta"><span>Tabletop</span><span>Playbook</span><span>Simulação</span></div></article>
+        </div>
       </div>
-      <div class="btn-row" style="margin-top:22px;">
-        <a class="btn btn-primary" href="contato.html">Estruturar programa</a>
-        <a class="btn btn-secondary" href="servicos.html">Voltar para serviços</a>
-      </div>
-    </div>
-  </div>
-</section>
-</main>
+    </section>
 
-<footer><div class="container">&copy; 2026 Vulcan Defense. Todos os direitos reservados.</div></footer>
+    <section class="sc-section sc-section-muted">
+      <div class="container">
+        <div class="sc-section-copy"><div class="section-title-small">Experiência contínua</div><h2 class="sc-section-title">Aprender, aplicar, compartilhar e evoluir</h2><p class="sc-section-text">A comunidade precisa de ritmo previsível e carga compatível com o trabalho. O programa combina encontros leves com aplicação real.</p></div>
+        <div class="sc-rhythm" style="margin-top:38px;"><article class="sc-ritual"><h3>Aprender</h3><p>Microlearning, workshop ou laboratório conectado ao risco prioritário do período.</p></article><article class="sc-ritual"><h3>Aplicar</h3><p>Uma missão pequena no contexto do squad transforma conteúdo em comportamento.</p></article><article class="sc-ritual"><h3>Compartilhar</h3><p>Demo, office hour ou comunidade de prática distribui aprendizados e padrões.</p></article><article class="sc-ritual"><h3>Melhorar</h3><p>Feedback e métricas orientam a próxima trilha e as ações de suporte.</p></article></div>
+      </div>
+    </section>
+
+    <section class="sc-section">
+      <div class="container">
+        <div class="sc-section-head"><div class="sc-section-copy"><div class="section-title-small">Métricas do programa</div><h2 class="sc-section-title">Meça evolução, não apenas presença</h2><p class="sc-section-text">Alterne os indicadores para explorar uma simulação de evolução. O dashboard real é definido a partir dos objetivos e dos dados disponíveis.</p></div><p class="sc-note">Dados ilustrativos, sem promessa de resultado. Métricas devem ser interpretadas com contexto e combinadas a evidências qualitativas.</p></div>
+        <div class="sc-dashboard">
+          <article class="sc-chart-card"><div class="sc-chart-top"><div><div class="sc-chart-kicker">Evolução em 12 meses</div><h3 class="sc-chart-title">Adoção e impacto</h3></div><div class="sc-chart-controls" aria-label="Selecionar métrica"><button class="sc-control is-active" type="button" data-sc-metric="coverage">Cobertura</button><button class="sc-control" type="button" data-sc-metric="participation">Participação</button><button class="sc-control" type="button" data-sc-metric="remediation">Ações na origem</button></div></div><div class="sc-chart-shell"><canvas data-sc-chart role="img" aria-label="Evolução ilustrativa do programa"></canvas><div class="sc-tooltip" aria-hidden="true"></div></div></article>
+          <article class="sc-chart-card"><div class="sc-chart-top"><div><div class="sc-chart-kicker">Leitura consolidada</div><h3 class="sc-chart-title">Índice demonstrativo</h3></div></div><div class="sc-score"><div class="sc-ring" style="--score:72"><div class="sc-ring-content"><strong>72</strong><span>maturidade</span></div></div></div><div class="sc-score-list"><div class="sc-score-row"><span>Cobertura de áreas</span><strong>86%</strong></div><div class="sc-score-row"><span>Atividade da comunidade</span><strong>84%</strong></div><div class="sc-score-row"><span>Conclusão de missões</span><strong>79%</strong></div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="sc-section sc-section-muted">
+      <div class="container">
+        <div class="sc-section-copy"><div class="section-title-small">Sustentação</div><h2 class="sc-section-title">Reconhecimento e governança mantêm a comunidade viva</h2><p class="sc-section-text">Tempo protegido, visibilidade e apoio de especialistas são componentes operacionais — não acessórios.</p></div>
+        <div class="sc-recognition-grid" style="margin-top:38px;"><article class="sc-recognition"><span class="sc-recognition-num">01</span><h3>Reconhecimento significativo</h3><p>Badges, showcases e participação em eventos valorizam contribuição real sem transformar segurança em competição vazia.</p></article><article class="sc-recognition"><span class="sc-recognition-num">02</span><h3>Gestores alinhados</h3><p>Expectativas, dedicação e objetivos entram no planejamento para evitar trabalho invisível e sobrecarga.</p></article><article class="sc-recognition"><span class="sc-recognition-num">03</span><h3>Governança leve</h3><p>Comitê periódico revisa métricas, riscos, backlog, suporte necessário e expansão para novas áreas.</p></article></div>
+        <div class="sc-faq">
+          <details><summary>Quem deve ser Security Champion?</summary><p>Pessoas curiosas, colaborativas e influentes no fluxo do time. Não precisam começar como especialistas; precisam ter interesse, apoio da liderança e tempo protegido para aprender e aplicar.</p></details>
+          <details><summary>Quanto tempo o Champion precisa dedicar?</summary><p>O desenho depende do programa, mas a dedicação deve ser explícita e viável. Uma referência inicial comum é combinar algumas horas mensais para trilha, comunidade e aplicação no trabalho.</p></details>
+          <details><summary>O Champion passa a ser responsável pelo risco?</summary><p>Não. O Champion facilita práticas, identifica dúvidas e aproxima especialistas. Responsabilidades formais de risco, aprovação e resposta permanecem nas funções e lideranças definidas.</p></details>
+          <details><summary>Como evitar que o programa perca engajamento?</summary><p>Conecte atividades a problemas reais, reduza carga desnecessária, ofereça apoio rápido, reconheça contribuições e ajuste a cadência com base em feedback e evidências.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="sc-cta"><div class="container"><div class="sc-cta-card"><div><h2>Construa uma comunidade que leve segurança para onde as decisões acontecem.</h2><p>Conte quantos times, perfis e objetivos fazem parte do cenário. A Vulcan pode apoiar do diagnóstico à operação assistida.</p></div><a class="btn btn-primary" href="contato.html">Estruturar o programa</a></div></div></section>
+  </main>
+  <footer><div class="container">&copy; 2026 Vulcan Defense. Todos os direitos reservados.</div></footer>
 </body>
 </html>

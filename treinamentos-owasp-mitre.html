@@ -1,95 +1,109 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <link rel="icon" href="assets/favicon.ico">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://formspree.io; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; object-src 'none'; base-uri 'self'; frame-ancestors 'none';">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Treinamentos OWASP e MITRE | Vulcan Defense</title>
-<meta name="description" content="Treinamentos corporativos OWASP Top 10, MITRE ATT&amp;CK e frameworks de segurança para equipes técnicas e executivas." />
-<link rel="stylesheet" href="styles.css" />
-<style>
-  .tr-hero{padding:74px 0 24px}
-  .tr-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px}
-  .module-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}
-  .module{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);border-radius:14px;padding:14px}
-  .line-chart{height:260px;border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:14px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(0,0,0,.24));position:relative;overflow:hidden}
-  .line-grid{position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:100% 40px,52px 100%}
-  .line-svg{position:absolute;left:12px;right:12px;bottom:18px;height:130px}
-  .line-svg path{fill:none;stroke:#67e8f9;stroke-width:3;stroke-dasharray:360;stroke-dashoffset:360;animation:draw 2.2s ease forwards}
-  .line-svg path.two{stroke:#3b82f6;animation-delay:.25s}
-  .kpi{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
-  .kpi-item{border:1px solid rgba(255,255,255,.1);border-radius:14px;background:rgba(0,0,0,.24);padding:14px}
-  .kpi-item b{display:block;color:#67e8f9;font-size:26px}
-  @keyframes draw{to{stroke-dashoffset:0}}
-  @media (max-width:980px){.tr-grid{grid-template-columns:1fr}.module-grid,.kpi{grid-template-columns:1fr}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="assets/favicon.ico" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://formspree.io; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; object-src 'none'; base-uri 'self'; frame-ancestors 'none';" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+  <meta name="theme-color" content="#071018" />
+  <title>Treinamentos OWASP e MITRE | Vulcan Defense</title>
+  <meta name="description" content="Treinamentos práticos em OWASP, MITRE ATT&CK, desenvolvimento seguro, detecção, resposta e governança para equipes técnicas e lideranças." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/treinamentos-owasp-mitre.css" />
+  <script src="site.js" defer></script>
+  <script src="assets/treinamentos-owasp-mitre.js" defer></script>
 </head>
-<body>
-<div class="grid-overlay"></div>
-<header>
-  <div class="container header-wrap">
-    <div class="brand">
-      <div class="logo-box"><img src="assets/logo-vulcan.png" alt="Vulcan Defense" /></div>
-      <div>
-        <h1>VULCAN DEFENSE</h1>
-        <p>Cyber Defense Operations</p>
-      </div>
+<body class="tr-page">
+  <div class="grid-overlay"></div>
+  <header>
+    <div class="container header-wrap">
+      <div class="brand"><div class="logo-box"><img src="assets/logo-vulcan.png" alt="Vulcan Defense" /></div><div><h1>VULCAN DEFENSE</h1><p>Cyber Defense Operations</p></div></div>
+      <nav>
+        <a href="index.html">Home</a><a href="quem-somos.html">Quem Somos</a><a href="relatorio-global.html">Relatório global</a>
+        <div class="nav-item has-submenu"><a href="servicos.html">Serviços</a><div class="submenu"><a href="pentest-yellow-team-secops-dast.html">Pentest e SecOps</a><a href="software-vulcan-platform.html">Software Vulcan Platform</a><a href="endpoint-protection-siem.html">Endpoint Protection e SIEM</a><a href="compliance-ia.html">Compliance de IA</a><a href="checklist-seguranca.html">Checklist SI (ISO/LGPD/PCI)</a><a href="security-champions.html">Security Champions</a><a href="treinamentos-owasp-mitre.html" class="active">Treinamentos OWASP e MITRE</a><a href="hackathon-defensivo.html">Hackathon defensivo</a><a href="gestao-tms-flsys-leanworks.html">Gestão TMS e obras</a></div></div>
+        <a href="tecnologias.html">Escopos de Atuação</a><a href="politica-privacidade.html">Política de Privacidade</a><a href="contato.html">Contato</a>
+      </nav>
     </div>
-    <nav><a href="index.html" class="active">Home</a><a href="quem-somos.html" class="">Quem Somos</a><a href="relatorio-global.html" class="">Relatório global</a><div class="nav-item has-submenu"><a href="servicos.html" class="">Serviços</a><div class="submenu"><a href="pentest-yellow-team-secops-dast.html" class="">Pentest e SecOps</a><a href="software-vulcan-platform.html" class="">Software Vulcan Platform</a><a href="endpoint-protection-siem.html" class="">Endpoint Protection e SIEM</a><a href="compliance-ia.html" class="">Compliance de IA</a><a href="checklist-seguranca.html" class="">Checklist SI (ISO/LGPD/PCI)</a><a href="security-champions.html" class="">Security Champions</a><a href="treinamentos-owasp-mitre.html" class="">Treinamentos OWASP e MITRE</a><a href="hackathon-defensivo.html" class="">Hackathon defensivo</a><a href="gestao-tms-flsys-leanworks.html" class="">Gestão TMS e obras</a></div></div><a href="tecnologias.html" class="">Escopos de Atuação</a><a href="politica-privacidade.html" class="">Política de Privacidade</a><a href="contato.html" class="">Contato</a></nav>
-      </div>
-    </header>
-    
+  </header>
 
-<main>
-<section class="tr-hero">
-  <div class="container tr-grid">
-    <div class="glass-box">
-      <div class="section-title-small">Capacitação</div>
-      <div class="section-title">Treinamentos OWASP Top 10, MITRE e outros frameworks</div>
-      <div class="section-text">Trilhas práticas para equipes técnicas e lideranças com conteúdo aplicado ao contexto real da organização.</div>
+  <main>
+    <section class="tr-hero">
+      <div class="container tr-hero-grid">
+        <div>
+          <div class="tr-eyebrow">Capacitação aplicada à operação</div>
+          <h1 class="tr-title">Aprenda. Pratique. <span>Proteja melhor.</span></h1>
+          <p class="tr-lead">Treinamentos em OWASP, MITRE ATT&amp;CK e segurança corporativa desenhados para transformar conceitos em decisões, detecções, código e respostas mais seguras.</p>
+          <div class="tr-actions"><a class="btn btn-primary" href="contato.html">Planejar uma trilha</a><a class="btn btn-secondary" href="#trilhas">Explorar treinamentos</a></div>
+          <div class="tr-proof" aria-label="Características dos treinamentos"><span>Conteúdo por perfil</span><span>Laboratórios e simulações</span><span>Aplicação no contexto real</span></div>
+        </div>
 
-      <div class="module-grid">
-        <div class="module"><strong>OWASP Top 10</strong><br />Riscos de aplicação, exploração, mitigação e coding seguro.</div>
-        <div class="module"><strong>MITRE ATT&amp;CK</strong><br />Táticas, técnicas e mapeamento para detecção e resposta.</div>
-        <div class="module"><strong>NIST CSF / ISO 27001</strong><br />Governança, controles e maturidade de segurança.</div>
-        <div class="module"><strong>LGPD e privacidade</strong><br />Boas práticas no uso e proteção de dados.</div>
-      </div>
-
-      <div class="kpi">
-        <div class="kpi-item"><span>Colaboradores treinados</span><b>1.260</b></div>
-        <div class="kpi-item"><span>Turmas concluídas</span><b>48</b></div>
-        <div class="kpi-item"><span>Score médio</span><b>9.1</b></div>
-      </div>
-    </div>
-
-    <div class="glass-box">
-      <div class="section-title-small">Evolução executiva</div>
-      <div class="line-chart">
-        <div class="line-grid"></div>
-        <div class="line-svg">
-          <svg viewBox="0 0 600 150" preserveAspectRatio="none" width="100%" height="100%">
-            <path d="M0,125 C70,95 120,105 190,78 C260,52 320,78 390,54 C460,30 525,52 600,24"></path>
-            <path class="two" d="M0,132 C80,114 145,120 220,95 C290,72 345,86 430,70 C500,56 550,68 600,58"></path>
-          </svg>
+        <div class="tr-lab" aria-label="Explorador de experiências de aprendizagem">
+          <div class="tr-lab-head"><div class="tr-lab-title">Learning experience lab</div><div class="tr-status">Cenário ativo</div></div>
+          <div class="tr-audience-tabs" aria-label="Selecionar público"><button class="tr-audience is-active" type="button" data-tr-audience="dev" aria-pressed="true">Dev / AppSec</button><button class="tr-audience" type="button" data-tr-audience="soc" aria-pressed="false">SOC</button><button class="tr-audience" type="button" data-tr-audience="grc" aria-pressed="false">GRC</button><button class="tr-audience" type="button" data-tr-audience="leaders" aria-pressed="false">Liderança</button></div>
+          <div class="tr-lab-scenario"><span class="tr-lab-tag">Experiência recomendada</span><h3 data-tr-lab-title>Explore uma falha antes de corrigi-la</h3><p data-tr-lab-text>O laboratório conecta exploração segura, causa raiz, correção e teste de regressão para consolidar o aprendizado.</p></div>
+          <div class="tr-lab-steps"><div class="tr-lab-step" data-tr-step><span>1</span><strong>Reconhecer</strong><em>Identificar o risco</em></div><div class="tr-lab-step" data-tr-step><span>2</span><strong>Explorar</strong><em>Observar o impacto</em></div><div class="tr-lab-step" data-tr-step><span>3</span><strong>Corrigir</strong><em>Aplicar o padrão seguro</em></div></div>
+          <div class="tr-lab-footer"><span>Formato e profundidade ajustados ao público.</span><strong data-tr-lab-footer>OWASP + Secure Coding</strong></div>
         </div>
       </div>
-      <div class="list-stack" style="margin-top:14px;">
-        <div class="stack-item">Workshops executivos com risco, impacto e priorizacao.</div>
-        <div class="stack-item">Labs tecnicos por papel: dev, appsec, SOC, GRC e gestores.</div>
-        <div class="stack-item">Simulacoes com cenarios reais para fixacao do aprendizado.</div>
-      </div>
-      <div class="btn-row" style="margin-top:20px;">
-        <a class="btn btn-primary" href="contato.html">Planejar treinamento</a>
-        <a class="btn btn-secondary" href="servicos.html">Ver portfolio completo</a>
-      </div>
-    </div>
-  </div>
-</section>
-</main>
+    </section>
 
-<footer><div class="container">&copy; 2026 Vulcan Defense. Todos os direitos reservados.</div></footer>
+    <section class="tr-section tr-muted">
+      <div class="container">
+        <div class="tr-section-copy"><div class="section-title-small">Aprendizagem orientada a resultado</div><h2 class="tr-section-title">Menos palestra. Mais contexto, prática e retenção.</h2><p class="tr-section-text">A trilha combina linguagem adequada ao público, exemplos próximos da realidade e atividades que conectam o conteúdo aos processos da organização.</p></div>
+        <div class="tr-outcomes" style="margin-top:38px;"><article class="tr-outcome"><span class="tr-outcome-index">01</span><h3>Contexto antes da técnica</h3><p>O participante entende por que o risco importa antes de entrar em ferramenta, controle ou implementação.</p></article><article class="tr-outcome"><span class="tr-outcome-index">02</span><h3>Prática deliberada</h3><p>Laboratórios, exercícios e decisões guiadas convertem conteúdo em experiência observável.</p></article><article class="tr-outcome"><span class="tr-outcome-index">03</span><h3>Transferência para o trabalho</h3><p>Checklists, templates e missões ajudam a aplicar a aprendizagem após o encontro.</p></article><article class="tr-outcome"><span class="tr-outcome-index">04</span><h3>Evolução acompanhada</h3><p>Diagnóstico, feedback e checkpoints medem compreensão e adoção sem depender apenas de presença.</p></article></div>
+      </div>
+    </section>
+
+    <section class="tr-section" id="trilhas">
+      <div class="container">
+        <div class="tr-section-copy"><div class="section-title-small">Catálogo modular</div><h2 class="tr-section-title">Trilhas por função e desafio</h2><p class="tr-section-text">Filtre pelo público. Os módulos podem formar workshops independentes, bootcamps ou jornadas contínuas combinadas.</p></div>
+        <div class="tr-filter-bar" aria-label="Filtrar treinamentos"><button class="tr-filter is-active" type="button" data-tr-filter="all" aria-pressed="true">Todos</button><button class="tr-filter" type="button" data-tr-filter="dev" aria-pressed="false">Dev / AppSec</button><button class="tr-filter" type="button" data-tr-filter="soc" aria-pressed="false">SOC</button><button class="tr-filter" type="button" data-tr-filter="grc" aria-pressed="false">GRC</button><button class="tr-filter" type="button" data-tr-filter="leaders" aria-pressed="false">Liderança</button></div>
+        <div class="tr-track-grid">
+          <article class="tr-track" data-tr-category="dev"><span class="tr-track-tag">OWASP</span><h3>OWASP Top 10 na prática</h3><p>Riscos recorrentes em aplicações web conectados a exploração controlada, causa raiz e mitigação.</p><ul class="tr-track-list"><li>Demonstrações seguras e laboratórios</li><li>Padrões de correção e prevenção</li><li>Checklist para revisão técnica</li></ul></article>
+          <article class="tr-track" data-tr-category="dev"><span class="tr-track-tag">OWASP</span><h3>APIs e requisitos verificáveis</h3><p>Autorização, autenticação, exposição de dados, abuso de fluxo e requisitos de segurança testáveis.</p><ul class="tr-track-list"><li>Cenários de API Security</li><li>Referência a controles verificáveis</li><li>Testes e critérios de aceite</li></ul></article>
+          <article class="tr-track" data-tr-category="soc"><span class="tr-track-tag">MITRE ATT&amp;CK</span><h3>Mapeamento adversário</h3><p>Use táticas e técnicas para organizar hipóteses, cobertura, lacunas e prioridades de detecção.</p><ul class="tr-track-list"><li>Leitura de comportamento adversário</li><li>Mapeamento de fontes e regras</li><li>Exercício de cobertura</li></ul></article>
+          <article class="tr-track" data-tr-category="soc"><span class="tr-track-tag">Blue Team</span><h3>Detection engineering</h3><p>Do caso de uso à validação: hipótese, telemetria, lógica, teste, afinação e documentação.</p><ul class="tr-track-list"><li>Qualidade e contexto do alerta</li><li>Teste e redução de ruído</li><li>Ciclo de melhoria da detecção</li></ul></article>
+          <article class="tr-track" data-tr-category="grc leaders"><span class="tr-track-tag">Governança</span><h3>NIST CSF e ISO 27001</h3><p>Conecte objetivos, riscos, controles, evidências e planos de melhoria em linguagem executiva.</p><ul class="tr-track-list"><li>Cenários de decisão</li><li>Priorização orientada a risco</li><li>Evidências e melhoria contínua</li></ul></article>
+          <article class="tr-track" data-tr-category="grc leaders dev"><span class="tr-track-tag">Privacidade</span><h3>LGPD no ciclo de produto</h3><p>Princípios e práticas para minimizar, proteger e tratar dados com responsabilidades claras.</p><ul class="tr-track-list"><li>Mapeamento e classificação</li><li>Privacy by design</li><li>Casos de decisão e escalonamento</li></ul></article>
+          <article class="tr-track" data-tr-category="leaders soc grc"><span class="tr-track-tag">Tabletop</span><h3>Resposta a incidentes</h3><p>Simulação facilitada para testar papéis, comunicação, decisão e coordenação sob pressão.</p><ul class="tr-track-list"><li>Cenário adaptado ao negócio</li><li>Injects e pontos de decisão</li><li>Debrief e plano de ação</li></ul></article>
+          <article class="tr-track" data-tr-category="dev leaders"><span class="tr-track-tag">Arquitetura</span><h3>Threat Modeling</h3><p>Modele ativos, fronteiras, ameaças e mitigações durante discovery e desenho técnico.</p><ul class="tr-track-list"><li>Workshop sobre produto real</li><li>Abuso e cenários de ameaça</li><li>Registro de decisões</li></ul></article>
+          <article class="tr-track" data-tr-category="leaders grc soc dev"><span class="tr-track-tag">Cultura</span><h3>Security awareness por função</h3><p>Conteúdo específico para riscos e decisões de cada público, evitando campanhas genéricas.</p><ul class="tr-track-list"><li>Casos relevantes à função</li><li>Microlearning e desafios</li><li>Materiais de reforço</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="tr-section tr-muted">
+      <div class="container">
+        <div class="tr-section-copy"><div class="section-title-small">Jornada de aprendizagem</div><h2 class="tr-section-title">Antes, durante e depois do treinamento</h2><p class="tr-section-text">O encontro é uma etapa da experiência. Diagnóstico e reforço aumentam relevância e ajudam a transportar o aprendizado para o trabalho.</p></div>
+        <div class="tr-journey" style="margin-top:38px;"><article class="tr-journey-step"><h3>Diagnosticar</h3><p>Objetivos, público, maturidade, tecnologias e riscos orientam o desenho da trilha.</p></article><article class="tr-journey-step"><h3>Contextualizar</h3><p>Exemplos e cenários são adaptados para aproximar conteúdo e realidade operacional.</p></article><article class="tr-journey-step"><h3>Praticar</h3><p>Exercícios, laboratórios ou simulações permitem decidir, executar e receber feedback.</p></article><article class="tr-journey-step"><h3>Reforçar</h3><p>Missões, materiais e checkpoints sustentam a aplicação e revelam próximos gaps.</p></article></div>
+      </div>
+    </section>
+
+    <section class="tr-section">
+      <div class="container">
+        <div class="tr-section-copy"><div class="section-title-small">Formatos de entrega</div><h2 class="tr-section-title">Uma experiência adequada ao objetivo e ao tempo disponível</h2></div>
+        <div class="tr-formats" style="margin-top:38px;"><article class="tr-format"><span class="tr-format-label">Imersão aplicada</span><h3>Workshop</h3><p>Encontro facilitado com conceitos, discussão e exercício conectado ao contexto do grupo.</p><div class="tr-format-meta"><span>Ao vivo</span><span>Interativo</span><span>Remoto ou presencial</span></div></article><article class="tr-format"><span class="tr-format-label">Prática técnica</span><h3>Hands-on lab</h3><p>Ambiente seguro para explorar, detectar, corrigir ou responder com acompanhamento do instrutor.</p><div class="tr-format-meta"><span>Laboratório</span><span>Passo a passo</span><span>Feedback</span></div></article><article class="tr-format"><span class="tr-format-label">Decisão e coordenação</span><h3>Tabletop</h3><p>Cenário progressivo para testar papéis, comunicação e escolhas sem impacto operacional.</p><div class="tr-format-meta"><span>Simulação</span><span>Debrief</span><span>Plano de ação</span></div></article><article class="tr-format"><span class="tr-format-label">Jornada intensiva</span><h3>Bootcamp</h3><p>Módulos encadeados com teoria essencial, prática, desafio e avaliação de aprendizagem.</p><div class="tr-format-meta"><span>Trilha</span><span>Projeto</span><span>Checkpoint</span></div></article><article class="tr-format"><span class="tr-format-label">Liderança</span><h3>Executive briefing</h3><p>Risco, impacto, decisões e prioridades em linguagem objetiva para gestores e executivos.</p><div class="tr-format-meta"><span>Curto</span><span>Executivo</span><span>Cenários</span></div></article><article class="tr-format"><span class="tr-format-label">Escala contínua</span><h3>Academia corporativa</h3><p>Calendário modular por perfis, com comunidade, reforços e governança de aprendizagem.</p><div class="tr-format-meta"><span>Contínuo</span><span>Multiperfil</span><span>Métricas</span></div></article></div>
+      </div>
+    </section>
+
+    <section class="tr-section tr-muted">
+      <div class="container">
+        <div class="tr-section-head"><div class="tr-section-copy"><div class="section-title-small">Medição de aprendizagem</div><h2 class="tr-section-title">Avalie compreensão, confiança e aplicação</h2><p class="tr-section-text">Alterne os indicadores para explorar uma simulação. O plano real combina sinais quantitativos e feedback qualitativo alinhados ao objetivo da trilha.</p></div><p class="tr-note">Dados ilustrativos, sem promessa de resultado. Evolução depende de público, desenho, contexto e reforço posterior.</p></div>
+        <div class="tr-dashboard"><article class="tr-chart-card"><div class="tr-chart-top"><div><div class="tr-chart-kicker">Jornada de 90 dias</div><h3 class="tr-chart-title">Evolução demonstrativa</h3></div><div class="tr-chart-controls" aria-label="Selecionar métrica"><button class="tr-control is-active" type="button" data-tr-metric="knowledge">Conhecimento</button><button class="tr-control" type="button" data-tr-metric="confidence">Confiança</button><button class="tr-control" type="button" data-tr-metric="practice">Aplicação</button></div></div><div class="tr-chart-shell"><canvas data-tr-chart role="img" aria-label="Evolução ilustrativa da aprendizagem"></canvas><div class="tr-tooltip" aria-hidden="true"></div></div></article><article class="tr-chart-card"><div class="tr-chart-top"><div><div class="tr-chart-kicker">Modelo de avaliação</div><h3 class="tr-chart-title">Sinais complementares</h3></div></div><div class="tr-assessment"><div class="tr-assessment-row"><div class="tr-assessment-head"><span>Diagnóstico inicial</span><strong>Baseline</strong></div><div class="tr-progress"><span style="--progress:38%"></span></div></div><div class="tr-assessment-row"><div class="tr-assessment-head"><span>Exercício prático</span><strong>Execução</strong></div><div class="tr-progress"><span style="--progress:76%"></span></div></div><div class="tr-assessment-row"><div class="tr-assessment-head"><span>Missão no trabalho</span><strong>Aplicação</strong></div><div class="tr-progress"><span style="--progress:68%"></span></div></div><div class="tr-assessment-row"><div class="tr-assessment-head"><span>Checkpoint posterior</span><strong>Retenção</strong></div><div class="tr-progress"><span style="--progress:72%"></span></div></div></div><p class="tr-assessment-note">Exemplo visual. Instrumentos e critérios são definidos para cada trilha e não representam certificação oficial.</p></article></div>
+      </div>
+    </section>
+
+    <section class="tr-section">
+      <div class="container">
+        <div class="tr-section-copy"><div class="section-title-small">Perguntas frequentes</div><h2 class="tr-section-title">O que considerar antes de montar a trilha</h2></div>
+        <div class="tr-faq"><details><summary>Os treinamentos são oficiais da OWASP ou do MITRE?</summary><p>Não são apresentados como certificação oficial dessas organizações. Usamos referências reconhecidas para estruturar aprendizagem prática, adaptada ao contexto e aos objetivos do cliente.</p></details><details><summary>O conteúdo pode usar tecnologias da nossa empresa?</summary><p>Sim. O nível de customização pode incluir linguagens, arquitetura, ferramentas, processos e cenários fornecidos pelo cliente, respeitando limites de confidencialidade e segurança.</p></details><details><summary>É possível combinar públicos técnicos e executivos?</summary><p>Sim, mas normalmente recomendamos objetivos e profundidades diferentes, conectados por um cenário comum. Assim cada público pratica as decisões que realmente precisa tomar.</p></details><details><summary>Como funciona um laboratório remoto?</summary><p>O formato é definido conforme o exercício: pode usar ambiente controlado fornecido para a turma ou recursos previamente combinados com o cliente, sempre com orientação e regras claras.</p></details><details><summary>O que é entregue após o treinamento?</summary><p>Dependendo do escopo: materiais de referência, templates, checklists, recomendações, resultado agregado de avaliações e um plano de reforço ou continuidade.</p></details></div>
+      </div>
+    </section>
+
+    <section class="tr-cta"><div class="container"><div class="tr-cta-card"><div><h2>Transforme frameworks em habilidades que o time consegue aplicar.</h2><p>Conte o público, o desafio e o resultado esperado. A Vulcan desenha uma trilha adequada ao seu contexto.</p></div><a class="btn btn-primary" href="contato.html">Planejar treinamento</a></div></div></section>
+  </main>
+  <footer><div class="container">&copy; 2026 Vulcan Defense. Todos os direitos reservados.</div></footer>
 </body>
 </html>

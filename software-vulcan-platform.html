@@ -1,180 +1,145 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <link rel="icon" href="assets/favicon.ico">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://formspree.io; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; object-src 'none'; base-uri 'self'; frame-ancestors 'none';">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Software Vulcan Platform | Vulcan Defense</title>
-<meta name="description" content="Conheça o software Vulcan Platform para observabilidade, SIEM, automação e resposta operacional." />
-<link rel="stylesheet" href="styles.css" />
-<style>
-  .vp-hero{padding:74px 0 30px}
-  .vp-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:stretch}
-  .vp-canvas{position:relative;overflow:hidden;min-height:340px}
-  .vp-canvas::before{content:"";position:absolute;inset:-40%;background:conic-gradient(from 90deg,rgba(103,232,249,.06),rgba(59,130,246,.22),rgba(34,211,238,.05),rgba(103,232,249,.06));animation:spin 14s linear infinite}
-  .vp-canvas::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 20%,rgba(34,211,238,.2),transparent 48%),radial-gradient(circle at 80% 75%,rgba(59,130,246,.18),transparent 45%),rgba(2,8,23,.85)}
-  .vp-layer{position:relative;z-index:1;padding:28px}
-  .kpi-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:18px}
-  .kpi{border:1px solid rgba(255,255,255,.12);border-radius:16px;background:rgba(0,0,0,.3);padding:14px}
-  .kpi .v{color:#67e8f9;font-weight:900;font-size:28px}
-  .flow{display:grid;gap:12px;margin-top:18px}
-  .node{position:relative;padding:14px 14px 14px 46px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);border-radius:14px}
-  .node::before{content:"";position:absolute;left:16px;top:50%;width:16px;height:16px;border-radius:999px;background:#67e8f9;transform:translateY(-50%);box-shadow:0 0 18px rgba(103,232,249,.7)}
-  .node:not(:last-child)::after{content:"";position:absolute;left:23px;top:100%;width:2px;height:12px;background:linear-gradient(#67e8f9,transparent)}
-  .bar{height:10px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:10px}
-  .bar span{display:block;height:100%;background:linear-gradient(90deg,#22d3ee,#3b82f6);animation:grow 1.2s ease}
-  @keyframes spin{to{transform:rotate(1turn)}}
-  @keyframes grow{from{width:0}}
-  @media (max-width:980px){.vp-grid{grid-template-columns:1fr}.kpi-grid{grid-template-columns:1fr}}
-  .vp-details{padding:48px 0 56px}
-  .vp-capabilities-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}
-  .vp-cap-card{border:1px solid rgba(255,255,255,.1);border-radius:18px;background:rgba(0,0,0,.25);padding:20px;transition:.22s}
-  .vp-cap-card:hover{border-color:rgba(103,232,249,.25);background:rgba(34,211,238,.06);box-shadow:0 8px 28px rgba(0,0,0,.25)}
-  .vp-cap-card h4{font-size:18px;font-weight:800;color:#67e8f9;margin-bottom:10px;display:flex;align-items:center;gap:10px}
-  .vp-cap-card h4::before{content:"";width:8px;height:8px;border-radius:50%;background:#67e8f9;box-shadow:0 0 12px rgba(103,232,249,.7)}
-  .vp-cap-card p{font-size:14px;color:rgba(255,255,255,.65);line-height:1.65;margin:0}
-  .vp-agent-spec{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
-  .vp-agent-spec span{display:inline-block;padding:6px 12px;border-radius:999px;font-size:12px;color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03)}
-  .vp-plataformas{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-  .vp-plataformas span{font-size:12px;color:rgba(255,255,255,.55);padding:5px 10px;border-radius:8px;border:1px solid rgba(255,255,255,.06)}
-  @media (max-width:980px){.vp-capabilities-grid{grid-template-columns:1fr}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="assets/favicon.ico" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://formspree.io; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; object-src 'none'; base-uri 'self'; frame-ancestors 'none';" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+  <meta name="theme-color" content="#071018" />
+  <title>Software Vulcan Platform | Observabilidade e Resposta</title>
+  <meta name="description" content="Conheça a Vulcan Platform: observabilidade, SIEM, automação e resposta operacional em um único cockpit para NOC, SOC e gestores." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/vulcan-platform.css" />
+  <script src="site.js" defer></script>
+  <script src="assets/vulcan-platform.js" defer></script>
 </head>
-<body>
-<div class="grid-overlay"></div>
-<header>
-  <div class="container header-wrap">
-    <div class="brand">
-      <div class="logo-box"><img src="assets/logo-vulcan.png" alt="Vulcan Defense" /></div>
-      <div>
-        <h1>VULCAN DEFENSE</h1>
-        <p>Cyber Defense Operations</p>
+<body class="vp-page">
+  <div class="grid-overlay"></div>
+  <header>
+    <div class="container header-wrap">
+      <div class="brand">
+        <div class="logo-box"><img src="assets/logo-vulcan.png" alt="Vulcan Defense" /></div>
+        <div><h1>VULCAN DEFENSE</h1><p>Cyber Defense Operations</p></div>
       </div>
+      <nav>
+        <a href="index.html">Home</a><a href="quem-somos.html">Quem Somos</a><a href="relatorio-global.html">Relatório global</a>
+        <div class="nav-item has-submenu"><a href="servicos.html">Serviços</a><div class="submenu"><a href="pentest-yellow-team-secops-dast.html">Pentest e SecOps</a><a href="software-vulcan-platform.html" class="active">Software Vulcan Platform</a><a href="endpoint-protection-siem.html">Endpoint Protection e SIEM</a><a href="compliance-ia.html">Compliance de IA</a><a href="checklist-seguranca.html">Checklist SI (ISO/LGPD/PCI)</a><a href="security-champions.html">Security Champions</a><a href="treinamentos-owasp-mitre.html">Treinamentos OWASP e MITRE</a><a href="hackathon-defensivo.html">Hackathon defensivo</a><a href="gestao-tms-flsys-leanworks.html">Gestão TMS e obras</a></div></div>
+        <a href="tecnologias.html">Escopos de Atuação</a><a href="politica-privacidade.html">Política de Privacidade</a><a href="contato.html">Contato</a>
+      </nav>
     </div>
-   <nav><a href="index.html" class="">Home</a><a href="quem-somos.html" class="">Quem Somos</a><a href="relatorio-global.html" class="">Relatório global</a><div class="nav-item has-submenu"><a href="servicos.html" class="">Serviços</a><div class="submenu"><a href="pentest-yellow-team-secops-dast.html" class="">Pentest e SecOps</a><a href="software-vulcan-platform.html" class="active">Software Vulcan Platform</a><a href="endpoint-protection-siem.html" class="">Endpoint Protection e SIEM</a><a href="compliance-ia.html" class="">Compliance de IA</a><a href="checklist-seguranca.html" class="">Checklist SI (ISO/LGPD/PCI)</a><a href="security-champions.html" class="">Security Champions</a><a href="treinamentos-owasp-mitre.html" class="">Treinamentos OWASP e MITRE</a><a href="hackathon-defensivo.html" class="">Hackathon defensivo</a><a href="gestao-tms-flsys-leanworks.html" class="">Gestão TMS e obras</a></div></div><a href="tecnologias.html" class="">Escopos de Atuação</a><a href="politica-privacidade.html" class="">Política de Privacidade</a><a href="contato.html" class="">Contato</a></nav>
-      </div>
-    </header>
-    
+  </header>
 
-<main>
-<section class="vp-hero">
-  <div class="container vp-grid">
-    <div class="glass-box">
-      <div class="section-title-small">Software</div>
-      <div class="section-title">Vulcan Platform</div>
-      <div class="section-text">Plataforma de operação para consolidar telemetria, eventos de segurança e ação coordenada em um único cockpit para NOC, SOC e gestores.</div>
-      <div class="kpi-grid">
-        <div class="kpi"><div class="label">Eventos/h</div><div class="v">22.8M</div></div>
-        <div class="kpi"><div class="label">Sources</div><div class="v">+340</div></div>
-        <div class="kpi"><div class="label">MTTR</div><div class="v">-37%</div></div>
-      </div>
-      <div class="flow">
-        <div class="node">Ingestão multi-fonte (cloud, endpoint, rede, identidade)</div>
-        <div class="node">Correlação e contexto por risco operacional</div>
-        <div class="node">Automação de resposta com playbooks</div>
-        <div class="node">Visão executiva e técnica em dashboards vivos</div>
-      </div>
-    </div>
+  <main>
+    <section class="vp-hero">
+      <div class="container vp-hero-grid">
+        <div class="vp-reveal">
+          <div class="vp-eyebrow">Software de operação cibernética</div>
+          <h1 class="vp-title">Vulcan <span>Platform</span></h1>
+          <p class="vp-lead">Telemetria, detecção e resposta reunidas em um cockpit operacional para times que precisam enxergar o risco, priorizar sinais e agir com contexto.</p>
+          <div class="vp-hero-actions">
+            <a class="btn btn-primary" href="contato.html">Solicitar demonstração</a>
+            <a class="btn btn-secondary" href="#painel-operacional">Explorar o painel</a>
+          </div>
+          <div class="vp-trust-row" aria-label="Características da plataforma">
+            <span>Multiambiente</span><span>Playbooks de resposta</span><span>Visão técnica e executiva</span>
+          </div>
+        </div>
 
-    <div class="glass-box vp-canvas">
-      <div class="vp-layer">
-        <div class="section-title-small">Performance</div>
-        <div class="section-title" style="font-size:30px;">Motor de detecção em tempo real</div>
-        <div class="section-text">Exemplo de distribuição de qualidade operacional por etapa do pipeline de defesa.</div>
+        <div class="vp-console vp-reveal" aria-label="Prévia ilustrativa do cockpit Vulcan Platform">
+          <div class="vp-console-head"><div class="vp-console-brand">Operations cockpit</div><div class="vp-live">Operacional</div></div>
+          <div class="vp-console-kpis">
+            <div class="vp-kpi"><span class="vp-kpi-label">Eventos/h</span><strong class="vp-kpi-value" data-counter="22.8" data-decimals="1" data-suffix="M">0M</strong></div>
+            <div class="vp-kpi"><span class="vp-kpi-label">Fontes</span><strong class="vp-kpi-value" data-counter="340" data-prefix="+">0</strong></div>
+            <div class="vp-kpi"><span class="vp-kpi-label">MTTR</span><strong class="vp-kpi-value vp-positive" data-counter="37" data-prefix="−" data-suffix="%">0%</strong></div>
+          </div>
+          <div class="vp-mini-chart">
+            <div class="vp-mini-chart-head"><strong>Telemetria correlacionada</strong><span>Últimas 24 horas</span></div>
+            <canvas data-spark-chart role="img" aria-label="Tendência ilustrativa de telemetria processada nas últimas 24 horas"></canvas>
+            <div class="vp-tooltip" aria-hidden="true"></div>
+          </div>
+          <div class="vp-event-list" aria-label="Eventos recentes ilustrativos">
+            <div class="vp-event"><i class="vp-event-dot"></i><strong>Regra de identidade correlacionada</strong><time>agora</time></div>
+            <div class="vp-event"><i class="vp-event-dot"></i><strong>Playbook de contenção executado</strong><time>02:14</time></div>
+            <div class="vp-event"><i class="vp-event-dot"></i><strong>Nova fonte cloud normalizada</strong><time>04:38</time></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <div class="stack-item">Coleta e normalização<div class="bar"><span style="width:92%"></span></div></div>
-        <div class="stack-item" style="margin-top:10px;">Correlação e analytics<div class="bar"><span style="width:86%"></span></div></div>
-        <div class="stack-item" style="margin-top:10px;">Orquestração e resposta<div class="bar"><span style="width:79%"></span></div></div>
-      </div>
-    </div>
-  </div>
-</section>
+    <section class="vp-metrics" id="painel-operacional">
+      <div class="container">
+        <div class="vp-section-head vp-reveal">
+          <div class="vp-section-copy"><div class="section-title-small">Painel operacional</div><h2 class="vp-section-title">Sinais que viram decisões</h2><p class="vp-section-text">Alterne indicadores e períodos para visualizar como o cockpit consolida a operação. Passe o ponteiro ou toque nos gráficos para explorar os pontos.</p></div>
+          <p class="vp-demo-note">Dados demonstrativos para representar a experiência da plataforma. Capacidade e resultados variam conforme arquitetura e escopo.</p>
+        </div>
 
-<section class="vp-details">
-  <div class="container">
-    <div class="section-title-small">Agente unificado</div>
-    <h2 class="section-title" style="margin-top:12px;">Capacidades do Vulcan Agent</h2>
-    <p class="section-text" style="max-width:760px;">O agente Vulcan é leve e multiplataforma, executando em desktops, servidores, instâncias cloud, containers e VMs. Coleta telemetria por canais criptografados e encaminha ao Vulcan Platform para análise e resposta.</p>
-    <div class="vp-agent-spec">
-      <span>~35 MB RAM (média)</span>
-      <span>Linux · Windows · macOS · Solaris · AIX</span>
-      <span>Laptops · Servidores · Cloud · Containers</span>
-    </div>
+        <div class="vp-dashboard-grid">
+          <article class="vp-chart-card vp-reveal">
+            <div class="vp-chart-top">
+              <div><div class="vp-chart-kicker">Volume operacional</div><h3 class="vp-chart-title">Evolução da operação</h3></div>
+              <div>
+                <div class="vp-chart-controls" aria-label="Selecionar indicador"><button class="vp-control is-active" type="button" data-metric="telemetry">Telemetria</button><button class="vp-control" type="button" data-metric="detections">Detecções</button><button class="vp-control" type="button" data-metric="response">Resposta</button></div>
+                <div class="vp-chart-controls" aria-label="Selecionar período" style="margin-top:6px;"><button class="vp-control is-active" type="button" data-range="24h">24h</button><button class="vp-control" type="button" data-range="7d">7 dias</button><button class="vp-control" type="button" data-range="30d">30 dias</button></div>
+              </div>
+            </div>
+            <div class="vp-chart-shell"><canvas data-line-chart role="img" aria-label="Evolução do volume operacional"></canvas><div class="vp-tooltip" aria-hidden="true"></div></div>
+            <div class="vp-chart-legend"><span><i></i>Indicador selecionado</span><span><i></i>Atualização contextual</span></div>
+          </article>
 
-    <div class="vp-capabilities-grid" style="margin-top:32px;">
-      <div class="vp-cap-card glass-box">
-        <h4>Monitoramento de integridade de arquivos (FIM)</h4>
-        <p>Monitora o sistema de arquivos em tempo real, detectando criação, exclusão ou modificação de arquivos. Rastreia alterações em atributos, permissões, propriedade e conteúdo. Inclui monitoramento do registro do Windows.</p>
-      </div>
-      <div class="vp-cap-card glass-box">
-        <h4>Coleta de logs</h4>
-        <p>Lê arquivos de log flat e eventos do Windows, com suporte a filtros XPath e formatos multiline (ex.: logs de auditoria Linux). Integração com syslog, journald e múltiplas saídas de socket para envio ao servidor.</p>
-      </div>
-      <div class="vp-cap-card glass-box">
-        <h4>Detecção de malware</h4>
-        <p>Abordagens não baseadas em assinatura para detectar anomalias e rootkits. Identifica processos, arquivos e portas ocultos. Integração com listas CDB, threat intelligence, VirusTotal e YARA. Coleta de logs do ClamAV e Windows Defender.</p>
-      </div>
-      <div class="vp-cap-card glass-box">
-        <h4>Avaliação de configuração (SCA)</h4>
-        <p>Avaliação contínua de configuração usando benchmarks CIS e verificações personalizadas. Políticas prontas e criação de políticas customizadas para conformidade e hardening de sistemas.</p>
-      </div>
-      <div class="vp-cap-card glass-box">
-        <h4>Inventário de sistema</h4>
-        <p>Coleta versão do SO, interfaces de rede, processos em execução, aplicações instaladas e portas abertas. Relatórios de inventário e uso dos dados para disparar alertas. Suporte a Osquery.</p>
-      </div>
-      <div class="vp-cap-card glass-box">
-        <h4>Resposta ativa</h4>
-        <p>Dispara ações automaticamente quando ameaças são detectadas: bloquear conexões, interromper processos, excluir arquivos maliciosos. Scripts padrão e customizados para diferentes cenários de resposta.</p>
-      </div>
-      <div class="vp-cap-card glass-box">
-        <h4>Monitoramento de containers</h4>
-        <p>Integração com Docker Engine API para monitorar ambientes containerizados. Detecção de imagens vulneráveis, alterações em contêineres e eventos de runtime.</p>
-      </div>
-      <div class="vp-cap-card glass-box">
-        <h4>Segurança em cloud</h4>
-        <p>Monitoramento de ambientes AWS, Microsoft Azure e Google Cloud Platform. Coleta de logs de serviços gerenciados, auditoria de configurações e detecção de desvios.</p>
-      </div>
-      <div class="vp-cap-card glass-box">
-        <h4>Detecção de vulnerabilidades</h4>
-        <p>Varredura e correlação de CVEs com inventário de software instalado. Priorização por criticidade e integração com feeds de vulnerabilidades.</p>
-      </div>
-      <div class="vp-cap-card glass-box">
-        <h4>Monitoramento de comandos</h4>
-        <p>Execução periódica de comandos autorizados e envio da saída ao servidor. Análise do output para detecção de desvios e conformidade.</p>
-      </div>
-      <div class="vp-cap-card glass-box">
-        <h4>Chamadas de sistema</h4>
-        <p>Monitoramento de chamadas de sistema (Linux Audit) para detecção de comportamentos suspeitos, ataques de dia zero e violações de políticas.</p>
-      </div>
-      <div class="vp-cap-card glass-box">
-        <h4>Monitoramento agentless</h4>
-        <p>Monitoramento de hosts sem agente instalado, via SSH ou outros protocolos. Cobertura de ativos legados ou restritos onde o agente não pode ser implantado.</p>
-      </div>
-    </div>
+          <article class="vp-chart-card vp-reveal">
+            <div class="vp-chart-top"><div><div class="vp-chart-kicker">Superfícies</div><h3 class="vp-chart-title">Cobertura monitorada</h3></div></div>
+            <div class="vp-chart-shell vp-coverage-chart"><canvas data-bar-chart role="img" aria-label="Cobertura por superfície monitorada"></canvas><div class="vp-tooltip" aria-hidden="true"></div></div>
+          </article>
+        </div>
 
-    <div style="margin-top:48px;padding-top:40px;border-top:1px solid rgba(255,255,255,.08);">
-      <div class="section-title-small">Compatibilidade</div>
-      <h3 class="section-title" style="font-size:28px;margin-top:10px;">Plataformas suportadas</h3>
-      <div class="vp-plataformas">
-        <span>Linux (Debian, Ubuntu, RHEL, CentOS, SUSE)</span>
-        <span>Windows Server / Desktop</span>
-        <span>macOS</span>
-        <span>Docker / Kubernetes</span>
-        <span>AWS EC2 / ECS</span>
-        <span>Azure VM / AKS</span>
-        <span>Google Cloud (GCE / GKE)</span>
-        <span>Solaris · AIX</span>
+        <div class="vp-health-grid vp-reveal">
+          <div class="vp-health"><div class="vp-health-head"><span>Coleta e normalização</span><strong>92%</strong></div><div class="vp-progress"><span style="--progress:92%"></span></div></div>
+          <div class="vp-health"><div class="vp-health-head"><span>Correlação e analytics</span><strong>86%</strong></div><div class="vp-progress"><span style="--progress:86%"></span></div></div>
+          <div class="vp-health"><div class="vp-health-head"><span>Orquestração e resposta</span><strong>79%</strong></div><div class="vp-progress"><span style="--progress:79%"></span></div></div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
-</main>
+    </section>
 
-<footer><div class="container">&copy; 2026 Vulcan Defense. Todos os direitos reservados.</div></footer>
+    <section class="vp-capabilities">
+      <div class="container">
+        <div class="vp-section-copy vp-reveal"><div class="section-title-small">Vulcan Agent</div><h2 class="vp-section-title">Cobertura ampla, operação unificada</h2><p class="vp-section-text">O agente coleta telemetria criptografada em desktops, servidores, cloud, containers e VMs. Filtre as capacidades pelo objetivo da sua operação.</p></div>
+        <div class="vp-filter-bar vp-reveal" aria-label="Filtrar capacidades">
+          <button class="vp-filter is-active" type="button" data-cap-filter="all" aria-pressed="true">Todas</button><button class="vp-filter" type="button" data-cap-filter="detect" aria-pressed="false">Detectar</button><button class="vp-filter" type="button" data-cap-filter="protect" aria-pressed="false">Proteger</button><button class="vp-filter" type="button" data-cap-filter="cloud" aria-pressed="false">Cloud</button><button class="vp-filter" type="button" data-cap-filter="respond" aria-pressed="false">Responder</button>
+        </div>
+        <div class="vp-cap-grid">
+          <article class="vp-cap-card vp-reveal" data-category="detect protect"><span class="vp-cap-index">01</span><span class="vp-cap-tag">Detectar</span><h3>Integridade de arquivos</h3><p>Detecta criação, exclusão e modificação de arquivos, atributos, permissões e registro do Windows em tempo real.</p></article>
+          <article class="vp-cap-card vp-reveal" data-category="detect"><span class="vp-cap-index">02</span><span class="vp-cap-tag">Detectar</span><h3>Coleta de logs</h3><p>Centraliza eventos Windows, syslog, journald, auditoria Linux e formatos multiline com filtros e normalização.</p></article>
+          <article class="vp-cap-card vp-reveal" data-category="detect protect"><span class="vp-cap-index">03</span><span class="vp-cap-tag">Proteger</span><h3>Detecção de malware</h3><p>Combina anomalias, rootkits, threat intelligence, YARA e integrações para enriquecer sinais suspeitos.</p></article>
+          <article class="vp-cap-card vp-reveal" data-category="protect"><span class="vp-cap-index">04</span><span class="vp-cap-tag">Proteger</span><h3>Configuração segura</h3><p>Avalia continuamente benchmarks CIS e políticas personalizadas para conformidade e hardening.</p></article>
+          <article class="vp-cap-card vp-reveal" data-category="detect"><span class="vp-cap-index">05</span><span class="vp-cap-tag">Visibilidade</span><h3>Inventário de sistema</h3><p>Mapeia sistema operacional, rede, processos, aplicações, portas e dados do Osquery para contextualizar riscos.</p></article>
+          <article class="vp-cap-card vp-reveal" data-category="respond protect"><span class="vp-cap-index">06</span><span class="vp-cap-tag">Responder</span><h3>Resposta ativa</h3><p>Executa ações autorizadas para bloquear conexões, interromper processos e remover artefatos maliciosos.</p></article>
+          <article class="vp-cap-card vp-reveal" data-category="cloud detect"><span class="vp-cap-index">07</span><span class="vp-cap-tag">Cloud</span><h3>Containers e Kubernetes</h3><p>Monitora runtime, imagens vulneráveis, alterações e eventos de Docker e ambientes orquestrados.</p></article>
+          <article class="vp-cap-card vp-reveal" data-category="cloud protect"><span class="vp-cap-index">08</span><span class="vp-cap-tag">Cloud</span><h3>AWS, Azure e Google Cloud</h3><p>Coleta logs gerenciados, audita configurações e identifica desvios nos principais provedores.</p></article>
+          <article class="vp-cap-card vp-reveal" data-category="protect detect"><span class="vp-cap-index">09</span><span class="vp-cap-tag">Proteger</span><h3>Vulnerabilidades</h3><p>Correlaciona CVEs ao inventário instalado para orientar priorização por exposição e criticidade.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="vp-architecture">
+      <div class="container">
+        <div class="vp-section-copy vp-reveal"><div class="section-title-small">Arquitetura operacional</div><h2 class="vp-section-title">Do sinal bruto à ação coordenada</h2><p class="vp-section-text">Uma jornada clara para reduzir ruído e entregar contexto a quem investiga, responde e decide.</p></div>
+        <div class="vp-flow vp-reveal">
+          <article class="vp-flow-step"><h3>Ingestão</h3><p>Cloud, endpoint, rede, identidade e aplicações em uma camada de telemetria.</p></article>
+          <article class="vp-flow-step"><h3>Normalização</h3><p>Eventos enriquecidos para comparação, busca e correlação entre fontes.</p></article>
+          <article class="vp-flow-step"><h3>Detecção</h3><p>Regras, analytics e contexto de risco orientam a priorização operacional.</p></article>
+          <article class="vp-flow-step"><h3>Resposta</h3><p>Playbooks e ações coordenadas encurtam o caminho até a contenção.</p></article>
+        </div>
+        <div class="vp-platforms vp-reveal" aria-label="Plataformas suportadas"><span>Linux</span><span>Windows</span><span>macOS</span><span>Docker</span><span>Kubernetes</span><span>AWS</span><span>Azure</span><span>Google Cloud</span><span>Solaris</span><span>AIX</span></div>
+      </div>
+    </section>
+
+    <section class="vp-cta">
+      <div class="container"><div class="vp-cta-card vp-reveal"><div><h2>Veja a Vulcan Platform no contexto da sua operação.</h2><p>Conte quais fontes, ambientes e objetivos precisam entrar no cockpit. A demonstração pode ser orientada ao seu cenário.</p></div><a class="btn btn-primary" href="contato.html">Agendar demonstração</a></div></div>
+    </section>
+  </main>
+
+  <footer><div class="container">&copy; 2026 Vulcan Defense. Todos os direitos reservados.</div></footer>
 </body>
 </html>
-
-
