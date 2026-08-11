@@ -596,6 +596,7 @@ nav .submenu{
 nav .submenu::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}
 nav .submenu a{padding:11px 13px;border-radius:9px;font-size:13px}
 nav .submenu a:hover,nav .submenu a.active{background:rgba(246,200,95,.09);color:var(--brand-strong)}
+.partner-menu>a{color:#b7c5cc!important}.partner-menu>a::after{background:linear-gradient(90deg,var(--brand),var(--tech))!important}.partner-menu .submenu{min-width:235px}.partner-menu .submenu a::before{content:"Parceiro";display:inline-flex;margin-right:8px;padding:3px 6px;border-radius:999px;background:rgba(94,220,231,.08);color:var(--tech);font-size:8px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
 .menu-toggle{display:none;width:46px;height:46px;margin-left:auto;border:1px solid var(--line);border-radius:13px;background:var(--surface);color:var(--text);cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px}
 .menu-toggle span{display:block;width:20px;height:2px;border-radius:2px;background:currentColor;transition:transform .2s ease,opacity .2s ease}
 
