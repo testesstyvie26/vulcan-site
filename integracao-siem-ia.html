@@ -58,10 +58,17 @@
             </div>
             <form class="ai-search-form" data-ai-form>
               <label class="sr-only" for="ai-question">Pergunta para o assistente</label>
+              <div class="ai-attachment-preview" data-ai-attachment hidden>
+                <span data-ai-file-icon>DOC</span>
+                <div><strong data-ai-file-name>relatorio.pdf</strong><small data-ai-file-meta>PDF · 0 KB</small></div>
+                <button type="button" data-ai-remove-file aria-label="Remover relatório anexado">×</button>
+              </div>
+              <label class="ai-attach-button" for="ai-report" title="Anexar relatório HTML ou PDF"><span>＋</span><em>Anexar</em></label>
+              <input class="sr-only" id="ai-report" data-ai-file type="file" accept=".html,.htm,.pdf,text/html,application/pdf">
               <textarea id="ai-question" data-ai-input rows="3" maxlength="600" placeholder="Ex.: resuma este cenário e sugira próximos passos"></textarea>
               <button type="submit" aria-label="Enviar pergunta"><span>Enviar</span>↗</button>
             </form>
-            <div class="ai-chat-foot"><span>Enter para enviar · Shift + Enter para nova linha</span><em>Respostas devem ser validadas por um analista.</em></div>
+            <div class="ai-chat-foot"><span>HTML ou PDF · máximo 10 MB</span><em>Respostas devem ser validadas por um analista.</em></div>
           </article>
           <aside class="ai-context-panel">
             <div class="ai-context-head"><span>Contexto da busca</span><strong>3 conectores simulados</strong></div>
