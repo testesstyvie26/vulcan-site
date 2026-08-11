@@ -7,12 +7,13 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https: blob:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; connect-src 'self' https://formspree.io https://api.ransomware.live https://cdn.jsdelivr.net https://api.allorigins.win https://corsproxy.io https://api.codetabs.com https://cors.eu.org; worker-src 'self' blob:; frame-src 'self' https://app.powerbi.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none';">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-  <title>Relatório global — vítimas públicas e investimento em SI | Vulcan Defense</title>
-  <meta name="description" content="Panorama global: ransomware, incidentes de privacidade (ANPD, DPO), outros tipos de SI, investimento (Gartner, Brasscom) e custos (IBM)." />
+  <title>Relatório Global de Cyber Intelligence | Vulcan Defense</title>
+  <meta name="description" content="Briefing global de ameaças com MISP, tendências MITRE ATT&CK, ransomware, vulnerabilidades exploradas e relatório mensal para download." />
   <meta name="theme-color" content="#020817" />
   <link rel="stylesheet" href="styles.css" />
   <script src="site.js" defer></script>
   <link rel="stylesheet" href="assets/relatorio-print.css?v=4" media="print" />
+  <link rel="stylesheet" href="assets/relatorio-intel.css?v=1" />
   <style>
     .visal-page .visal-hero { padding-top: 48px; padding-bottom: 8px; }
     .visal-breadcrumb {
@@ -435,6 +436,123 @@
     <p class="print-doc-note">Síntese para leitura executiva. Indicadores e gráficos refletem fontes públicas citadas no corpo; confirme totais nas referências oficiais antes de decisões críticas.</p>
   </div>
 
+  <section class="intel-hero" aria-labelledby="intel-title">
+    <div class="container intel-hero-grid">
+      <div class="intel-hero-copy">
+        <div class="intel-eyebrow"><span></span> Global Cyber Intelligence · Agosto 2026</div>
+        <h1 id="intel-title">Do indicador bruto à <em>decisão defensiva</em></h1>
+        <p>Um briefing operacional para transformar inteligência de ameaças em priorização: MISP para correlação e compartilhamento, MITRE ATT&amp;CK para contexto de TTPs e CISA KEV para direcionar correções urgentes.</p>
+        <div class="intel-actions">
+          <a class="btn btn-primary" href="output/pdf/relatorio-mensal-cyber-intelligence-agosto-2026.pdf" download>Baixar relatório mensal <span aria-hidden="true">↓</span></a>
+          <a class="btn btn-secondary" href="#radar-attack">Explorar o radar</a>
+        </div>
+        <p class="intel-download-note">PDF executivo · Agosto de 2026 · leitura em aproximadamente 6 minutos</p>
+      </div>
+      <aside class="intel-brief-card" aria-label="Resumo desta edição">
+        <div class="intel-live"><span></span> Edição atual</div>
+        <div class="intel-brief-main">
+          <strong>ATT&amp;CK v19.1</strong>
+          <span>Conteúdo publicado em 12 mai. 2026</span>
+        </div>
+        <div class="intel-brief-grid">
+          <div><span>MISP</span><strong>2.5.44</strong><small>release jul. 2026</small></div>
+          <div><span>Foco</span><strong>Identidade</strong><small>cloud + credenciais</small></div>
+          <div><span>Prioridade</span><strong>KEV</strong><small>exploração confirmada</small></div>
+          <div><span>Aplicação</span><strong>SOC</strong><small>detectar e responder</small></div>
+        </div>
+        <div class="intel-source-line">Fontes primárias: MITRE, MISP Project e CISA</div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section intel-radar-section" id="radar-attack" aria-labelledby="radar-title">
+    <div class="container">
+      <div class="intel-section-head">
+        <div>
+          <div class="section-title-small">Radar MITRE ATT&amp;CK</div>
+          <h2 class="section-title" id="radar-title">Técnicas para revisar no ciclo mensal</h2>
+          <p class="section-text">O radar organiza prioridades defensivas por cenário. A pontuação é uma avaliação editorial da Vulcan Defense — não representa frequência estatística do MITRE ATT&amp;CK.</p>
+        </div>
+        <div class="intel-version-badge">Base de referência · v19.1</div>
+      </div>
+
+      <div class="intel-filters" role="group" aria-label="Filtrar técnicas por ambiente">
+        <button type="button" class="is-active" data-intel-filter="all" aria-pressed="true">Todas</button>
+        <button type="button" data-intel-filter="identity" aria-pressed="false">Identidade</button>
+        <button type="button" data-intel-filter="cloud" aria-pressed="false">Cloud</button>
+        <button type="button" data-intel-filter="endpoint" aria-pressed="false">Endpoint</button>
+        <button type="button" data-intel-filter="impact" aria-pressed="false">Impacto</button>
+      </div>
+
+      <div class="intel-techniques" aria-live="polite">
+        <article class="intel-technique" data-intel-category="identity cloud" style="--intel-score:94%">
+          <div class="intel-tech-id">T1078</div><div><h3>Valid Accounts</h3><p>Uso de contas legítimas para acesso inicial, persistência ou evasão. Revisar MFA resistente a phishing, sessões e privilégios.</p><div class="intel-bar"><span></span></div></div><a href="https://attack.mitre.org/techniques/T1078/" target="_blank" rel="noopener noreferrer" aria-label="Abrir técnica T1078 no MITRE ATT&CK">↗</a>
+        </article>
+        <article class="intel-technique" data-intel-category="cloud endpoint" style="--intel-score:88%">
+          <div class="intel-tech-id">T1190</div><div><h3>Exploit Public-Facing Application</h3><p>Exploração de aplicações expostas. Cruzar ativos externos com CISA KEV, criticidade do negócio e evidência de exploração.</p><div class="intel-bar"><span></span></div></div><a href="https://attack.mitre.org/techniques/T1190/" target="_blank" rel="noopener noreferrer" aria-label="Abrir técnica T1190 no MITRE ATT&CK">↗</a>
+        </article>
+        <article class="intel-technique" data-intel-category="identity cloud" style="--intel-score:84%">
+          <div class="intel-tech-id">T1556</div><div><h3>Modify Authentication Process</h3><p>Alteração do processo de autenticação, incluindo mecanismos de MFA e identidades híbridas. Monitorar mudanças administrativas.</p><div class="intel-bar"><span></span></div></div><a href="https://attack.mitre.org/techniques/T1556/" target="_blank" rel="noopener noreferrer" aria-label="Abrir técnica T1556 no MITRE ATT&CK">↗</a>
+        </article>
+        <article class="intel-technique" data-intel-category="endpoint impact" style="--intel-score:91%">
+          <div class="intel-tech-id">T1486</div><div><h3>Data Encrypted for Impact</h3><p>Criptografia para interromper operações. Validar backups imutáveis, telemetria de alteração em massa e isolamento rápido.</p><div class="intel-bar"><span></span></div></div><a href="https://attack.mitre.org/techniques/T1486/" target="_blank" rel="noopener noreferrer" aria-label="Abrir técnica T1486 no MITRE ATT&CK">↗</a>
+        </article>
+        <article class="intel-technique" data-intel-category="cloud impact" style="--intel-score:79%">
+          <div class="intel-tech-id">T1537</div><div><h3>Transfer Data to Cloud Account</h3><p>Transferência de dados entre contas cloud. Observar egress anômalo, compartilhamentos externos e mudanças de propriedade.</p><div class="intel-bar"><span></span></div></div><a href="https://attack.mitre.org/techniques/T1537/" target="_blank" rel="noopener noreferrer" aria-label="Abrir técnica T1537 no MITRE ATT&CK">↗</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-muted intel-misp-section" id="misp-operacional" aria-labelledby="misp-title">
+    <div class="container intel-misp-grid">
+      <div>
+        <div class="section-title-small">MISP operacional</div>
+        <h2 class="section-title" id="misp-title">Inteligência que chega ao controle</h2>
+        <p class="section-text">MISP centraliza eventos, indicadores e contexto, correlaciona observáveis e permite distribuir inteligência em formatos consumíveis por SIEM, EDR, IDS e automações.</p>
+        <div class="intel-misp-controls" role="tablist" aria-label="Etapas do pipeline MISP">
+          <button type="button" role="tab" aria-selected="true" data-misp-step="collect" class="is-active"><span>01</span> Coletar</button>
+          <button type="button" role="tab" aria-selected="false" data-misp-step="enrich"><span>02</span> Enriquecer</button>
+          <button type="button" role="tab" aria-selected="false" data-misp-step="correlate"><span>03</span> Correlacionar</button>
+          <button type="button" role="tab" aria-selected="false" data-misp-step="operate"><span>04</span> Operacionalizar</button>
+        </div>
+      </div>
+      <div class="intel-misp-stage" id="misp-stage" role="tabpanel" tabindex="0">
+        <div class="intel-stage-icon" aria-hidden="true">01</div>
+        <span class="intel-stage-label">Entrada controlada</span>
+        <h3>Coletar sinais de fontes confiáveis</h3>
+        <p>Feeds, comunidades, relatórios, casos internos e APIs entram com origem, data, distribuição e classificação TLP definidas.</p>
+        <ul><li>Indicadores com validade e contexto</li><li>Eventos internos e inteligência externa</li><li>Controle de distribuição desde a entrada</li></ul>
+        <div class="intel-stage-output"><span>Saída</span><strong>Evento MISP estruturado</strong></div>
+      </div>
+    </div>
+    <div class="container intel-flow" aria-label="Fluxo de integração da inteligência">
+      <div><span>Feeds e comunidades</span><strong>IOCs + relatórios</strong></div><i>→</i>
+      <div class="is-core"><span>Threat Intelligence</span><strong>MISP</strong></div><i>→</i>
+      <div><span>Detecção</span><strong>SIEM · EDR · IDS</strong></div><i>→</i>
+      <div><span>Resposta</span><strong>SOAR · SOC · Tickets</strong></div>
+    </div>
+  </section>
+
+  <section class="section intel-actions-section" aria-labelledby="actions-title">
+    <div class="container">
+      <div class="intel-section-head">
+        <div><div class="section-title-small">Plano de 30 dias</div><h2 class="section-title" id="actions-title">Da leitura à execução</h2></div>
+      </div>
+      <div class="intel-action-grid">
+        <article><span>Semana 1</span><h3>Priorizar exposição</h3><p>Cruzar inventário externo, CISA KEV, criticidade e controles compensatórios.</p></article>
+        <article><span>Semana 2</span><h3>Mapear detecções</h3><p>Relacionar alertas e lacunas às técnicas ATT&amp;CK selecionadas no radar.</p></article>
+        <article><span>Semana 3</span><h3>Integrar o MISP</h3><p>Publicar indicadores qualificados no SIEM e medir falsos positivos e tempo de uso.</p></article>
+        <article><span>Semana 4</span><h3>Validar resposta</h3><p>Executar tabletop ou simulação e registrar responsáveis, prazos e evidências.</p></article>
+      </div>
+      <div class="intel-source-cards">
+        <a href="https://attack.mitre.org/resources/changelog.html" target="_blank" rel="noopener noreferrer"><span>MITRE ATT&amp;CK</span><strong>Versões e alterações oficiais</strong><small>Consultar fonte ↗</small></a>
+        <a href="https://www.misp-project.org/features/" target="_blank" rel="noopener noreferrer"><span>MISP Project</span><strong>Recursos, API e correlação</strong><small>Consultar fonte ↗</small></a>
+        <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener noreferrer"><span>CISA KEV</span><strong>Exploração conhecida em campo</strong><small>Consultar fonte ↗</small></a>
+      </div>
+    </div>
+  </section>
+
   <section class="section incident-chart-section visal-hero" id="panorama-incidentes" aria-labelledby="incident-chart-heading">
     <div class="container">
       <div class="visal-pdf-bar">
@@ -718,5 +836,6 @@
   <script src="assets/incident-summary-chart.js" defer></script>
   <script src="assets/cis-privacy-charts.js?v=2" defer></script>
   <script src="assets/relatorio-pdf-export.js?v=7" defer></script>
+  <script src="assets/relatorio-intel.js?v=1" defer></script>
 </body>
 </html>
