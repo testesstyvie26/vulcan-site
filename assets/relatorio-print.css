@@ -3,7 +3,7 @@
  */
 @page {
   size: A4;
-  margin: 14mm 13mm 16mm;
+  margin: 24mm 13mm 16mm;
 }
 
 @media print {
@@ -50,18 +50,47 @@
     display: none !important;
   }
 
+  .print-running-header {
+    display: flex !important;
+    position: fixed !important;
+    z-index: 9999 !important;
+    top: -19mm !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 14mm !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 0 10px !important;
+    border-left: 3px solid #f6c85f !important;
+    background: #06131c !important;
+    color: #fff !important;
+  }
+
+  .print-running-header img { width: 10mm !important; height: 10mm !important; object-fit: contain !important; }
+  .print-running-header div { display: grid !important; gap: 1px !important; }
+  .print-running-header strong { color: #fff !important; font-size: 7.5pt !important; letter-spacing: .04em !important; }
+  .print-running-header span { color: #91a2aa !important; font-size: 6.5pt !important; }
+  .print-running-header small { margin-left: auto !important; color: #a8b6bc !important; font-size: 6.5pt !important; }
+
   /* Faixa de capa — nível executivo */
   .print-doc-header {
     display: block !important;
-    margin: 0 0 20px 0 !important;
-    padding: 18px 20px 16px !important;
-    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 55%, #1e40af 100%) !important;
-    border-radius: 4px !important;
-    border-left: 5px solid #38bdf8 !important;
-    break-after: avoid;
-    page-break-after: avoid;
-    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12) !important;
+    min-height: 225mm !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    padding: 22mm 18mm 16mm !important;
+    background: radial-gradient(circle at 85% 16%, #123343 0, #0b2230 23%, transparent 24%), #06131c !important;
+    border-radius: 0 !important;
+    border-top: 5px solid #f6c85f !important;
+    border-left: none !important;
+    break-after: page !important;
+    page-break-after: always !important;
+    box-shadow: none !important;
   }
+
+  .print-cover-brand { display: flex !important; align-items: center !important; gap: 10px !important; margin-bottom: 34mm !important; }
+  .print-cover-brand img { width: 22mm !important; height: 22mm !important; object-fit: contain !important; }
+  .print-cover-brand span { color: #f6c85f !important; font-size: 8pt !important; font-weight: 800 !important; letter-spacing: .14em !important; }
 
   .print-doc-kicker {
     display: block !important;
@@ -69,25 +98,31 @@
     font-weight: 700 !important;
     letter-spacing: 0.2em !important;
     text-transform: uppercase !important;
-    color: rgba(255, 255, 255, 0.72) !important;
+    color: #f6c85f !important;
     margin: 0 0 10px !important;
   }
 
   .print-doc-title {
-    font-size: 16pt !important;
+    font-size: 32pt !important;
     font-weight: 800 !important;
     letter-spacing: -0.02em !important;
     line-height: 1.2 !important;
     color: #ffffff !important;
     margin: 0 0 10px !important;
-    font-family: Georgia, "Times New Roman", Times, serif !important;
+    font-family: "Segoe UI", Arial, sans-serif !important;
   }
+
+  .print-cover-subtitle { max-width: 135mm !important; color: #a8b7be !important; font-size: 11pt !important; line-height: 1.55 !important; }
+  .print-cover-meta { display: grid !important; gap: 0 !important; max-width: 145mm !important; margin-top: 23mm !important; border-top: 1px solid #25414d !important; }
+  .print-cover-meta div { display: grid !important; grid-template-columns: 35mm 1fr !important; gap: 8px !important; padding: 9px 0 !important; border-bottom: 1px solid #25414d !important; }
+  .print-cover-meta span { color: #728891 !important; font-size: 7pt !important; text-transform: uppercase !important; }
+  .print-cover-meta strong { color: #edf4f6 !important; font-size: 8pt !important; }
 
   .print-doc-date {
     font-size: 9pt !important;
     color: #bae6fd !important;
     font-weight: 600 !important;
-    margin: 0 !important;
+    margin: 15mm 0 0 !important;
   }
 
   .print-doc-note {
@@ -98,6 +133,36 @@
     border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
     padding-top: 10px !important;
   }
+
+  .print-doc-summary { display: block !important; min-height: 220mm !important; padding: 12mm 8mm !important; box-sizing: border-box !important; break-after: page !important; page-break-after: always !important; }
+  .print-doc-summary h2 { margin: 3mm 0 2mm !important; color: #15242c !important; font-size: 22pt !important; }
+  .print-doc-summary > p { color: #5c6c74 !important; font-size: 9pt !important; }
+  .print-doc-summary ol { list-style: none !important; margin: 12mm 0 10mm !important; padding: 0 !important; }
+  .print-doc-summary li { display: grid !important; grid-template-columns: 14mm 1fr !important; gap: 5mm !important; padding: 5mm 2mm !important; border-bottom: 1px solid #d9e2e6 !important; }
+  .print-doc-summary li > span { color: #138d9a !important; font-size: 9pt !important; font-weight: 800 !important; }
+  .print-doc-summary li div { display: grid !important; gap: 2px !important; }
+  .print-doc-summary li strong { color: #17262e !important; font-size: 10pt !important; }
+  .print-doc-summary li small { color: #72838b !important; font-size: 7.5pt !important; }
+  .print-summary-audiences { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 3mm !important; }
+  .print-summary-audiences span { padding: 4mm !important; border: 1px solid #cfe0e5 !important; background: #f1f6f7 !important; color: #30434c !important; font-size: 8pt !important; font-weight: 700 !important; }
+
+  #relatorio-pdf-export .intel-hero { display: none !important; }
+  #relatorio-pdf-export .intel-filters { display: none !important; }
+  #relatorio-pdf-export .intel-techniques { display: grid !important; gap: 4mm !important; }
+  #relatorio-pdf-export .intel-technique { display: grid !important; grid-template-columns: 22mm 1fr !important; gap: 4mm !important; padding: 4mm !important; border: 1px solid #dce5e8 !important; border-left: 3px solid #138d9a !important; background: #fff !important; break-inside: avoid !important; }
+  #relatorio-pdf-export .intel-technique > a { display: none !important; }
+  #relatorio-pdf-export .intel-tech-id { color: #138d9a !important; }
+  #relatorio-pdf-export .intel-technique h3 { color: #17262e !important; }
+  #relatorio-pdf-export .intel-bar { background: #e8eef0 !important; }
+  #relatorio-pdf-export .intel-misp-grid { display: grid !important; grid-template-columns: 1fr !important; gap: 5mm !important; }
+  #relatorio-pdf-export .intel-misp-controls { display: none !important; }
+  #relatorio-pdf-export .intel-misp-stage { min-height: 0 !important; padding: 6mm !important; border: 1px solid #d8cdfb !important; background: #f4f0ff !important; break-inside: avoid !important; }
+  #relatorio-pdf-export .intel-misp-stage h3 { color: #17262e !important; }
+  #relatorio-pdf-export .intel-misp-stage p,#relatorio-pdf-export .intel-misp-stage li { color: #4f6069 !important; }
+  #relatorio-pdf-export .intel-flow { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 3mm !important; }
+  #relatorio-pdf-export .intel-flow i { display: none !important; }
+  #relatorio-pdf-export .intel-action-grid { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 3mm !important; }
+  #relatorio-pdf-export .intel-source-cards { display: none !important; }
 
   #relatorio-pdf-export {
     display: block !important;

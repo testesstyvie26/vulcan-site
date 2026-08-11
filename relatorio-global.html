@@ -12,7 +12,7 @@
   <meta name="theme-color" content="#020817" />
   <link rel="stylesheet" href="styles.css" />
   <script src="site.js" defer></script>
-  <link rel="stylesheet" href="assets/relatorio-print.css?v=4" media="print" />
+  <link rel="stylesheet" href="assets/relatorio-print.css?v=5" media="print" />
   <link rel="stylesheet" href="assets/relatorio-intel.css?v=1" />
   <style>
     .visal-page .visal-hero { padding-top: 48px; padding-bottom: 8px; }
@@ -379,6 +379,7 @@
     /* Só na tela: no PDF esses blocos devem aparecer (não use display:none sem @media screen) */
     @media screen {
       .print-doc-header,
+      .print-running-header,
       .print-doc-footer,
       .print-only {
         display: none !important;
@@ -429,11 +430,38 @@
 
 <main class="visal-page" id="relatorio-pdf-export">
 
+  <div class="print-running-header" aria-hidden="true">
+    <img src="assets/logo-vulcan.png" alt="" />
+    <div><strong>VULCAN DEFENSE</strong><span>Global Cyber Intelligence</span></div>
+    <small>RELATÓRIO EXECUTIVO · 2026</small>
+  </div>
+
   <div class="print-doc-header" aria-hidden="true">
-    <div class="print-doc-kicker">Vulcan Defense · Consultoria em cybersecurity</div>
-    <div class="print-doc-title">Relatório executivo — panorama de incidentes e investimento em SI</div>
+    <div class="print-cover-brand"><img src="assets/logo-vulcan.png" alt="" /><span>VULCAN DEFENSE</span></div>
+    <div class="print-doc-kicker">Relatório executivo · Agosto 2026</div>
+    <div class="print-doc-title">Global Cyber<br />Intelligence</div>
+    <p class="print-cover-subtitle">MISP, MITRE ATT&amp;CK, vulnerabilidades exploradas e resposta a incidentes de privacidade.</p>
+    <div class="print-cover-meta">
+      <div><span>Referência</span><strong>MITRE ATT&amp;CK v19.1</strong></div>
+      <div><span>Operação</span><strong>Threat Intelligence + SOC + DPO</strong></div>
+      <div><span>Objetivo</span><strong>Transformar sinais em decisão defensiva</strong></div>
+    </div>
     <div class="print-doc-date" id="print-date-stamp"></div>
-    <p class="print-doc-note">Síntese para leitura executiva. Indicadores e gráficos refletem fontes públicas citadas no corpo; confirme totais nas referências oficiais antes de decisões críticas.</p>
+    <p class="print-doc-note">VULCAN DEFENSE LTDA - ME · CNPJ 51.530.057/0001-33</p>
+  </div>
+
+  <div class="print-doc-summary print-only" aria-hidden="true">
+    <div class="print-doc-kicker">Navegação</div>
+    <h2>Sumário executivo</h2>
+    <p>Leitura estruturada para conectar cenário, inteligência, privacidade e execução.</p>
+    <ol>
+      <li><span>01</span><div><strong>Visão executiva</strong><small>Sinais do mês e decisões recomendadas</small></div></li>
+      <li><span>02</span><div><strong>Radar MITRE ATT&amp;CK</strong><small>Técnicas para validação defensiva</small></div></li>
+      <li><span>03</span><div><strong>MISP operacional</strong><small>Do feed ao SIEM, EDR e SOAR</small></div></li>
+      <li><span>04</span><div><strong>DPO e ANPD</strong><small>Prazos, critérios e comunicação</small></div></li>
+      <li><span>05</span><div><strong>Panorama público</strong><small>Incidentes, investimento e impactos</small></div></li>
+    </ol>
+    <div class="print-summary-audiences"><span>Conselho e diretoria</span><span>SOC e SecOps</span><span>Threat Intelligence</span><span>DPO e jurídico</span></div>
   </div>
 
   <section class="intel-hero" aria-labelledby="intel-title">
@@ -890,7 +918,7 @@
   <script src="assets/security-spending-chart.js" defer></script>
   <script src="assets/incident-summary-chart.js" defer></script>
   <script src="assets/cis-privacy-charts.js?v=2" defer></script>
-  <script src="assets/relatorio-pdf-export.js?v=7" defer></script>
+  <script src="assets/relatorio-pdf-export.js?v=8" defer></script>
   <script src="assets/relatorio-intel.js?v=1" defer></script>
 </body>
 </html>

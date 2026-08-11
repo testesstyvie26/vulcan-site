@@ -4,8 +4,8 @@
  * Remove snapshots no afterprint. Ctrl+P: só redimensiona canvas (sem snapshot).
  */
 (function () {
-  var BTN_LABEL = "Salvar como PDF";
-  var WAIT_LABEL = "Aguardando gráficos…";
+  var BTN_LABEL = "Exportar página completa";
+  var WAIT_LABEL = "Preparando padrão Vulcan…";
   var MAX_WAIT_MS = 120000;
   var printSnapshotRefs = [];
 
