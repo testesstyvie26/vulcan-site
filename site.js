@@ -103,6 +103,12 @@
   }
 
   var footerContainer = document.querySelector("footer .container");
+  if (footerContainer && !footerContainer.querySelector(".site-legal")) {
+    var legal = document.createElement("span");
+    legal.className = "site-legal";
+    legal.textContent = "VULCAN DEFENSE LTDA - ME · CNPJ 51.530.057/0001-33";
+    footerContainer.appendChild(legal);
+  }
   if (footerContainer && !footerContainer.querySelector(".site-linkedin")) {
     var linkedin = document.createElement("a");
     linkedin.className = "site-linkedin";
