@@ -86,8 +86,49 @@
     .quem-cta .section-title.quem-cta-title { margin-top: 0; font-size: clamp(1.35rem, 2.5vw, 1.75rem); }
     .quem-cta .section-text.quem-cta-lede { margin-top: 10px; max-width: 520px; }
     .quem-cta .btn-row { margin-top: 0; }
+    .quem-press-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 18px; margin-top: 36px; }
+    .quem-press-side { display: grid; gap: 18px; align-content: start; }
+    .quem-press-card {
+      border: 1px solid rgba(255,255,255,.1); border-radius: 22px; background: rgba(0,0,0,.28);
+      padding: 26px 24px; display: flex; flex-direction: column; gap: 12px; height: 100%;
+    }
+    .quem-press-card-featured {
+      border-color: rgba(103,232,249,.24); background: linear-gradient(155deg, rgba(4,21,49,.62), rgba(0,0,0,.34));
+      padding: 0; overflow: hidden;
+    }
+    .quem-press-featured-body { padding: 22px 24px 26px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+    .quem-press-preview {
+      border-bottom: 1px solid rgba(255,255,255,.08); background: rgba(0,0,0,.22);
+    }
+    .quem-press-preview img {
+      display: block; width: 100%; height: auto; max-height: 280px; object-fit: cover; object-position: center 35%;
+    }
+    .quem-press-preview-cap {
+      padding: 12px 16px 14px; font-size: 12px; line-height: 1.55; color: rgba(255,255,255,.58);
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .quem-press-preview-cap strong { color: rgba(255,255,255,.82); font-weight: 700; }
+    .quem-press-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    .quem-press-date { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,.42); }
+    .quem-press-tag {
+      font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 5px 10px; border-radius: 999px; border: 1px solid rgba(103,232,249,.24); background: rgba(34,211,238,.08); color: #a5f3fc;
+    }
+    .quem-press-tag-muted { border-color: rgba(255,255,255,.12); background: rgba(255,255,255,.04); color: rgba(255,255,255,.62); }
+    .quem-press-card h3 { font-size: 18px; font-weight: 800; line-height: 1.35; color: #fff; margin: 0; }
+    .quem-press-card-featured h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
+    .quem-press-card p { font-size: 14px; line-height: 1.75; color: rgba(255,255,255,.64); margin: 0; flex: 1; }
+    .quem-press-source { font-size: 12px; font-weight: 700; color: rgba(255,255,255,.48); letter-spacing: 0.04em; }
+    .quem-press-link {
+      display: inline-flex; align-items: center; gap: 8px; margin-top: 4px; font-size: 13px; font-weight: 700;
+      color: #7dd3fc; text-decoration: none; border-bottom: 1px solid rgba(103,232,249,.28); padding-bottom: 2px; width: fit-content;
+      transition: color .2s, border-color .2s;
+    }
+    .quem-press-link:hover { color: #a5f3fc; border-color: rgba(103,232,249,.5); }
+    .quem-press-link::after { content: "↗"; font-size: 11px; opacity: .85; }
+    .quem-press-footnote { margin-top: 22px; font-size: 13px; line-height: 1.65; color: rgba(255,255,255,.48); max-width: 720px; }
     @media (max-width: 980px) {
-      .quem-hero-grid, .quem-diff-inner, .quem-mission-grid, .quem-values-grid, .quem-ops-grid { grid-template-columns: 1fr; }
+      .quem-hero-grid, .quem-diff-inner, .quem-mission-grid, .quem-values-grid, .quem-ops-grid, .quem-press-grid { grid-template-columns: 1fr; }
       .quem-diff-cell { border-right: none; border-bottom: 1px solid rgba(255,255,255,.08); padding: 28px 0; }
       .quem-diff-cell:last-child { border-bottom: none; }
       .quem-person { grid-template-columns: 72px 1fr; gap: 18px; }
@@ -314,6 +355,62 @@
           <span class="quem-comp-badge">BACEN</span>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="section section-muted" id="sala-de-imprensa">
+    <div class="container">
+      <div class="section-intro">
+        <div class="section-title-small">Clipping · Sala de imprensa</div>
+        <h2 class="section-title">Presença no ecossistema de <em class="cyan">Defesa e Segurança Pública</em></h2>
+        <p class="section-text">Encontros estratégicos, publicações e conexões com academia, indústria e instituições de inovação — evidências públicas de que a Vulcan Defense atua onde decisões de PD&amp;I e cibersegurança convergem.</p>
+      </div>
+
+      <div class="quem-press-grid">
+        <article class="quem-press-card quem-press-card-featured">
+          <div class="quem-press-preview">
+            <img src="assets/press-firjan-pdi-2026.png" alt="Reunião de PD&amp;I na Firjan SENAI SESI Tecnologia sobre simulador da viatura blindada Guarani" width="960" height="540" loading="lazy" />
+            <p class="quem-press-preview-cap"><strong>Prévia da publicação:</strong> encontro na Firjan SENAI SESI Tecnologia com empresas, academia (UFF) e ecossistema de inovação — discussão de soluções em PD&amp;I para Defesa e Segurança Pública, incluindo simuladores e tecnologias aplicadas ao setor.</p>
+          </div>
+          <div class="quem-press-featured-body">
+            <div class="quem-press-meta">
+              <span class="quem-press-date">10 ago 2026</span>
+              <span class="quem-press-tag">Encontro estratégico</span>
+              <span class="quem-press-tag quem-press-tag-muted">PD&amp;I</span>
+            </div>
+            <h3>Agenda de PD&amp;I para Defesa e Segurança Pública na Firjan SENAI SESI Tecnologia</h3>
+            <p>A Firjan SENAI SESI Tecnologia recebeu representantes da <strong>Vulcan Defense</strong>, da Deterrence Defense e da Universidade Federal Fluminense (UFF) para identificar oportunidades conjuntas em pesquisa, desenvolvimento e inovação voltadas aos setores de Defesa e Segurança Pública. A agenda aproximou empresas de base tecnológica, academia e o ecossistema Firjan — com contribuições de <strong>Rodrigo Carran</strong> (Vulcan Defense) e do pesquisador João Renato Paulon (UFF), sobre ciência, tecnologia, estratégia e desafios contemporâneos da Defesa.</p>
+            <span class="quem-press-source">Fonte: Firjan SENAI SESI Tecnologia · LinkedIn</span>
+            <a class="quem-press-link" href="https://www.linkedin.com/feed/update/urn:li:activity:7494031345866878976/" target="_blank" rel="noopener noreferrer">Ver publicação completa</a>
+          </div>
+        </article>
+
+        <div class="quem-press-side">
+          <article class="quem-press-card">
+            <div class="quem-press-meta">
+              <span class="quem-press-date">6 ago 2026</span>
+              <span class="quem-press-tag quem-press-tag-muted">Ecossistema</span>
+            </div>
+            <h3>Rio Innovation Week 2026 — conexão com P&amp;D Firjan</h3>
+            <p>Durante o Rio Innovation Week, Rodrigo Carran reforçou laços com <strong>Marcos Dias</strong>, coordenador de Projetos de P&amp;D da Firjan SENAI SESI, e com especialistas em inovação, pesquisa e transformação digital — preparando o terreno para agendas conjuntas em Defesa e Segurança Pública.</p>
+            <span class="quem-press-source">Fonte: Rodrigo Carran · LinkedIn</span>
+            <a class="quem-press-link" href="https://www.linkedin.com/posts/rodrigocarran_rioinnovationweek-riw2026-marcosdias-activity-7491161272525381633-N5Dr" target="_blank" rel="noopener noreferrer">Ver publicação</a>
+          </article>
+
+          <article class="quem-press-card">
+            <div class="quem-press-meta">
+              <span class="quem-press-date">Mar 2026</span>
+              <span class="quem-press-tag quem-press-tag-muted">Validação de mercado</span>
+            </div>
+            <h3>Entrada no mercado com proposta orientada a risco e evidência</h3>
+            <p>Publicações de lançamento destacam a Vulcan Defense como consultoria madura em cyber defense, pentest, SOC, compliance de IA e Security Champions — com entregáveis prontos para auditoria e linguagem que conecta risco técnico a decisão executiva.</p>
+            <span class="quem-press-source">Fonte: Rodrigo Carran · LinkedIn</span>
+            <a class="quem-press-link" href="https://www.linkedin.com/posts/rodrigocarran_cybersecurity-cyberdefense-complianceia-activity-7441854724854685697-5nuq" target="_blank" rel="noopener noreferrer">Ver publicação</a>
+          </article>
+        </div>
+      </div>
+
+      <p class="quem-press-footnote">Novas menções e encontros são adicionados conforme publicados. Para parcerias em Defesa, Segurança Pública ou PD&amp;I, <a href="contato.html" class="cyan">fale conosco</a>.</p>
     </div>
   </section>
 
