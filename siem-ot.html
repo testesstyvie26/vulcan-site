@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="assets/favicon.ico" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://formspree.io; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; object-src 'none'; base-uri 'self'; frame-ancestors 'none';" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+  <meta name="theme-color" content="#071018" />
+  <title>Vulcan-SIEM OT | Monitoramento TI e ambientes industriais | Vulcan Defense</title>
+  <meta name="description" content="Projeto Vulcan-SIEM: monitoramento unificado de TI e OT (ICS/SCADA), visibilidade convergente, detecção e resposta para ambientes industriais e infraestrutura crítica." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/siem-ot.css" />
+  <script src="site.js" defer></script>
+  <script src="assets/siem-ot.js" defer></script>
+</head>
+<body class="ot-page">
+  <div class="grid-overlay"></div>
+  <header>
+    <div class="container header-wrap">
+      <div class="brand"><div class="logo-box"><img src="assets/logo-vulcan.png" alt="Vulcan Defense" /></div><div><h1>VULCAN DEFENSE</h1><p>Cyber Defense Operations</p></div></div>
+      <nav>
+        <a href="index.html">Home</a><a href="quem-somos.html">Quem Somos</a><a href="relatorio-global.html">Relatório global</a>
+        <div class="nav-item has-submenu"><a href="servicos.html">Serviços</a><div class="submenu"><a href="pentest-yellow-team-secops-dast.html">Pentest e SecOps</a><a href="software-vulcan-platform.html">Software Vulcan Platform</a><a href="endpoint-protection-siem.html">Endpoint Protection e SIEM</a><a href="integracao-siem-ia.html">SIEM com IA</a><a href="siem-ot.html" class="active">Vulcan-SIEM OT</a><a href="compliance-ia.html">Compliance de IA</a><a href="checklist-seguranca.html">Checklist SI (ISO/LGPD/PCI)</a><a href="security-champions.html">Security Champions</a><a href="treinamentos-owasp-mitre.html">Treinamentos OWASP e MITRE</a><a href="hackathon-defensivo.html">Hackathon defensivo</a></div></div>
+        <div class="nav-item has-submenu partner-menu"><a href="gestao-tms-flsys-leanworks.html">Serviços parceiros</a><div class="submenu"><a href="gestao-tms-flsys-leanworks.html">Gestão TMS e obras</a><a href="https://cmbusinesstoken.com" class="partner-external" target="_blank" rel="noopener noreferrer">Tokenização e Segurança fintech</a></div></div><a href="tecnologias.html">Escopos de Atuação</a><a href="politica-privacidade.html">Política de Privacidade</a><a href="contato.html">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="ot-hero">
+      <div class="container ot-hero-grid">
+        <div>
+          <div class="ot-eyebrow">Projeto Vulcan-SIEM · OT</div>
+          <h1 class="ot-title">Monitoramento de TI e <span>ambientes industriais</span></h1>
+          <p class="ot-lead">O <strong>Vulcan-SIEM</strong> estende correlação, detecção e resposta para redes convergentes de TI e OT — SCADA, ICS, PLCs e IIoT — com visibilidade contínua, perfis de tráfego industrial e playbooks que respeitam continuidade operacional.</p>
+          <div class="ot-actions"><a class="btn btn-primary" href="contato.html?servico=vulcan-siem-ot">Avaliar ambiente OT</a><a class="btn btn-secondary" href="#projeto">Conhecer o projeto</a></div>
+          <div class="ot-proof" aria-label="Escopo do Vulcan-SIEM OT"><span>ICS · SCADA · DCS</span><span>Perfil de protocolos industriais</span><span>Correlação TI + OT</span><span>Resposta com engenharia de processo</span></div>
+        </div>
+
+        <div class="ot-console" aria-label="Simulação ilustrativa de alerta OT no Vulcan-SIEM">
+          <div class="ot-console-head"><div class="ot-console-title">Vulcan-SIEM · OT cockpit</div><div class="ot-status">Monitorando zonas</div></div>
+          <div class="ot-scenario-tabs" aria-label="Selecionar cenário OT">
+            <button class="ot-scenario is-active" type="button" data-ot-scenario="plc" aria-pressed="true">PLC / Modbus</button>
+            <button class="ot-scenario" type="button" data-ot-scenario="scada" aria-pressed="false">SCADA remoto</button>
+            <button class="ot-scenario" type="button" data-ot-scenario="protocol" aria-pressed="false">Perfil DNP3</button>
+          </div>
+          <div class="ot-alert">
+            <div class="ot-alert-top"><span class="ot-alert-severity" data-ot-severity>Crítico</span><span class="ot-alert-id" data-ot-id>OT-7712</span></div>
+            <h3 data-ot-title>Escrita não autorizada em registrador PLC</h3>
+            <p data-ot-description>Comando Modbus fora de janela de manutenção no controlador da linha 3.</p>
+            <div class="ot-tags" data-ot-tags><span class="ot-tag">Modbus</span><span class="ot-tag">PLC</span><span class="ot-tag">ICS</span></div>
+          </div>
+          <div class="ot-timeline">
+            <div class="ot-timeline-item" data-ot-step><i></i><strong>Baseline desviado</strong><time>00:00</time></div>
+            <div class="ot-timeline-item" data-ot-step><i></i><strong>Correlacionado com sessão remota</strong><time>00:22</time></div>
+            <div class="ot-timeline-item" data-ot-step><i></i><strong>Zona OT isolada</strong><time>00:48</time></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ot-context" id="contexto">
+      <div class="container">
+        <div class="ot-section-copy">
+          <div class="section-title-small">Por que OT importa</div>
+          <h2 class="ot-section-title">Tecnologia operacional exposta à convergência digital</h2>
+          <p class="ot-section-text">A <strong>tecnologia operacional (OT)</strong> monitora e controla processos físicos — energia, manufatura, água, transporte e infraestrutura crítica. Sistemas SCADA, DCS, PLCs e sensores IIoT formam a base dos ambientes industriais. Historicamente isolados, essas redes passaram a se conectar à TI e à internet, ampliando a superfície de ataque sem o mesmo nível de proteção cibernética.</p>
+        </div>
+        <div class="ot-compare">
+          <article class="ot-compare-card ot-compare-card--it">
+            <h3>TI — Tecnologia da Informação</h3>
+            <p>Foco em confidencialidade, integridade e disponibilidade de dados e sistemas corporativos.</p>
+            <ul>
+              <li>Endpoints, identidade, cloud e aplicações</li>
+              <li>Ciclos de patch e atualização frequentes</li>
+              <li>Prioridade típica: proteger informação e acesso</li>
+            </ul>
+          </article>
+          <article class="ot-compare-card ot-compare-card--ot">
+            <h3>OT — Tecnologia Operacional</h3>
+            <p>Foco em segurança física, continuidade de processo e integridade de comandos industriais.</p>
+            <ul>
+              <li>ICS, SCADA, PLCs, RTUs e IIoT de campo</li>
+              <li>Equipamentos com vida útil longa e janelas rígidas de manutenção</li>
+              <li>Impacto de falha: parada de produção, incidentes físicos ou risco à vida</li>
+            </ul>
+          </article>
+        </div>
+        <p class="ot-section-text" style="margin-top:28px;">A convergência TI/OT exige visibilidade unificada: equipes que antes operavam em silos precisam enxergar a mesma superfície de ataque — sem comprometer disponibilidade industrial.</p>
+      </div>
+    </section>
+
+    <section class="ot-layers">
+      <div class="container">
+        <div class="ot-section-copy">
+          <div class="section-title-small">Arquitetura Vulcan-SIEM</div>
+          <h2 class="ot-section-title">Três camadas para ambientes convergentes</h2>
+          <p class="ot-section-text">Inspirado nas melhores práticas de segurança OT — visibilidade, controle e monitoramento contínuo — o Vulcan-SIEM organiza coleta, correlação e resposta sem tratar OT como “mais um log de TI”.</p>
+        </div>
+        <div class="ot-layer-grid">
+          <article class="ot-layer">
+            <span class="ot-layer-num">01 · VISIBILIDADE</span>
+            <h3>Descoberta e inventário OT</h3>
+            <p>Identifique dispositivos, zonas Purdue, protocolos permitidos e baseline de tráfego industrial antes de correlacionar alertas.</p>
+            <ul>
+              <li>Asset inventory ICS/IIoT</li>
+              <li>Perfis Modbus, DNP3, OPC-UA e BACnet</li>
+              <li>Mapa TI ↔ OT e zonas de confiança</li>
+            </ul>
+          </article>
+          <article class="ot-layer">
+            <span class="ot-layer-num">02 · CONTROLE</span>
+            <h3>Segmentação e acesso</h3>
+            <p>Políticas alinhadas à continuidade: quem acessa OT, de onde, em qual janela e com qual nível de permissão.</p>
+            <ul>
+              <li>Microsegmentação entre zonas</li>
+              <li>Acesso remoto de fornecedores auditado</li>
+              <li>Identidade e MFA onde aplicável</li>
+            </ul>
+          </article>
+          <article class="ot-layer">
+            <span class="ot-layer-num">03 · MONITORAMENTO</span>
+            <h3>SIEM e resposta OT</h3>
+            <p>Correlacione eventos de firewall industrial, IDS/IPS OT, EDR de estações de engenharia e telemetria de processo.</p>
+            <ul>
+              <li>Casos de uso específicos para ICS</li>
+              <li>Playbooks com engenharia de processo</li>
+              <li>Evidência para auditoria e NIST CSF</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="ot-sources">
+      <div class="container">
+        <div class="ot-section-copy">
+          <div class="section-title-small">Telemetria industrial</div>
+          <h2 class="ot-section-title">Fontes típicas no Vulcan-SIEM OT</h2>
+        </div>
+        <div class="ot-source-grid">
+          <div class="ot-source"><strong>SCADA / HMI</strong><span>Servidores de supervisão, alarmes e operador</span></div>
+          <div class="ot-source"><strong>PLC / RTU</strong><span>Controladores lógicos e unidades remotas</span></div>
+          <div class="ot-source"><strong>Rede industrial</strong><span>Firewalls OT, switches e taps de tráfego</span></div>
+          <div class="ot-source"><strong>Engenharia</strong><span>Estações de projeto, jump hosts e VPN</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ot-project" id="projeto">
+      <div class="container">
+        <div class="ot-section-copy">
+          <div class="section-title-small">Projeto Vulcan-SIEM</div>
+          <h2 class="ot-section-title">O que entregamos em ambientes TI + OT</h2>
+          <p class="ot-section-text">Consultoria e operação assistida para implantar ou evoluir um SIEM que fala a língua da planta — integrado ao pacote corporativo quando a rede converge, ou dedicado à zona OT quando a segregação exige.</p>
+        </div>
+        <div class="ot-pillar-grid">
+          <article class="ot-pillar">
+            <p class="ot-pillar-num">Pilar 01</p>
+            <h3>Diagnóstico Purdue</h3>
+            <p>Mapeamento de zonas, conduítes TI/OT, protocolos, fornecedores remotos e maturidade de detecção — base para roadmap sem parada não planejada.</p>
+          </article>
+          <article class="ot-pillar">
+            <p class="ot-pillar-num">Pilar 02</p>
+            <h3>Coleta e normalização</h3>
+            <p>Integração de logs industriais, espelhamento de tráfego e parsers para protocolos de campo no pipeline do Vulcan-SIEM.</p>
+          </article>
+          <article class="ot-pillar">
+            <p class="ot-pillar-num">Pilar 03</p>
+            <h3>Operação e handover</h3>
+            <p>Casos de uso, runbooks OT-aware, métricas de MTTR e transferência para SOC interno ou NOC/SOC Vulcan.</p>
+          </article>
+        </div>
+
+        <div class="ot-section-copy" style="margin-top:48px;">
+          <div class="section-title-small">Requisitos de referência</div>
+          <h2 class="ot-section-title" style="font-size:clamp(1.5rem,2.8vw,2rem);">Cinco controles para redes convergentes</h2>
+          <p class="ot-section-text">Alinhado a frameworks reconhecidos de segurança OT, o projeto prioriza:</p>
+        </div>
+        <div class="ot-req-grid">
+          <div class="ot-req"><span class="ot-req-num">1</span><div><h4>Identificar e priorizar ativos</h4><p>Inventário contínuo de dispositivos OT, classificação por criticidade de processo e valor para o negócio.</p></div></div>
+          <div class="ot-req"><span class="ot-req-num">2</span><div><h4>Controle de identidade e acesso</h4><p>Contas de fornecedor, engenheiros e operadores com permissões mínimas e trilha de auditoria.</p></div></div>
+          <div class="ot-req"><span class="ot-req-num">3</span><div><h4>Segmentação dinâmica</h4><p>Zonas e conduítes entre TI e OT, limitando movimento lateral sem interromper produção.</p></div></div>
+          <div class="ot-req"><span class="ot-req-num">4</span><div><h4>Acesso com e sem fio</h4><p>Políticas para Wi‑Fi industrial, dispositivos móveis de manutenção e redes de convidados.</p></div></div>
+          <div class="ot-req"><span class="ot-req-num">5</span><div><h4>Análise de tráfego e ameaças</h4><p>Detecção de anomalias em protocolos industriais, vulnerabilidades expostas e correlação no SIEM.</p></div></div>
+          <div class="ot-req"><span class="ot-req-num">+</span><div><h4>Resposta coordenada</h4><p>Playbooks que envolvem CISO, engenharia de processo e operações — contenção segura para OT.</p></div></div>
+        </div>
+
+        <p class="ot-ref">O Vulcan-SIEM é independente de fornecedor: avaliamos a stack existente (firewall, NAC, SIEM, IDS) e integramos ao seu contexto industrial, com foco em visibilidade, segmentação e resposta segura para OT.</p>
+      </div>
+    </section>
+
+    <section class="ot-cta">
+      <div class="container">
+        <div class="ot-cta-card">
+          <div>
+            <h2>Planta industrial, utilities ou infraestrutura crítica?</h2>
+            <p>Conte-nos sobre zonas OT, protocolos, integrações TI/OT e metas de compliance. Desenhamos um escopo Vulcan-SIEM proporcional ao risco — sem prometer cobertura genérica.</p>
+          </div>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="contato.html?servico=vulcan-siem-ot">Solicitar diagnóstico OT</a>
+            <a class="btn btn-secondary" href="endpoint-protection-siem.html">SIEM corporativo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container">&copy; 2026 Vulcan Defense. Todos os direitos reservados.</div></footer>
+</body>
+</html>
