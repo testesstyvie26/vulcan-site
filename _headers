@@ -1,0 +1,34 @@
+# Cloudflare Pages / Netlify — headers de segurança (OWASP ZAP)
+# CSP apenas via HTTP (evita alerta "CSP: Header & Meta" quando meta tag coexistir)
+
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-site
+  Cross-Origin-Embedder-Policy: unsafe-none
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; form-action 'self' https://formspree.io; frame-ancestors 'none'; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://formspree.io; frame-src 'self'; worker-src 'self' blob:; upgrade-insecure-requests
+
+/*.html
+  Content-Type: text/html; charset=utf-8
+  Cache-Control: no-cache, no-store, must-revalidate, private
+  Pragma: no-cache
+
+/relatorio-global.html
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; form-action 'self' https://formspree.io; frame-ancestors 'none'; object-src 'none'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob:; connect-src 'self' https://formspree.io https://api.ransomware.live https://cdn.jsdelivr.net https://api.allorigins.win https://corsproxy.io https://api.codetabs.com https://cors.eu.org; frame-src 'self' https://app.powerbi.com; worker-src 'self' blob:; upgrade-insecure-requests
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/output/*
+  Cache-Control: public, max-age=86400
+
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=86400
+
+/CNAME
+  Content-Type: text/plain; charset=utf-8
