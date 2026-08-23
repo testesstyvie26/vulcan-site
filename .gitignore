@@ -1,0 +1,20 @@
+# Arquivos temporários de trabalho
+temp/
+tmp/
+*.tmp
+*.bak
+*.log
+
+# Rascunhos / arquivos sem nome
+Untitled
+Untitled-*
+
+# Duplicatas locais (PDF oficial fica em output/pdf/)
+relatorio-mensal-*.pdf
+
+# SO / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~

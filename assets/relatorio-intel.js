@@ -1,6 +1,22 @@
 (function () {
   "use strict";
 
+  var periodEl = document.getElementById("intel-report-period");
+  if (periodEl) {
+    var now = new Date();
+    var monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+    var fmt = function (d) {
+      return d.toLocaleDateString("pt-BR", { day: "numeric", month: "short", year: "numeric" });
+    };
+    periodEl.textContent =
+      "Período " +
+      fmt(monthStart).replace(".", "") +
+      " – " +
+      fmt(now).replace(".", "") +
+      " · gerado " +
+      now.toLocaleDateString("pt-BR", { day: "numeric", month: "short", year: "numeric" }).replace(".", "");
+  }
+
   var filters = document.querySelectorAll("[data-intel-filter]");
   var techniques = document.querySelectorAll("[data-intel-category]");
   filters.forEach(function (button) {

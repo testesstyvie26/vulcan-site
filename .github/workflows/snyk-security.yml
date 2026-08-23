@@ -60,10 +60,13 @@ jobs:
       - name: Run DAST Scan (ZAP)
         run: |
           mkdir -p zap && chmod 777 zap
-          docker run --user root -v $(pwd)/zap:/zap/wrk/:rw \
-          ghcr.io/zaproxy/zaproxy:stable zap-baseline.py \
-          -t https://vulcandefense.com.br \
-          -r zap-report.html || true
+          for TARGET in https://vulcandefense.com.br https://sentinelacibernetica.com.br; do
+            SLUG=$(echo "$TARGET" | sed 's|https://||; s|/|_|g')
+            docker run --user root -v $(pwd)/zap:/zap/wrk/:rw \
+            ghcr.io/zaproxy/zaproxy:stable zap-baseline.py \
+            -t "$TARGET" \
+            -r "zap-report-${SLUG}.html" || true
+          done
 
       # =========================
       # Upload reports
@@ -72,7 +75,7 @@ jobs:
         run: |
           set -e
           git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/testesstyvie26/vulcan-security-reports.git repo
-          cp zap/zap-report.html repo/ || echo "No report found"
+          cp zap/zap-report-*.html repo/ 2>/dev/null || cp zap/zap-report.html repo/ 2>/dev/null || echo "No report found"
           cd repo
           git config user.name "github-actions"
           git config user.email "actions@github.com"

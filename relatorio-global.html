@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="assets/favicon.ico">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https: blob:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; connect-src 'self' https://formspree.io https://api.ransomware.live https://cdn.jsdelivr.net https://api.allorigins.win https://corsproxy.io https://api.codetabs.com https://cors.eu.org; worker-src 'self' blob:; frame-src 'self' https://app.powerbi.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none';">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
   <title>Relatório Global de Cyber Intelligence | Vulcan Defense</title>
@@ -13,7 +12,7 @@
   <link rel="stylesheet" href="styles.css" />
   <script src="site.js" defer></script>
   <link rel="stylesheet" href="assets/relatorio-print.css?v=5" media="print" />
-  <link rel="stylesheet" href="assets/relatorio-intel.css?v=1" />
+  <link rel="stylesheet" href="assets/relatorio-intel.css?v=3" />
   <style>
     .visal-page .visal-hero { padding-top: 48px; padding-bottom: 8px; }
     .visal-breadcrumb {
@@ -440,7 +439,7 @@
     <div class="print-cover-brand"><img src="assets/logo-vulcan.png" alt="" /><span>VULCAN DEFENSE</span></div>
     <div class="print-doc-kicker">Relatório executivo · Agosto 2026</div>
     <div class="print-doc-title">Global Cyber<br />Intelligence</div>
-    <p class="print-cover-subtitle">MISP, MITRE ATT&amp;CK, vulnerabilidades exploradas e resposta a incidentes de privacidade.</p>
+    <p class="print-cover-subtitle">MISP, MITRE ATT&amp;CK, CVEs em exploração, notícias do mês e resposta a incidentes de privacidade.</p>
     <div class="print-cover-meta">
       <div><span>Referência</span><strong>MITRE ATT&amp;CK v19.1</strong></div>
       <div><span>Operação</span><strong>Threat Intelligence + SOC + DPO</strong></div>
@@ -456,10 +455,11 @@
     <p>Leitura estruturada para conectar cenário, inteligência, privacidade e execução.</p>
     <ol>
       <li><span>01</span><div><strong>Visão executiva</strong><small>Sinais do mês e decisões recomendadas</small></div></li>
-      <li><span>02</span><div><strong>Radar MITRE ATT&amp;CK</strong><small>Técnicas para validação defensiva</small></div></li>
-      <li><span>03</span><div><strong>MISP operacional</strong><small>Do feed ao SIEM, EDR e SOAR</small></div></li>
-      <li><span>04</span><div><strong>DPO e ANPD</strong><small>Prazos, critérios e comunicação</small></div></li>
-      <li><span>05</span><div><strong>Panorama público</strong><small>Incidentes, investimento e impactos</small></div></li>
+      <li><span>02</span><div><strong>Temas, CVEs e notícia</strong><small>Prioridades de agosto até a data de geração</small></div></li>
+      <li><span>03</span><div><strong>Radar MITRE ATT&amp;CK</strong><small>Técnicas para validação defensiva</small></div></li>
+      <li><span>04</span><div><strong>MISP operacional</strong><small>Do feed ao SIEM, EDR e SOAR</small></div></li>
+      <li><span>05</span><div><strong>DPO e ANPD</strong><small>Prazos, critérios e comunicação</small></div></li>
+      <li><span>06</span><div><strong>Panorama público</strong><small>Incidentes, investimento e impactos</small></div></li>
     </ol>
     <div class="print-summary-audiences"><span>Conselho e diretoria</span><span>SOC e SecOps</span><span>Threat Intelligence</span><span>DPO e jurídico</span></div>
   </div>
@@ -472,6 +472,7 @@
         <p>Um briefing operacional para transformar inteligência de ameaças em priorização: MISP para correlação e compartilhamento, MITRE ATT&amp;CK para contexto de TTPs e CISA KEV para direcionar correções urgentes.</p>
         <div class="intel-actions">
           <a class="btn btn-primary" href="output/pdf/relatorio-mensal-cyber-intelligence-agosto-2026.pdf" download>Baixar relatório mensal <span aria-hidden="true">↓</span></a>
+          <a class="btn btn-secondary" href="#temas-cves-noticias">Temas e CVEs do mês</a>
           <a class="btn btn-secondary" href="#radar-attack">Explorar o radar</a>
         </div>
         <p class="intel-download-note">PDF executivo · Agosto de 2026 · leitura em aproximadamente 6 minutos</p>
@@ -485,11 +486,173 @@
         <div class="intel-brief-grid">
           <div><span>MISP</span><strong>2.5.44</strong><small>release jul. 2026</small></div>
           <div><span>Foco</span><strong>Identidade</strong><small>cloud + credenciais</small></div>
-          <div><span>Prioridade</span><strong>KEV</strong><small>exploração confirmada</small></div>
+          <div><span>Prioridade</span><strong>KEV</strong><small>5 CVEs · ago/2026</small></div>
           <div><span>Aplicação</span><strong>SOC</strong><small>detectar e responder</small></div>
         </div>
-        <div class="intel-source-line">Fontes primárias: MITRE, MISP Project e CISA</div>
+        <div class="intel-source-line">Fontes primárias: MITRE, MISP Project, CISA KEV e imprensa especializada</div>
       </aside>
+    </div>
+  </section>
+
+  <section class="section section-muted intel-monthly-section" id="temas-cves-noticias" aria-labelledby="monthly-title">
+    <div class="container">
+      <div class="intel-section-head">
+        <div>
+          <div class="section-title-small">Agosto 2026 · até 21 ago</div>
+          <h2 class="section-title" id="monthly-title">Temas do mês, CVEs novos e notícia em destaque</h2>
+          <p class="section-text">Recorte editorial do período <strong>1 a 21 de agosto de 2026</strong>, alinhado à data de geração desta edição. CVEs do <strong>CISA KEV</strong> (exploração confirmada) e advisories relevantes de AppSec — incluindo supply chain em stacks React.</p>
+        </div>
+        <div class="intel-report-period" id="intel-report-period">Edição gerada · 21 ago 2026</div>
+      </div>
+
+      <div class="intel-themes-block">
+        <h3 class="intel-block-title">Temas em foco</h3>
+        <div class="intel-themes-grid">
+          <article class="intel-theme-card">
+            <span class="intel-theme-tag">Saúde</span>
+            <h4>Escala real de vazamentos de PHI</h4>
+            <p>Revisões tardias de impacto — como CareCloud (350 mil → 3,75 milhões) — mostram subestimação inicial comum em incidentes de saúde e pressão regulatória (HHS/HIPAA).</p>
+          </article>
+          <article class="intel-theme-card">
+            <span class="intel-theme-tag">Cloud · Id</span>
+            <h4>Exposição de diretórios e tenants</h4>
+            <p>Vazamentos de bases Azure/Entra anunciados em fóruns (TheHatman) reforçam monitoramento de credenciais comprometidas, MFA e inventário de identidades expostas.</p>
+          </article>
+          <article class="intel-theme-card">
+            <span class="intel-theme-tag">Pagamentos</span>
+            <h4>Chaves de API e supply chain</h4>
+            <p>Dump de centenas de chaves Stripe (agosto/2026) aponta para .env expostos e vendors mal configurados — risco financeiro direto além de dados pessoais.</p>
+          </article>
+          <article class="intel-theme-card">
+            <span class="intel-theme-tag">AppSec</span>
+            <h4>CSRF em React Router RSC</h4>
+            <p>Follow-up ao CVE-2026-22030: rotas RSC <em>unstable</em> executavam server actions cross-origin antes do 400 — patch em <strong>7.18.2</strong> / <strong>8.3.0</strong> (GHSA-qwww-vcr4-c8h2).</p>
+          </article>
+          <article class="intel-theme-card">
+            <span class="intel-theme-tag">Patch urgente</span>
+            <h4>KEV corporativo em lote</h4>
+            <p>CISA incluiu em 18/08 falhas críticas em IKE, SharePoint, vCenter e macOS — três com CVSS 9,8 e prazo federal até 21/08 (BOD 26-04).</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="intel-cve-block">
+        <div class="intel-cve-head">
+          <h3 class="intel-block-title">Novos CVEs em exploração (CISA KEV)</h3>
+          <p class="intel-cve-note">Adicionados ao catálogo entre <strong>17 e 18 ago 2026</strong>. Priorize patch em ativos expostos e correlacione com detecções ATT&amp;CK (T1190, T1078).</p>
+        </div>
+        <div class="intel-cve-table-wrap" role="region" aria-label="Lista de CVEs recentes no KEV">
+          <table class="intel-cve-table">
+            <thead>
+              <tr>
+                <th scope="col">CVE</th>
+                <th scope="col">Produto</th>
+                <th scope="col">Falha</th>
+                <th scope="col">CVSS</th>
+                <th scope="col">Prazo FCEB</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://www.cve.org/CVERecord?id=CVE-2026-33824" target="_blank" rel="noopener noreferrer">CVE-2026-33824</a></td>
+                <td>Microsoft IKE (Windows)</td>
+                <td>Double free · RCE não autenticado</td>
+                <td><span class="intel-cve-sev intel-cve-sev--crit">9,8</span></td>
+                <td>21 ago 2026</td>
+              </tr>
+              <tr>
+                <td><a href="https://www.cve.org/CVERecord?id=CVE-2026-59310" target="_blank" rel="noopener noreferrer">CVE-2026-59310</a></td>
+                <td>VMware vCenter</td>
+                <td>Path traversal · RCE na rede</td>
+                <td><span class="intel-cve-sev intel-cve-sev--crit">9,8</span></td>
+                <td>21 ago 2026</td>
+              </tr>
+              <tr>
+                <td><a href="https://www.cve.org/CVERecord?id=CVE-2026-65400" target="_blank" rel="noopener noreferrer">CVE-2026-65400</a></td>
+                <td>Apple macOS (Screen Sharing)</td>
+                <td>Autenticação inadequada · acesso remoto</td>
+                <td><span class="intel-cve-sev intel-cve-sev--crit">9,8</span></td>
+                <td>21 ago 2026</td>
+              </tr>
+              <tr>
+                <td><a href="https://www.cve.org/CVERecord?id=CVE-2026-55040" target="_blank" rel="noopener noreferrer">CVE-2026-55040</a></td>
+                <td>Microsoft SharePoint</td>
+                <td>Autenticação fraca · bypass JWT</td>
+                <td><span class="intel-cve-sev intel-cve-sev--high">9,1</span></td>
+                <td>21 ago 2026</td>
+              </tr>
+              <tr>
+                <td><a href="https://www.cve.org/CVERecord?id=CVE-2025-62593" target="_blank" rel="noopener noreferrer">CVE-2025-62593</a></td>
+                <td>Ray Project (dev tool)</td>
+                <td>Injeção de código via browser</td>
+                <td><span class="intel-cve-sev intel-cve-sev--high">8,8</span></td>
+                <td>20 ago 2026</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="intel-cve-foot"><a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener noreferrer">CISA Known Exploited Vulnerabilities Catalog ↗</a> · <a href="https://www.cisa.gov/news-events/alerts/2026/08/18/cisa-adds-four-known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener noreferrer">Alerta CISA · 18 ago 2026 ↗</a></p>
+      </div>
+
+      <div class="intel-cve-block intel-cve-block--appsec">
+        <div class="intel-cve-head">
+          <h3 class="intel-block-title">Vulnerabilidade em destaque — AppSec / supply chain</h3>
+          <p class="intel-cve-note">Advisory publicada em <strong>22 jul 2026</strong> (GitHub Reviewed). Sem CVE atribuído; complementa <a href="https://www.cve.org/CVERecord?id=CVE-2026-22030" target="_blank" rel="noopener noreferrer">CVE-2026-22030</a>. Impacto restrito a apps que usam APIs RSC <em>unstable</em> do React Router.</p>
+        </div>
+        <div class="intel-cve-table-wrap" role="region" aria-label="React Router RSC CSRF bypass">
+          <table class="intel-cve-table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Pacote</th>
+                <th scope="col">Falha</th>
+                <th scope="col">CVSS</th>
+                <th scope="col">Versões corrigidas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://github.com/advisories/GHSA-qwww-vcr4-c8h2" target="_blank" rel="noopener noreferrer">GHSA-qwww-vcr4-c8h2</a></td>
+                <td>react-router (npm)</td>
+                <td>CSRF bypass em modo RSC <em>unstable</em> — server action executada antes da resposta 400 (CWE-352)</td>
+                <td><span class="intel-cve-sev intel-cve-sev--high">7,1</span></td>
+                <td>≥ 7.18.2 · ≥ 8.3.0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="intel-advisory-detail glass-box">
+          <h4>React Router: RSC Mode CSRF Bypass Allows Action Execution Before 400 Response</h4>
+          <p>Após o hardening do CVE-2026-22030 (v7.12.0), o guard <code>throwIfPotentialCSRFAttack</code> passou a bloquear POST cross-origin em rotas Framework Mode — mas os handlers RSC (<code>unstable_routeRSCServerRequest</code> e paths relacionados) não aplicavam a mesma validação de <code>Origin</code>. Um atacante podia forjar POST de outra origem contra endpoints de action RSC: a mutação no servidor completava e só então o cliente recebia HTTP 400.</p>
+          <ul class="intel-advisory-list">
+            <li><strong>Afetado:</strong> react-router ≥ 7.12.0 &lt; 7.18.2 e ≥ 8.0.0 &lt; 8.3.0, somente com APIs RSC <em>unstable</em> habilitadas</li>
+            <li><strong>Exploração:</strong> requer interação do usuário autenticado (CVSS 4.0 · UI:P); integridade de dados da aplicação comprometida (VI:H)</li>
+            <li><strong>Mitigação imediata:</strong> upgrade para 7.18.2 ou 8.3.0; alternativamente, desabilitar RSC unstable ou validar <code>Origin</code>/<code>Referer</code> em middleware</li>
+          </ul>
+          <p class="intel-cve-foot"><a href="https://github.com/remix-run/react-router/security/advisories/GHSA-qwww-vcr4-c8h2" target="_blank" rel="noopener noreferrer">Advisory oficial remix-run/react-router ↗</a> · <a href="https://securelayer7.net/lab/react-router-rsc-csrf-bypass-action-execution" target="_blank" rel="noopener noreferrer">SecureLayer7 — análise técnica ↗</a></p>
+        </div>
+      </div>
+
+      <article class="intel-news-featured glass-box" id="noticia-mes">
+        <div class="intel-news-meta">
+          <span class="intel-news-kicker">Notícia do mês</span>
+          <time datetime="2026-08-19">19 ago 2026</time>
+          <span class="intel-news-hot">Alta repercussão</span>
+        </div>
+        <h3 class="intel-news-title">CareCloud confirma roubo de registros médicos de 3,75 milhões de pacientes</h3>
+        <p class="intel-news-lead">A CareCloud — plataforma de dados de saúde — revisou drasticamente o impacto de um incidente detectado em <strong>março de 2026</strong>: de cerca de <strong>350 mil</strong> pessoas notificadas inicialmente para mais de <strong>3,75 milhões</strong> registrados no tracker do HHS (atualização entre 18 e 19 de agosto). Trata-se de um dos maiores vazamentos de saúde do ano nos EUA.</p>
+        <div class="intel-news-facts">
+          <div><span>O que vazou</span><strong>Nomes, endereços, SSN, IDs governamentais, dados bancários e registros clínicos</strong></div>
+          <div><span>Vector</span><strong>Acesso não autorizado a ambiente AWS por ~6 dias (10–16 mar)</strong></div>
+          <div><span>Lição</span><strong>Reconciliar inventário cloud, DLP e comunicação regulatória cedo — revisões de escala são frequentes</strong></div>
+        </div>
+        <p class="intel-news-body">O caso ilustra três padrões recorrentes: (1) subnotificação inicial de vítimas em breaches de saúde; (2) exfiltração a partir de storage cloud mal segmentado; (3) dados sensíveis suficientes para fraude, extorsão e engenharia social de longo prazo. Para organizações brasileiras com PHI ou dados sensíveis equivalentes (LGPD), o paralelo é revisar backup, IAM em cloud, monitoramento de egress e runbooks de comunicação à ANPD.</p>
+        <div class="intel-news-links">
+          <a href="https://techcrunch.com/2026/08/19/carecloud-confirms-3-7m-patients-had-their-medical-records-stolen-in-data-breach/" target="_blank" rel="noopener noreferrer">TechCrunch · confirmação oficial ↗</a>
+          <a href="https://www.securityweek.com/carecloud-data-breach-impact-grows-to-3-7-million-individuals/" target="_blank" rel="noopener noreferrer">SecurityWeek · análise do impacto ↗</a>
+          <a href="https://ocrportal.hhs.gov/ocr/breach/breach_report.jsf" target="_blank" rel="noopener noreferrer">HHS · breach tracker ↗</a>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -919,6 +1082,6 @@
   <script src="assets/incident-summary-chart.js" defer></script>
   <script src="assets/cis-privacy-charts.js?v=2" defer></script>
   <script src="assets/relatorio-pdf-export.js?v=8" defer></script>
-  <script src="assets/relatorio-intel.js?v=1" defer></script>
+  <script src="assets/relatorio-intel.js?v=2" defer></script>
 </body>
 </html>

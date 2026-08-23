@@ -163,6 +163,25 @@
   #relatorio-pdf-export .intel-flow i { display: none !important; }
   #relatorio-pdf-export .intel-action-grid { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 3mm !important; }
   #relatorio-pdf-export .intel-source-cards { display: none !important; }
+  #relatorio-pdf-export .intel-monthly-section { break-before: page !important; padding-top: 0 !important; }
+  #relatorio-pdf-export .intel-themes-grid { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 3mm !important; }
+  #relatorio-pdf-export .intel-theme-card { padding: 4mm !important; border: 1px solid #dce5e8 !important; background: #fff !important; break-inside: avoid !important; }
+  #relatorio-pdf-export .intel-theme-card h4 { color: #17262e !important; }
+  #relatorio-pdf-export .intel-theme-card p { color: #4f6069 !important; }
+  #relatorio-pdf-export .intel-cve-table-wrap { border: 1px solid #dce5e8 !important; background: #fff !important; break-inside: avoid !important; }
+  #relatorio-pdf-export .intel-cve-table th { color: #138d9a !important; background: #f1f6f7 !important; }
+  #relatorio-pdf-export .intel-cve-table td { color: #30434c !important; }
+  #relatorio-pdf-export .intel-cve-table a { color: #0e6b75 !important; }
+  #relatorio-pdf-export .intel-news-featured { padding: 6mm !important; border: 1px solid #f0c4c4 !important; background: #fff8f8 !important; break-inside: avoid !important; }
+  #relatorio-pdf-export .intel-news-title { color: #17262e !important; }
+  #relatorio-pdf-export .intel-news-lead,#relatorio-pdf-export .intel-news-body { color: #4f6069 !important; }
+  #relatorio-pdf-export .intel-news-facts { grid-template-columns: 1fr !important; gap: 2mm !important; }
+  #relatorio-pdf-export .intel-news-facts strong { color: #17262e !important; }
+  #relatorio-pdf-export .intel-news-links a { color: #0e6b75 !important; }
+  #relatorio-pdf-export .intel-advisory-detail { padding: 5mm !important; border: 1px solid #d8cdfb !important; background: #f4f0ff !important; break-inside: avoid !important; }
+  #relatorio-pdf-export .intel-advisory-detail h4 { color: #17262e !important; }
+  #relatorio-pdf-export .intel-advisory-detail p,#relatorio-pdf-export .intel-advisory-list { color: #4f6069 !important; }
+  #relatorio-pdf-export .intel-advisory-detail code { background: #e8eef0 !important; color: #30434c !important; }
 
   #relatorio-pdf-export {
     display: block !important;
