@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../../assets/favicon.ico" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+  <meta name="theme-color" content="#071018" />
+  <title>Vulcan SIEM · Download de agentes | Business Products | Vulcan Defense</title>
+  <meta name="description" content="Baixe os agentes Vulcan SIEM para Windows, Linux (.deb e .rpm). Checksums SHA-512, instalação e registro no manager." />
+  <link rel="canonical" href="https://vulcandefense.com.br/business-products/vulcan-siem/" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="../../assets/business-products.css" />
+  <link rel="stylesheet" href="../../assets/downloads.css" />
+  <script src="../../site.js" defer></script>
+  <script src="../../assets/downloads.js" defer></script>
+</head>
+<body class="bp-page dl-page">
+  <div class="grid-overlay"></div>
+  <header>
+    <div class="container header-wrap">
+      <div class="brand"><div class="logo-box"><img src="../../assets/logo-vulcan.png" alt="Vulcan Defense" /></div><div><h1>VULCAN DEFENSE</h1><p>Cyber Defense Operations</p></div></div>
+      <nav>
+        <a href="../../index.html">Home</a><a href="../../quem-somos.html">Quem Somos</a><a href="../../relatorio-global.html">Relatório global</a>
+        <div class="nav-item has-submenu"><a href="../../servicos.html">Serviços</a><div class="submenu"><a href="../../pentest-yellow-team-secops-dast.html">Pentest e SecOps</a><a href="../../software-vulcan-platform.html">Software Vulcan Platform</a><a href="../../endpoint-protection-siem.html">Endpoint Protection e SIEM</a><a href="../../business-products/" class="active">Business Products</a><a href="../../integracao-siem-ia.html">SIEM com IA</a><a href="../../siem-ot.html">Vulcan-SIEM OT</a><a href="../../compliance-ia.html">Compliance de IA</a><a href="../../checklist-seguranca.html">Checklist SI (ISO/LGPD/PCI)</a><a href="../../security-champions.html">Security Champions</a><a href="../../treinamentos-owasp-mitre.html">Treinamentos OWASP e MITRE</a><a href="../../hackathon-defensivo.html">Hackathon defensivo</a></div></div>
+        <div class="nav-item has-submenu partner-menu"><a href="../../gestao-tms-flsys-leanworks.html">Serviços parceiros</a><div class="submenu"><a href="../../gestao-tms-flsys-leanworks.html">Gestão TMS e obras</a><a href="https://cmbusinesstoken.com" class="partner-external" target="_blank" rel="noopener noreferrer">Tokenização e Segurança fintech</a></div></div><a href="../../tecnologias.html">Escopos de Atuação</a><a href="../../politica-privacidade.html">Política de Privacidade</a><a href="../../contato.html">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container bp-product-hero">
+      <nav class="bp-breadcrumb" aria-label="Navegação">
+        <a href="../../index.html">Home</a><span class="bp-bc-sep">/</span>
+        <a href="../">Business Products</a><span class="bp-bc-sep">/</span>
+        <span>Vulcan SIEM</span>
+      </nav>
+    </div>
+
+    <section class="dl-hero">
+      <div class="container dl-hero-grid">
+        <div>
+          <div class="dl-eyebrow">Business Products · Vulcan SIEM</div>
+          <h1 class="dl-title">Agentes para o seu <span>manager</span></h1>
+          <p class="dl-lead">Telemetria criptografada em endpoints e servidores: logs, FIM, inventário, detecção de malware e resposta ativa — integrados ao pipeline do Vulcan SIEM corporativo.</p>
+          <div class="dl-actions">
+            <a class="btn btn-primary" href="#pacotes">Baixar agente</a>
+            <a class="btn btn-secondary" href="#instalacao">Guia de instalação</a>
+            <a class="btn btn-secondary" href="../../endpoint-protection-siem.html">Sobre o serviço SIEM</a>
+          </div>
+          <div class="dl-meta" aria-label="Informações da release">
+            <span>Edição estável · 2026</span>
+            <span>SHA-512 verificado</span>
+            <span>Windows · Debian/Ubuntu · RHEL/Fedora</span>
+          </div>
+        </div>
+        <aside class="dl-side" aria-label="Pré-requisitos">
+          <h2>Antes de instalar</h2>
+          <ol>
+            <li>Obtenha com a Vulcan a URL do <strong>manager</strong> e a senha de registro do agente.</li>
+            <li>Garanta saída HTTPS (443) do host até o manager e repositório de atualizações.</li>
+            <li>Valide o checksum SHA-512 após o download.</li>
+            <li>Dúvidas ou build macOS: <a href="../../contato.html?servico=vulcan-siem-agent">fale com o time</a>.</li>
+          </ol>
+        </aside>
+      </div>
+    </section>
+
+    <section class="dl-packages" id="pacotes">
+      <div class="container">
+        <div class="dl-section-head">
+          <div class="section-title-small">Artefatos oficiais</div>
+          <h2 class="dl-section-title">Download por plataforma</h2>
+          <p class="dl-section-text">Binários servidos em <code>vulcandefense.com.br/downloads/</code>. Substitua <code>MANAGER</code> e <code>SENHA</code> pelos valores fornecidos na implantação.</p>
+          <p class="dl-os-hint" id="dl-os-hint" hidden role="status"></p>
+        </div>
+
+        <div class="dl-grid">
+          <article class="dl-card" data-dl-os="windows">
+            <div class="dl-card-icon" aria-hidden="true">W</div>
+            <div class="dl-card-tag">Windows · x64</div>
+            <h3>Vulcan Agent MSI</h3>
+            <p class="dl-card-desc">Instalador para Windows Server e desktops. Suporte a FIM, coleta de eventos, inventário e módulos de detecção.</p>
+            <div class="dl-card-meta">
+              <div><strong>Arquivo:</strong> vulcan-agent-windows.msi</div>
+              <div><strong>Formato:</strong> MSI (Administrador)</div>
+            </div>
+            <div class="dl-checksum">
+              <span class="dl-checksum-label">SHA-512</span>
+              <code>ce1bac4b7927c2f3a7171c4978689e2f502093ad281d75cd240643105cfb59e7ef68f44c84fbc8cab8103504de32c1d26f2e0cfd79ff6e4599698a9941c7c0f2</code>
+            </div>
+            <div class="dl-card-actions">
+              <a class="btn btn-primary" href="../../downloads/vulcan-agent-windows.msi" download>Baixar MSI</a>
+              <button type="button" class="dl-btn-ghost" data-copy-sha="ce1bac4b7927c2f3a7171c4978689e2f502093ad281d75cd240643105cfb59e7ef68f44c84fbc8cab8103504de32c1d26f2e0cfd79ff6e4599698a9941c7c0f2">Copiar hash</button>
+            </div>
+          </article>
+
+          <article class="dl-card" data-dl-os="deb">
+            <div class="dl-card-icon" aria-hidden="true">D</div>
+            <div class="dl-card-tag">Linux · amd64</div>
+            <h3>Vulcan Agent DEB</h3>
+            <p class="dl-card-desc">Pacote para Debian, Ubuntu e derivados. Ideal para servidores cloud e workloads Linux em produção.</p>
+            <div class="dl-card-meta">
+              <div><strong>Arquivo:</strong> vulcan-agent-linux-amd64.deb</div>
+              <div><strong>Formato:</strong> .deb (root)</div>
+            </div>
+            <div class="dl-checksum">
+              <span class="dl-checksum-label">SHA-512</span>
+              <code>95ad32b49ea515cc58d09ba392d8fb7f44d28398f40d8d989665e8ee6b1d313a61d8d95038cbf4d817a45110fe20bb086e0db257905185fe8a95f6bd17cbfd18</code>
+            </div>
+            <div class="dl-card-actions">
+              <a class="btn btn-primary" href="../../downloads/vulcan-agent-linux-amd64.deb" download>Baixar DEB</a>
+              <button type="button" class="dl-btn-ghost" data-copy-sha="95ad32b49ea515cc58d09ba392d8fb7f44d28398f40d8d989665e8ee6b1d313a61d8d95038cbf4d817a45110fe20bb086e0db257905185fe8a95f6bd17cbfd18">Copiar hash</button>
+            </div>
+          </article>
+
+          <article class="dl-card" data-dl-os="rpm">
+            <div class="dl-card-icon" aria-hidden="true">R</div>
+            <div class="dl-card-tag">Linux · x86_64</div>
+            <h3>Vulcan Agent RPM</h3>
+            <p class="dl-card-desc">Pacote para RHEL, Rocky, AlmaLinux, Fedora e família Red Hat. Mesma telemetria e políticas do agente DEB.</p>
+            <div class="dl-card-meta">
+              <div><strong>Arquivo:</strong> vulcan-agent-linux-x86_64.rpm</div>
+              <div><strong>Formato:</strong> .rpm (root)</div>
+            </div>
+            <div class="dl-checksum">
+              <span class="dl-checksum-label">SHA-512</span>
+              <code>e699b653ab4f784c7840e613b3306f283861648566172346984d0a3fea1b04dd4cc828de0c8b9027c6a26dcb7d33b81f8cb65cfa579f7294772d544e5174797d</code>
+            </div>
+            <div class="dl-card-actions">
+              <a class="btn btn-primary" href="../../downloads/vulcan-agent-linux-x86_64.rpm" download>Baixar RPM</a>
+              <button type="button" class="dl-btn-ghost" data-copy-sha="e699b653ab4f784c7840e613b3306f283861648566172346984d0a3fea1b04dd4cc828de0c8b9027c6a26dcb7d33b81f8cb65cfa579f7294772d544e5174797d">Copiar hash</button>
+            </div>
+          </article>
+        </div>
+
+        <article class="dl-card is-disabled" style="margin-top:16px;max-width:420px">
+          <div class="dl-card-icon" aria-hidden="true">M</div>
+          <div class="dl-card-tag">macOS · em breve</div>
+          <h3>Vulcan Agent PKG</h3>
+          <p class="dl-card-desc">Build universal para macOS em homologação. Clientes com parque Apple podem solicitar acesso antecipado.</p>
+          <div class="dl-card-actions">
+            <a class="btn btn-secondary" href="../../contato.html?servico=vulcan-siem-agent-macos">Solicitar acesso</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="dl-install" id="instalacao">
+      <div class="container">
+        <div class="dl-section-head">
+          <div class="section-title-small">Implantação</div>
+          <h2 class="dl-section-title">Instalação e registro</h2>
+          <p class="dl-section-text">Comandos de referência — ajuste hostname, grupo e credenciais conforme o runbook da sua operação.</p>
+        </div>
+
+        <div class="dl-steps">
+          <article class="dl-step">
+            <h3>Validar integridade</h3>
+            <p>Confira o SHA-512 do arquivo baixado antes de instalar em produção.</p>
+            <div class="dl-code"><pre># Linux
+sha512sum vulcan-agent-linux-amd64.deb
+
+# Windows (PowerShell)
+Get-FileHash .\vulcan-agent-windows.msi -Algorithm SHA512</pre></div>
+          </article>
+          <article class="dl-step">
+            <h3>Instalar o pacote</h3>
+            <p>Execute com privilégios administrativos no host de destino.</p>
+            <div class="dl-code"><pre># Debian / Ubuntu
+sudo dpkg -i vulcan-agent-linux-amd64.deb
+
+# RHEL / Fedora
+sudo rpm -ivh vulcan-agent-linux-x86_64.rpm
+
+# Windows: execute o MSI como Administrador</pre></div>
+          </article>
+          <article class="dl-step">
+            <h3>Registrar no manager</h3>
+            <p>Aponte o agente para o manager Vulcan SIEM e aplique a senha de enrollment.</p>
+            <div class="dl-code"><pre># Linux — exemplo
+sudo vulcan-agent-auth -m MANAGER -p SENHA -G default
+
+# Windows — após instalação, informe manager
+# e senha no assistente ou via linha de comando</pre></div>
+          </article>
+        </div>
+
+        <p class="dl-note"><strong>Operação:</strong> após o registro, valide no console do SIEM se o agente aparece como <em>Active</em>. Para ambientes OT convergentes, veja o <a href="../../siem-ot.html" class="cyan">Vulcan-SIEM OT</a>. <a href="../" class="cyan">← Voltar à central Business Products</a></p>
+      </div>
+    </section>
+
+    <section class="dl-cta">
+      <div class="container">
+        <div class="dl-cta-card">
+          <div>
+            <h2>Precisa de manager, playbooks ou operação assistida?</h2>
+            <p>A Vulcan Defense implanta e sustenta SIEM corporativo — do agente ao SOC. Conte seu parque, volume de logs e metas de detecção.</p>
+          </div>
+          <a class="btn btn-primary" href="../../contato.html?servico=vulcan-siem-agent">Falar com a Vulcan</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container">&copy; 2026 Vulcan Defense. Todos os direitos reservados.</div></footer>
+</body>
+</html>

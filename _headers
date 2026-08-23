@@ -32,3 +32,36 @@
 
 /CNAME
   Content-Type: text/plain; charset=utf-8
+
+/downloads/index.html
+  Content-Type: text/html; charset=utf-8
+  Cache-Control: no-cache, no-store, must-revalidate, private
+
+/business-products/index.html
+  Content-Type: text/html; charset=utf-8
+  Cache-Control: no-cache, no-store, must-revalidate, private
+
+/business-products/vulcan-siem/index.html
+  Content-Type: text/html; charset=utf-8
+  Cache-Control: no-cache, no-store, must-revalidate, private
+
+/business-products/*
+  Cache-Control: no-cache, no-store, must-revalidate, private
+
+/downloads/*.msi
+  Content-Type: application/octet-stream
+  Content-Disposition: attachment
+  Cache-Control: public, max-age=86400
+
+/downloads/*.deb
+  Content-Type: application/octet-stream
+  Content-Disposition: attachment
+  Cache-Control: public, max-age=86400
+
+/downloads/*.rpm
+  Content-Type: application/octet-stream
+  Content-Disposition: attachment
+  Cache-Control: public, max-age=86400
+
+/downloads/*.sha512
+  Content-Type: text/plain; charset=utf-8
