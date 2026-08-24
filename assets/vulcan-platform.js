@@ -26,16 +26,25 @@
       var decimals = Number(counter.dataset.decimals || 0);
       var prefix = counter.dataset.prefix || "";
       var suffix = counter.dataset.suffix || "";
-      var duration = reducedMotion ? 0 : 1100;
+      var duration = reducedMotion ? 0 : 900;
+      var floor = target * 0.88;
+      function format(value) {
+        return prefix + value.toFixed(decimals) + suffix;
+      }
+      if (reducedMotion || duration === 0) {
+        counter.textContent = format(target);
+        return;
+      }
       var started = false;
       function start() {
         if (started) return;
         started = true;
         var began = performance.now();
         function frame(now) {
-          var progress = duration ? Math.min((now - began) / duration, 1) : 1;
+          var progress = Math.min((now - began) / duration, 1);
           var eased = 1 - Math.pow(1 - progress, 3);
-          counter.textContent = prefix + (target * eased).toFixed(decimals) + suffix;
+          var value = floor + (target - floor) * eased;
+          counter.textContent = format(value);
           if (progress < 1) requestAnimationFrame(frame);
         }
         requestAnimationFrame(frame);

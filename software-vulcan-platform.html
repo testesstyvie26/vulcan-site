@@ -49,9 +49,9 @@
         <div class="vp-console vp-reveal" aria-label="Prévia ilustrativa do cockpit Vulcan Platform">
           <div class="vp-console-head"><div class="vp-console-brand">Operations cockpit</div><div class="vp-live">Operacional</div></div>
           <div class="vp-console-kpis">
-            <div class="vp-kpi"><span class="vp-kpi-label">Eventos/h</span><strong class="vp-kpi-value" data-counter="22.8" data-decimals="1" data-suffix="M">0M</strong></div>
-            <div class="vp-kpi"><span class="vp-kpi-label">Fontes</span><strong class="vp-kpi-value" data-counter="340" data-prefix="+">0</strong></div>
-            <div class="vp-kpi"><span class="vp-kpi-label">MTTR</span><strong class="vp-kpi-value vp-positive" data-counter="37" data-prefix="−" data-suffix="%">0%</strong></div>
+            <div class="vp-kpi"><span class="vp-kpi-label">Eventos/h</span><strong class="vp-kpi-value" data-counter="22.8" data-decimals="1" data-suffix="M">22.8M</strong></div>
+            <div class="vp-kpi"><span class="vp-kpi-label">Fontes</span><strong class="vp-kpi-value" data-counter="340" data-prefix="+">+340</strong></div>
+            <div class="vp-kpi"><span class="vp-kpi-label">MTTR</span><strong class="vp-kpi-value vp-positive" data-counter="37" data-prefix="−" data-suffix="%">−37%</strong></div>
           </div>
           <div class="vp-mini-chart">
             <div class="vp-mini-chart-head"><strong>Telemetria correlacionada</strong><span>Últimas 24 horas</span></div>
@@ -93,10 +93,10 @@
           </article>
         </div>
 
-        <div class="vp-health-grid vp-reveal">
-          <div class="vp-health"><div class="vp-health-head"><span>Coleta e normalização</span><strong>92%</strong></div><div class="vp-progress"><span style="--progress:92%"></span></div></div>
-          <div class="vp-health"><div class="vp-health-head"><span>Correlação e analytics</span><strong>86%</strong></div><div class="vp-progress"><span style="--progress:86%"></span></div></div>
-          <div class="vp-health"><div class="vp-health-head"><span>Orquestração e resposta</span><strong>79%</strong></div><div class="vp-progress"><span style="--progress:79%"></span></div></div>
+        <div class="vp-pipeline vp-reveal" aria-label="Etapas do pipeline operacional">
+          <article class="vp-pipeline-step"><h3>Coleta e normalização</h3><p>Telemetria de endpoint, cloud, identidade e rede enriquecida para busca e correlação entre fontes.</p></article>
+          <article class="vp-pipeline-step"><h3>Correlação e analytics</h3><p>Regras, contexto de risco e redução de ruído para priorizar o que exige ação do analista.</p></article>
+          <article class="vp-pipeline-step"><h3>Orquestração e resposta</h3><p>Playbooks e ações coordenadas entre NOC, SOC e times de negócio — com trilha para auditoria.</p></article>
         </div>
       </div>
     </section>

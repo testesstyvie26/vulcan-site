@@ -21,6 +21,8 @@ a{text-decoration:none;color:inherit}
 header{position:sticky;top:0;z-index:20;border-bottom:1px solid rgba(255,255,255,.1);backdrop-filter:blur(10px);background:rgba(0,0,0,.18)}
 .header-wrap{display:flex;align-items:center;justify-content:space-between;padding:20px 0}
 .brand{display:flex;align-items:center;gap:16px}
+.brand-home{display:flex;align-items:center;gap:16px;color:inherit;text-decoration:none}
+.brand-home:hover h1{color:#a5f3fc}
 .logo-box{width:56px;height:56px;border-radius:18px;border:1px solid rgba(103,232,249,.35);background:#000;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 0 30px rgba(34,211,238,.12)}
 .logo-box img{width:100%;height:100%;object-fit:cover;display:block}
 .brand h1{color:#67e8f9;font-size:26px;letter-spacing:.18em;font-weight:900}
@@ -685,7 +687,7 @@ nav > a.partner-external::after{content:" ↗";font-size:10px;color:var(--tech);
 .submit-btn:disabled{opacity:.55;cursor:not-allowed}
 .form-note,.form-note a{color:#82919b}
 footer{padding:44px 0;color:#7f8c95;border-top:1px solid var(--line)}
-.site-legal{display:block;margin-top:9px;color:#64737c;font-size:11px;letter-spacing:.02em}.site-linkedin{display:inline-flex;align-items:center;gap:6px;margin-top:10px;color:var(--brand-strong);font-weight:750;text-decoration:none;transition:color .2s ease,opacity .2s ease}.site-linkedin:hover{color:#fff}.site-linkedin::after{content:"↗";font-size:11px}@media(max-width:560px){.site-legal{max-width:290px;margin:10px auto 0;line-height:1.55}.site-linkedin{display:flex;width:max-content;margin:12px auto 0}}
+.site-legal{display:block;margin-top:9px;color:#64737c;font-size:11px;letter-spacing:.02em}.site-footer-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;margin-top:12px}.site-footer-nav a{font-size:12px;color:#64737c;text-decoration:none;border-bottom:1px solid rgba(103,232,249,.18);padding-bottom:1px;transition:color .2s}.site-footer-nav a:hover{color:var(--brand-strong)}.site-linkedin{display:inline-flex;align-items:center;gap:6px;margin-top:10px;color:var(--brand-strong);font-weight:750;text-decoration:none;transition:color .2s ease,opacity .2s ease}.site-linkedin:hover{color:#fff}.site-linkedin::after{content:"↗";font-size:11px}@media(max-width:560px){.site-legal{max-width:290px;margin:10px auto 0;line-height:1.55}.site-footer-nav{flex-direction:column;align-items:center;gap:10px}.site-linkedin{display:flex;width:max-content;margin:12px auto 0}}
 .company-legal-card{display:grid;gap:5px;width:max-content;max-width:100%;margin-top:24px;padding:14px 16px;border:1px solid rgba(246,200,95,.16);border-radius:12px;background:rgba(246,200,95,.045)}.company-legal-card span{color:var(--brand-strong);font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}.company-legal-card strong{color:#dce4e8;font-size:13px}.company-legal-card small{color:#84939b;font-size:11px}
 .cookie-banner{padding:16px 24px;background:rgba(8,17,25,.98);border-color:var(--line-strong)}
 

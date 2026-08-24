@@ -18,6 +18,54 @@
   var nav = headerWrap && headerWrap.querySelector(":scope > nav");
   if (!headerWrap || !nav) return;
 
+  function navPrefix() {
+    var path = window.location.pathname.replace(/\\/g, "/");
+    if (path.indexOf("/business-products/vulcan-siem") !== -1) return "../../";
+    if (path.indexOf("/business-products") !== -1) return "../";
+    return "";
+  }
+
+  function buildPrimaryNav(prefix) {
+    return ''
+      + '<div class="nav-item has-submenu">'
+      + '<a href="' + prefix + 'software-vulcan-platform.html">Plataforma</a>'
+      + '<div class="submenu">'
+      + '<a href="' + prefix + 'software-vulcan-platform.html">Vulcan Platform</a>'
+      + '<a href="' + prefix + 'endpoint-protection-siem.html">Endpoint Protection e SIEM</a>'
+      + '<a href="' + prefix + 'business-products/">Business Products</a>'
+      + '<a href="' + prefix + 'siem-ot.html">Vulcan-SIEM OT</a>'
+      + '</div></div>'
+      + '<div class="nav-item has-submenu">'
+      + '<a href="' + prefix + 'servicos.html">Serviços</a>'
+      + '<div class="submenu">'
+      + '<a href="' + prefix + 'cyber-defense.html">Cyber defense e SOC</a>'
+      + '<a href="' + prefix + 'pentest-yellow-team-secops-dast.html">Pentest e SecOps</a>'
+      + '<a href="' + prefix + 'integracao-siem-ia.html">SIEM com IA</a>'
+      + '<a href="' + prefix + 'compliance-ia.html">Compliance de IA</a>'
+      + '<a href="' + prefix + 'checklist-seguranca.html">Checklist SI (ISO/LGPD/PCI)</a>'
+      + '<a href="' + prefix + 'security-champions.html">Security Champions</a>'
+      + '<a href="' + prefix + 'treinamentos-owasp-mitre.html">Treinamentos OWASP e MITRE</a>'
+      + '<a href="' + prefix + 'hackathon-defensivo.html">Hackathon defensivo</a>'
+      + '<a href="' + prefix + 'relatorio-global.html">Relatório global</a>'
+      + '<a href="https://academy.vulcandefense.com.br" class="partner-external" target="_blank" rel="noopener noreferrer" title="Cursos e Certificações">Academia Vulcan</a>'
+      + '</div></div>'
+      + '<a href="' + prefix + 'quem-somos.html">Quem somos</a>'
+      + '<a href="' + prefix + 'contato.html">Contato</a>';
+  }
+
+  var prefix = navPrefix();
+  nav.innerHTML = buildPrimaryNav(prefix);
+
+  var brand = headerWrap.querySelector(".brand");
+  if (brand && !brand.querySelector("a")) {
+    var brandLink = document.createElement("a");
+    brandLink.href = prefix + "index.html";
+    brandLink.className = "brand-home";
+    brandLink.setAttribute("aria-label", "Vulcan Defense — início");
+    while (brand.firstChild) brandLink.appendChild(brand.firstChild);
+    brand.appendChild(brandLink);
+  }
+
   nav.id = nav.id || "primary-navigation";
   nav.setAttribute("aria-label", "Navegação principal");
 
@@ -60,7 +108,11 @@
   nav.querySelectorAll("a").forEach(function (link) {
     var target = (link.getAttribute("href") || "").split("#")[0];
     if (!target || target.indexOf(":") !== -1) return;
-    var isCurrent = target === currentPage;
+    var targetName = target.split("/").filter(Boolean).pop() || "";
+    var here = window.location.pathname.replace(/\\/g, "/");
+    var isCurrent = targetName === currentPage
+      || (target.endsWith("business-products/") && here.indexOf("/business-products") !== -1)
+      || (target.endsWith("business-products") && here.indexOf("/business-products") !== -1);
     link.classList.toggle("active", isCurrent);
     if (isCurrent) link.setAttribute("aria-current", "page");
     else link.removeAttribute("aria-current");
@@ -118,5 +170,16 @@
     linkedin.setAttribute("aria-label", "LinkedIn da Vulcan Defense");
     linkedin.textContent = "LinkedIn";
     footerContainer.appendChild(linkedin);
+  }
+  if (footerContainer && !footerContainer.querySelector(".site-footer-nav")) {
+    var footerNav = document.createElement("nav");
+    footerNav.className = "site-footer-nav";
+    footerNav.setAttribute("aria-label", "Links institucionais");
+    var fp = navPrefix();
+    footerNav.innerHTML = ''
+      + '<a href="' + fp + 'politica-privacidade.html">Política de Privacidade</a>'
+      + '<a href="' + fp + 'tecnologias.html">Escopos técnicos</a>'
+      + '<a href="' + fp + 'gestao-tms-flsys-leanworks.html">Serviços parceiros</a>';
+    footerContainer.appendChild(footerNav);
   }
 })();
