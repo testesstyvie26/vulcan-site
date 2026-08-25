@@ -1,5 +1,5 @@
 {
-  "enabled": false,
+  "enabled": true,
   "provider": "custom",
   "streamUrl": "<iframe width=\"1305\" height=\"734\" src=\"https://www.youtube.com/embed/8vaOW_2EpLc\" title=\"Build with AI | Claude Code, OpenClaw, Cursor and more | 24/7 Live\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
   "title": "Vulcan Live — Workshop",
