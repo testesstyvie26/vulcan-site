@@ -23,6 +23,9 @@ header{position:sticky;top:0;z-index:20;border-bottom:1px solid rgba(255,255,255
 .brand{display:flex;align-items:center;gap:16px}
 .brand-home{display:flex;align-items:center;gap:16px;color:inherit;text-decoration:none}
 .brand-home:hover h1{color:#a5f3fc}
+nav > a.nav-live::after{content:" ●";font-size:8px;color:#ef4444;vertical-align:super}
+nav > a.nav-live.is-live::after{animation:navLivePulse 1.4s ease-in-out infinite}
+@keyframes navLivePulse{0%,100%{opacity:1}50%{opacity:.35}}
 .logo-box{width:56px;height:56px;border-radius:18px;border:1px solid rgba(103,232,249,.35);background:#000;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 0 30px rgba(34,211,238,.12)}
 .logo-box img{width:100%;height:100%;object-fit:cover;display:block}
 .brand h1{color:#67e8f9;font-size:26px;letter-spacing:.18em;font-weight:900}

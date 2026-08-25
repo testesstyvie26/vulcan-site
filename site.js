@@ -46,10 +46,12 @@
       + '<a href="' + prefix + 'security-champions.html">Security Champions</a>'
       + '<a href="' + prefix + 'treinamentos-owasp-mitre.html">Treinamentos OWASP e MITRE</a>'
       + '<a href="' + prefix + 'hackathon-defensivo.html">Hackathon defensivo</a>'
+      + '<a href="' + prefix + 'vulcan-live.html">Vulcan Live</a>'
       + '<a href="' + prefix + 'relatorio-global.html">Relatório global</a>'
       + '<a href="https://academy.vulcandefense.com.br" class="partner-external" target="_blank" rel="noopener noreferrer" title="Cursos e Certificações">Academia Vulcan</a>'
       + '</div></div>'
       + '<a href="' + prefix + 'quem-somos.html">Quem somos</a>'
+      + '<a href="' + prefix + 'vulcan-live.html" class="nav-live">Vulcan Live</a>'
       + '<a href="' + prefix + 'contato.html">Contato</a>';
   }
 
@@ -179,7 +181,17 @@
     footerNav.innerHTML = ''
       + '<a href="' + fp + 'politica-privacidade.html">Política de Privacidade</a>'
       + '<a href="' + fp + 'tecnologias.html">Escopos técnicos</a>'
-      + '<a href="' + fp + 'gestao-tms-flsys-leanworks.html">Serviços parceiros</a>';
+      + '<a href="' + fp + 'gestao-tms-flsys-leanworks.html">Serviços parceiros</a>'
+      + '<a href="' + fp + 'vulcan-live-setup.html" rel="nofollow">Setup Vulcan Live</a>';
     footerContainer.appendChild(footerNav);
   }
+
+  fetch(prefix + "assets/live-config.json?t=" + Date.now(), { cache: "no-store" })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (cfg) {
+      if (!cfg || !cfg.enabled) return;
+      var liveLink = nav.querySelector('a.nav-live');
+      if (liveLink) liveLink.classList.add("is-live");
+    })
+    .catch(function () { /* ignore */ });
 })();

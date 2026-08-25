@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="assets/favicon.ico" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+  <meta name="theme-color" content="#071018" />
+  <title>Vulcan Live | Workshop ao vivo</title>
+  <meta name="description" content="Transmissões ao vivo e workshops técnicos da Vulcan Defense — YouTube Live, Twitch e demonstrações práticas de cyber defense." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/vulcan-live.css" />
+  <script src="site.js" defer></script>
+  <script src="assets/vulcan-live.js" defer></script>
+</head>
+<body class="vl-page">
+  <div class="grid-overlay"></div>
+  <header>
+    <div class="container header-wrap">
+      <div class="brand">
+        <div class="logo-box"><img src="assets/logo-vulcan.png" alt="Vulcan Defense" /></div>
+        <div><h1>VULCAN DEFENSE</h1><p>Cyber Defense Operations</p></div>
+      </div>
+      <nav></nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section vl-hero">
+      <div class="container">
+        <div class="vl-hero-grid">
+          <div>
+            <div class="vl-eyebrow">Workshop · Transmissão</div>
+            <div class="vl-live-badge is-off" id="vl-live-badge"><i aria-hidden="true"></i> Offline</div>
+            <h1 class="vl-title" id="vl-title">Vulcan <span>Live</span></h1>
+            <p class="vl-lead" id="vl-subtitle">Workshop técnico ao vivo — cyber defense, SIEM e resposta operacional.</p>
+            <p class="vl-lead" id="vl-schedule" hidden></p>
+            <div class="btn-row">
+              <a class="btn btn-primary" href="contato.html">Falar com a Vulcan</a>
+              <a class="btn btn-secondary" href="treinamentos-owasp-mitre.html">Ver treinamentos</a>
+            </div>
+          </div>
+
+          <div class="vl-stage" aria-label="Player da transmissão">
+            <div class="vl-stage-head">
+              <strong id="vl-stage-title">Vulcan Live</strong>
+              <span id="vl-provider">Stream</span>
+            </div>
+            <div class="vl-player-wrap" id="vl-player-wrap">
+              <div id="vl-player"></div>
+              <div class="vl-offline" id="vl-offline">
+                <h3>Nenhuma transmissão ativa</h3>
+                <p>Quando o administrador publicar uma live, ela aparecerá aqui automaticamente.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="vl-workshop">
+          <article class="vl-panel">
+            <h2>Sobre este workshop</h2>
+            <p id="vl-description">Demonstrações práticas e conteúdo aplicado à operação de segurança.</p>
+            <p class="vl-meta" id="vl-updated"></p>
+          </article>
+          <article class="vl-panel">
+            <h2>Roteiro</h2>
+            <ul class="vl-agenda" id="vl-agenda"></ul>
+            <div class="btn-row" style="margin-top:16px;">
+              <a class="btn btn-secondary" id="vl-chat-link" href="#" target="_blank" rel="noopener noreferrer" hidden>Abrir chat da live</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container">&copy; 2026 Vulcan Defense. Todos os direitos reservados.</div></footer>
+</body>
+</html>

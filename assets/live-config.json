@@ -1,0 +1,17 @@
+{
+  "enabled": false,
+  "provider": "youtube",
+  "streamUrl": "",
+  "title": "Vulcan Live — Workshop",
+  "subtitle": "Transmissão ao vivo · Vulcan Defense",
+  "description": "Workshop técnico com demonstrações práticas de cyber defense, SIEM e resposta a incidentes.",
+  "agenda": [
+    "Contexto e objetivos do workshop",
+    "Demonstração na plataforma",
+    "Perguntas e encerramento"
+  ],
+  "scheduleText": "",
+  "chatUrl": "",
+  "updatedAt": null,
+  "configApiUrl": ""
+}
