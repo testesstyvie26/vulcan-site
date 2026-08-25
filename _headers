@@ -17,16 +17,6 @@
   Cache-Control: no-cache, no-store, must-revalidate, private
   Pragma: no-cache
 
-/vulcan-live.html
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; form-action 'self' https://formspree.io; frame-ancestors 'none'; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https:; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://player.twitch.tv; worker-src 'self' blob:; upgrade-insecure-requests
-
-/vulcan-live-setup.html
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; worker-src 'self' blob:; upgrade-insecure-requests
-
-/assets/live-config.json
-  Content-Type: application/json; charset=utf-8
-  Cache-Control: no-cache, no-store, must-revalidate, private
-
 /relatorio-global.html
   Content-Security-Policy: default-src 'self'; base-uri 'self'; form-action 'self' https://formspree.io; frame-ancestors 'none'; object-src 'none'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob:; connect-src 'self' https://formspree.io https://api.ransomware.live https://cdn.jsdelivr.net https://api.allorigins.win https://corsproxy.io https://api.codetabs.com https://cors.eu.org; frame-src 'self' https://app.powerbi.com; worker-src 'self' blob:; upgrade-insecure-requests
 

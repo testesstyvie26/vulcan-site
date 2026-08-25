@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /vulcan-live-setup.html
 
 Sitemap: https://vulcandefense.com.br/sitemap.xml
