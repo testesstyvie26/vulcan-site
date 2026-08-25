@@ -1,7 +1,7 @@
 {
   "enabled": false,
-  "provider": "youtube",
-  "streamUrl": "https://youtu.be/8vaOW_2EpLc",
+  "provider": "custom",
+  "streamUrl": "<iframe width=\"1305\" height=\"734\" src=\"https://www.youtube.com/embed/8vaOW_2EpLc\" title=\"Build with AI | Claude Code, OpenClaw, Cursor and more | 24/7 Live\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
   "title": "Vulcan Live — Workshop",
   "subtitle": "Transmissão ao vivo · Vulcan Defense",
   "description": "Workshop técnico com demonstrações práticas de cyber defense, SIEM e resposta a incidentes.",
@@ -12,6 +12,6 @@
   ],
   "scheduleText": "",
   "chatUrl": "",
-  "updatedAt": null,
-  "configApiUrl": ""
+  "configApiUrl": "",
+  "updatedAt": "2026-08-25T02:59:32.425Z"
 }
