@@ -28,11 +28,19 @@
     .home-value-card{border:1px solid rgba(255,255,255,.1);border-radius:14px;background:rgba(0,0,0,.22);padding:18px}
     .home-value-card h3{font-size:15px;font-weight:800;color:#67e8f9;margin-bottom:8px}
     .home-value-card p{font-size:14px;line-height:1.55;color:rgba(255,255,255,.72);margin:0}
-    .home-links-wrap{margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08)}
-    .home-links-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 28px;max-width:900px}
-    @media (max-width:640px){.home-links-grid{grid-template-columns:1fr}}
-    .home-links-grid a{font-size:14px;color:rgba(255,255,255,.78);text-decoration:none;border-bottom:1px solid rgba(103,232,249,.25);padding-bottom:2px;transition:.2s}
-    .home-links-grid a:hover{color:#67e8f9;border-color:rgba(103,232,249,.5)}
+    .home-scopes{margin-top:44px;padding-top:40px;border-top:1px solid rgba(255,255,255,.08)}
+    .home-scopes-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:22px}
+    .home-scopes-head .section-text{max-width:640px;margin-top:8px}
+    .home-scope-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+    .home-scope-card{display:flex;flex-direction:column;min-height:210px;padding:22px;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:linear-gradient(145deg,rgba(4,21,49,.52),rgba(0,0,0,.28));color:inherit;text-decoration:none;transition:transform .2s ease,border-color .2s ease,background .2s ease}
+    .home-scope-card:hover{transform:translateY(-3px);border-color:rgba(103,232,249,.32);background:linear-gradient(145deg,rgba(6,31,64,.66),rgba(0,0,0,.3))}
+    .home-scope-kicker{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(103,232,249,.72);margin-bottom:14px}
+    .home-scope-card h4{font-size:17px;line-height:1.3;color:#fff;margin:0 0 10px}
+    .home-scope-card p{font-size:13px;line-height:1.6;color:rgba(255,255,255,.64);margin:0 0 18px}
+    .home-scope-action{margin-top:auto;font-size:12px;font-weight:800;color:#7dd3fc}
+    .home-scope-action::after{content:"  →"}
+    @media (max-width:980px){.home-scope-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media (max-width:640px){.home-scopes-head{align-items:flex-start;flex-direction:column}.home-scope-grid{grid-template-columns:1fr}.home-scope-card{min-height:0}}
     .home-cta-inline{margin-top:28px;padding:22px 24px;border-radius:16px;border:1px solid rgba(103,232,249,.2);background:rgba(4,21,49,.45);text-align:center}
     .home-cta-inline p{margin:0 0 14px;font-size:15px;color:rgba(255,255,255,.75);line-height:1.6}
     .home-media-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:22px}
@@ -320,31 +328,40 @@
       <a class="btn btn-secondary" href="servicos.html">Catálogo de todos os serviços</a>
     </div>
 
-    <div class="home-links-wrap">
-      <div class="section-title-small">Restante do site</div>
-      <h3 class="section-title" style="font-size:1.25rem;margin-bottom:12px;">Outros escopos de serviço</h3>
-      <p class="section-text" style="margin-bottom:16px;max-width:720px;">Consultoria em cyber defense, pentest, plataforma, IA, treinamentos e mais — acesso rápido sem repetir o catálogo em cards.</p>
-      <div class="home-links-grid">
-        <a href="servicos.html">Visão geral de serviços</a>
-        <a href="relatorio-global.html">Relatório global</a>
-        <a href="https://academy.vulcandefense.com.br" target="_blank" rel="noopener noreferrer">Academia Vulcan · Cursos e Certificações</a>
-        <a href="cyber-defense.html">Cyber defense e SOC</a>
-        <a href="pentest-yellow-team-secops-dast.html">Pentest e SecOps</a>
-        <a href="software-vulcan-platform.html">Software Vulcan Platform</a>
-        <a href="gestao-tms-flsys-leanworks.html">Gestão TMS e obras (FLSys)</a>
-        <a href="compliance-ia.html">Compliance de IA</a>
-        <a href="checklist-seguranca.html">Checklist SI (ISO/LGPD/PCI)</a>
-        <a href="security-champions.html">Security Champions</a>
-        <a href="treinamentos-owasp-mitre.html">Treinamentos OWASP e MITRE</a>
-        <a href="hackathon-defensivo.html">Hackathon defensivo</a>
-        <a href="tecnologias.html">Escopos técnicos (cloud, AppSec, IAM)</a>
-        <a href="seguranca-ofensiva.html">Segurança ofensiva</a>
-        <a href="portfolio-servicos.html">Portfólio de serviços</a>
-        <a href="nosso-time.html">Nosso time</a>
-        <a href="quem-somos.html#sala-de-imprensa">Sala de imprensa</a>
-        <a href="index.html#noticias-midia">Notícias · Mídia</a>
-        <a href="siem-ot.html">Vulcan-SIEM OT</a>
-        <a href="index.html#monitoramento-ot">Monitoramento TI + OT</a>
+    <div class="home-scopes">
+      <div class="home-scopes-head">
+        <div>
+          <div class="section-title-small">Serviços complementares</div>
+          <h3 class="section-title" style="font-size:1.35rem;margin-bottom:0;">Outros escopos de segurança</h3>
+          <p class="section-text">Frentes objetivas para ampliar prevenção, detecção e capacidade de resposta.</p>
+        </div>
+        <a class="btn btn-secondary" href="portfolio-servicos.html">Ver portfólio completo</a>
+      </div>
+      <div class="home-scope-grid">
+        <a class="home-scope-card" href="cyber-defense.html">
+          <span class="home-scope-kicker">Operação</span>
+          <h4>Cyber Defense e SOC</h4>
+          <p>Estruturação, evolução e apoio operacional para monitorar e responder com contexto.</p>
+          <span class="home-scope-action">Conhecer escopo</span>
+        </a>
+        <a class="home-scope-card" href="pentest-yellow-team-secops-dast.html">
+          <span class="home-scope-kicker">Validação</span>
+          <h4>Pentest, AppSec e SecOps</h4>
+          <p>Testes orientados a risco e integração de segurança ao ciclo de desenvolvimento.</p>
+          <span class="home-scope-action">Conhecer escopo</span>
+        </a>
+        <a class="home-scope-card" href="compliance-ia.html">
+          <span class="home-scope-kicker">Governança</span>
+          <h4>Compliance, IA e privacidade</h4>
+          <p>Evidências, controles e planos de adequação para ambientes regulados.</p>
+          <span class="home-scope-action">Conhecer escopo</span>
+        </a>
+        <a class="home-scope-card" href="security-champions.html">
+          <span class="home-scope-kicker">Capacitação</span>
+          <h4>Security Champions</h4>
+          <p>Programa prático para distribuir conhecimento e responsabilidade de segurança nos times.</p>
+          <span class="home-scope-action">Conhecer escopo</span>
+        </a>
       </div>
     </div>
 
