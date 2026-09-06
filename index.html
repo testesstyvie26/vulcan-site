@@ -43,43 +43,32 @@
     @media (max-width:640px){.home-scopes-head{align-items:flex-start;flex-direction:column}.home-scope-grid{grid-template-columns:1fr}.home-scope-card{min-height:0}}
     .home-cta-inline{margin-top:28px;padding:22px 24px;border-radius:16px;border:1px solid rgba(103,232,249,.2);background:rgba(4,21,49,.45);text-align:center}
     .home-cta-inline p{margin:0 0 14px;font-size:15px;color:rgba(255,255,255,.75);line-height:1.6}
-    .home-media-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+    .home-media-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:24px}
     .home-media-head .btn-row{margin-top:0}
-    .home-media-scroll-wrap{position:relative;margin:0 -4px}
-    .home-media-scroll{
-      display:flex;gap:16px;overflow-x:auto;padding:4px 4px 14px;scroll-snap-type:x mandatory;
-      -webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:rgba(103,232,249,.35) transparent
-    }
-    .home-media-scroll::-webkit-scrollbar{height:6px}
-    .home-media-scroll::-webkit-scrollbar-thumb{background:rgba(103,232,249,.35);border-radius:999px}
-    .home-media-card{
-      flex:0 0 min(320px,86vw);scroll-snap-align:start;border:1px solid rgba(255,255,255,.1);border-radius:18px;
-      background:rgba(0,0,0,.24);overflow:hidden;display:flex;flex-direction:column;min-height:100%
-    }
-    .home-media-card:first-child{border-color:rgba(103,232,249,.22)}
-    .home-media-thumb{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;background:rgba(0,0,0,.35)}
-    .home-media-thumb-placeholder{
-      aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;padding:20px;
-      background:linear-gradient(145deg,rgba(4,21,49,.55),rgba(0,0,0,.35));font-size:11px;font-weight:800;
-      letter-spacing:.12em;text-transform:uppercase;color:rgba(103,232,249,.55);text-align:center
-    }
-    .home-media-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+    .home-media-feature{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr);overflow:hidden;border:1px solid rgba(246,200,95,.3);border-radius:22px;background:linear-gradient(145deg,rgba(6,28,55,.72),rgba(0,0,0,.34));box-shadow:0 22px 70px rgba(0,0,0,.25)}
+    .home-media-feature-image{display:block;width:100%;height:100%;min-height:440px;object-fit:cover;background:#020817}
+    .home-media-feature-body{display:flex;flex-direction:column;justify-content:center;padding:clamp(26px,4vw,48px)}
     .home-media-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-    .home-media-date{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.42)}
+    .home-media-date{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.52)}
     .home-media-tag{
-      font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 8px;border-radius:999px;
-      border:1px solid rgba(103,232,249,.22);background:rgba(34,211,238,.08);color:#a5f3fc
+      font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:5px 9px;border-radius:999px;
+      border:1px solid rgba(246,200,95,.3);background:rgba(246,200,95,.1);color:#f6d48a
     }
-    .home-media-tag-muted{border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:rgba(255,255,255,.58)}
-    .home-media-card h3{font-size:15px;font-weight:800;line-height:1.35;color:#fff;margin:0}
-    .home-media-card p{font-size:13px;line-height:1.65;color:rgba(255,255,255,.62);margin:0;flex:1}
+    .home-media-feature h3{font-size:clamp(1.55rem,3vw,2.25rem);font-weight:850;line-height:1.15;color:#fff;margin:18px 0 14px}
+    .home-media-feature p{font-size:16px;line-height:1.7;color:rgba(255,255,255,.74);margin:0}
+    .home-media-feature-note{margin-top:18px!important;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);font-size:14px!important;color:rgba(255,255,255,.58)!important}
+    .home-related-title{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(103,232,249,.72);margin:30px 0 14px}
+    .home-related-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+    .home-related-card{display:flex;flex-direction:column;gap:10px;min-height:190px;padding:20px;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:rgba(0,0,0,.22)}
+    .home-related-card h3{font-size:16px;line-height:1.4;color:#fff;margin:0}
+    .home-related-card p{font-size:13px;line-height:1.6;color:rgba(255,255,255,.62);margin:0;flex:1}
     .home-media-link{
-      margin-top:4px;font-size:12px;font-weight:700;color:#7dd3fc;text-decoration:none;border-bottom:1px solid rgba(103,232,249,.25);
+      margin-top:8px;font-size:12px;font-weight:700;color:#7dd3fc;text-decoration:none;border-bottom:1px solid rgba(103,232,249,.25);
       padding-bottom:2px;width:fit-content;transition:color .2s,border-color .2s
     }
     .home-media-link:hover{color:#a5f3fc;border-color:rgba(103,232,249,.45)}
     .home-media-link::after{content:" ↗";font-size:10px}
-    .home-media-hint{margin-top:10px;font-size:12px;color:rgba(255,255,255,.42)}
+    @media (max-width:900px){.home-media-feature{grid-template-columns:1fr}.home-media-feature-image{min-height:0;aspect-ratio:1/1}.home-related-grid{grid-template-columns:1fr}}
     .home-ot-wrap{margin-top:0}
     .home-ot-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:center;margin-top:28px}
     .home-ot-badge{display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#f0d48a;padding:6px 12px;border-radius:999px;border:1px solid rgba(246,200,95,.28);background:rgba(246,200,95,.08);margin-bottom:14px}
@@ -200,69 +189,47 @@
     <div class="home-media-head">
       <div class="section-intro" style="margin-bottom:0;">
         <div class="section-title-small">Notícias · Mídia</div>
-        <h2 class="section-title">Validação contínua no ecossistema de Defesa</h2>
-        <p class="section-text">Encontros estratégicos, publicações e presença institucional — role para ver as últimas menções.</p>
+        <h2 class="section-title">Vulcan no Exercício Guardião Cibernético 8.0</h2>
+        <p class="section-text">Participação no maior treinamento de defesa cibernética do Hemisfério Sul e notícias relacionadas ao evento.</p>
       </div>
       <div class="btn-row">
         <a class="btn btn-secondary" href="quem-somos.html#sala-de-imprensa">Ver sala de imprensa</a>
       </div>
     </div>
 
-    <div class="home-media-scroll-wrap">
-      <div class="home-media-scroll" tabindex="0" aria-label="Notícias e publicações — role horizontalmente">
-        <article class="home-media-card">
-          <img class="home-media-thumb" src="assets/press-firjan-pdi-2026.png" alt="Reunião PD&amp;I Firjan SENAI SESI Tecnologia com Vulcan Defense" width="640" height="400" loading="lazy" />
-          <div class="home-media-body">
-            <div class="home-media-meta">
-              <span class="home-media-date">10 ago 2026</span>
-              <span class="home-media-tag">Encontro estratégico</span>
-            </div>
-            <h3>PD&amp;I para Defesa e Segurança Pública na Firjan SENAI SESI</h3>
-            <p>Vulcan Defense, Deterrence Defense e UFF mapeiam oportunidades conjuntas em inovação para o setor — com simuladores e tecnologias aplicadas à Defesa.</p>
-            <a class="home-media-link" href="https://www.linkedin.com/feed/update/urn:li:activity:7494031345866878976/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          </div>
-        </article>
-
-        <article class="home-media-card">
-          <div class="home-media-thumb-placeholder">Rio Innovation Week · 2026</div>
-          <div class="home-media-body">
-            <div class="home-media-meta">
-              <span class="home-media-date">6 ago 2026</span>
-              <span class="home-media-tag home-media-tag-muted">Ecossistema</span>
-            </div>
-            <h3>Conexão com P&amp;D Firjan no Rio Innovation Week</h3>
-            <p>Rodrigo Carran reforça laços com Marcos Dias (Firjan SENAI SESI) em inovação, pesquisa e transformação digital.</p>
-            <a class="home-media-link" href="https://www.linkedin.com/posts/rodrigocarran_rioinnovationweek-riw2026-marcosdias-activity-7491161272525381633-N5Dr" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          </div>
-        </article>
-
-        <article class="home-media-card">
-          <div class="home-media-thumb-placeholder">Lançamento · Mercado</div>
-          <div class="home-media-body">
-            <div class="home-media-meta">
-              <span class="home-media-date">Mar 2026</span>
-              <span class="home-media-tag home-media-tag-muted">Validação</span>
-            </div>
-            <h3>Vulcan Defense no mercado de cibersegurança</h3>
-            <p>Consultoria com escopos fechados, entregáveis para auditoria e linguagem executiva — cyber defense, pentest, SOC e compliance de IA.</p>
-            <a class="home-media-link" href="https://www.linkedin.com/posts/rodrigocarran_cybersecurity-cyberdefense-complianceia-activity-7441854724854685697-5nuq" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          </div>
-        </article>
-
-        <article class="home-media-card">
-          <div class="home-media-thumb-placeholder">Comunidade · Sentinela</div>
-          <div class="home-media-body">
-            <div class="home-media-meta">
-              <span class="home-media-date">Ago 2026</span>
-              <span class="home-media-tag home-media-tag-muted">Publicação</span>
-            </div>
-            <h3>Defesa orientada ao risco real</h3>
-            <p>A Vulcan Defense como continuidade prática da visão Sentinela Cibernética — estratégia, operação e tecnologia aplicadas.</p>
-            <a class="home-media-link" href="https://www.linkedin.com/posts/rodrigocarran_sentinelacibernetica-vulcandefense-cybersecurity-activity-7492176612184985600-sLcb" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          </div>
-        </article>
+    <article class="home-media-feature">
+      <img class="home-media-feature-image" src="assets/vulcan-guardiao-cibernetico-2026.jpeg" alt="Vulcan Defense no Exercício Guardião Cibernético 2026" width="1200" height="1200" loading="lazy" />
+      <div class="home-media-feature-body">
+        <div class="home-media-meta">
+          <span class="home-media-date">5 set 2026</span>
+          <span class="home-media-tag">Destaque</span>
+        </div>
+        <h3>Vulcan Defense é convidada para o Exercício Guardião Cibernético</h3>
+        <p>A Vulcan Defense participará do EGC 8.0, iniciativa coordenada pelo Comando de Defesa Cibernética do Exército Brasileiro que integra organizações públicas, privadas e acadêmicas em cenários de prevenção, detecção e resposta a incidentes.</p>
+        <p class="home-media-feature-note">O exercício está previsto para 21 a 25 de setembro de 2026, com atividades simultâneas em hubs regionais.</p>
       </div>
-      <p class="home-media-hint">Deslize para o lado para ver mais notícias →</p>
+    </article>
+
+    <div class="home-related-title">Notícias relacionadas ao EGC 8.0</div>
+    <div class="home-related-grid">
+      <article class="home-related-card">
+        <span class="home-media-date">SENAI-SP · 9 jun 2026</span>
+        <h3>São Paulo sediará hub de defesa cibernética da indústria</h3>
+        <p>FIESP e SENAI-SP receberão atividades práticas e simulações voltadas à proteção digital do setor industrial.</p>
+        <a class="home-media-link" href="https://www.sp.senai.br/noticia/sao-paulo-sediara-hub-voltado-a-protecao-digital-da-industria-durante-o-maior-exercicio-de-defesa-cibernetica-do-hemisferio-sul" target="_blank" rel="noopener noreferrer">Ler no SENAI-SP</a>
+      </article>
+      <article class="home-related-card">
+        <span class="home-media-date">Governo do Paraná · 20 mar 2026</span>
+        <h3>Curitiba confirma hub regional do exercício</h3>
+        <p>A programação prevê simulações de incidentes com integração entre Forças Armadas, governo, academia e empresas.</p>
+        <a class="home-media-link" href="https://www.seti.pr.gov.br/Noticia/Parana-lanca-programa-de-capacitacao-digital-para-alunos-de-graduacao-e-pos-graduacao" target="_blank" rel="noopener noreferrer">Ler no Governo do Paraná</a>
+      </article>
+      <article class="home-related-card">
+        <span class="home-media-date">Defesa News · ago 2026</span>
+        <h3>CYBEROS, do IME, será testado no EGC 8.0</h3>
+        <p>O cyber range nacional deverá apoiar simulações de redes críticas, comunicações militares e infraestruturas estratégicas.</p>
+        <a class="home-media-link" href="https://www.defesanews.com.br/2026/08/cyberos-o-cyber-range-nacional-do-ime-para-defesa-de-redes-criticas-comunicacoes-militares-radios-taticos-e-testes-no-exercicio-guardiao-cibernetico-8-0/" target="_blank" rel="noopener noreferrer">Ler na Defesa News</a>
+      </article>
     </div>
   </div>
 </section>
